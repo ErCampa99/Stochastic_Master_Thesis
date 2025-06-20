@@ -1,14 +1,12 @@
-# Stochastic Master Thesis
+# Entangling unravellings for quantum state engineering/quantum metrology - Gabriele Campanello's Master Thesis
 
-Welcome to the repository for my Master’s thesis focused on stochastic modeling and analysis.
+Welcome to the repository for my Master’s thesis focused on...well...for the whole picture it's gonna require a little more XD
 
 ---
 
 ## 📚 Thesis Overview
 
-This project presents research and implementation related to stochastic processes, probabilistic modeling, and their applications. The goal is to explore [aggiungi qui il focus specifico della tua tesi, es. financial modeling, stochastic differential equations, Monte Carlo simulations, ecc.].
-
-The repository contains theoretical explanations, code implementations, data sets, and final thesis documents.
+This project presents research and implementation related to ...
 
 ---
 
@@ -17,9 +15,8 @@ The repository contains theoretical explanations, code implementations, data set
 ```plaintext
 Stochastic_Master_Thesis/
 │
-├── data/                 # Raw and processed data files used in experiments
-├── notebooks/            # Jupyter notebooks for analysis and visualization
-├── src/                  # Source code scripts (Python, Matlab, etc.)
-├── results/              # Outputs, figures, and generated results
-├── thesis/               # Final thesis PDF, LaTeX source, and related documents
+├── Logs                  # Weekly reports
+├── Organization          # Scripts and useful notes
+├── Codes                 # Self explaining
+├── Thesis                # We need to write down to paper all the scientific journey
 └── README.md             # This README file
