@@ -1,4 +1,6 @@
-# Entangling unravellings for quantum state engineering/quantum metrology - Gabriele Campanello's Master Thesis
+# Entangling unravellings for quantum state engineering/quantum metrology 
+
+## Gabriele Campanello's Master Thesis
 
 Welcome to the repository for my Master’s thesis focused on...well...for the whole picture it's gonna require a little more XD
 
