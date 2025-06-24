@@ -116,6 +116,8 @@ venv.bak/
 NewSbromboVenv/
 .NewSbromboVenv
 
+Codes/SMT_venv/
+
 # Spyder project settings
 .spyderproject
 .spyproject
@@ -137,4 +139,4 @@ dmypy.json
 
 # other
 .DS_Store
-README.md
+README.mdCodes/SMT_venv/

@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "${workspaceFolder}\\Codes\\SMT_venv\\Scripts\\python.exe",
+    "files.exclude": {
+      "Codes/SMT_venv": true
+    },
+    "search.exclude": {
+      "Codes/SMT_venv": true
+    },
+    "git.exclude": {
+      "Codes/SMT_venv": true
+    },
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true
+  },
+}
