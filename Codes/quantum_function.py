@@ -34,3 +34,66 @@ def compute_concurrences(solution):
 def compute_mean_concurrence(conc_array):
     mean_conc = np.mean(np.array(conc_array), axis=0)
     return mean_conc
+
+def kraus_probabilities(rho, kraus_ops):
+    """
+    Calcola le probabilità associate a una lista di Kraus operators su uno stato rho.
+
+    Parametri:
+    - rho : qutip.Qobj, stato (ket o matrice densità)
+    - kraus_ops : lista di qutip.Qobj, operatori di Kraus
+    
+    Ritorna:
+    - probs : lista di float, probabilità di ogni risultato
+    """
+    probs = []
+    for M in kraus_ops:
+        if isket(rho):
+            # Caso stato puro |psi>
+            p = (rho.dag() * M.dag() * M * rho)[0, 0].real
+        else:
+            # Caso matrice densità
+            p = (M.dag() * M * rho).tr().real
+        probs.append(p)
+    return probs
+
+
+def sample_outcome(probs):
+    """
+    Estrae un outcome di misura a partire da una lista di probabilità.
+
+    Parametri:
+    - probs : lista di float, probabilità associate a ciascun outcome
+
+    Ritorna:
+    - outcome : int, indice dell'operatore misurato
+    """
+    # normalizza per sicurezza (somma = 1)
+    probs = np.array(probs)
+    probs = probs / probs.sum()
+    
+    # estrae un indice basato sulla distribuzione
+    outcome = np.random.choice(len(probs), p=probs)
+    return outcome
+
+def measure_and_update(rho, kraus_ops):
+    """
+    Esegue una misura tramite Kraus operators:
+    - calcola le probabilità
+    - campiona un outcome
+    - aggiorna lo stato post-misura
+    """
+    # calcola probabilità
+    probs = kraus_probabilities(rho, kraus_ops)
+    
+    # estrai outcome
+    outcome = sample_outcome(probs)
+    
+    # aggiorna stato
+    M = kraus_ops[outcome]
+    if rho.isket:
+        rho_post = (M * rho).unit()
+    else:
+        rho_post = (M * rho * M.dag()) / probs[outcome]
+    
+    return rho_post
