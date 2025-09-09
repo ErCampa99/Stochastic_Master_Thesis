@@ -2,6 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from qutip import *
 
+# Stati base
+exc = qutip.basis(2, 0)  # ground
+gnd = qutip.basis(2, 1)  # excited
+
 def theo_concurrence(t, gamma):
     return 2*np.exp(-gamma*t)*(1-np.exp(-gamma*t)) 
 
@@ -35,7 +39,7 @@ def compute_mean_concurrence(conc_array):
     mean_conc = np.mean(np.array(conc_array), axis=0)
     return mean_conc
 
-def kraus_probabilities(rho, kraus_ops):
+def flatten_to_qudit(state):
     """
     Calcola le probabilità associate a una lista di Kraus operators su uno stato rho.
 
