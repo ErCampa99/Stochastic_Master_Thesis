@@ -2,9 +2,21 @@ import numpy as np
 import matplotlib.pyplot as plt
 from qutip import *
 
+def flatten_to_qudit(state):
+    """
+    Prende un ket bipartito (Qobj con dims=[[2,2],[1,1]])
+    e lo trasforma in un ket di un sistema a 4 livelli
+    (Qobj con dims=[[4],[1]]).
+    """
+    return Qobj(state.full(), dims=[[4], [1]])
+
 # Stati base
 exc = qutip.basis(2, 0)  # ground
 gnd = qutip.basis(2, 1)  # excited
+
+psi_plus = flatten_to_qudit(tensor(gnd, exc) + tensor(exc, gnd))
+psi_minus = flatten_to_qudit(tensor(exc, gnd) - tensor(gnd, exc))
+
 
 def theo_concurrence(t, gamma):
     return 2*np.exp(-gamma*t)*(1-np.exp(-gamma*t)) 
@@ -41,6 +53,14 @@ def compute_mean_concurrence(conc_array):
 
 def flatten_to_qudit(state):
     """
+    Prende un ket bipartito (Qobj con dims=[[2,2],[1,1]])
+    e lo trasforma in un ket di un sistema a 4 livelli
+    (Qobj con dims=[[4],[1]]).
+    """
+    return Qobj(state.full(), dims=[[4], [1]])
+
+def kraus_probabilities(rho, kraus_ops):
+    """
     Calcola le probabilità associate a una lista di Kraus operators su uno stato rho.
 
     Parametri:
@@ -53,12 +73,19 @@ def flatten_to_qudit(state):
     probs = []
     for M in kraus_ops:
         if isket(rho):
+            #print("Ket")
             # Caso stato puro |psi>
-            p = (rho.dag() * M.dag() * M * rho)[0, 0].real
+            p = (M * rho).norm()**2
         else:
+            print("Density matrix")
             # Caso matrice densità
-            p = (M.dag() * M * rho).tr().real
+            p = abs((M.dag() * M * rho).tr())
         probs.append(p)
+
+    #Normalize for safety (sum = 1)
+    probs = np.array(probs)
+    probs = probs / probs.sum()
+
     return probs
 
 
@@ -78,6 +105,15 @@ def sample_outcome(probs):
     
     # estrae un indice basato sulla distribuzione
     outcome = np.random.choice(len(probs), p=probs)
+    if outcome is None:
+        raise ValueError("Nessun outcome estratto. Controlla le probabilità.")
+    
+    #if outcome==1:
+        #print("Emissione fotone da atomo  - psi plus")
+    
+    #if outcome==2:
+        #print("Emissione fotone da atomo 2 - psi minus")    
+    
     return outcome
 
 def measure_and_update(rho, kraus_ops):
@@ -89,15 +125,31 @@ def measure_and_update(rho, kraus_ops):
     """
     # calcola probabilità
     probs = kraus_probabilities(rho, kraus_ops)
-    
     # estrai outcome
     outcome = sample_outcome(probs)
-    
+
     # aggiorna stato
     M = kraus_ops[outcome]
-    if rho.isket:
+    
+    if rho.isket:      
         rho_post = (M * rho).unit()
     else:
         rho_post = (M * rho * M.dag()) / probs[outcome]
-    
+
     return rho_post
+
+
+def simulate_trajectory(psi, steps, kraus_ops):
+    """Simula una singola traiettoria quantistica."""
+    pops_e = []
+    state = psi
+    for _ in range(steps):
+        #infilo state in measure and update poi aggiorno state in psi_post
+        psi_post = measure_and_update(state, kraus_ops)
+        state = psi_post
+
+        # Popolazione nello stato eccitato
+        pops_e.append(abs((state)[0]**2))
+
+    #print("Fine traiettoria")
+    return pops_e
