@@ -10,13 +10,28 @@ def flatten_to_qudit(state):
     """
     return Qobj(state.full(), dims=[[4], [1]])
 
-# Stati base
+# Stati base_1-Qubit
 exc = qutip.basis(2, 0)  # ground
 gnd = qutip.basis(2, 1)  # excited
 
+#Stati base 2-Qubit 
+ee = tensor(exc, exc)  # |ee>
+eg = tensor(exc, gnd)  # |eg>
+ge = tensor(gnd, exc)  # |ge>   
+gg = tensor(gnd, gnd)  # |gg>            
+
+
+#Stati di Bell
 psi_plus = flatten_to_qudit(tensor(gnd, exc) + tensor(exc, gnd))
 psi_minus = flatten_to_qudit(tensor(exc, gnd) - tensor(gnd, exc))
+phi_plus = flatten_to_qudit(tensor(gnd, gnd) + tensor(exc, exc))
+phi_minus = flatten_to_qudit(tensor(gnd, gnd) - tensor(exc, exc)) 
 
+# B_(x,y)
+bell_states = [[phi_plus, psi_plus], [phi_minus, psi_minus] ]
+
+def pop_excited(state):
+    return abs(state[0]**2)
 
 def theo_concurrence(t, gamma):
     return 2*np.exp(-gamma*t)*(1-np.exp(-gamma*t)) 
@@ -50,14 +65,6 @@ def compute_concurrences(solution):
 def compute_mean_concurrence(conc_array):
     mean_conc = np.mean(np.array(conc_array), axis=0)
     return mean_conc
-
-def flatten_to_qudit(state):
-    """
-    Prende un ket bipartito (Qobj con dims=[[2,2],[1,1]])
-    e lo trasforma in un ket di un sistema a 4 livelli
-    (Qobj con dims=[[4],[1]]).
-    """
-    return Qobj(state.full(), dims=[[4], [1]])
 
 def kraus_probabilities(rho, kraus_ops):
     """
@@ -139,17 +146,21 @@ def measure_and_update(rho, kraus_ops):
     return rho_post
 
 
-def simulate_trajectory(psi, steps, kraus_ops):
+def simulate_trajectory(state, steps, kraus_ops, funcs=None):
     """Simula una singola traiettoria quantistica."""
-    pops_e = []
-    state = psi
+
+    # Contenitore risultati per ogni funzione
+    results = {f.__name__: [] for f in funcs}
+
     for _ in range(steps):
-        #infilo state in measure and update poi aggiorno state in psi_post
+        #infilo state in measure and update poi 
         psi_post = measure_and_update(state, kraus_ops)
+
+        #aggiorno state in psi_post
         state = psi_post
 
-        # Popolazione nello stato eccitato
-        pops_e.append(abs((state)[0]**2))
+        # Eventuali calcoli sullo stato post-misura
+        for f in funcs:
+            results[f.__name__].append(f(state))        
 
-    #print("Fine traiettoria")
-    return pops_e
+    return results
