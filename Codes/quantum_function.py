@@ -152,7 +152,7 @@ def simulate_trajectory(state, steps, kraus_ops, funcs=None):
     # Contenitore risultati per ogni funzione
     results = {f.__name__: [] for f in funcs}
 
-    for _ in range(steps):
+    for step in range(steps):
         #infilo state in measure and update poi 
         psi_post = measure_and_update(state, kraus_ops)
 
@@ -160,7 +160,10 @@ def simulate_trajectory(state, steps, kraus_ops, funcs=None):
         state = psi_post
 
         # Eventuali calcoli sullo stato post-misura
+        row = {"step": step}
         for f in funcs:
-            results[f.__name__].append(f(state))        
+            row[f.__name__] = f(state)
+
+        results.append(row)     
 
     return results
