@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from qutip import *
+import pandas as pd
 
 def flatten_to_qudit(state):
     """
@@ -8,27 +9,54 @@ def flatten_to_qudit(state):
     e lo trasforma in un ket di un sistema a 4 livelli
     (Qobj con dims=[[4],[1]]).
     """
-    return Qobj(state.full(), dims=[[4], [1]])
+    return Qobj(state.full(), dims=[[4], [1]]).unit()
+
+
+#=================================================================================================================================
+# //-- UTILITIES STATI --// ======================================================================================================
+#=================================================================================================================================
 
 # Stati base_1-Qubit
 exc = qutip.basis(2, 0)  # ground
 gnd = qutip.basis(2, 1)  # excited
 
-#Stati base 2-Qubit 
-ee = tensor(exc, exc)  # |ee>
+#Stati base 2-Qubit
+ee = tensor(exc, exc)  # |ee>   
 eg = tensor(exc, gnd)  # |eg>
-ge = tensor(gnd, exc)  # |ge>   
-gg = tensor(gnd, gnd)  # |gg>            
-
+ge = tensor(gnd, exc)  # |ge>
+gg = tensor(gnd, gnd)  # |gg>
 
 #Stati di Bell
-psi_plus = flatten_to_qudit(tensor(gnd, exc) + tensor(exc, gnd))
-psi_minus = flatten_to_qudit(tensor(exc, gnd) - tensor(gnd, exc))
-phi_plus = flatten_to_qudit(tensor(gnd, gnd) + tensor(exc, exc))
-phi_minus = flatten_to_qudit(tensor(gnd, gnd) - tensor(exc, exc)) 
+psi_plus = (tensor(gnd, exc) + tensor(exc, gnd)).unit()
+psi_minus = (tensor(exc, gnd) - tensor(gnd, exc)).unit()
+phi_plus = (tensor(gnd, gnd) + tensor(exc, exc)).unit()
+phi_minus = (tensor(gnd, gnd) - tensor(exc, exc)).unit()
 
-# B_(x,y)
+#Stati base 2-Qubit --- FLATTENED ---
+ee_f = flatten_to_qudit(tensor(exc, exc))  # |ee>
+eg_f = flatten_to_qudit(tensor(exc, gnd))  # |eg>
+ge_f = flatten_to_qudit(tensor(gnd, exc))  # |ge>
+gg_f = flatten_to_qudit(tensor(gnd, gnd))  # |gg>
+
+#Stati di Bell --- FLATTENED ---
+psi_plus_f = flatten_to_qudit(tensor(gnd, exc) + tensor(exc, gnd))
+psi_minus_f = flatten_to_qudit(tensor(exc, gnd) - tensor(gnd, exc))
+phi_plus_f = flatten_to_qudit(tensor(gnd, gnd) + tensor(exc, exc))
+phi_minus_f = flatten_to_qudit(tensor(gnd, gnd) - tensor(exc, exc)) 
+
+# Computational basis
+comp_basis = [ee, eg, ge, gg]
+comp_basis_f = [ee_f, eg_f, ge_f, gg_f]
+
+# Bell basis
 bell_states = [[phi_plus, psi_plus], [phi_minus, psi_minus] ]
+bell_states_f = [[phi_plus_f, psi_plus_f], [phi_minus_f, psi_minus_f] ]
+
+
+#=================================================================================================================================
+# //-- FUNZIONI PER SOLVER --// ==================================================================================================
+#=================================================================================================================================
+
 
 def pop_excited(state):
     return abs(state[0]**2)
@@ -37,7 +65,7 @@ def theo_concurrence(t, gamma):
     return 2*np.exp(-gamma*t)*(1-np.exp(-gamma*t)) 
 
 def concurrence_pure_state(state): 
-    ###Compute the concurrence for a pure state
+    ###Compute the concurrence for a two-qubit pure state
     return 2*np.abs(state[0]*state[3]-state[1]*state[2])
 
 def concurrence_for_solver_pure(t, state):
@@ -45,6 +73,9 @@ def concurrence_for_solver_pure(t, state):
     # .full() returns a 2D column vector, .flatten() makes it a 1D array
     c = state.full().flatten()
     return 2 * np.abs(c[0] * c[3] - c[1] * c[2])
+
+def concurrence_for_solver(t, state):
+    return concurrence(state)
 
 def compute_concurrences(solution):
     ntraj = len(solution.runs_states)
@@ -62,9 +93,12 @@ def compute_concurrences(solution):
 
     return conc_array
 
-def compute_mean_concurrence(conc_array):
-    mean_conc = np.mean(np.array(conc_array), axis=0)
-    return mean_conc
+
+
+#=================================================================================================================================
+# //-- KRAUS OPERATORS --// ======================================================================================================
+#=================================================================================================================================
+
 
 def kraus_probabilities(rho, kraus_ops):
     """
@@ -116,7 +150,7 @@ def sample_outcome(probs):
         raise ValueError("Nessun outcome estratto. Controlla le probabilità.")
     
     #if outcome==1:
-        #print("Emissione fotone da atomo  - psi plus")
+        #print("Emissione fotone da atomo 1 - psi plus")
     
     #if outcome==2:
         #print("Emissione fotone da atomo 2 - psi minus")    
@@ -146,11 +180,19 @@ def measure_and_update(rho, kraus_ops):
     return rho_post
 
 
+def mean_over_trajectories(trajs, key):
+    arr = np.array([[row[key].item() for row in traj] for traj in trajs])
+    return arr.mean(axis=0)   # media sulle traiettorie, step per step
+
+
 def simulate_trajectory(state, steps, kraus_ops, funcs=None):
     """Simula una singola traiettoria quantistica."""
 
+    if funcs is None:
+        funcs = []
+
     # Contenitore risultati per ogni funzione
-    results = {f.__name__: [] for f in funcs}
+    results = []
 
     for step in range(steps):
         #infilo state in measure and update poi 
@@ -164,6 +206,7 @@ def simulate_trajectory(state, steps, kraus_ops, funcs=None):
         for f in funcs:
             row[f.__name__] = f(state)
 
-        results.append(row)     
+        results.append(row)  
+    #print("Fine traiettoria")  
 
     return results
