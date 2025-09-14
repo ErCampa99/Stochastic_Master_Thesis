@@ -95,6 +95,29 @@ def compute_concurrences(solution):
 
 
 
+
+def concurrence_for_solver_general(t, state):
+
+    if state.isket:
+        conc = concurrence_pure_state(state)
+
+    else:
+        sysy = tensor(sigmay(), sigmay())
+
+        rho_tilde = (state * sysy) * (state.conj() * sysy)
+
+        evals = rho_tilde.eigenenergies()
+
+        # abs to avoid problems with sqrt for very small negative numbers
+        evals = abs(np.sort(np.real(evals)))
+
+        sqrt_evals = np.sqrt(evals)
+        lsum = sqrt_evals[3] - sqrt_evals[2] - sqrt_evals[1] - sqrt_evals[0]
+        conc = np.maximum(0, lsum)
+
+    return conc
+
+
 #=================================================================================================================================
 # //-- KRAUS OPERATORS --// ======================================================================================================
 #=================================================================================================================================
