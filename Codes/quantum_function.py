@@ -52,6 +52,28 @@ comp_basis_f = [ee_f, eg_f, ge_f, gg_f]
 bell_states = [[phi_plus, psi_plus], [phi_minus, psi_minus] ]
 bell_states_f = [[phi_plus_f, psi_plus_f], [phi_minus_f, psi_minus_f] ]
 
+#=================================================================================================================================
+# //-- OPERATORS --// ============================================================================================================  
+#=================================================================================================================================
+
+OMEGA = 0
+I_2 = qeye(2)  # identity operator for 2-level system
+sm = sigmam()  # lowering operator for 2-level system (atom)
+
+sigma_minus_1 = tensor(sm, I_2) # lowering operator for atom 1
+sigma_minus_2 = tensor(I_2, sm) # lowering operator for atom 2
+sigma_minus_12 = tensor(sigma_minus_1, sigma_minus_2) # combined lowering operator for both atoms    
+
+sigma_plus_1 = sigma_minus_1.dag() # raising operator for atom 1
+sigma_plus_2 = sigma_minus_2.dag() # raising operator for atom       
+sigma_plus_12 = tensor(sigma_plus_1, sigma_plus_2) # raising operator for both atoms
+
+sigma_plus_list = [sigma_plus_1, sigma_plus_2] # list of raising operators for both atoms
+
+H_free_atom_1 = 0.5 * OMEGA * tensor(sigmaz(), I_2) # Free Hamiltonian atom 1
+H_free_atom_2 = 0.5 * OMEGA * tensor(I_2, sigmaz()) # Free Hamiltonian atom 2
+H_free = H_free_atom_1 + H_free_atom_2 # Free Hamiltonian for both atoms        
+
 
 #=================================================================================================================================
 # //-- FUNZIONI PER SOLVER --// ==================================================================================================
@@ -59,6 +81,9 @@ bell_states_f = [[phi_plus_f, psi_plus_f], [phi_minus_f, psi_minus_f] ]
 
 
 def pop_excited(state):
+    return abs(state[0]**2)
+
+def pop_excited_for_solver(t, state):
     return abs(state[0]**2)
 
 def theo_concurrence(t, gamma):
