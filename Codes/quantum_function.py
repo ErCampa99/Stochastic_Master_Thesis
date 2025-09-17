@@ -11,6 +11,9 @@ def flatten_to_qudit(state):
     """
     return Qobj(state.full(), dims=[[4], [1]]).unit()
 
+def css_2(theta, phi):
+    single_qubit = (np.sin(theta/2) * basis(2,0) + np.exp(1j*phi) * np.cos(theta/2) * basis(2,1))
+    return tensor(single_qubit, single_qubit)
 
 #=================================================================================================================================
 # //-- UTILITIES STATI --// ======================================================================================================
@@ -19,6 +22,11 @@ def flatten_to_qudit(state):
 # Stati base_1-Qubit
 exc = qutip.basis(2, 0)  # ground
 gnd = qutip.basis(2, 1)  # excited
+
+plus_state = (exc + gnd).unit()  # |+>
+minus_state = (exc - gnd).unit()  # |->
+
+css_2 = tensor(plus_state, plus_state)  # |++>
 
 #Stati base 2-Qubit
 ee = tensor(exc, exc)  # |ee>   
@@ -59,6 +67,10 @@ bell_states_f = [[phi_plus_f, psi_plus_f], [phi_minus_f, psi_minus_f] ]
 OMEGA = 0
 I_2 = qeye(2)  # identity operator for 2-level system
 sm = sigmam()  # lowering operator for 2-level system (atom)
+
+sigma_z_1 = tensor(sigmaz(), qeye(2))
+sigma_z_2 = tensor(qeye(2), sigmaz())
+
 
 sigma_minus_1 = tensor(sm, I_2) # lowering operator for atom 1
 sigma_minus_2 = tensor(I_2, sm) # lowering operator for atom 2
@@ -119,8 +131,6 @@ def compute_concurrences(solution):
     return conc_array
 
 
-
-
 def concurrence_for_solver_general(t, state):
 
     if state.isket:
@@ -140,7 +150,7 @@ def concurrence_for_solver_general(t, state):
         lsum = sqrt_evals[3] - sqrt_evals[2] - sqrt_evals[1] - sqrt_evals[0]
         conc = np.maximum(0, lsum)
 
-    return conc
+    return float(conc)
 
 
 #=================================================================================================================================
@@ -258,3 +268,46 @@ def simulate_trajectory(state, steps, kraus_ops, funcs=None):
     #print("Fine traiettoria")  
 
     return results
+
+
+#=================================================================================================================================
+# //-- SPIN SQUEEZING --// =======================================================================================================
+#=================================================================================================================================
+
+J_x = 0.5 * (tensor(sigmax(), I_2) + tensor(I_2, sigmax()))
+J_y = 0.5 * (tensor(sigmay(), I_2) + tensor(I_2, sigmay()))
+J_z = 0.5 * (tensor(sigmaz(), I_2) + tensor(I_2, sigmaz())) 
+
+def eval_J_norm(state):
+    return np.sqrt(expect(J_x, state)**2 + expect(J_y, state)**2 + expect(J_z, state)**2)
+
+def compute_spin_squeezing_angles(rho):
+    """Calcola θ e φ a partire dai valori medi di J"""
+    
+    # valori medi
+    Jx_exp, Jy_exp, Jz_exp = [expect(J, rho) for J in (J_x, J_y, J_z)]
+
+    J_norm = eval_J_norm(rho)
+
+    if J_norm < 1e-12:
+        raise ValueError("Il vettore di spin medio è nullo, θ e φ non sono ben definiti.")
+    
+    # theta
+    theta = np.arccos(Jz_exp / J_norm)
+    
+    # phi
+    if abs(np.sin(theta)) < 1e-12:
+        phi = 0.0   # convenzione arbitraria sull'asse z
+    else:
+        cosphi = Jx_exp / (J_norm * np.sin(theta))
+        cosphi = np.clip(cosphi, -1.0, 1.0)  # stabilità numerica
+        if Jy_exp > 0:
+            phi = np.arccos(cosphi)
+        else:
+            phi = 2*np.pi - np.arccos(cosphi)
+    
+    return theta, phi
+
+
+
+

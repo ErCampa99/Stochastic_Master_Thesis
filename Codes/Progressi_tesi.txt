@@ -1,0 +1,57 @@
+To do:
+=============
+
+*Calcolo teorico concurrence css_theta 
+*Grafici max concurrence reached
+*Usare la workstation!!!!!!!!!
+
+
+
+VEDERE IN QUALE BELL STATE FINISCO NEL CASO |++>
+*Implementare misure di distanza -> check fidelity di qutip
+*Cambiare phi nei css e vedere se cambia bell states
+*Calcolare la statistica dei salti (del primo jump, poi rimane sempre Bell state!)
+*Spettro di sigma_1 +- sigma_2 e vedere autostati in comune ->Mathematica
+*Measurement preserves total energy (superselection rule -> local+global symmetry)
+*Iniziare Julia
+*Preparare file python per farli girare sulla workstation -> usare np.save
+*Togliere keep_run_results
+*Analytical solution of concurrence
+*Non-Hermitian Hamiltonian (???)
+*Solve linear diff. eq. per rho_tilde caso phdet measure=0 then trace.
+*Togliere dataframe e mettere solo il calcolo della concurrence media
+
+
+
+=================================================================================
+Photodetection, sigma- paper Jordan:
+
+*Grafico max concurrence al variare di eta
+
+
+
+
+=================================================================================
+Joint homodyne fluorescence:
+
+*Implementare dataframe da Photodetection
+*Sistemare legenda grafici mettendo latex
+*Mettere caso stati CSS
+
+
+
+
+=================================================================================
+Joint heterodyne fluorescence:
+
+*Sentire se è necessaria anche questa casistica
+
+
+
+
+
+
+=================================================================================
+SigmaZ_2atoms:
+
+*TOPPPPPPPPPPPPPP
