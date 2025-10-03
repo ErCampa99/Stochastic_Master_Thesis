@@ -309,5 +309,176 @@ def compute_spin_squeezing_angles(rho):
     return theta, phi
 
 
+#=================================================================================================================================
+# //-- SPIN SQUEEZING --// =======================================================================================================
+#=================================================================================================================================
+
+J_x = 0.5 * (tensor(sigmax(), I_2) + tensor(I_2, sigmax()))
+J_y = 0.5 * (tensor(sigmay(), I_2) + tensor(I_2, sigmay()))
+J_z = 0.5 * (tensor(sigmaz(), I_2) + tensor(I_2, sigmaz())) 
+
+val_sus = 0
+
+def css_2(theta, phi):
+    single_qubit = (np.sin(theta/2) * basis(2,0) + np.exp(1j*phi) * np.cos(theta/2) * basis(2,1))
+    return tensor(single_qubit, single_qubit)
+
+def round_if_close(val, target=1.0, atol=1e-12):
+    """
+    Se `val` è numericamente vicino a `target` entro `atol`, restituisce `target`.
+    Altrimenti restituisce `val` invariato.
+    """
+    
+    if np.isclose(val, target, atol=atol):
+        return target
+    return val
+
+def eval_spin_components(state):
+    return expect(J_x, state), expect(J_y, state), expect(J_z, state)
+
+#Using the rounding to 1
+def eval_variances(state):
+    return round_if_close(variance(J_x, state)), round_if_close(variance(J_y, state)), round_if_close(variance(J_z, state))
+
+def eval_J_norm(state):
+    return np.sqrt(np.abs(expect(J_x, state))**2 + np.abs(expect(J_y, state))**2 + np.abs(expect(J_z, state))**2)
 
 
+def compute_spin_squeezing_angles(rho):
+    """Calcola θ e φ a partire dai valori medi di J"""
+    
+    # valori medi
+    Jx_exp, Jy_exp, Jz_exp = eval_spin_components(rho)
+    J_norm = eval_J_norm(rho)  
+    
+    #If J_norm==0, as Bell states
+    if np.abs(J_norm)==0:
+        return val_sus, val_sus
+
+    else:
+        theta = np.arccos(Jz_exp / J_norm)
+
+        if np.sin(theta)==0:
+            return theta, 0
+
+        cosphi = Jx_exp / (J_norm * np.sin(theta))
+        cosphi = np.clip(cosphi, -1.0, 1.0)  # stabilità numerica
+        if Jy_exp > 0:
+            phi = np.arccos(cosphi)
+        else:
+            phi = 2*np.pi - np.arccos(cosphi)
+    
+    return theta, phi
+
+
+
+def Jn1_Jn_2(rho, theta, phi):
+    """Calcola J_n1 e J_n2 a partire da θ e φ"""
+    
+    # versori
+    n1 = np.array([-np.sin(phi), np.cos(phi), 0.0])
+    n2 = np.array([np.cos(theta)*np.cos(phi), np.cos(theta)*np.sin(phi), -np.sin(theta)])
+    
+    # operatori
+    Jn1 = n1[0]*J_x + n1[1]*J_y + n1[2]*J_z
+    Jn2 = n2[0]*J_x + n2[1]*J_y + n2[2]*J_z
+    
+    return Jn1, Jn2
+
+
+
+def spin_squeezing_KU(rho):
+    """Calcola il parametro di spin squeezing secondo Kitagawa-Ueda"""
+    
+    # calcolo θ e φ
+    theta, phi = compute_spin_squeezing_angles(rho)
+
+    if theta==val_sus and phi==val_sus:
+        return val_sus
+    
+    # calcolo J_n1 e J_n2
+    Jn1, Jn2 = Jn1_Jn_2(rho, theta, phi)
+    
+    #xi_sq = (2/N)*(expect(Jn1**2+Jn2**2, rho)-np.sqrt((expect(Jn1**2-Jn2**2, rho))**2 + (expect(Jn1*Jn2+Jn2*Jn1, rho))**2))/eval_J_norm(rho) by autocompletion
+    xi_sq = (expect(Jn1**2+Jn2**2, rho)-np.sqrt((expect(Jn1**2-Jn2**2, rho))**2 + (expect(Jn1*Jn2+Jn2*Jn1, rho))**2))
+    return np.clip(xi_sq,0,1) # clip to avoid numerical issues
+
+def spin_squeezing_KU_solver(t, rho):
+    """Calcola il parametro di spin squeezing secondo Kitagawa-Ueda"""
+    
+    # calcolo θ e φ
+    theta, phi = compute_spin_squeezing_angles(rho)
+    
+    if theta==val_sus and phi==val_sus:
+        return val_sus
+    
+    # calcolo J_n1 e J_n2
+    Jn1, Jn2 = Jn1_Jn_2(rho, theta, phi)
+    
+    #xi_sq = (2/N)*(expect(Jn1**2+Jn2**2, rho)-np.sqrt((expect(Jn1**2-Jn2**2, rho))**2 + (expect(Jn1*Jn2+Jn2*Jn1, rho))**2))/eval_J_norm(rho) by autocompletion
+    xi_sq = (expect(Jn1**2+Jn2**2, rho)-np.sqrt((expect(Jn1**2-Jn2**2, rho))**2 + (expect(Jn1*Jn2+Jn2*Jn1, rho))**2))
+    return np.clip(xi_sq,0,1) # clip to avoid numerical issues
+
+def peres_horodecki_test(rho, tol=1e-10):
+    """
+    Implementazione del test di Peres–Horodecki per 2 qubit.
+    Restituisce (bool, autovalori).
+    - True: lo stato è entangled
+    - False: lo stato è separabile
+    """
+
+    if rho.isket==True:
+        rho = ket2dm(rho)
+        
+    rho_pt = qutip.partial_transpose(rho, mask=[0,1])  # trasposizione parziale su secondo qubit
+    eigvals = rho_pt.eigenenergies()
+    entangled = np.any(eigvals < -tol)
+    return int(not entangled)
+
+
+def peres_horodecki_test_solver(t, rho):
+    """
+    Implementazione del test di Peres–Horodecki per 2 qubit.
+    Restituisce (bool, autovalori).
+    - True: lo stato è entangled
+    - False: lo stato è separabile
+    """
+
+    if rho.isket==True:
+        rho = ket2dm(rho)
+        
+    rho_pt = qutip.partial_transpose(rho, mask=[0,1])  # trasposizione parziale su secondo qubit
+    eigvals = rho_pt.eigenenergies()
+    entangled = np.any(eigvals < -1e-10)
+    return int(not entangled)
+
+def spin_squeezing_W(rho, N):
+    return spin_squeezing_KU(rho)*(N/(2*eval_J_norm(rho)))**2
+
+def spin_squeezing_W_solver(t, rho):
+    return spin_squeezing_KU(rho)*(2/(2*eval_J_norm(rho)))**2
+
+#=================================================================================================================================
+# //-- FIDELITY --// =======================================================================================================
+#=================================================================================================================================
+
+def fidelity_phi_plus(rho):
+    return fidelity(rho, phi_plus)
+
+def fidelity_phi_plus_solver(t, rho):
+    return fidelity(rho, phi_plus)
+
+def fidelity_phi_minus_solver(t, rho):
+    return fidelity(rho, phi_minus)
+
+def fidelity_psi_plus_solver(t, rho):
+    return fidelity(rho, psi_plus)
+
+def fidelity_psi_minus_solver(t, rho):
+    return fidelity(rho, psi_minus)
+
+fidelity_ops = [
+    fidelity_phi_plus_solver,
+    fidelity_phi_minus_solver,
+    fidelity_psi_plus_solver,
+    fidelity_psi_minus_solver]
