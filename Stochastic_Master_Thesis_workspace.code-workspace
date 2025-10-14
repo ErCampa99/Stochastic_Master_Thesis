@@ -5,17 +5,18 @@
     }
   ],
   "settings": {
-    "python.defaultInterpreterPath": "${workspaceFolder}\\Codes\\SMT_venv\\Scripts\\python.exe",
+    "python.defaultInterpreterPath": "${workspaceFolder}\\Giga_SMT_venv\\Scripts\\python.exe",
+    "python.terminal.activateEnvironment": true,
     "files.exclude": {
-      "Codes/SMT_venv": true
+      "Giga_SMT_venv": true
     },
     "search.exclude": {
-      "Codes/SMT_venv": true
+      "Giga_SMT_venv": true
     },
     "git.exclude": {
-      "Codes/SMT_venv": true
+      "Giga_SMT_venv": true
     },
     "editor.tabSize": 4,
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
 }

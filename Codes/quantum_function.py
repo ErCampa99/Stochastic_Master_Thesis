@@ -26,7 +26,7 @@ gnd = qutip.basis(2, 1)  # excited
 plus_state = (exc + gnd).unit()  # |+>
 minus_state = (exc - gnd).unit()  # |->
 
-css_2 = tensor(plus_state, plus_state)  # |++>
+PlusPlus = tensor(plus_state, plus_state)  # |++>
 
 #Stati base 2-Qubit
 ee = tensor(exc, exc)  # |ee>   
@@ -68,8 +68,10 @@ OMEGA = 0
 I_2 = qeye(2)  # identity operator for 2-level system
 sm = sigmam()  # lowering operator for 2-level system (atom)
 
-sigma_z_1 = tensor(sigmaz(), qeye(2))
-sigma_z_2 = tensor(qeye(2), sigmaz())
+Sz = 0.5*sigmaz()  # Pauli Z operator for 2-level system (atom)
+
+Sz_1 = tensor(Sz, qeye(2))
+Sz_2 = tensor(qeye(2), Sz)
 
 
 sigma_minus_1 = tensor(sm, I_2) # lowering operator for atom 1
