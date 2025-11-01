@@ -463,6 +463,103 @@ def spin_squeezing_W(rho, N):
 def spin_squeezing_W_solver(t, rho):
     return spin_squeezing_KU(rho)*(2/(2*eval_J_norm(rho)))**2
 
+def xi_KU_solver(t, rho, N=None, tol=1e-12):
+    """
+    Compute the Kitagawa–Ueda spin-squeezing parameter ξ^2_KU for an N-qubit state `rho`.
+
+    Definition used:
+        ξ^2_KU = (4 / N) * min_{n ⟂ <J>} Var(J_n)    if ||<J>|| > 0
+        ξ^2_KU = (4 / N) * min_{n ∈ R^3, ||n||=1} Var(J_n)   if ||<J>|| = 0
+
+    where J = (J_x, J_y, J_z) are collective spin operators for N spin-1/2 particles:
+        J_k = (1/2) * sum_{i=1}^N σ_k^(i),  k ∈ {x, y, z}
+    and Var(J_n) = n^T C n with the 3×3 covariance matrix
+        C_ij = 1/2 <J_i J_j + J_j J_i> - <J_i><J_j>.
+
+    Notes:
+    - For coherent spin states (CSS), ξ^2_KU = 1 (shot-noise level).
+    - ξ^2_KU < 1 is a sufficient condition for spin squeezing (and implies entanglement).
+    - When <J> = 0 (e.g., some Bell states), the “perpendicular plane” is undefined;
+      we then minimize variance over all directions, i.e. take the smallest eigenvalue of C.
+
+    Args:
+        rho: qutip.Qobj density matrix (or state) on a (2^N)-dimensional Hilbert space.
+        N (int, optional): number of qubits. If None, inferred from dim(rho) = 2^N.
+        tol (float): numerical threshold to decide whether ||<J>|| is effectively zero.
+
+    Returns:
+        float: ξ^2_KU in [0, +∞). For well-behaved states it should be ≥ 0 and
+               equals 1 for CSS. Values slightly below 0 can occur from round-off
+               and are truncated to 0 for robustness.
+    """
+
+    # 1) Infer N from Hilbert-space dimension if not provided.
+    #    For N qubits, dim = 2^N.
+    if N is None:
+        dim = rho.shape[0]  # qutip.Qobj supports .shape
+        N = int(round(np.log2(dim)))
+
+    # 2) Mean spin vector <J> = ( <J_x>, <J_y>, <J_z> ).
+    #    `eval_spin_components(rho)` is assumed to return those three expectations.
+    Jx_exp, Jy_exp, Jz_exp = eval_spin_components(rho)
+    Jmean = np.array([Jx_exp, Jy_exp, Jz_exp], dtype=float)
+    m = np.linalg.norm(Jmean)  # ||<J>||
+
+    # 3) Build the 3×3 covariance matrix C:
+    #    C_ij = 1/2 <J_i J_j + J_j J_i> - <J_i><J_j>.
+    #    The operators J_x, J_y, J_z must exist in scope (qutip Qobj operators).
+    Js = [J_x, J_y, J_z]
+    C = np.zeros((3, 3), dtype=float)
+
+    # Double loop is tiny (3×3), explicit is fine and readable.
+    for i, Ji in enumerate(Js):
+        for j, Jj in enumerate(Js):
+            # Symmetrized second moment minus product of means.
+            C[i, j] = 0.5 * expect(Ji * Jj + Jj * Ji, rho) - Jmean[i] * Jmean[j]
+
+    # 4) If ||<J>|| > tol: minimize Var(J_n) within the plane orthogonal to <J>.
+    #    If ||<J>|| ≤ tol: minimize over all directions (smallest eigenvalue of C).
+    if m > tol:
+        # Unit vector u = <J> / ||<J>|| sets the "polar axis".
+        u = Jmean / m
+
+        # Construct an orthonormal basis {e1, e2} spanning the plane perpendicular to u.
+        # Start from a helper vector 'a' not parallel to u to avoid degeneracy.
+        a = np.array([1.0, 0.0, 0.0]) if abs(u[0]) < 0.9 else np.array([0.0, 1.0, 0.0])
+
+        # Project 'a' orthogonally to u to form e1, then normalize.
+        e1 = a - u * np.dot(u, a)
+        e1 /= np.linalg.norm(e1)
+
+        # e2 completes the right-handed frame: e2 = u × e1.
+        e2 = np.cross(u, e1)
+
+        # Restrict C to the perpendicular plane via the 2×2 block:
+        # C2_{αβ} = e_α^T C e_β with α,β ∈ {1,2}.
+        C2 = np.array([
+            [e1 @ C @ e1, e1 @ C @ e2],
+            [e2 @ C @ e1, e2 @ C @ e2]
+        ], dtype=float)
+
+        # For a real symmetric 2×2 matrix, the minimal variance in that plane is
+        # the smallest eigenvalue. eigvalsh exploits symmetry and returns sorted vals.
+        lam_min = np.linalg.eigvalsh(C2)[0]
+
+    else:
+        # <J> is essentially zero: the “perpendicular plane” is undefined (Bell states)
+        # The KU definition collapses to minimizing over all unit directions,
+        # which is exactly the smallest eigenvalue of the full 3×3 C.
+        lam_min = np.linalg.eigvalsh(C)[0]
+
+    # 5) Numerical hygiene: covariance is PSD, but rounding can yield tiny negatives.
+    lam_min = max(lam_min, 0.0)
+
+    # 6) Final KU normalization: ξ^2_KU = (4/N) * λ_min.
+    #    For a CSS, Var(J_⊥) = N/4 ⇒ ξ^2_KU = 1.
+    xi2 = (4.0 / N) * lam_min
+
+    return float(xi2)
+
 #=================================================================================================================================
 # //-- FIDELITY --// =======================================================================================================
 #=================================================================================================================================
@@ -522,21 +619,57 @@ def label_states_sim(name: str) -> str:
 
 
 
-
-def label_states_theo(name: str) -> str:
-    r"""
-    Costruisce la label per la legenda:
-    - 'ee'                -> $\overline{\mathcal{C}}$ (|ee>)
-    - '++'                -> $\overline{\mathcal{C}}$ (|++>)
-    - 'css_theta=pi/6'    -> $\overline{\mathcal{C}}$ (Css(theta=\pi/6))
+def add_state_columns(
+    fidelity_df,
+    bell_order=("phi_plus", "phi_minus", "psi_plus", "psi_minus"),
+    thr_pure=0.9999,           # soglia “~1”
+    css_target=0.707107,       # per |++>: usa 0.5 se la tua fidelity è |⟨⋅|⋅⟩|^2
+    css_tol=5e-3               # tolleranza intorno al target CSS
+):
     """
-    if name == "ee":
-        return r"$\overline{\mathcal{C}}\ (|ee\rangle)$"
-    if name == "++":
-        # ++ più piccolo e compattato
-        return r"$\overline{\mathcal{C}}\ (|{\scriptstyle +\!+}\rangle)$"
-    if name.startswith("css_theta="):
-        theta = name.split("=", 1)[1]            # es. 'pi/6'
-        theta_tex = theta.replace("pi", r"\pi")  # -> '\pi/6'
-        return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{Css}}(\theta={theta_tex}))$"
-    return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{{name}}})$"
+    Aggiunge per ogni Trajectory una colonna (Trajectory, 'state') subito dopo 'psi_minus'.
+    Mappatura: +2 φ+, +1 φ−, 0 CSS (++), -1 ψ−, -2 ψ+.
+    Richiede colonne MultiIndex con livelli ['Trajectory','Bell state'].
+    """
+    # controllo livelli
+    assert fidelity_df.columns.names == ["Trajectory", "Bell state"] or \
+           fidelity_df.columns.names == ["Trajectory", "Bell state"], "MultiIndex non conforme"
+
+    trajs = fidelity_df.columns.get_level_values("Trajectory").unique()
+    out = fidelity_df.copy()
+
+    for tr in trajs:
+        sub = out.xs(tr, axis=1, level="Trajectory")[list(bell_order)]
+
+        F_phi_plus = sub["phi_plus"]
+        F_phi_minus = sub["phi_minus"]
+        F_psi_plus = sub["psi_plus"]
+        F_psi_minus = sub["psi_minus"]
+
+        # inizializza a NaN e assegna in ordine di priorità
+        state = np.full(len(out), np.nan, dtype=float)
+
+        # 1) stati “puri” vicini a 1
+        state = np.where(F_phi_plus  >= thr_pure,  +2, state)
+        state = np.where((np.isnan(state)) & (F_phi_minus >= thr_pure), +1, state)
+        state = np.where((np.isnan(state)) & (F_psi_minus >= thr_pure),  -1, state)
+        state = np.where((np.isnan(state)) & (F_psi_plus >= thr_pure),  -2, state)
+
+        # 2) firma CSS ++: φ+ ≈ css_target e ψ+ ≈ css_target
+        css_mask = (np.abs(F_phi_plus - css_target) <= css_tol) & \
+                   (np.abs(F_psi_plus - css_target) <= css_tol)
+        state = np.where((np.isnan(state)) & css_mask, 0, state)
+
+        # aggiungi la colonna (traj, 'state')
+        out[(tr, "state")] = state
+
+    # riordina: per ogni Traj: φ+, φ−, ψ+, ψ−, state
+    new_cols = []
+    for tr in trajs:
+        for b in bell_order:
+            new_cols.append((tr, b))
+        new_cols.append((tr, "state"))
+
+    out = out.reindex(columns=pd.MultiIndex.from_tuples(new_cols, names=out.columns.names))
+
+    return out
