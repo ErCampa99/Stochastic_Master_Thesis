@@ -2,6 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from qutip import *
 import pandas as pd
+import os
+from pathlib import Path
 
 def flatten_to_qudit(state):
     """
@@ -454,6 +456,7 @@ def peres_horodecki_test_solver(t, rho):
     entangled = np.any(eigvals < -1e-10)
     return int(not entangled)
 
+
 def spin_squeezing_W(rho, N):
     return spin_squeezing_KU(rho)*(N/(2*eval_J_norm(rho)))**2
 
@@ -484,3 +487,56 @@ fidelity_ops = [
     fidelity_phi_minus_solver,
     fidelity_psi_plus_solver,
     fidelity_psi_minus_solver]
+
+
+#=================================================================================================================================
+# //-- UTILITIES GRAFICI --// ====================================================================================================
+#=================================================================================================================================
+
+def label_states_sim(name: str) -> str:
+    r"""
+    Costruisce la label per la legenda:
+    - 'ee'                -> $\overline{\mathcal{C}}$ (|ee>)
+    - '++'                -> $\overline{\mathcal{C}}$ (|++>)
+    - 'css_theta=pi/6'    -> $\overline{\mathcal{C}}$ (Css(theta=\pi/6))
+
+    - '0'                 -> $\overline{\mathcal{C}}$ (lambda=0)
+    - 'pi/6'              -> $\overline{\mathcal{C}}$ (lambda=\pi/6)
+    """
+    if name == "ee":
+        return r"$\overline{\mathcal{C}}\ (|ee\rangle)$"
+    if name == "++":
+        # ++ più piccolo e compattato
+        return r"$\overline{\mathcal{C}}\ (|{\scriptstyle +\!+}\rangle)$"
+    if name.startswith("css_theta="):
+        theta = name.split("=", 1)[1]            # es. 'pi/6'
+        theta_tex = theta.replace("pi", r"\pi")  # -> '\pi/6'
+        return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{Css}}(\theta={theta_tex}))$"
+    if name == "0":
+        return r"$\overline{\mathcal{C}}\ (\lambda=0)$"
+    if name.startswith("pi/"):
+        angle = name.replace("pi", r"\pi")  # -> '\pi/6'
+        return rf"$\overline{{\mathcal{{C}}}}\ (\lambda={angle})$"
+    
+    return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{{name}}})$"
+
+
+
+
+def label_states_theo(name: str) -> str:
+    r"""
+    Costruisce la label per la legenda:
+    - 'ee'                -> $\overline{\mathcal{C}}$ (|ee>)
+    - '++'                -> $\overline{\mathcal{C}}$ (|++>)
+    - 'css_theta=pi/6'    -> $\overline{\mathcal{C}}$ (Css(theta=\pi/6))
+    """
+    if name == "ee":
+        return r"$\overline{\mathcal{C}}\ (|ee\rangle)$"
+    if name == "++":
+        # ++ più piccolo e compattato
+        return r"$\overline{\mathcal{C}}\ (|{\scriptstyle +\!+}\rangle)$"
+    if name.startswith("css_theta="):
+        theta = name.split("=", 1)[1]            # es. 'pi/6'
+        theta_tex = theta.replace("pi", r"\pi")  # -> '\pi/6'
+        return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{Css}}(\theta={theta_tex}))$"
+    return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{{name}}})$"
