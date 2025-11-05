@@ -156,6 +156,10 @@ def concurrence_for_solver_general(t, state):
 
     return float(conc)
 
+def energy_solver(t, state):
+    """Calcola l'energia media dell'hamiltoniana libera."""
+    return expect(Sz_1+Sz_2, state)
+
 
 #=================================================================================================================================
 # //-- KRAUS OPERATORS --// ======================================================================================================
@@ -616,6 +620,41 @@ def label_states_sim(name: str) -> str:
         return rf"$\overline{{\mathcal{{C}}}}\ (\lambda={angle})$"
     
     return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{{name}}})$"
+
+
+
+def label_states_ineff(name: str) -> str:
+    r"""
+    Costruisce la label per la legenda:
+    - 'ee'                -> $\overline{\mathcal{C}}$ (|ee>)
+    - '++'                -> $\overline{\mathcal{C}}$ (|++>)
+    - 'css_theta=pi/6'    -> $\overline{\mathcal{C}}$ (Css(theta=\pi/6))
+
+    - '0'                 -> $\overline{\mathcal{C}}$ (lambda=0)
+    - 'pi/6'              -> $\overline{\mathcal{C}}$ (lambda=\pi/6)
+    """
+    if name == "ee":
+        return r"$\overline{\mathcal{C}}\ (|ee\rangle)$"
+    if name == "++":
+        # ++ più piccolo e compattato
+        return r"$\overline{\mathcal{C}}\ (|{\scriptstyle +\!+}\rangle)$"
+    if name.startswith("css_theta="):
+        theta = name.split("=", 1)[1]            # es. 'pi/6'
+        theta_tex = theta.replace("pi", r"\pi")  # -> '\pi/6'
+        return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{Css}}(\theta={theta_tex}))$"
+    if name == "0":
+        return r"$\overline{\mathcal{C}}\ (\lambda=0)$"
+    if name.startswith("pi/"):
+        angle = name.replace("pi", r"\pi")  # -> '\pi/6'
+        return rf"$\overline{{\mathcal{{C}}}}\ (\lambda={angle})$"
+    
+    return rf"$\overline{{\mathcal{{C}}}}\ (\mathrm{{{name}}})$"
+
+
+
+
+
+
 
 
 
