@@ -4,6 +4,8 @@ from qutip import *
 import pandas as pd
 import os
 from pathlib import Path
+from fractions import Fraction
+
 
 def flatten_to_qudit(state):
     """
@@ -712,3 +714,49 @@ def add_state_columns(
     out = out.reindex(columns=pd.MultiIndex.from_tuples(new_cols, names=out.columns.names))
 
     return out
+
+
+
+
+def collapsing_operators(gamma, phi_1, phi_2, eta):
+    c_ops = [
+        np.sqrt(gamma/2)*np.exp(1j * phi_1)*np.sqrt(eta)* (Sz_1+Sz_2),
+        np.sqrt(gamma/2)*np.exp(1j * phi_2)*np.sqrt(eta)* (Sz_1-Sz_2)
+    ]
+    return c_ops
+
+
+#Solo frazioni intere di pi fino a np.pi/12 (es. np.pi/3, np.pi/5, np.pi/12 ecc.)
+def angle_to_path(phi, max_den=12, tol=1e-10):
+    """String sicuro per path: 0, pi, pi_2, 3pi_2, ecc."""
+    # porta in [0, 2pi)
+    twopi = 2*np.pi
+    x = (phi % twopi + twopi) % twopi
+    if abs(x) < tol:
+        return "0"
+    q = Fraction(x/np.pi).limit_denominator(max_den)
+    n, d = q.numerator, q.denominator
+    if n == 0:
+        return "0"
+    if d == 1:
+        return "pi" if n == 1 else f"{n}pi"
+    # n!=0, d>1
+    return ("pi_" + str(d)) if n == 1 else f"{n}pi_{d}"
+
+def angle_to_tex(phi, max_den=12, tol=1e-10):
+    """String LaTeX: 0, \\pi, \\pi/2, 3\\pi/2, ecc."""
+    twopi = 2*np.pi
+    x = (phi % twopi + twopi) % twopi
+    if abs(x) < tol:
+        return "0"
+    q = Fraction(x/np.pi).limit_denominator(max_den)
+    n, d = q.numerator, q.denominator
+    if n == 0:
+        return "0"
+    if d == 1:
+        return r"\pi" if n == 1 else fr"{n}\pi"
+    # d>1
+    num = "" if abs(n) == 1 else str(abs(n))
+    s = r"\pi / %d" % d if abs(n) == 1 else r"%s\pi / %d" % (num, d)
+    return s if n > 0 else "-" + s
+# -----------------------------
