@@ -720,10 +720,13 @@ def add_state_columns(
 
 def collapsing_operators(gamma, phi_1, phi_2, eta):
     c_ops = [
-        np.sqrt(gamma/2)*np.exp(1j * phi_1)*np.sqrt(eta)* (Sz_1+Sz_2),
-        np.sqrt(gamma/2)*np.exp(1j * phi_2)*np.sqrt(eta)* (Sz_1-Sz_2)
+        np.sqrt(gamma/2) * np.exp(1j * phi_1) * np.sqrt(eta) * (Sz_1+Sz_2),
+        np.sqrt(gamma/2) * np.exp(1j * phi_2) * np.sqrt(eta) * (Sz_1-Sz_2)
     ]
     return c_ops
+
+
+
 
 
 #Solo frazioni intere di pi fino a np.pi/12 (es. np.pi/3, np.pi/5, np.pi/12 ecc.)
