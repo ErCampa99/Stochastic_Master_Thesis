@@ -162,6 +162,10 @@ def energy_solver(t, state):
     """Calcola l'energia media dell'hamiltoniana libera."""
     return expect(Sz_1+Sz_2, state)
 
+def Variance_z(t, state):
+    """Calcola la varianza di J_z."""
+    return variance(J_z, state)
+
 
 #=================================================================================================================================
 # //-- KRAUS OPERATORS --// ======================================================================================================
