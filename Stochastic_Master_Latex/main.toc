@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\babel@toc {english}{}\relax 
+\contentsline {paragraph}{Contributions.}{2}{Doc-Start}%
+\contentsline {paragraph}{Structure of the thesis.}{2}{Doc-Start}%
+\contentsline {chapter}{\numberline {1}Two qubit system: looking for entanglement}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Convention, states and master equation}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Photodetection}{4}{section.1.2}%
+\contentsline {subsection}{\numberline {1.2.1}First jump from $\ket {++}$: projection to definite parity subspace}{5}{subsection.1.2.1}%
+\contentsline {subsection}{\numberline {1.2.2}Subsequent jumps: two-state cyclicity}{7}{subsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.2.3}State by state transitions - properties}{7}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.4}Ensemble-averaged quantities over trajectories}{8}{subsection.1.2.4}%
+\contentsline {chapter}{\numberline {2}Appendix}{9}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Unitary invariance of Lindblad operators}{9}{section.2.1}%
