@@ -6,6 +6,8 @@ import os
 from pathlib import Path
 from fractions import Fraction
 
+import json
+
 
 def flatten_to_qudit(state):
     """
@@ -767,3 +769,95 @@ def angle_to_tex(phi, max_den=12, tol=1e-10):
     s = r"\pi / %d" % d if abs(n) == 1 else r"%s\pi / %d" % (num, d)
     return s if n > 0 else "-" + s
 # -----------------------------
+
+#=================================================================================================================================
+# Funzioni per salvare i risultati di simulazioni MC in parallelo su NPZ
+#=================================================================================================================================
+
+
+def save_ineff_df_npz(ineff_df: dict[str, pd.DataFrame],
+                      out_npz: str | Path,
+                      meta: dict | None = None,
+                      step_col: str = "step"):
+    out_npz = Path(out_npz)
+    out_npz.parent.mkdir(parents=True, exist_ok=True)
+
+    labels = list(ineff_df.keys())
+    dfs = [ineff_df[l] for l in labels]
+
+    # ---- step: lo prendiamo dal primo e verifichiamo consistenza
+    if step_col in dfs[0].columns:
+        step = dfs[0][step_col].to_numpy()
+    else:
+        # se non hai step esplicito, usiamo l'indice come step
+        step = np.arange(len(dfs[0]), dtype=int)
+
+    n_steps = len(step)
+    for i, df in enumerate(dfs):
+        this_step = df[step_col].to_numpy() if step_col in df.columns else np.arange(len(df), dtype=int)
+        if len(this_step) != n_steps or not np.all(this_step == step):
+            raise ValueError(f"Step grid non consistente per label='{labels[i]}': "
+                             f"atteso {n_steps} step uguali al primo DF.")
+
+    # ---- colonne osservabili: tutte tranne step
+    cols = [c for c in dfs[0].columns if c != step_col]
+
+    # se qualche DF ha colonne extra/mancanti, gestiamo con unione
+    all_cols = set(cols)
+    for df in dfs[1:]:
+        all_cols |= set([c for c in df.columns if c != step_col])
+    cols = sorted(all_cols)
+
+    # ---- costruisci array 2D: shape (n_eta, n_steps) per ogni colonna
+    arrays = {}
+    for c in cols:
+        mat = np.full((len(labels), n_steps), np.nan, dtype=float)
+        for i, df in enumerate(dfs):
+            if c in df.columns:
+                v = df[c].to_numpy()
+                # ripulisci eventuali complessi numerici
+                if np.iscomplexobj(v):
+                    v = np.real(v)
+                mat[i, :] = v.astype(float, copy=False)
+        arrays[c] = mat
+
+    # ---- salva
+    np.savez_compressed(
+        out_npz,
+        step=step.astype(int, copy=False),
+        labels=np.array(labels, dtype=str),
+        **arrays
+    )
+
+    if meta is not None:
+        out_npz.with_suffix(".json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
+
+
+def load_ineff_df_from_npz(npz_path: str | Path, step_col: str = "step"):
+    npz_path = Path(npz_path)
+    data = np.load(npz_path, allow_pickle=False)
+
+    step = data["step"]
+    labels = data["labels"]
+
+    # tutte le "variabili" salvate oltre a step e labels
+    value_keys = [k for k in data.files if k not in ("step", "labels")]
+
+    ineff_df = {}
+    for i, lab in enumerate(labels):
+        df = pd.DataFrame({step_col: step})
+        for k in value_keys:
+            v = data[k][i]  # riga i-esima: (n_steps,)
+            # ripulisci eventuali complessi da rumore numerico
+            if np.iscomplexobj(v):
+                v = np.real(v)
+            df[k] = v
+        ineff_df[str(lab)] = df
+
+    # Se hai anche un meta.json accanto, lo carichiamo (opzionale)
+    meta = None
+    meta_path = npz_path.with_suffix(".json")
+    if meta_path.exists():
+        meta = json.loads(meta_path.read_text(encoding="utf-8"))
+
+    return ineff_df, meta
