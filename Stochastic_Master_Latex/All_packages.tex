@@ -21,7 +21,7 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{braket} % se usi \ket, \bra...
-\usepackage{bbold}
+\usepackage{bbm}\usepackage{bbold}
 \usepackage{mathtools} %Symbol of definition
 \usepackage{graphicx} % Required for inserting images
 \usepackage{wrapfig} % Per poter piazzare figure immerse nel testo
@@ -35,7 +35,8 @@
 \usepackage{breqn} % Spezzare le equazioni
 \usepackage{siunitx} %Units of measure
 \usepackage{physics}  % \ket, \bra, \outerproduct, \comm, \dv, ...
-
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,decorations.pathreplacing}
 
 %% Structure
 
@@ -82,33 +83,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%NewCommand
-\newcommand{\mbeq}{\overset{!}{=}}
-\newcommand\lreqn[2]{\noindent\makebox[\textwidth]{$\displaystyle#1$\hfill(#2)}\vspace{2ex}}
-\newcommand*{\bigchi}{\mbox{\Large$\chi$}}% big chi
-\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
-\newcommand{\D}[1]{\mathcal{D}\!\left[#1\right]}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+%%Inserisco il file 
+\input{Shortcazz}
 
 
 % Header/footer

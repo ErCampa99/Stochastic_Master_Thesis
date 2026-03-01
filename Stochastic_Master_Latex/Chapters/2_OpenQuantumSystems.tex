@@ -1,0 +1,348 @@
+\chapter{Open Quantum Systems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Continuously monitored quantum systems}
+
+In many relevant experimental scenarios a quantum system is not only affected by an environment,
+but the environment is also \emph{continuously measured}. In this case the system state is updated
+conditioned on the measurement record, and the evolution becomes stochastic.
+The unconditional (ensemble-averaged) dynamics is still described by a Markovian master equation,
+while the conditional dynamics is described by a \emph{stochastic master equation} (SME).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{From system--environment interaction to Lindblad master equation}
+
+We consider a system $S$ interacting with an environment $B$, and assume that the interaction can
+be described as a sequence of short collisions between $S$ and independent environmental modes.
+This viewpoint leads naturally to a Markovian dynamics in the continuous-time limit.
+We outline here a minimal derivation of a Lindblad master equation in the spirit of collision models,
+closely following Ref.
+
+Let $\rho(t)$ be the system density operator at time $t$.
+In an infinitesimal step $dt$ the system interacts unitarily with an environmental mode initially
+prepared in a reference state (vacuum) $\ket{0}_t$, so that the joint state evolves as
+\begin{equation}
+	\rho(t)\otimes \ket{0}_t\!\bra{0}
+	\ \longrightarrow\
+	U(t,t+dt)\big(\rho(t)\otimes \ket{0}_t\!\bra{0}\big)U^\dagger(t,t+dt).
+\end{equation}
+Tracing out the environmental mode gives the reduced update
+\begin{equation}
+	\rho(t+dt)
+	=
+	\Tr_B\!\left[
+	U(t,t+dt)\big(\rho(t)\otimes \ket{0}_t\!\bra{0}\big)U^\dagger(t,t+dt)
+	\right].
+	\label{eq:uncond_update_traceB}
+\end{equation}
+
+Assume that the interaction is such that, to first order in $dt$, the reduced map can be written in a Kraus form
+with two types of operators: a \emph{no-jump} operator $M_0$ and a \emph{jump} operator $M_1$,
+\begin{equation}
+	\rho(t+dt)= M_0\,\rho(t)\,M_0^\dagger + M_1\,\rho(t)\,M_1^\dagger,
+	\qquad
+	M_0^\dagger M_0 + M_1^\dagger M_1=\mathbb{I}+O(dt^2).
+	\label{eq:Kraus_uncond}
+\end{equation}
+A standard choice consistent with the continuous-time limit is
+\begin{equation}
+	M_1=\sqrt{\kappa\,dt}\,c,
+	\qquad
+	M_0=\mathbb{I}-iH\,dt-\frac{\kappa}{2}\,c^\dagger c\,dt,
+	\label{eq:Kraus_choice_jump}
+\end{equation}
+where $H$ is the system Hamiltonian and $c$ is the system coupling (collapse) operator.
+
+Inserting Eq.~\eqref{eq:Kraus_choice_jump} into Eq.~\eqref{eq:Kraus_uncond} and expanding to first order in $dt$,
+we obtain
+\begin{align}
+	\rho(t+dt)-\rho(t)
+	&=
+	-i[H,\rho(t)]\,dt
+	+\kappa\,c\rho(t)c^\dagger\,dt
+	-\frac{\kappa}{2}\{c^\dagger c,\rho(t)\}\,dt
+	+O(dt^2).
+\end{align}
+Dividing by $dt$ and taking the limit $dt\to 0$ yields the Lindblad master equation
+\begin{equation}
+	\frac{d\rho(t)}{dt}
+	=
+	-i[H,\rho(t)]
+	+\kappa\,\mathcal{D}[c]\rho(t),
+	\qquad
+	\mathcal{D}[A]\rho=A\rho A^\dagger-\frac{1}{2}\{A^\dagger A,\rho\}.
+	\label{eq:Lindblad_single_channel}
+\end{equation}
+The generalization to multiple channels $\{c_k\}$ with rates $\{\kappa_k\}$ is immediate:
+\begin{equation}
+	\frac{d\rho(t)}{dt}
+	=
+	-i[H,\rho(t)]
+	+\sum_k \kappa_k\,\mathcal{D}[c_k]\rho(t).
+	\label{eq:Lindblad_multi_channel}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Conditional states and unravellings}
+
+A Lindblad master equation describes the \emph{unconditional} evolution of the system state,
+i.e.\ the evolution averaged over all possible measurement outcomes of the environment.
+If instead the environment is continuously monitored, the system state becomes conditioned on the
+measurement record.
+We denote the conditional state by $\rho^{(c)}(t)$, and the unconditional state is recovered by averaging:
+\begin{equation}
+	\rho(t)=\mathbb{E}\!\left[\rho^{(c)}(t)\right].
+	\label{eq:uncond_as_average}
+\end{equation}
+
+The representation of the same unconditional dynamics in terms of stochastic conditional evolutions is called
+an \emph{unravelling} of the master equation.
+Unravellings are not unique.
+Physically, different unravellings correspond to different continuous measurements performed on the output
+modes of the environment (e.g.\ photodetection, homodyne, heterodyne).
+Mathematically, this non-uniqueness is related to the freedom in choosing measurement operators, and to the
+unitary freedom in the Lindblad operators describing the same GKSL generator.
+
+In what follows we focus on the paradigmatic jump-like unravelling associated with continuous photodetection,
+as presented in Ref.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Photodetection: click and no-click updates, and the jump SME}
+
+Consider first a single monitored channel with collapse operator $c$ and rate $\kappa$.
+In a short interval $dt$, photodetection yields two possible outcomes:
+``no click'' (outcome $0$) or ``click'' (outcome $1$).
+These outcomes are described by the Kraus operators in Eq.~\eqref{eq:Kraus_choice_jump}.
+The (unnormalized) conditional states after the two outcomes are
+\begin{align}
+	\tilde\rho^{(c)}_0(t+dt)
+	&= M_0\,\rho^{(c)}(t)\,M_0^\dagger,
+	\label{eq:unnorm_no_click}\\
+	\tilde\rho^{(c)}_1(t+dt)
+	&= M_1\,\rho^{(c)}(t)\,M_1^\dagger
+	= \kappa\,dt\; c\,\rho^{(c)}(t)\,c^\dagger.
+	\label{eq:unnorm_click}
+\end{align}
+The corresponding probabilities are given by the traces:
+\begin{align}
+	p_1(t+dt)
+	&=\Tr\!\left[\tilde\rho^{(c)}_1(t+dt)\right]
+	=\kappa\,\Tr\!\left[c^\dagger c\,\rho^{(c)}(t)\right]dt
+	=\kappa\,\langle c^\dagger c\rangle_t\,dt,
+	\label{eq:prob_click}\\
+	p_0(t+dt)
+	&=\Tr\!\left[\tilde\rho^{(c)}_0(t+dt)\right]
+	=1-p_1(t+dt)+O(dt^2).
+	\label{eq:prob_noclick}
+\end{align}
+The normalized conditional states are then
+\begin{equation}
+	\rho^{(c)}_{0,1}(t+dt)=\frac{\tilde\rho^{(c)}_{0,1}(t+dt)}{\Tr[\tilde\rho^{(c)}_{0,1}(t+dt)]}.
+\end{equation}
+
+\subsubsection*{No-click update to first order in $dt$}
+
+Using Eq.~\eqref{eq:Kraus_choice_jump} and expanding Eq.~\eqref{eq:unnorm_no_click} to first order in $dt$, we obtain
+\begin{align}
+	\tilde\rho^{(c)}_0(t+dt)
+	&=
+	\rho^{(c)}(t)
+	-i[H,\rho^{(c)}(t)]\,dt
+	-\frac{\kappa}{2}\{c^\dagger c,\rho^{(c)}(t)\}\,dt
+	+O(dt^2).
+\end{align}
+The normalization factor is
+\begin{align}
+	\Tr\!\left[\tilde\rho^{(c)}_0(t+dt)\right]
+	&=
+	1-\kappa\,\Tr\!\left[c^\dagger c\,\rho^{(c)}(t)\right]dt+O(dt^2)
+	=
+	1-\kappa\langle c^\dagger c\rangle_t\,dt+O(dt^2).
+\end{align}
+Therefore, dividing by the trace and keeping terms up to $O(dt)$,
+\begin{align}
+	\rho^{(c)}_0(t+dt)
+	&=
+	\rho^{(c)}(t)
+	-i[H,\rho^{(c)}(t)]\,dt
+	-\frac{\kappa}{2}\{c^\dagger c,\rho^{(c)}(t)\}\,dt
+	+\kappa\langle c^\dagger c\rangle_t\,\rho^{(c)}(t)\,dt
+	+O(dt^2).
+	\label{eq:noclick_update_expanded}
+\end{align}
+It is convenient to introduce the superoperator (following Ref.)
+\begin{equation}
+	\mathcal{H}[A]\rho
+	=
+	A\rho+\rho A^\dagger-\Tr[(A+A^\dagger)\rho]\;\rho,
+	\label{eq:H_superop}
+\end{equation}
+so that for $A=c^\dagger c$ (Hermitian) one has
+\begin{equation}
+	\mathcal{H}[c^\dagger c]\rho
+	=
+	\{c^\dagger c,\rho\}-2\langle c^\dagger c\rangle\,\rho.
+\end{equation}
+Equation \eqref{eq:noclick_update_expanded} can then be rewritten as
+\begin{equation}
+	\rho^{(c)}_0(t+dt)
+	=
+	\rho^{(c)}(t)
+	-i[H,\rho^{(c)}(t)]\,dt
+	-\frac{\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}(t)\,dt
+	+O(dt^2).
+	\label{eq:noclick_update_Hform}
+\end{equation}
+
+\subsubsection*{Click update}
+
+From Eq.~\eqref{eq:unnorm_click} and Eq.~\eqref{eq:prob_click}, the normalized post-click state is
+\begin{equation}
+	\rho^{(c)}_1(t+dt)
+	=
+	\frac{c\,\rho^{(c)}(t)\,c^\dagger}{\Tr[c\,\rho^{(c)}(t)\,c^\dagger]}
+	=
+	\frac{c\,\rho^{(c)}(t)\,c^\dagger}{\langle c^\dagger c\rangle_t}.
+	\label{eq:click_update}
+\end{equation}
+
+\subsubsection*{Stochastic master equation (jump SME)}
+
+We introduce the Poisson increment $dN_t\in\{0,1\}$ describing whether a click occurred in $[t,t+dt)$.
+Its conditional mean is
+\begin{equation}
+	\mathbb{E}[dN_t]=p_1(t+dt)=\kappa\,\langle c^\dagger c\rangle_t\,dt.
+	\label{eq:poisson_mean}
+\end{equation}
+The conditional increment $d\rho^{(c)}(t)=\rho^{(c)}(t+dt)-\rho^{(c)}(t)$ can be written by combining the two
+branches:
+\begin{align}
+	d\rho^{(c)}(t)
+	&=
+	dN_t\big(\rho^{(c)}_1(t+dt)-\rho^{(c)}(t)\big)
+	+(1-dN_t)\big(\rho^{(c)}_0(t+dt)-\rho^{(c)}(t)\big).
+\end{align}
+Discarding terms of order $dt\,dN_t$ (higher than $dt$ in It\^o counting), and using
+Eqs.~\eqref{eq:noclick_update_Hform} and \eqref{eq:click_update}, we obtain the jump SME
+\begin{equation}
+	\boxed{
+		d\rho^{(c)}
+		=
+		-i[H,\rho^{(c)}]\,dt
+		-\frac{\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}\,dt
+		+
+		\left(
+		\frac{c\rho^{(c)}c^\dagger}{\Tr[c\rho^{(c)}c^\dagger]}-\rho^{(c)}
+		\right)dN_t.}
+	\label{eq:SME_jump_single}
+\end{equation}
+
+The unconditional state is recovered by averaging Eq.~\eqref{eq:SME_jump_single} over the Poisson increment.
+Using
+\begin{equation}
+	\mathbb{E}\!\left[dN_t\,f(\rho^{(c)})\right]
+	=
+	\kappa\,dt\;
+	\mathbb{E}\!\left[\Tr(c^\dagger c\,\rho^{(c)})\,f(\rho^{(c)})\right],
+\end{equation}
+one obtains
+\begin{equation}
+	\mathbb{E}[d\rho^{(c)}]
+	=
+	-i[H,\rho]\,dt
+	+\kappa\,\mathcal{D}[c]\rho\,dt,
+\end{equation}
+i.e.\ the Lindblad master equation \eqref{eq:Lindblad_single_channel}.
+
+\subsubsection*{Many channels}
+
+For multiple monitored channels $\{c_k\}$ (each with rate $\kappa_k$) we introduce independent Poisson increments
+$dN_k(t)\in\{0,1\}$ with
+\begin{equation}
+	\mathbb{E}[dN_k(t)]=\kappa_k\,\Tr[c_k^\dagger c_k\,\rho^{(c)}(t)]dt,
+\end{equation}
+and the SME becomes
+\begin{equation}
+	d\rho^{(c)}
+	=
+	-i[H,\rho^{(c)}]\,dt
+	-\frac{1}{2}\sum_k \kappa_k\,\mathcal{H}[c_k^\dagger c_k]\rho^{(c)}\,dt
+	+\sum_k
+	\left(
+	\frac{c_k\rho^{(c)}c_k^\dagger}{\Tr[c_k\rho^{(c)}c_k^\dagger]}-\rho^{(c)}
+	\right)dN_k.
+	\label{eq:SME_jump_multi}
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Stochastic Schr\"odinger equation and quantum trajectories}
+
+If the initial state is pure and the monitoring is perfect, the conditional state remains pure at all times.
+One can then rewrite the jump dynamics as a stochastic Schr\"odinger equation (SSE) for the conditional state vector
+$\ket{\psi^{(c)}(t)}$.
+For a single channel, we know that
+\begin{equation}
+	\boxed{
+		d\ket{\psi^{(c)}(t)}
+		=
+		\left[
+		-iH\,dt
+		+\frac{\kappa}{2}\big(\langle c^\dagger c\rangle_t-c^\dagger c\big)dt
+		+\left(\frac{c}{\sqrt{\langle c^\dagger c\rangle_t}}-\mathbb{I}\right)dN_t
+		\right]\ket{\psi^{(c)}(t)}.}
+	\label{eq:SSE_jump_single}
+\end{equation}
+Solutions of SSEs are often called \emph{quantum trajectories}.
+Averaging the projectors $\ket{\psi^{(c)}(t)}\!\bra{\psi^{(c)}(t)}$ over many trajectories reproduces the
+solution of the unconditional master equation.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Inefficient detection and partial unravelling}
+
+The previous derivations assumed an ideal measurement of the environment.
+A simple and widely used model for finite efficiency $\eta\in[0,1]$ is that the measurement succeeds with
+probability $\eta$ and fails with probability $1-\eta$.
+Equivalently, one can place a fictitious beam splitter of transmissivity $\eta$ before the detector,
+so that a fraction of the output is lost.
+
+A key conceptual point is that inefficient monitoring can be
+described by \emph{unravelling only a part} of the unconditional generator.
+Indeed, one may rewrite the unconditional Lindbladian as a sum of two identical dissipators weighted by $\eta$ and
+$1-\eta$:
+\begin{equation}
+	\frac{d\rho(t)}{dt}
+	=
+	\eta\kappa\,\mathcal{D}[c]\rho(t)
+	+
+	(1-\eta)\kappa\,\mathcal{D}[c]\rho(t).
+	\label{eq:split_dissipator_eta}
+\end{equation}
+The first term is interpreted as the \emph{monitored} part of the dynamics, while the second term is the
+\emph{unmonitored} (lost) part.
+One then unravels only the monitored term, while the unmonitored one remains as a deterministic drift in the SME.
+
+For photodetection, the resulting inefficient jump SME reads Ref.
+\begin{equation}
+	\boxed{
+		d\rho^{(c)}
+		=
+		-i[H,\rho^{(c)}]\,dt
+		-\frac{\eta\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}\,dt
+		+
+		\left(
+		\frac{c\rho^{(c)}c^\dagger}{\Tr[c\rho^{(c)}c^\dagger]}-\rho^{(c)}
+		\right)dN_t
+		+
+		(1-\eta)\kappa\,\mathcal{D}[c]\rho^{(c)}\,dt,}
+	\label{eq:SME_jump_inefficient}
+\end{equation}
+where now the Poisson increment has reduced mean
+\begin{equation}
+	\mathbb{E}[dN_t]=\eta\kappa\,\Tr[c^\dagger c\,\rho^{(c)}(t)]\,dt.
+	\label{eq:poisson_mean_ineff}
+\end{equation}
+For $\eta<1$ the conditional state is generally mixed, because the unobserved term
+$(1-\eta)\kappa\,\mathcal{D}[c]$ produces decoherence that cannot be purified by conditioning on the detected record.
+This provides a clear operational meaning of ``unravelling only a piece'' of the differential equation:
+only the monitored part gives rise to stochastic state updates correlated with the measurement record,
+while the remaining unmonitored contribution stays as a deterministic Lindblad drift.
