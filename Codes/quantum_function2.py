@@ -25,12 +25,13 @@ def css_2(theta, phi):
 # //-- UTILITIES STATI --// ======================================================================================================
 #=================================================================================================================================
 
+#BASE {|0>, |1>}
 # Stati base_1-Qubit
-exc = qutip.basis(2, 0)  # ground
-gnd = qutip.basis(2, 1)  # excited
+gnd = qutip.basis(2, 0)  # ground
+exc = qutip.basis(2, 1)  # excited
 
-plus_state = (exc + gnd).unit()  # |+>
-minus_state = (exc - gnd).unit()  # |->
+plus_state = (gnd + exc).unit()  # |+>
+minus_state = (gnd- exc).unit()  # |->
 
 PlusPlus = tensor(plus_state, plus_state)  # |++>
 
@@ -42,7 +43,7 @@ gg = tensor(gnd, gnd)  # |gg>
 
 #Stati di Bell
 psi_plus = (tensor(gnd, exc) + tensor(exc, gnd)).unit()
-psi_minus = (tensor(exc, gnd) - tensor(gnd, exc)).unit()
+psi_minus = (tensor(gnd, exc) - tensor(exc, gnd)).unit()
 phi_plus = (tensor(gnd, gnd) + tensor(exc, exc)).unit()
 phi_minus = (tensor(gnd, gnd) - tensor(exc, exc)).unit()
 
@@ -74,11 +75,21 @@ OMEGA = 0
 I_2 = qeye(2)  # identity operator for 2-level system
 sm = sigmam()  # lowering operator for 2-level system (atom)
 
-Sz = 0.5*sigmaz()  # Pauli Z operator for 2-level system (atom)
 
+Sx = 0.5*sigmax()  # Pauli X operator for 2-level system (atom)
+Sx_1 = tensor(Sx, qeye(2))
+Sx_2 = tensor(qeye(2), Sx)
+Jx = Sx_1 + Sx_2
+
+Sy = 0.5*sigmay()  # Pauli Y operator for 2-level system (atom)
+Sy_1 = tensor(Sy, qeye(2))
+Sy_2 = tensor(qeye(2), Sy)
+Jy = Sy_1 + Sy_2
+
+Sz = 0.5*sigmaz()  # Pauli Z operator for 2-level system (atom)
 Sz_1 = tensor(Sz, qeye(2))
 Sz_2 = tensor(qeye(2), Sz)
-
+Jz = Sz_1 + Sz_2
 
 sigma_minus_1 = tensor(sm, I_2) # lowering operator for atom 1
 sigma_minus_2 = tensor(I_2, sm) # lowering operator for atom 2

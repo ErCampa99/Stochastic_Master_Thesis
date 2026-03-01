@@ -1,0 +1,1921 @@
+\chapter{Two qubit independent dephasing system: looking for entanglement}
+
+\section{Convention, states and master equation}
+
+We consider a system of $N=2$ qubits, each described in the computational basis
+$\{\ket{0},\ket{1}\}$.
+Throughout this work we adopt the convention
+\begin{equation}
+	\sigma_z \ket{1} = + \ket{1}, 
+	\qquad
+	\sigma_z \ket{0} = - \ket{0},
+\end{equation}
+so that the excited state $\ket{1}$ corresponds to the positive eigenvalue of $\sigma_z$.
+This choice fixes all relative signs in the collective spin operators and in the dissipative dynamics.
+
+The single-qubit spin operators are defined as
+\begin{equation}
+	S_\alpha^{(i)} = \frac{1}{2}\,\sigma_\alpha^{(i)},
+	\qquad \alpha \in \{x,y,z\},
+\end{equation}
+where the superscript $i$ labels the qubit.
+Collective spin operators are introduced as
+\begin{equation}
+	J_\alpha = \sum_{i=1}^{N} S_\alpha^{(i)}.
+\end{equation}
+
+When needed, spin coherent states (CSS) are written as
+\begin{equation}
+	\ket{\theta,\phi}_{N}
+	=
+	\bigotimes_{i=1}^{N}
+	\left(
+	e^{i\phi}\sin\frac{\theta}{2}\,\ket{1}_i
+	+
+	\cos\frac{\theta}{2}\,\ket{0}_i
+	\right),
+	\label{CSS_N_qubit}
+\end{equation}
+which corresponds to a product state with all spins pointing along the direction
+$\hat{n} = (\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$ on the Bloch sphere.
+We explicit the case for N=2 and $\phi=0$:
+\begin{equation}
+	\ket{\theta} \equiv \ket{\theta,0}_{2}
+	=\sin^2\frac{\theta}{2}\ket{11}
+	+\sin\frac{\theta}{2}\cos\frac{\theta}{2}\left(\ket{10}+\ket{01}\right)
+	+\cos^2\frac{\theta}{2}\ket{00}.
+	\label{CSS_expansion_2}
+\end{equation}
+In particular, the eigenstates of $\sigma_x$ are
+\begin{equation}
+	\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},
+	\qquad
+	\ket{-}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}.
+\end{equation}
+
+	We use the standard Bell states
+\begin{align}
+	\ket{\phi_\pm}&=\frac{\ket{00}\pm\ket{11}}{\sqrt{2}}
+	\quad(\text{even $z$-parity}),\\
+	\ket{\psi_\pm}&=\frac{\ket{01}\pm\ket{10}}{\sqrt{2}}
+	\quad(\text{odd $z$-parity}).
+\end{align}
+
+The dynamics of the system is described within the Markovian open-quantum-system framework.
+Under the standard assumptions of weak system-environment coupling, short bath correlation time
+(Born-Markov approximation), and complete positivity, the reduced density operator $\rho(t)$
+obeys a Gorini--Kossakowski--Sudarshan--Lindblad (GKSL) master equation,
+\begin{equation}
+	\frac{d\rho}{dt} = \liouvillian_{k} [\rho_t]
+	= - i \left[ H, \rho^{(c)} \right] + \sum_k \mathcal{D}[C_k]\rho^{(c)}\,dt = 
+	- i \left[ H, \rho \right]
+	+
+	\sum_k
+	\left(
+	C_k \rho C_k^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	C_k^\dagger C_k,\rho
+	\right\}
+	\right).
+	\label{eq:Lindblad}
+\end{equation}
+where $\mathcal{D}[A]\rho = A\rho A^\dagger - \tfrac{1}{2}\{A^\dagger A,\rho\}$ is called the dissipator superoperator. Here $H$ is the system Hamiltonian,
+and $\{C_k\}$ are the Lindblad or collapse operators describing dissipative processes and continuous measurements.
+We remark that equation~\eqref{eq:Lindblad} generates a completely positive and trace-preserving (CPTP) dynamical semigroup.
+
+%Aggiunta nuovo paper Albarelli-Genoni-Rossi
+In this work we focus on dissipative channels associated with spin components along the $z$ direction that acts independently on each qubit with strength $\gamma$. We can therefore write the master equation as:
+
+\begin{equation}
+	\frac{d\rho_t}{dt}
+	= - i \left[ H, \rho_t \right] + \sum_{k=1}^{2} \mathcal{D}[\sigma_z^{(k)}]\rho^{(c)}_t\,dt
+\label{ME_sigma_z}
+\end{equation}
+
+By exploiting $\sigma_z^{\dagger}=\sigma_z$ and $\sigma_z^{2}=\id$ we can rewrite $\eqref{ME_sigma_z}$ as:
+
+\begin{equation}
+	\frac{d\rho_t}{dt} = \liouvillian_{\gamma}
+	= -i \dfrac{\omega}{2} \sum_{k=1}^{2}[\sigma_z^{(k)}, \rho_t] + \dfrac{\gamma}{2} (\sum_{k=1}^{2}\sigma_z^{(k)}\rho_t \sigma_z^{(k)} -N\rho_t)
+	\label{ME_simplified}
+\end{equation}
+
+A central role is played by collective jump operators of the form:
+\begin{equation}
+	\hat{C}_\pm
+	=
+	\sqrt{\gamma}\,
+	\frac{\sigma_z^{(1)} \pm \sigma_z^{(2)}}{\sqrt{2}}
+	\label{eq:Lindblad_operators}
+\end{equation}
+
+These operators naturally arise in measurement schemes where emissions from the two qubits are interfered
+(e.g.\ via a beam splitter) before detection, such that the measurement does not reveal which-path information.
+The two channels correspond to symmetric and antisymmetric combinations of local $z$-spin operators.
+While the master equation~\eqref{eq:Lindblad} uniquely determines the evolution of the density operator,
+its stochastic unravelling into quantum trajectories is not unique (see Appendix A).
+Different measurement schemes (photodetection, homodyne, heterodyne) correspond to different
+stochastic evolutions at the level of pure states, all reproducing the same ensemble-averaged dynamics.
+
+In the photodetection unravelling associated with the jump operators~\eqref{eq:Lindblad_operators},
+the system undergoes non-unitary no-click evolution interrupted by quantum jumps.
+Each jump corresponds to the application of $\hat{C_\pm}$ to the state vector,
+followed by normalization, and reveals information about collective spin observables and parity.
+
+This measurement backaction is the key mechanism exploited in this work for the generation
+and stabilization of entanglement and for the study of quantities such as
+concurrence and spin squeezing.
+
+\section{Unitary invariance of Lindblad operators}
+
+Let $U$ be an $n\times n$ unitary matrix acting on the vector of collapse operators $\{\hat C_i\}$.
+We prove the identity
+\begin{equation}
+	\sum_{i=1}^{n}\mathcal{D}[\hat C_i]\rho
+	=
+	\sum_{i=1}^{n}\mathcal{D}\!\left[\sum_{j=1}^{n}U_{ij}\hat C_j\right]\rho,
+	\label{eq:unitary_invariance_dissipator}
+\end{equation}
+where $\mathcal{D}[A]\rho=A\rho A^\dagger-\tfrac{1}{2}\{A^\dagger A,\rho\}$.
+
+We expand the right-hand side:
+\begin{align}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	&=
+	\sum_i
+	\left[
+	\left(\sum_j U_{ij}\hat C_j\right)\rho
+	\left(\sum_k U_{ik}\hat C_k\right)^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\left(\sum_j U_{ij}\hat C_j\right)^\dagger
+	\left(\sum_k U_{ik}\hat C_k\right),
+	\rho
+	\right\}
+	\right]\nonumber\\
+	&=
+	\sum_i
+	\left[
+	\sum_{j,k}U_{ij}U_{ik}^*\,\hat C_j\rho \hat C_k^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\sum_{j,k}U_{ij}^*U_{ik}\,\hat C_j^\dagger \hat C_k,
+	\rho
+	\right\}
+	\right].
+\end{align}
+We interchange the sums and group the coefficients:
+\begin{equation}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	=
+	\sum_{j,k}
+	\left[
+	\left(\sum_i U_{ij}U_{ik}^*\right)\hat C_j\rho \hat C_k^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\left(\sum_i U_{ij}^*U_{ik}\right)\hat C_j^\dagger \hat C_k,
+	\rho
+	\right\}
+	\right].
+	\label{eq:unitary_invariance_intermediate}
+\end{equation}
+Since $U$ is unitary, $U^\dagger U=\id$, hence
+\begin{equation}
+	\sum_i U_{ij}^*U_{ik}=\delta_{jk},
+	\qquad
+	\sum_i U_{ij}U_{ik}^*=\delta_{jk}.
+\end{equation}
+Substituting in Eq.~\eqref{eq:unitary_invariance_intermediate} gives
+\begin{equation}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	=
+	\sum_j
+	\left[
+	\hat C_j\rho \hat C_j^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\hat C_j^\dagger \hat C_j,
+	\rho
+	\right\}
+	\right]
+	=
+	\sum_j \mathcal{D}[\hat C_j]\rho.
+\end{equation}
+This proves Eq.~\eqref{eq:unitary_invariance_dissipator}.
+\hfill$\blacksquare$
+
+Applying this invariance to our system, the Lindblad master equation can be equivalently written as
+\begin{align}
+	d\varrho
+	&=
+	-i[H,\varrho]\,dt
+	+\gamma\,\mathcal{D}\!\left[\sigma_z^{(1)}\right]\varrho\,dt
+	+\gamma\,\mathcal{D}\!\left[\sigma_z^{(2)}\right]\varrho\,dt
+	\nonumber\\
+	&=
+	-i[H,\varrho]\,dt
+	+\gamma\,\mathcal{D}\!\left[\frac{\sigma_z^{(1)}+\sigma_z^{(2)}}{\sqrt{2}}\right]\varrho\,dt
+	+\gamma\,\mathcal{D}\!\left[\frac{\sigma_z^{(1)}-\sigma_z^{(2)}}{\sqrt{2}}\right]\varrho\,dt.
+\end{align}
+The last equality follows by applying the Hadamard unitary
+\begin{equation}
+	H=\frac{1}{\sqrt{2}}
+	\begin{pmatrix}
+		1 & 1\\
+		1 & -1
+	\end{pmatrix}
+\end{equation}
+to the operator vector $\big(\sigma_z^{(1)},\sigma_z^{(2)}\big)^{T}$.
+
+
+\section{Photodetection}
+\label{sec:photodetection}
+
+A Markovian master equation admits a stochastic \emph{unravelling} in terms of
+measurement-conditioned quantum trajectories. In the case of photodetection
+(quantum-jump monitoring), the measurement record is a set of counting processes
+$\{N_k(t)\}_k$ associated with the monitored output channels.
+In an infinitesimal time step $dt$, the increments
+\begin{equation}
+	dN_k(t) \in \{0,1\}
+\end{equation}
+represent, respectively, a \emph{no-click} event or a \emph{click} in detector $k$.
+They are Poissonian random variables with conditional mean
+\begin{equation}
+	\mathbb{E}\!\left[dN_k(t)\right]
+	=
+	\eta\,\mathrm{Tr}\!\left[\hat{C}_k^\dagger \hat{C}_k\,\rho^{(c)}(t)\right]dt ,
+	\label{eq:poisson_mean_general}
+\end{equation}
+where $\eta\in[0,1]$ is the detection efficiency and $\rho^{(c)}(t)$ denotes the
+conditional (normalized) system state.
+
+For jump monitoring, the conditional evolution can be written as a piecewise
+deterministic process: a smooth non-unitary evolution conditioned on $dN_k=0$,
+interrupted by stochastic jumps when $dN_k=1$.
+A convenient It\^o form of the stochastic master equation (SME) is
+\begin{equation}
+	\begin{aligned}
+		d\rho^{(c)}
+		&=
+		-i[H,\rho^{(c)}]\,dt
+		+ (1-\eta)\sum_k \mathcal{D}[\hat{C_k}]\rho^{(c)}\,dt \\
+		&\quad
+		+ \sum_k
+		\left(
+		\frac{\hat{C_k}\rho^{(c)}\hat{C_k^\dagger}}{\mathrm{Tr}[\hat{C_k^\dagger}{C_k}\rho^{(c)}]}
+		-
+		\rho^{(c)}
+		\right)dN_k(t),
+	\end{aligned}
+	\label{eq:SME_PH_GENERAL}
+\end{equation}
+
+By averaging Eq.~\eqref{eq:SME_PH_GENERAL} over the measurement outcomes one
+recovers the unconditional GKSL master equation.
+
+
+The resulting photodetection SME reads
+\begin{equation}
+	d\rho_t^{(c)}
+	=
+	-i\omega[J_z,\rho_t^{(c)}]dt
+	+ (1-\eta)\frac{\gamma}{2}\sum_j \mathcal{D}[\sigma_z^{(j)}]\rho_t^{(c)}dt
+	+ \sum_j\left(\sigma_z^{(j)}\rho_t^{(c)}\sigma_z^{(j)}-\rho_t^{(c)}\right)dN_j,
+	\label{eq:SME_PH_SZ}
+\end{equation}
+with $\mathbb{E}[dN_j]=\eta\gamma\,dt$.
+A crucial remark (highly relevant for interpreting measurement records) is that, since
+$\sigma_z^{(j)}$ is unitary, the jump statistics is state-independent: the records
+$N_j(t)$ contain only noise and no information about the system state, and the SME is
+linear in $\rho_t^{(c)}$.
+This follows from the probability in measuring one photon:
+\begin{equation}
+	p_1(t+dt) = \mathrm{Tr}[\rho_1^{(c)}(t+dt)]= \gamma \cdot\langle \hat{C}^{\dagger}\hat{C}\rangle_t dt
+\end{equation}
+We can see affirm that if $\hat{C}$ is unitary, it gives only $\gamma \cdot dt$. Since we have two different collapsing channels, we have to consider $2 \gamma \cdot dt$
+
+\subsection{No-jump evolution of two-qubits}
+
+In this section we derive the no-jump evolution of a two-qubit under the
+$z$-dephasing dynamics introduced above. Since the meaning of no-jump depends on the detection
+efficiency, we treat separately the cases $\eta=1$, perfect photodetection, and $\eta<1$
+(inefficient photodetection, i.e.\ ``no detected clicks'').
+
+For $\eta=1$, no jump means that no click occurred in either monitored channel up to time $t$.
+In the quantum-jump picture, the unnormalized conditional pure state evolves under the non-Hermitian
+effective Hamiltonian
+\begin{equation}
+	\hat H_{\mathrm{eff}}
+	=
+	\hat H
+	-\frac{i}{2}\sum_{k} \hat C_k^\dagger \hat C_k,
+	\label{eq:Heff_general}
+\end{equation}
+so that
+\begin{equation}
+	\ket{\tilde\psi(t)}=e^{-i\hat H_{\mathrm{eff}}t}\ket{\psi(0)},
+	\label{eq:nojump_update_vector}
+\end{equation}
+In our case (pure dephasing) we can work with the collective jump operators $\eqref{eq:Lindblad_operators}$ and properties of $\sigma_z$ to obtain
+\begin{equation}
+	\hat C_+^\dagger\hat C_+ + \hat C_-^\dagger\hat C_-
+	=
+	\frac{\gamma}{2}\Big[(\sigma_z^{(1)}+\sigma_z^{(2)})^2+(\sigma_z^{(1)}-\sigma_z^{(2)})^2\Big]
+	=
+	2\gamma\,\id.
+	\label{eq:Csum_identity}
+\end{equation}
+For $\hat H=0$, Eq.~\eqref{eq:Heff_general} gives $\hat H_{\mathrm{eff}}=-i\gamma\,\id$ and therefore
+\begin{equation}
+	\ket{\tilde\psi(t)}=e^{-\gamma t}\ket{\psi(0)}.
+\end{equation}
+After normalization, the global factor cancels and the conditional state is unchanged:
+\begin{equation}
+		\ket{\psi(t)}_{\mathrm{no\,jump}}=\ket{\psi(0)}\qquad(\eta=1).
+	\label{eq:nojump_eta1}
+\end{equation}
+In particular, for any initial CSS one has
+\begin{equation}
+	\ket{\theta,\phi}\xrightarrow{\ \text{no jump}\ }\ket{\theta,\phi}
+	\qquad(\eta=1).
+\end{equation}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\subsubsection{Inefficient photodetection: $\eta<1$ (no detected clicks)}
+
+For $\eta<1$, conditioning on ``no detected clicks'' does not imply that no quantum jumps occurred:
+unobserved emissions contribute an additional unconditional evolution term. The conditional dynamics
+in the absence of detected counts is deterministic and coincides with the unmonitored part of the SME.
+With our dephasing model, the no-detected-click evolution is governed by
+\begin{equation}
+	\frac{d\rho(t)}{dt}
+	=
+	\mathcal{L}^{(2)}_{(1-\eta)\gamma}[\rho(t)]
+	=
+	\frac{(1-\eta)\gamma}{2}\sum_{j=1}^{2}\Big(\sigma_z^{(j)}\rho(t)\sigma_z^{(j)}-\rho(t)\Big),
+	\label{eq:nojump_eta_less1_master}
+\end{equation}
+
+This is a local dephasing channel acting independently on each qubit. Since the initial CSS is a
+product state, the solution factorizes:
+\begin{equation}
+	\rho_{\mathrm{CSS,}\theta}^{(\mathrm{no\,click})}(t)
+	=
+	\rho_1^{(\mathrm{no\,click})}(t)\otimes \rho_1^{(\mathrm{no\,click})}(t),
+	\label{eq:nojump_factorization_css}
+\end{equation}
+where $\rho_1^{(\mathrm{no\,click})}(t)$ is the single-qubit solution starting from the pure state
+$\ket{\theta,\phi}$.
+
+Writing the initial single-qubit density operator in the basis $\{\ket{0},\ket{1}\}$,
+\begin{equation}
+	\rho_1(0)=\ket{\theta,\phi}\!\bra{\theta,\phi}
+	=
+	\begin{pmatrix}
+		\cos^2\!\frac{\theta}{2}
+		&
+		e^{-i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+		\\[4pt]
+		e^{i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+		&
+		\sin^2\!\frac{\theta}{2}
+	\end{pmatrix},
+\end{equation}
+one finds that the populations are constant and the coherences decay exponentially:
+\begin{equation}
+		\rho_1^{(\mathrm{no\,click})}(t)=
+		\begin{pmatrix}
+			\cos^2\!\frac{\theta}{2}
+			&
+			e^{-i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}\,e^{-(1-\eta)\gamma t}
+			\\[4pt]
+			e^{i\phi}\sin\frac{\theta}{2}\cos\frac{\theta}{2}\,e^{-(1-\eta)\gamma t}
+			&
+			\sin^2\!\frac{\theta}{2}
+	\end{pmatrix}
+	\qquad(\eta<1).
+	\label{eq:single_qubit_no_click_solution}
+\end{equation}
+Equations \eqref{eq:nojump_factorization_css} and \eqref{eq:single_qubit_no_click_solution} provide
+the full two-qubit no-detected-click state for any $(\theta,\phi)$.
+
+For later use, we report the explicit two-qubit matrix for $\phi=0$ in the computational basis
+$\{\ket{00},\ket{01},\ket{10},\ket{11}\}$. Introducing the shorthand
+$c\equiv \cos\frac{\theta}{2}$ and $s\equiv \sin\frac{\theta}{2}$ one obtains
+\begin{equation}
+	\rho_{\mathrm{CSS,}\theta}^{(\mathrm{no\,click})}(t)=
+	\begin{pmatrix}
+		c^{4} & c^{3}s\,e^{-(1-\eta)\gamma t} & c^{3}s\,e^{-(1-\eta)\gamma t} & c^{2}s^{2}\,e^{-2(1-\eta)\gamma t}\\
+		c^{3}s\,e^{-(1-\eta)\gamma t} & c^{2}s^{2} & c^{2}s^{2}\,e^{-2(1-\eta)\gamma t} & cs^{3}\,e^{-(1-\eta)\gamma t}\\
+		c^{3}s\,e^{-(1-\eta)\gamma t} & c^{2}s^{2}\,e^{-2(1-\eta)\gamma t} & c^{2}s^{2} & cs^{3}\,e^{-(1-\eta)\gamma t}\\
+		c^{2}s^{2}\,e^{-2(1-\eta)\gamma t} & cs^{3}\,e^{-(1-\eta)\gamma t} & cs^{3}\,e^{-(1-\eta)\gamma t} & s^{4}
+	\end{pmatrix}.
+	\label{eq:two_qubit_css_no_click_matrix_phi0}
+\end{equation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{First jump from \texorpdfstring{$\ket{++}$}{|++>}}
+
+%\paragraph{The initial state \texorpdfstring{$\ket{++}$}{|++>}.}
+We work in the computational basis
+\(\{\ket{00},\ket{01},\ket{10},\ket{11}\}\), and we adopt the convention
+\(\sigma_z\ket{0}=-\ket{0}\), \(\sigma_z\ket{1}=+\ket{1}\).
+The single-qubit \(\ket{+}\) state is \(\ket{+}=(\ket{0}+\ket{1})/\sqrt{2}\), hence
+
+\begin{equation}
+	\ket{++}=\ket{+}\otimes\ket{+}
+	=\frac{1}{2}\big(\ket{00}+\ket{01}+\ket{10}+\ket{11}\big)
+	=\frac{1}{2}(1,1,1,1)^{\mathrm{T}}
+	\label{eq:PlusPlus}
+\end{equation}
+
+We define the two-qubit \(z\)-parity operator as
+\begin{equation}
+	\Piz \equiv \sigma_z^{(1)}\sigma_z^{(2)}.
+	\label{eq:parity_def}
+\end{equation}
+It is Hermitian and unitary: \(\Pi_z^\dagger=\Pi_z\) and \(\Pi_z^2=\id\), hence its eigenvalues are \(\pm 1\).
+In the computational basis one has
+\(\Pi_z\ket{00}=+\ket{00}\), \(\Pi_z\ket{11}=+\ket{11}\), while
+\(\Pi_z\ket{01}=-\ket{01}\), \(\Pi_z\ket{10}=-\ket{10}\).
+Therefore its matrix representation is diagonal:
+\begin{equation}
+	\Pi_z \equiv
+	\begin{pmatrix}
+		+1 & 0 & 0 & 0\\
+		0 & -1 & 0 & 0\\
+		0 & 0 & -1 & 0\\
+		0 & 0 & 0 & +1
+	\end{pmatrix}.
+	\label{eq:parity_matrix}
+\end{equation}
+The projectors onto the even/odd parity subspaces are
+\(\Pi_{\mathrm{even}}=\frac{1}{2}(\id+\Pi_z)\) and
+\(\Pi_{\mathrm{odd}}=\frac{1}{2}(\id-\Pi_z)\).
+A useful property for what follows is that \(\ket{++}\) \eqref{eq:PlusPlus} has equal weight on the even- and odd-parity computational sectors: the even sector is spanned by \(\{\ket{00},\ket{11}\}\), the odd one by \(\{\ket{01},\ket{10}\}\).
+
+
+Since \(\sigma_z^{(1)}\) and \(\sigma_z^{(2)}\) commute and \((\sigma_z^{(i)})^2=\id\),
+\begin{align}
+	\big[\sigma_z^{(1)},\Pi_z\big]
+	&=\sigma_z^{(1)}\sigma_z^{(1)}\sigma_z^{(2)}-\sigma_z^{(1)}\sigma_z^{(1)}\sigma_z^{(2)}=0,\\
+	\big[\sigma_z^{(2)},\Pi_z\big]
+	&=\sigma_z^{(2)}\sigma_z^{(1)}\sigma_z^{(2)}-\sigma_z^{(1)}\sigma_z^{(2)}\sigma_z^{(2)}
+	=\sigma_z^{(1)}-\sigma_z^{(1)}=0.
+\end{align}
+Therefore \([\sigma_z^{(1)}\pm \sigma_z^{(2)},\Pi_z]=0\), and by \eqref{eq:Lindblad_operators} we have
+\begin{equation}
+	[\hat{C}_\pm,\Pi_z]=0.
+\end{equation}
+This is a key result: a jump produced by \(\hat{C}_\pm\) preserves the $z$-parity: if a pre-jump pure state \(\ket{\psi}\) is a parity eigenstate, so is the post-jump normalized state : 
+\(\ket{\psi'}=\hat{C}_\pm\ket{\psi}/\norm{\hat{C}_\pm\ket{\psi}}\).
+
+Let us work on the collapsing operators, by calculating:
+\begin{equation}
+	\hat C_\pm^\dagger \hat C_\pm
+	=\left(\id\pm \Piz\right).
+	\label{eq:rate_identity}
+\end{equation}
+we see that for pure-state jumps we use the standard update rule
+\begin{equation}
+	\qquad p_\pm=\matrixel{\psi}{\hat C_\pm^\dagger\hat C_\pm}{\psi}\,\mathrm{d}t = \matrixel{\psi}{\id \pm \Piz}{\psi}
+	= \Big(\id \pm \ev{\Pi_z}_{\psi}\Big)\,\mathrm{d}t
+	\label{eq:jump_rule}
+\end{equation}
+
+It is convenient to evaluate the direction of the unnormalized state \(\hat{C}_\pm\ket{++}\):
+\begin{align}
+	(\sigma_z^{(1)}+\sigma_z^{(2)})\ket{++}
+	&=2\big(\ket{11}-\ket{00}\big)
+	=-2\sqrt{2}\,\ket{\phi_-},\label{eq:sigplus_on_pp}\\
+	(\sigma_z^{(1)}-\sigma_z^{(2)})\ket{++}
+	&=2\big(\ket{10}-\ket{01}\big)
+	=-2\sqrt{2}\,\ket{\psi_-}.
+	\label{eq:sigminus_on_pp}
+\end{align}
+Hence the \emph{normalized} post-jump states are
+\begin{equation}
+	\ket{++}\xrightarrow{C_+}-\ket{\phi_-},
+	\qquad
+	\ket{++}\xrightarrow{C_-}-\ket{\psi_-}.
+	\label{eq:first_step}
+\end{equation}
+Overall minus signs are global phases and carry no physical effect; we keep them to make the subsequent alternation visually clear.
+
+Equations \eqref{eq:first_step} show that the first click already fixes the $z$-parity: $\Cp$ lands in the even sector (Bell-$\phi$ states), while $\Cm$ lands in the odd sector (Bell-$\psi$ states).
+
+For the state \(\ket{++}\), since \(\ev{\sigma_z}_{\ket{+}}=0\), we have \(\ev{\Pi_z}_{\ket{++}}=\ev{\sigma_z}_{\ket{+}}\,\ev{\sigma_z}_{\ket{+}}=0\), hence
+\begin{equation}
+	p_+(\ket{++})=p_-(\ket{++})=\gamma\,\mathrm{d}t.
+	\label{eq:rates_pp}
+\end{equation}
+The two channels are equiprobable on the initial state, and the total jump rate is \(2\gamma\,\mathrm{d}t\).
+
+For any even-parity state (eigenvalue \(+1\) of \(\Pi_z\); in particular \(\ket{\phi_\pm}\)),
+\begin{equation}
+	p_+(\text{even})=2\gamma\,\mathrm{d}t,\qquad p_-(\text{even})=0.
+\end{equation}
+For any odd-parity state (eigenvalue \(-1\); in particular \(\ket{\psi_\pm}\)),
+\begin{equation}
+	p_-(\text{odd})=2\gamma\,\mathrm{d}t,\qquad p_+(\text{odd})=0.
+\end{equation}
+
+These two outcomes already show the key phenomenon: a single detected jump projects \(\ket{++}\) onto a \emph{definite} parity sector (even for \(\hat{C}_+\), odd for \(\hat{C}_-\)), which we now formalize.
+
+\subsection{Subsequent jumps: two-state cyclicity}
+It follows that the action of the Lindbladians on the Bell states is:
+\begin{align}
+	\hat{C}_+\ket{\phi_-}
+	&=-\,\ket{\phi_+},&
+	\hat{C}_+\ket{\phi_+}
+	&=-\,\ket{\phi_-},\\[2mm]
+	\hat{C}_-\ket{\psi_-}
+	&=-\,\ket{\psi_+},&
+	\hat{C}_-\ket{\psi_+}
+	&=-\,\ket{\psi_-}.
+\end{align}
+After renormalization, this yields the deterministic cycles
+\begin{equation}
+	-\ket{\phi_-}\xrightarrow{C_+}\ket{\phi_+}\xrightarrow{C_+}-\ket{\phi_-}\xrightarrow{C_+}\cdots,
+	\qquad
+	-\ket{\psi_-}\xrightarrow{C_-}\ket{\psi_+}\xrightarrow{C_-}-\ket{\psi_-}\xrightarrow{C_-}\cdots.
+	\label{eq:cycles}
+\end{equation}
+Because of $[C_\pm,\Pi_z]=0$, the ``wrong'' channel is forbidden inside each parity subspace.
+
+
+\subsection{Dynamics of CSS states}
+
+We now specialize the discussion to two-qubit spin coherent states (CSS) \eqref{CSS_N_qubit} and describe how the
+photodetection dynamics acts on them. We set $\phi=0$.
+
+By applying the Lindbladian operators \eqref{eq:Lindblad_operators}, one obtains
+\begin{align}
+	\Cp |\mathrm{CSS,}\theta\rangle
+	&=
+	\sin^{2}\!\left(\frac{\theta}{2}\right)\ket{11}
+	-
+	\cos^{2}\!\left(\frac{\theta}{2}\right)\ket{00},
+	\label{eq:CSS_postjump_plus_unnorm_clean}\\
+	\Cm |\mathrm{CSS,}\theta\rangle
+	&=
+	\sin\frac{\theta}{2}\cos\frac{\theta}{2}
+	\left(
+	\ket{10}-\ket{01}
+	\right).
+	\label{eq:CSS_postjump_minus_unnorm_clean}
+\end{align}
+
+After normalization, the conditional post-click pure states are
+\begin{equation}
+	\ket{\tilde{\phi_\theta}}
+	=
+	\frac{
+		\sin^{2}\!\left(\frac{\theta}{2}\right)\ket{11}
+		-
+		\cos^{2}\!\left(\frac{\theta}{2}\right)\ket{00}
+	}{
+		\sqrt{
+			\sin^{4}\!\left(\frac{\theta}{2}\right)
+			+
+			\cos^{4}\!\left(\frac{\theta}{2}\right)
+		}
+	},
+	\qquad
+	\ket{\psi_-}
+	=
+	\frac{\ket{10}-\ket{01}}{\sqrt{2}}.
+	\label{eq:CSS_postjump_normalized_clean}
+\end{equation}
+
+The ``$-$'' click therefore projects onto a maximally entangled Bell state independently of $\theta$,
+while the ``$+$'' click yields an even-parity state whose entanglement depends on $\theta$.
+
+After the first click, parity is fixed. Indeed,
+\begin{equation}
+	\Big(\ket{10}\!\bra{10}-\ket{01}\!\bra{01}\Big)\ket{\tilde{\phi_\theta}}=0,
+	\qquad
+	\Big(\ket{11}\!\bra{11}-\ket{00}\!\bra{00}\Big)\ket{\psi_-}=0.
+\end{equation}
+Within each parity sector the jump action induces a two-state cyclicity.
+In the even sector we define
+\begin{equation}
+	\ket{\tilde{\phi}_{\pm,\theta}}
+	=
+	\frac{
+		\sin^{2}\!\left(\frac{\theta}{2}\right)\ket{11}
+		\pm
+		\cos^{2}\!\left(\frac{\theta}{2}\right)\ket{00}
+	}{
+		\sqrt{
+			\sin^{4}\!\left(\frac{\theta}{2}\right)
+			+
+			\cos^{4}\!\left(\frac{\theta}{2}\right)
+		}
+	},
+	\label{Post_click_CSS_C+}
+\end{equation}
+
+so it follows that we retrieve the more general deterministic cycles
+\begin{equation}
+	\ket{\mathrm{CSS,}\theta}\xrightarrow{\Cp}\ket{\tilde{\phi}_{-,\theta}}\xrightarrow{\Cp}\ket{\tilde{\phi}_{+,\theta}} \xrightarrow{\Cp}\ket{\tilde{\psi}_{-,\theta}}%\xrightarrow{\Cp}\dots,
+	\qquad
+	\ket{\mathrm{CSS,}\theta}\xrightarrow{\Cm}\ket{\psi_-}\xrightarrow{\Cm}\ket{\psi_+}\xrightarrow{\Cm}\ket{\psi_-}%\xrightarrow{\Cm}\dots.
+	\label{eq:cycles}
+\end{equation}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Analyzing evolution and jumps: even-parity channel}
+Now we want to prove that evolving $|++\rangle$ with liouvillian as $\eqref{ME_sigma_z}$ is totally equivalent in evolving in time the first click state for both channel. We show it explicitly for the even-parity case, meaning:
+
+\begin{equation}
+	\Cp \cdot e^{\liouvillian_{(1-\eta)\gamma}^{(2)} t} [|++\rangle \langle ++|] \cdot \Cp = e^{\liouvillian_{(1-\eta)\gamma}^{(2)} t} [|\psi_- \rangle \langle \psi_-|],
+	\label{Bridge_proof}
+\end{equation}
+
+where $ \liouvillian_{(1-\eta)\gamma}^{(2)}$ is the liouvillian in the ME.
+
+Using the collective jump operators $\hat C_\pm$, we write
+\begin{equation}
+	\mathcal{L}^{(2)}_{(1-\eta)\gamma}[\rho_t]
+	=
+	(1-\eta)\frac{\gamma}{2}
+	\Big(
+	\mathcal{D}[\hat{C}_+]\rho_t
+	+
+	\mathcal{D}[\hat{C}_-]\rho_t
+	\Big).
+	\label{eq:Liouv_unmonitored_collective}
+\end{equation}
+
+Since the unmonitored dephasing channel acts locally on each qubit, for product inputs
+the evolution factorizes. In particular,
+\begin{equation}
+	e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma}\,t}\!\left[\ket{++}\!\bra{++}\right]
+	=
+	\Big(
+	e^{\mathcal{L}^{(1)}_{(1-\eta)\gamma}\,t}\!\left[\ket{+}\!\bra{+}\right]
+	\Big)
+	\otimes
+	\Big(
+	e^{\mathcal{L}^{(1)}_{(1-\eta)\gamma}\,t}\!\left[\ket{+}\!\bra{+}\right]
+	\Big),
+	\label{eq:factorization_single_qubit}
+\end{equation}
+where $\mathcal{L}^{(1)}_{(1-\eta)\gamma}$ denotes the corresponding single-qubit Liouvillian, the ``single-qubit dephasing'' channel.
+
+We vectrize the single-qubit problem in the computational basis $\{\ket{0},\ket{1}\}$.
+Let $\rho(t)$ be a single-qubit density operator written as
+\begin{equation}
+	\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00}(t) & \alpha_{01}(t)\\
+		\alpha_{10}(t) & \alpha_{11}(t)
+	\end{pmatrix},
+	\label{eq:rho_single_qubit_param}
+\end{equation}
+and its equation of motion
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(1)}_{(1-\eta)\gamma}\!\left[\rho(t)\right].
+	\label{eq:single_qubit_ME_param}
+\end{equation}
+In the computational basis, the superoperator $\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]$
+can be represented through its matrix elements as
+\begin{equation}
+	\mathcal{L}^{(1)}_{(1-\eta)\gamma}\!\left[\rho(t)\right]
+	\ \equiv\
+	\begin{pmatrix}
+		\bra{0}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{0}
+		&
+		\bra{0}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{1}
+		\\[4pt]
+		\bra{1}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{0}
+		&
+		\bra{1}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{1}
+	\end{pmatrix}.
+	\label{eq:Liouv_matrix_elements}
+\end{equation}
+Hence, to obtain the explicit differential equations for the coefficients
+$\alpha_{00}(t),\alpha_{01}(t),\alpha_{10}(t)$, one computes
+$\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]$ and projects it onto the computational basis.
+
+We consider the single-qubit dephasing generator (unmonitored part)
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(1)}_{\Gamma}[\rho(t)]
+	=\frac{\Gamma}{2}\Big(\sigma_z\,\rho(t)\,\sigma_z-\rho(t)\Big),
+\end{equation}
+
+Then
+\begin{equation}
+	\sigma_z\rho(t)\sigma_z=
+	\begin{pmatrix}
+		\alpha_{00}(t) & -\alpha_{01}(t)\\
+		-\alpha_{10}(t) & \alpha_{11}(t)
+	\end{pmatrix},
+\end{equation}
+and therefore
+\begin{equation}
+	\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]
+	=
+	\frac{(1-\eta)\gamma}{2}
+	\begin{pmatrix}
+		0 & -2\alpha_{01}(t)\\
+		-2\alpha_{10}(t) & 0
+	\end{pmatrix}.
+\end{equation}
+Hence the populations are constants, while coherences decay exponentially:
+\begin{align}
+	\dot{\alpha}_{00}(t)&= \dot{\alpha}_{11}(t)=0,\\
+	\dot{\alpha}_{01}(t)&= \dot{\alpha}_{10}(t)=-(1-\eta)\gamma
+\end{align}
+so that
+\begin{equation}
+	\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00}(0) & \alpha_{01}(0)e^{-(1-\eta)\gamma t}\\
+		\alpha_{10}(0)e^{-(1-\eta)\gamma t} & \alpha_{11}(0)
+	\end{pmatrix}.
+	\label{eq:single_qubit_dephasing_solution}
+\end{equation}
+
+In particular, for $\rho(0)=\ket{+}\!\bra{+}$ one has $\alpha_{jk}=1/2 \,\forall j,k$, hence
+\begin{equation}
+	\rho_{+}(t)=
+	\begin{pmatrix}
+		\frac{1}{2} & \frac{1}{2}e^{-(1-\eta)\gamma t}\\[2pt]
+		\frac{1}{2}e^{-(1-\eta)\gamma t} & \frac{1}{2}
+	\end{pmatrix},
+	\qquad
+	\rho_{+}(t\to\infty)=\frac{\id_2}{2}.
+\end{equation}
+
+Since the channel acts independently on the two qubits,
+\begin{equation}
+	\rho_{++}(t)
+	=
+	e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma}t}\!\left[\ket{++}\!\bra{++}\right]
+	=
+	\rho_{+}(t)\otimes\rho_{+}(t),
+\end{equation}
+where $\rho_{+}(t)$ is given in Eq.~\eqref{eq:single_qubit_dephasing_solution}.
+In the computational basis ordered as $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$, this yields
+\begin{equation}
+	\rho_{++}(t)
+	=
+	\frac{1}{4}
+	\begin{pmatrix}
+		1 & e^{-(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & e^{-2(1-\eta)\gamma t}\\
+		e^{-(1-\eta)\gamma t} & 1 & e^{-2(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t}\\
+		e^{-(1-\eta)\gamma t} & e^{-2(1-\eta)\gamma t} & 1 & e^{-(1-\eta)\gamma t}\\
+		e^{-2(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & 1
+	\end{pmatrix}.
+	\label{eq:rho_pp_dephasing}
+\end{equation}
+
+We now apply the collective operator $\Cp=\mathrm{diag}(-\sqrt{2},0,0,\sqrt{2})$, used to model the $+$ jump channel. Only the $\{\ket{00},\ket{11}\}$ block survives, and one finds
+
+\begin{equation}
+		C_+\,\rho_{++}(t)\,C_+^\dagger
+		=
+		\frac{1}{2}
+		\begin{pmatrix}
+			1 & 0 & 0 & -e^{-2(1-\eta)\gamma t}\\
+			0 & 0 & 0 & 0\\
+			0 & 0 & 0 & 0\\
+			-e^{-2(1-\eta)\gamma t} & 0 & 0 & 1
+	\end{pmatrix}
+	\label{eq:LHS_result_Cplus}
+\end{equation}
+which is supported on the even subspace.
+
+At $t=0$,
+\begin{equation}
+	C_+\,\rho_{++}(0)\,C_+^\dagger
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 0 & 0 & -1\\
+		0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\
+		-1 & 0 & 0 & 1
+	\end{pmatrix}
+	=
+	\ket{\phi_-}\!\bra{\phi_-}.
+\end{equation}
+
+We now compute the right-hand side
+\begin{equation}
+	e^{\mathcal{L}^{(2)}_{\gamma}t}\!\left[\ket{\phi_-}\!\bra{\phi_-}\right],
+\end{equation}
+and show that it matches the expression obtained for the LHS.
+
+The corresponding Liouvillian act as:
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(2)}_{\gamma}[\rho(t)]
+	=\frac{\gamma}{2}\Big(\mathcal{D}[\hat C_+]\rho(t)+\mathcal{D}[\hat C_-]\rho(t)\Big),
+	\label{eq:Liouv_collective_RHS}
+\end{equation}
+
+Since $\ket{\phi_-}$ has even $z$-parity, one has $\hat C_- \ket{\phi_-}=0$, hence
+\begin{equation}
+	\mathcal{D}[\hat C_-]\big(\ket{\phi_-}\!\bra{\phi_-}\big)=0,
+\end{equation}
+and the dynamics reduces to the $+$ channel.
+
+Using \eqref{eq:parity_def}
+the dissipator can be rewritten as
+\begin{align}
+	\mathcal{D}[\hat C_\pm]\rho
+	&=\hat C_\pm \rho \hat C_\pm
+	-\frac{1}{2}\big\{(\id\pm\Pi_z),\rho\big\}\nonumber\\
+	&=\hat C_\pm \rho \hat C_\pm
+	-\rho
+	\mp\frac{1}{2}\big(\Pi_z\rho+\rho\Pi_z\big).
+	\label{eq:dissipator_with_parity}
+\end{align}
+For parity-preserving states (block-diagonal with respect to even/odd parity) one has
+$[\rho,\Pi_z]=0$. In the even subspace $\mathrm{span}\{\ket{00},\ket{11}\}$, $\Pi_z=+\id$,
+hence $\Pi_z\rho+\rho\Pi_z=2\rho$ and therefore
+\begin{equation}
+	\mathcal{D}[\hat C_+]\rho
+	=\hat C_+ \rho \hat C_+-2\rho
+	\qquad \text{(even subspace)}.
+	\label{eq:Dplus_even}
+\end{equation}
+
+Restricting to the even basis $\{\ket{00},\ket{11}\}$, define the reduced $2\times2$ state
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00,00}(t) & \alpha_{00,11}(t)\\
+		\alpha_{11,00}(t) & \alpha_{11,11}(t)
+	\end{pmatrix}.
+\end{equation}
+In this basis,
+\begin{equation}
+	\tilde C_+
+	=\frac{1}{\sqrt{2}}
+	\begin{pmatrix}
+		-2 & 0\\
+		0 & +2
+	\end{pmatrix}
+	=\sqrt{2}\,\tilde\sigma_z,
+	\qquad
+	\tilde\sigma_z=
+	\begin{pmatrix}
+		-1&0\\
+		0&+1
+	\end{pmatrix}.
+\end{equation}
+Using Eq.~\eqref{eq:Dplus_even}, the reduced equation of motion becomes
+\begin{align}
+	\dot{\tilde\rho}(t)
+	&=\frac{\gamma}{2}\Big(\tilde C_+ \tilde\rho(t)\tilde C_+-2\tilde\rho(t)\Big)\nonumber\\
+	&=\frac{\gamma}{2}\Big(2\,\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z-2\tilde\rho(t)\Big)
+	=\gamma\Big(\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z-\tilde\rho(t)\Big).
+	\label{eq:reduced_ME_even}
+\end{align}
+Explicitly,
+\begin{equation}
+	\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z
+	=
+	\begin{pmatrix}
+		\alpha_{00,00}(t) & -\alpha_{00,11}(t)\\
+		-\alpha_{11,00}(t) & \alpha_{11,11}(t)
+	\end{pmatrix},
+\end{equation}
+so that
+\begin{equation}
+	\dot{\tilde\rho}(t)
+	=
+	\gamma
+	\begin{pmatrix}
+		0 & -2\alpha_{00,11}(t)\\
+		-2\alpha_{11,00}(t) & 0
+	\end{pmatrix}.
+\end{equation}
+Hence the populations are constants and the coherences decay as $e^{-2\gamma t}$:
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00,00}(0) & \alpha_{00,11}(0)e^{-2\gamma t}\\
+		\alpha_{11,00}(0)e^{-2\gamma t} & \alpha_{11,11}(0)
+	\end{pmatrix}.
+	\label{eq:reduced_solution_even}
+\end{equation}
+For $\tilde\rho(0)=\ket{\phi_-}\!\bra{\phi_-}$ one has
+\begin{equation}
+	\tilde\rho(0)=\frac{1}{2}
+	\begin{pmatrix}
+		1&-1\\
+		-1&1
+	\end{pmatrix},
+\end{equation}
+thus
+\begin{equation}
+	\tilde\rho(t)=\frac{1}{2}
+	\begin{pmatrix}
+		1&-e^{-2\gamma t}\\
+		-e^{-2\gamma t}&1
+	\end{pmatrix}.
+\end{equation}
+Embedding back into the full computational basis $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$ yields
+\begin{equation}
+		e^{\mathcal{L}^{(2)}_{\gamma}t}\!\left[\ket{\phi_-}\!\bra{\phi_-}\right]
+		=
+		\frac{1}{2}
+		\begin{pmatrix}
+			1&0&0&-e^{-2\gamma t}\\
+			0&0&0&0\\
+			0&0&0&0\\
+			-e^{-2\gamma t}&0&0&1
+	\end{pmatrix}
+	\label{eq:RHS_final_matrix}
+\end{equation}
+which matches the LHS expression upon the replacement $\gamma\mapsto(1-\eta)\gamma$ when interpreting
+$\mathcal{L}^{(2)}$ as the unmonitored part of the inefficient photodetection dynamics.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Analyzing evolution and jumps: odd-parity channel case}
+
+We now repeat the same computation for the negative channel.
+Explicitly,
+\begin{equation}
+	\Cm \cdot e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma} t}\!\left[\ket{++}\!\bra{++}\right]\cdot \Cm^\dagger
+	\label{eq:odd_channel_identity}
+\end{equation}
+
+The unmonitored generator can be written in terms of collective operators as
+\begin{equation}
+	\mathcal{L}^{(2)}_{(1-\eta)\gamma}[\rho_t]
+	=
+	\frac{(1-\eta)\gamma}{2}
+	\Big(
+	\mathcal{D}[\hat{C}_+]\rho_t
+	+
+	\mathcal{D}[\hat{C}_-]\rho_t
+	\Big),
+\end{equation}
+
+By $\Cm=\mathrm{diag}(0,-\sqrt{2},\sqrt{2},0)$, one obtains
+
+\begin{equation}
+	\Cm\,\rho_{++}(t)\,\Cm^\dagger
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		0&0&0&0\\
+		0&1&-e^{-2(1-\eta)\gamma t}&0\\
+		0&-e^{-2(1-\eta)\gamma t}&1&0\\
+		0&0&0&0
+	\end{pmatrix},
+	\label{eq:LHS_result_Cminus}
+\end{equation}
+which is supported on the odd subspace $\mathrm{span}\{\ket{01},\ket{10}\}$.
+
+At $t=0$,
+\begin{equation}
+	\Cm\,\rho_{++}(0)\,\Cm^\dagger
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		0&0&0&0\\
+		0&1&-1&0\\
+		0&-1&1&0\\
+		0&0&0&0
+	\end{pmatrix}
+	=
+	\ket{\psi_-}\!\bra{\psi_-}.
+\end{equation}
+We now compute the evolution starting from $\ket{\psi_-}$ under the same Liouvillian
+and show that it reproduces Eq.~\eqref{eq:LHS_result_Cminus}.
+
+Since $\ket{\psi_-}$ has odd $z$-parity, one has $\Cm\ket{\psi_-}=0$, hence
+\begin{equation}
+	\mathcal{D}[\Cp]\big(\ket{\psi_-}\!\bra{\psi_-}\big)=0,
+\end{equation}
+and the dynamics reduces to the minus channel.
+Restricting to the odd basis $\{\ket{01},\ket{10}\}$, define the reduced $2\times2$ state
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{01,01}(t) & \alpha_{01,10}(t)\\
+		\alpha_{10,01}(t) & \alpha_{10,10}(t)
+	\end{pmatrix}.
+\end{equation}
+For odd-parity states, the identity $\hat C_-^\dagger \hat C_-=\id-\Pi_z$ reduces to
+$\hat C_-^\dagger \hat C_-=2\cdot\id$ on the odd subspace.
+Therefore,
+\begin{equation}
+	\mathcal{D}[\hat C_-]\rho
+	=
+	\hat C_- \rho \hat C_- -2\rho
+	\qquad \text{(odd subspace)}.
+\end{equation}
+The reduced equation of motion becomes
+\begin{equation}
+	\dot{\tilde\rho}(t)	=(1-\eta)\gamma\Big(\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z-\tilde\rho(t)\Big).
+	\label{eq:reduced_ME_odd}
+\end{equation}
+Explicitly,
+\begin{equation}
+	\dot{\tilde\rho}(t)
+	=
+	(1-\eta)\gamma
+	\begin{pmatrix}
+		0 & -2\alpha_{01,10}(t)\\
+		-2\alpha_{10,01}(t) & 0
+	\end{pmatrix}.
+\end{equation}
+Hence the populations are constants and the coherences decay as $e^{-2(1-\eta)\gamma t}$:
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{01,01}(0) & \alpha_{01,10}(0)e^{-2(1-\eta)\gamma t}\\
+		\alpha_{10,01}(0)e^{-2(1-\eta)\gamma t} & \alpha_{10,10}(0)
+	\end{pmatrix}.
+	\label{eq:reduced_solution_odd}
+\end{equation}
+For $\tilde\rho(0)=\ket{\psi_-}\!\bra{\psi_-}$ one has
+\begin{equation}
+	\tilde\rho(t)=\frac{1}{2}
+	\begin{pmatrix}
+		1&-e^{-2(1-\eta)\gamma t}\\
+		-e^{-2(1-\eta)\gamma t}&1
+	\end{pmatrix}.
+\end{equation}
+Embedding back into the full computational basis yields
+\begin{equation}
+		e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma}t}\!\left[\ket{\psi_-}\!\bra{\psi_-}\right]
+		=
+		\frac{1}{2}
+		\begin{pmatrix}
+			0&0&0&0\\
+			0&1&-e^{-2(1-\eta)\gamma t}&0\\
+			0&-e^{-2(1-\eta)\gamma t}&1&0\\
+			0&0&0&0
+	\end{pmatrix}
+	\label{eq:RHS_final_matrix_odd}
+\end{equation}
+which matches Eq.~\eqref{eq:LHS_result_Cminus}. Hence Eq.~\eqref{eq:odd_channel_identity} is proven.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Ensemble-averaged quantities over trajectories}
+We now compute expectation values over the photodetection trajectories.
+Let $P_0(t)$ denote the probability of observing no click up to time $t$.
+Since total rate is 2$\gamma$, the waiting-time distribution is exponential and
+\begin{equation}
+	P_0(t)=e^{-2\gamma t},
+	\qquad
+	P_{\mathrm{click}}(t)=1-P_0(t)=1-e^{-2\gamma t}.
+\end{equation}
+
+The ensemble-averaged concurrence can be written as
+\begin{equation}
+	\mathbb{E}\!\left[\mathcal{C}(t)\right]
+	=
+	\mathbb{E}\!\left[\mathcal{C}(t)\,\big|\,\text{no-click}\right]P_0(t)
+	+
+	\mathbb{E}\!\left[\mathcal{C}(t)\,\big|\,\text{click}\right]P_{\mathrm{click}}(t).
+\end{equation}
+For the present dynamics, $\mathcal{C}=0$ along the no-click branch (the state remains separable),
+while $\mathcal{C}=1$ after the first click (the state is projected onto a Bell state). Hence
+\begin{equation}
+		\mathbb{E}\!\left[\mathcal{C}(t)\right]
+		=
+		1-e^{-2\gamma t}.
+\end{equation}
+
+We proceed similarly for the variance $\Delta J_z^2(t)$.
+Splitting the trajectories into the no-click part and the click part, one has
+\begin{equation}
+	\mathbb{E}\!\left[\Delta J_z^2(t)\right]
+	=
+	\mathbb{E}\!\left[\Delta J_z^2(t)\,\big|\,\text{no-click}\right]P_0(t)
+	+
+	\mathbb{E}\!\left[\Delta J_z^2(t)\,\big|\,\text{click}\right]P_{\mathrm{click}}(t).
+\end{equation}
+
+For an initial CSS state we see that the weights of even/odd sectors are
+\begin{equation}
+	P_{+}(\theta)=\sin^{4}\!\left(\frac{\theta}{2}\right)
+	+
+	\cos^{4}\!\left(\frac{\theta}{2}\right),
+	\qquad
+	P_{-}(\theta)=	2\sin^{2}\!\left(\frac{\theta}{2}\right)
+	\cos^{2}\!\left(\frac{\theta}{2}\right),
+	\qquad
+	P_{+}+P_{-}=1.
+\end{equation}
+Along the no-click branch the state stays equal (up to normalization) to the initial CSS, hence
+\begin{equation}
+	\Delta J_z^2(\text{no-click})
+	=
+	\frac{\sin^{2}\theta}{2}.
+\end{equation}
+After the first click, the state is projected onto the even-parity Bell sector with weight $P_{+}$
+or onto the odd-parity Bell sector with weight $P_{-}$; using
+\begin{equation}
+	\Delta J_z^2(\ket{\phi_\pm})=1,
+	\qquad
+	\Delta J_z^2(\ket{\psi_\pm})=0,
+\end{equation}
+one obtains
+\begin{equation}
+	\mathbb{E}\!\left[\Delta J_z^2(t)\,\big|\,\text{click}\right]
+	=
+	P_{+}(\theta)\cdot 1 + P_{-}(\theta)\cdot 0
+	=
+	P_{+}(\theta).
+\end{equation}
+Therefore
+\begin{equation}
+		\mathbb{E}\!\left[\Delta J_z^2(t)\right]
+		=
+		e^{-2\gamma t}\,\frac{\sin^{2}\theta}{2}
+		+
+		\left(1-e^{-2\gamma t}\right)\left[\sin^{4}\!\left(\frac{\theta}{2}\right)
+		+
+		\cos^{4}\!\left(\frac{\theta}{2}\right)\right].
+\end{equation}
+
+\subsection{Spin-squeezing}
+
+We want to evaluate the spin-squezing paramter. We start from the mean spin direction (MSD) of the post-click states generated from
+\(\ket{\mathrm{CSS,}\theta}\). We define the collective spin operators (for \(N=2\))
+\begin{equation}
+	\hat J_k \equiv \frac{1}{2}\left(\sigma_i^{(1)}+\sigma_i^{(2)}\right),
+	\qquad
+	i\in\{x,y,z\},
+\end{equation}
+and the mean spin direction as
+\begin{equation}
+	\mathbf{n}_0
+	\equiv
+	\frac{\langle \hat{\mathbf{J}} \rangle}{\left|\langle \hat{\mathbf{J}} \rangle\right|},
+	\qquad
+	\langle \hat{\mathbf{J}} \rangle
+	\equiv
+	\left(\expval{\hat J_x},\expval{\hat J_y},\expval{\hat J_z}\right).
+	\label{eq:MSD_def}
+\end{equation}
+
+For $N=2$, the Kitagawa--Ueda parameter is
+\begin{equation}
+	\xi_{KU}^2
+	\equiv
+	\frac{4}{N}\min_{\mathbf{n}_\perp}\big(\Delta \hat J_{\mathbf{n}_\perp}\big)^2
+	=
+	2\min_{\mathbf{n}_\perp}\big(\Delta \hat J_{\mathbf{n}_\perp}\big)^2,
+	\qquad
+	\hat J_{\mathbf{n}}\equiv \mathbf{n}\cdot\hat{\mathbf{J}},
+\end{equation}
+where the minimization is taken over directions orthogonal to the mean spin direction (MSD).
+If the MSD is not defined, i.e.\ $\langle \hat{\mathbf{J}}\rangle=\mathbf{0}$, we adopt the natural extension
+given by minimizing over all directions $\mathbf{n}$.
+
+We start from the trajectory decomposition.
+Along the no-click branch, the normalized conditional state remains equal to the initial CSS, hence
+\begin{equation}
+	\xi_{KU}^2\big(\text{no-click}\big)=1.
+	\label{eq:xi_no_click_CSS}
+\end{equation}
+This follows from the defining property of CSS states, for which the minimal transverse variance equals
+$N/4$, i.e.\ $\min_{\mathbf{n}_\perp}(\Delta \hat J_{\mathbf{n}_\perp})^2=N/4=1/2$ when $N=2$.
+
+We now compute $\xi_{KU}^2$ for the post-click states generated from $\ket{\mathrm{CSS,}\theta}$.
+We use the notation introduced in Eq.~\eqref{eq:cycles}:
+\begin{equation}
+	\ket{\tilde{\psi}_{\pm,\theta}}
+	=
+	\frac{
+		\sin^{2}\!\left(\frac{\theta}{2}\right)\ket{11}
+		\pm
+		\cos^{2}\!\left(\frac{\theta}{2}\right)\ket{00}
+	}{
+		\sqrt{
+			\sin^{4}\!\left(\frac{\theta}{2}\right)
+			+
+			\cos^{4}\!\left(\frac{\theta}{2}\right)
+		}
+	},
+	\qquad
+	\ket{\psi_\pm}=\frac{\ket{10}\pm\ket{01}}{\sqrt{2}}.
+\end{equation}
+We now consider the odd-parity Bell states, related to the $\Cm$ channel. Since every Bell state has vanishing expectation value for all spin components,\(\mathbf{n}_0\) is not defined for any post-click state. Therefore we have to minimize the variance all over the directions, and it is known that it is 0.
+Hence the odd-parity click channel yields $\xi_{KU}^2=0$, independently of $\theta$, and subsequent clicks
+do not change this value.
+
+\medskip
+
+We start from the even-parity post-click family $\ket{\tilde{\psi}_{\pm,\theta}}$ as defined in $\eqref{Post_click_CSS_C+}$. First, we compute \(\expval{\hat J_z}\), by setting
+\begin{equation}
+	A\equiv \sin^{2}\!\left(\frac{\theta}{2}\right),
+	\qquad
+	B\equiv \cos^{2}\!\left(\frac{\theta}{2}\right),
+	\qquad
+	\mathcal{N}\equiv A^{2}+B^{2},
+\end{equation}
+we obtain
+\begin{equation}
+	\expval{\hat J_z}_{\tilde{\psi}_{\pm,\theta}}
+	=
+	\bra{\tilde{\psi}_{\pm,\theta}}\hat J_z\ket{\tilde{\psi}_{\pm,\theta}}
+	=
+	\frac{1}{\mathcal{N}}
+	\left(
+	A^{2}\bra{11}\hat J_z\ket{11}
+	+
+	B^{2}\bra{00}\hat J_z\ket{00}
+	\right)
+	=
+	\frac{A^{2}-B^{2}}{A^{2}+B^{2}}.
+	\label{eq:Jz_even_raw}
+\end{equation}
+Since \(A^{2}-B^{2}=\sin^{4}(\theta/2)-\cos^{4}(\theta/2)=\sin^{2}(\theta/2)-\cos^{2}(\theta/2)=-\cos\theta\),
+we can rewrite Eq.~\eqref{eq:Jz_even_raw} as
+\begin{equation}
+	\boxed{
+		\expval{\hat J_z}_{\tilde{\psi}_{\pm,\theta}}
+		=
+		\frac{-\cos\theta}{\sin^{4}\!\left(\frac{\theta}{2}\right)+\cos^{4}\!\left(\frac{\theta}{2}\right)}.}
+	\label{eq:Jz_even_final}
+\end{equation}
+
+We now compute \(\expval{\hat J_x}\) and \(\expval{\hat J_y}\). They both map the even subspace \(\mathrm{span}\{\ket{00},\ket{11}\}\) into the odd subspace
+\(\mathrm{span}\{\ket{01},\ket{10}\}\) and viceversa. Since our state has support only on the even sector, both expectation values vanish.
+Hence the MSD is along the \(z\) axis whenever \(\cos\theta\neq 0\):
+\begin{equation}
+	\boxed{
+		\mathbf{n}_0(\tilde{\psi}_{\pm,\theta})
+		=
+		\operatorname{sgn}(-\cos\theta)\,\hat{\mathbf{z}},
+		\qquad
+		\text{for }\theta\neq \frac{\pi}{2}.}
+	\label{eq:MSD_even}
+\end{equation}
+At \(\theta=\pi/2\) one has \(\expval{\hat J_z}=0\) and therefore \(\left|\langle \hat{\mathbf{J}} \rangle\right|=0\),
+so \(\mathbf{n}_0\) is not defined.
+
+In the $xy$ plane we introduce the rotated operator
+\begin{equation}
+	\hat J_{\alpha}
+	=
+	\cos\alpha\,\hat J_x+\sin\alpha\,\hat J_y,
+	\qquad
+	\alpha\in[0,2\pi).
+	\label{eq:Jalpha_def}
+\end{equation}
+Its variance can be written in terms of the $2\times2$ covariance matrix in the $(x,y)$ sector.
+Explicitly,
+\begin{equation}
+	(\Delta J_{\alpha})^{2}
+	=
+	\cos^{2}\alpha\,(\Delta J_x)^{2}
+	+
+	\sin^{2}\alpha\,(\Delta J_y)^{2}
+	+
+	\sin\alpha\cos\alpha
+	\left(
+	\frac{1}{2}\expval{\{\hat J_x,\hat J_y\}}
+	-
+	\expval{\hat J_x}\expval{\hat J_y}
+	-
+	\expval{\hat J_y}\expval{\hat J_x}
+	\right),
+	\label{eq:var_Jalpha_general}
+\end{equation}
+that is
+\begin{equation}
+	(\Delta J_{\alpha})^{2}
+	=
+	\cos^{2}\alpha\,(\Delta J_x)^{2}
+	+
+	\sin^{2}\alpha\,(\Delta J_y)^{2}
+	+
+	\sin\alpha\cos\alpha
+	\left(
+	\frac{1}{2}\expval{\{\hat J_x,\hat J_y\}}
+	-
+	2\expval{\hat J_x}\expval{\hat J_y}
+	\right).
+	\label{eq:var_Jalpha_general_compact}
+\end{equation}
+
+In general, the minimization over $\alpha$ corresponds to taking the smallest eigenvalue of the
+transverse covariance matrix. By parity considerations one has $\expval{\hat J_x}=\expval{\hat J_y}=0$ on each post-click branch.
+Hence Eq.~\eqref{eq:var_Jalpha_general_compact} reduces to
+\begin{equation}
+	(\Delta J_{\alpha})^{2}
+	=
+	\cos^{2}\alpha\,(\Delta J_x)^{2}
+	+
+	\sin^{2}\alpha\,(\Delta J_y)^{2}.
+	\label{eq:var_Jalpha_diagonal}
+\end{equation}
+The minimum is then attained at one of the axes:
+\begin{equation}
+	\min_{\alpha}(\Delta J_{\alpha})^{2}
+	=
+	\min\!\big\{(\Delta J_x)^{2},(\Delta J_y)^{2}\big\}.
+	\label{eq:min_var_xy_axes}
+\end{equation}
+Therefore, for the present post-click states it is sufficient to compare $(\Delta J_x)^2$ and $(\Delta J_y)^2$,
+without scanning all transverse directions.
+
+We use the identities
+\begin{equation}
+	\hat J_x^2
+	=
+	\frac{1}{4}\Big[(\sigma_x^{(1)})^2+(\sigma_x^{(2)})^2+2\sigma_x^{(1)}\sigma_x^{(2)}\Big]
+	=
+	\frac{1}{2}\Big(\id+\sigma_x^{(1)}\sigma_x^{(2)}\Big),
+\end{equation}
+and similarly
+\begin{equation}
+	\hat J_y^2
+	=
+	\frac{1}{2}\Big(\id+\sigma_y^{(1)}\sigma_y^{(2)}\Big).
+\end{equation}
+Since $\ket{\tilde{\psi}_{\pm,\theta}}$ is supported on $\mathrm{span}\{\ket{00},\ket{11}\}$,
+we only need the action of $\sigma_x^{(1)}\sigma_x^{(2)}$ and $\sigma_y^{(1)}\sigma_y^{(2)}$ on that subspace.
+One has
+\begin{equation}
+	\sigma_x^{(1)}\sigma_x^{(2)}\ket{00}=\ket{11},
+	\qquad
+	\sigma_x^{(1)}\sigma_x^{(2)}\ket{11}=\ket{00},
+\end{equation}
+and
+\begin{equation}
+	\sigma_y^{(1)}\sigma_y^{(2)}\ket{00}=-\ket{11},
+	\qquad
+	\sigma_y^{(1)}\sigma_y^{(2)}\ket{11}=-\ket{00}.
+\end{equation}
+Hence
+\begin{equation}
+	\langle \sigma_x^{(1)}\sigma_x^{(2)}\rangle_{\tilde{\psi}_{\pm,\theta}}
+	=
+	\frac{\pm 2AB}{P_+},
+	\qquad
+	\langle \sigma_y^{(1)}\sigma_y^{(2)}\rangle_{\tilde{\psi}_{\pm,\theta}}
+	=
+	\frac{\mp 2AB}{P_+}.
+\end{equation}
+Since $\langle \hat J_x\rangle=\langle \hat J_y\rangle=0$, we obtain
+\begin{equation}
+	\Delta \hat J_x^2\big(\tilde{\psi}_{\pm,\theta}\big)
+	=
+	\langle \hat J_x^2\rangle
+	=
+	\frac{1}{2}\left(1\pm \frac{2AB}{P_+}\right)
+	=
+	\frac{(A\pm B)^2}{2P_+},
+\end{equation}
+and
+\begin{equation}
+	\Delta \hat J_y^2\big(\tilde{\psi}_{\pm,\theta}\big)
+	=
+	\langle \hat J_y^2\rangle
+	=
+	\frac{1}{2}\left(1\mp \frac{2AB}{P_+}\right)
+	=
+	\frac{(A\mp B)^2}{2P_+}.
+\end{equation}
+Therefore the minimal transverse variance is the same for both $\ket{\tilde{\psi}_{-,\theta}}$ and
+$\ket{\tilde{\psi}_{+,\theta}}$, because it is always given by the smaller between $(A+B)^2$ and $(A-B)^2$.
+Since $A,B\ge 0$, one has $(A-B)^2\le (A+B)^2$, hence
+\begin{equation}
+	\min_{\mathbf{n}_\perp}\big(\Delta \hat J_{\mathbf{n}_\perp}\big)^2_{\tilde{\psi}_{\pm,\theta}}
+	=
+	\frac{(A-B)^2}{2P_+}.
+\end{equation}
+For $N=2$ this yields
+\begin{equation}
+	\xi_{KU}^2\big(\tilde{\psi}_{\pm,\theta}\big)
+	=
+	2\cdot \frac{(A-B)^2}{2P_+}
+	=
+	\frac{(A-B)^2}{P_+}.
+	\label{eq:xi_even_click_general_AB}
+\end{equation}
+Using $A-B=\sin^{2}(\theta/2)-\cos^{2}(\theta/2)=-\cos\theta$ and $P_+=\sin^{4}(\theta/2)+\cos^{4}(\theta/2)$,
+we obtain the compact form
+\begin{equation}
+	\xi_{KU}^2\big(\tilde{\psi}_{\pm,\theta}\big)
+	=
+	\frac{\cos^{2}\theta}{\sin^{4}\!\left(\frac{\theta}{2}\right)+\cos^{4}\!\left(\frac{\theta}{2}\right)}.
+	\label{eq:xi_even_click_theta}
+\end{equation}
+
+We now compute the ensemble-averaged spin squeezing, following the same splitting used previously.
+We write
+\begin{equation}
+	\mathbb{E}\!\left[\xi_{KU}^2(t)\right]
+	=
+	\mathbb{E}\!\left[\xi_{KU}^2(t)\,\big|\,\text{no-click}\right]P_0(t)
+	+
+	\mathbb{E}\!\left[\xi_{KU}^2(t)\,\big|\,\text{click}\right]P_{\mathrm{click}}(t),
+	\qquad
+	P_{\mathrm{click}}(t)=1-P_0(t).
+\end{equation}
+In the present dynamics the no-click branch yields $\xi_{KU}^2=1$, cf.\ Eq.~\eqref{eq:xi_no_click_CSS}.
+Moreover, a click projects either onto the even sector with probability $P_+$ or onto the odd sector with
+probability $P_-$, where
+\begin{equation}
+	P_+=\sin^{4}\!\left(\frac{\theta}{2}\right)+\cos^{4}\!\left(\frac{\theta}{2}\right),
+	\qquad
+	P_-=\frac{1}{2}\sin^{2}\theta,
+	\qquad
+	P_++P_-=1.
+\end{equation}
+In the odd sector we have $\xi_{KU}^2=0$ while in the even sector we have Eq.~\eqref{eq:xi_even_click_theta}.
+Therefore
+\begin{equation}
+	\mathbb{E}\!\left[\xi_{KU}^2(t)\,\big|\,\text{click}\right]
+	=
+	P_+\,
+	\xi_{KU}^2\big(\tilde{\psi}_{\pm,\theta}\big)
+	+
+	P_- \cdot 0
+	=
+	P_+\,
+	\frac{\cos^{2}\theta}{P_+}
+	=
+	\cos^{2}\theta.
+\end{equation}
+Finally,
+\begin{equation}
+	\boxed{
+		\mathbb{E}\!\left[\xi_{KU}^2(t)\right]
+		=
+		P_0(t)\cdot 1
+		+
+		\big(1-P_0(t)\big)\cos^{2}\theta.}
+	\label{eq:xi_ensemble_avg_general}
+\end{equation}
+Using the same no-click probability as in the previous sections, $P_0(t)=e^{-2\gamma t}$,
+we obtain
+\begin{equation}
+	\boxed{
+		\mathbb{E}\!\left[\xi_{KU}^2(t)\right]
+		=
+		e^{-2\gamma t}
+		+
+		\big(1-e^{-2\gamma t}\big)\cos^{2}\theta.}
+	\label{eq:xi_ensemble_avg_explicit}
+\end{equation}
+
+For the special case $\theta=\pi/2$, i.e.\ $\ket{\mathrm{CSS},\theta}=\ket{++}$, one has $\cos^{2}\theta=0$ and
+\begin{equation}
+	\mathbb{E}\!\left[\xi_{KU}^2(t)\right]
+	=
+	e^{-2\gamma t},
+\end{equation}
+which decays to zero as $t\to\infty$, consistently with the fact that after the first click the state is
+confined to Bell states with vanishing minimal collective-spin variance.
+
+
+\section{Homodyne detection}
+\label{sec:homodyne}
+
+We now consider a diffusive unravelling of the same Markovian dynamics, obtained via homodyne detection.
+In this scheme the environment is continuously monitored and the measurement record is a real-valued photocurrent.
+The conditional state evolves stochastically, yet its ensemble average reproduces the GKSL master equation.
+
+We start from a generic set of collapse operators \(\{\hat C_k\}\).
+We denote by \(\rho^{(c)}(t)\) the normalized conditional state.
+We introduce independent Wiener increments \(\{dW_k(t)\}\) such that
+\begin{equation}
+	\mathbb{E}[dW_k(t)]=0,
+	\qquad
+	dW_k(t)\,dW_\ell(t)=\delta_{k\ell}\,dt.
+	\label{eq:ito_rules_homodyne}
+\end{equation}
+The detector efficiency is \(\eta\in[0,1]\).
+The local-oscillator (LO) phase \(\theta\) selects which field quadrature is measured.
+
+For each monitored channel \(k\), the infinitesimal homodyne record can be written as
+\begin{equation}
+	dY_k(t)
+	=
+	\sqrt{\eta}\,
+	\expval{
+		e^{-i\theta}\hat C_k
+		+
+		e^{i\theta}\hat C_k^\dagger
+	}_{t}\,dt
+	+
+	dW_k(t).
+	\label{eq:homodyne_record_general}
+\end{equation}
+The innovation process is therefore \(dW_k(t)=dY_k(t)-\sqrt{\eta}\,\expval{e^{-i\theta}\hat C_k+e^{i\theta}\hat C_k^\dagger}_t\,dt\).
+
+The corresponding It\^o stochastic master equation (SME) reads
+\begin{equation}
+	\frac{}{}
+	\begin{aligned}
+		d\rho^{(c)}
+		&=
+		-i[\hat H,\rho^{(c)}]\,dt
+		+
+		\sum_k \mathcal{D}[\hat C_k]\rho^{(c)}\,dt
+		+
+		\sqrt{\eta}\,
+		\sum_k
+		\mathcal{H}\!\left[e^{i\theta}\hat C_k\right]\rho^{(c)}\,dW_k(t),
+	\end{aligned}
+	\label{eq:SME_homodyne_general}
+\end{equation}
+where
+\begin{equation}
+	\mathcal{H}[\hat A]\rho
+	\equiv
+	\hat A\rho+\rho \hat A^\dagger
+	-
+	\Tr\!\left[(\hat A+\hat A^\dagger)\rho\right]\rho.
+	\label{eq:H_superoperator_def}
+\end{equation}
+By construction, the average \(\mathbb{E}[\,d\rho^{(c)}\,]\) reproduces the unconditional GKSL equation.
+
+We now specialize to our two-qubit dephasing model.
+We use the collective jump operators introduced in Eq.~\eqref{eq:Lindblad_operators},
+\begin{equation}
+	\hat C_\pm
+	=
+	\sqrt{\gamma}\,
+	\frac{\sigma_z^{(1)}\pm\sigma_z^{(2)}}{\sqrt{2}}.
+\end{equation}
+We monitor the two output channels associated with \(\hat C_+\) and \(\hat C_-\).
+The homodyne SME becomes
+\begin{equation}
+	\frac{}{}
+	\begin{aligned}
+		d\rho^{(c)}
+		&=
+		-i[\hat H,\rho^{(c)}]\,dt
+		+
+		\mathcal{D}[\hat C_+]\rho^{(c)}\,dt
+		+
+		\mathcal{D}[\hat C_-]\rho^{(c)}\,dt\\
+		&\quad
+		+
+		\sqrt{\eta}\,
+		\mathcal{H}\!\left[e^{i\theta}\hat C_+\right]\rho^{(c)}\,dW_+(t)
+		+
+		\sqrt{\eta}\,
+		\mathcal{H}\!\left[e^{i\theta}\hat C_-\right]\rho^{(c)}\,dW_-(t),
+	\end{aligned}
+	\label{eq:SME_homodyne_collective}
+\end{equation}
+with measurement records
+\begin{equation}
+	\begin{aligned}
+		dY_+(t)
+		&=
+		\sqrt{\eta}\,
+		\expval{e^{-i\theta}\hat C_+ + e^{i\theta}\hat C_+^\dagger}_{t}\,dt
+		+
+		dW_+(t),\\
+		dY_-(t)
+		&=
+		\sqrt{\eta}\,
+		\expval{e^{-i\theta}\hat C_- + e^{i\theta}\hat C_-^\dagger}_{t}\,dt
+		+
+		dW_-(t).
+	\end{aligned}
+	\label{eq:homodyne_records_collective}
+\end{equation}
+
+A crucial simplification occurs in our model because \(\hat C_\pm\) are Hermitian:
+\(\hat C_\pm^\dagger=\hat C_\pm\).
+Then Eq.~\eqref{eq:homodyne_record_general} reduces to
+\begin{equation}
+	dY_\pm(t)
+	=
+	2\sqrt{\eta}\,\cos\theta\,
+	\expval{\hat C_\pm}_{t}\,dt
+	+
+	dW_\pm(t).
+	\label{eq:homodyne_record_hermitian}
+\end{equation}
+Therefore, the amount of information in the record is controlled by \(\cos\theta\).
+
+If \(\theta=0\), the record depends on \(\expval{\hat C_\pm}_t\).
+The SME is nonlinear through the innovation term \(\mathcal{H}[\hat C_\pm]\rho^{(c)}\).
+This corresponds to an informational measurement of the collective observables \(\hat C_\pm\).
+
+If \(\theta=\pi/2\), one has \(\cos\theta=0\) and hence
+\begin{equation}
+	dY_\pm(t)=dW_\pm(t).
+	\label{eq:homodyne_record_pihalf}
+\end{equation}
+The record contains only noise and no information about the system state.
+In this case the innovation superoperator becomes a commutator.
+Indeed, for Hermitian \(\hat C\) one has
+\begin{equation}
+	\mathcal{H}[i\hat C]\rho
+	=
+	i[\hat C,\rho],
+	\label{eq:H_iC_commutator}
+\end{equation}
+since \((i\hat C)^\dagger=-i\hat C\) and \(\Tr[(i\hat C-i\hat C)\rho]=0\).
+Therefore, at \(\theta=\pi/2\) Eq.~\eqref{eq:SME_homodyne_collective} becomes
+\begin{equation}
+	\frac{}{}
+	\begin{aligned}
+		d\rho^{(c)}
+		&=
+		-i[\hat H,\rho^{(c)}]\,dt
+		+
+		\mathcal{D}[\hat C_+]\rho^{(c)}\,dt
+		+
+		\mathcal{D}[\hat C_-]\rho^{(c)}\,dt\\
+		&\quad
+		+
+		i\sqrt{\eta}\,[\hat C_+,\rho^{(c)}]\,dW_+(t)
+		+
+		i\sqrt{\eta}\,[\hat C_-,\rho^{(c)}]\,dW_-(t).
+	\end{aligned}
+	\label{eq:SME_homodyne_pihalf}
+\end{equation}
+This is a random-unitary backaction driven by Wiener noise, with a state-independent measurement record.
+It is the diffusive analogue of the photodetection case with unitary jumps: monitoring does not reveal information, yet it induces stochastic phase kicks.
+
+Equation~\eqref{eq:SME_homodyne_collective} provides the starting point for the analysis of homodyne-based
+entangling unravellings in the two-qubit dephasing model, by selecting the monitored quadrature through \(\theta\)
+and by exploiting collective channels \(\hat C_\pm\).
+		
+In our model \(\hat C_\pm^\dagger=\hat C_\pm\).
+Hence
+\begin{equation}
+	\hat A_\pm+\hat A_\pm^\dagger
+	=
+	\left(e^{i\theta}+e^{-i\theta}\right)\hat C_\pm
+	=
+	2\cos\theta\,\hat C_\pm.
+	\label{eq:Aplus_hermitian}
+\end{equation}
+%Substituting Eq.~\eqref{eq:Aplus_hermitian} into Eq.~\eqref{eq:H_def} 
+This yields to the following decomposition:
+\begin{equation}
+	\boxed{
+		\mathcal{H}[e^{i\theta}\hat C]\rho
+		=
+		\cos\theta\Big(\{\hat C,\rho\}-2\expval{\hat C}\rho\Big)
+		+
+		i\sin\theta\,[\hat C,\rho],
+		\qquad
+		(\hat C^\dagger=\hat C).
+	}
+	\label{eq:H_decomposition_cos_sin}
+\end{equation}
+Two limits are particularly relevant.
+
+If \(\theta=0\), one obtains the informational (nonlinear) term
+\begin{equation}
+	\mathcal{H}[\hat C]\rho
+	=
+	\{\hat C,\rho\}-2\expval{\hat C}\rho.
+	\label{eq:H_theta0}
+\end{equation}
+
+If \(\theta=\pi/2\), one obtains a purely commutator form
+\begin{equation}
+	\mathcal{H}[i\hat C]\rho
+	=
+	i[\hat C,\rho],
+	\label{eq:H_theta_pi2}
+\end{equation}
+which is linear in \(\rho\).
+
+If \([\rho,\Pi_z]=0\) at some time, then
+\begin{equation}
+	[\mathcal{D}[\hat C_\pm]\rho,\Pi_z]=0,
+	\qquad
+	[\mathcal{H}[e^{i\theta}\hat C_\pm]\rho,\Pi_z]=0.
+	\label{eq:parity_invariance_D_H}
+\end{equation}
+Hence the homodyne SME preserves the block structure in the even/odd parity sectors.
+
+\begin{comment}
+Finally, the parity sectors contain dark subspaces for the collective channels.
+In the odd subspace one has \(\Pi_z=-\id\), thus Eq.~\eqref{eq:Cpm_squared} gives \(\hat C_+^2=0\).
+Since \(\hat C_+\) is Hermitian, \(\hat C_+=0\) on the odd subspace.
+Similarly, \(\hat C_-=0\) on the even subspace.
+Therefore,
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{align}
+	\hat C_+\rho=\rho\hat C_+=0
+	\quad &\text{for }\rho\ \text{supported on the odd sector}, \\
+	\hat C_-\rho=\rho\hat C_-=0
+	\quad &\text{for }\rho\ \text{supported on the even sector}.
+	\label{eq:dark_subspaces_Cpm}
+\end{align}
+This immediately implies that the corresponding dissipator and innovation terms vanish on that sector.
+\end{comment}
+
+\subsection{Pure-state unravelling: homodyne SSE}
+
+For \(\eta=1\), if the initial conditional state is pure, it remains pure.
+We set \(\rho^{(c)}=\ket{\psi}\!\bra{\psi}\) and write an It\^o stochastic Schr\"odinger equation (SSE).
+For each channel \(k\) we define \(\hat A_k=e^{i\theta}\hat C_k\) and
+\begin{equation}
+	m_k \equiv \expval{\hat A_k+\hat A_k^\dagger}.
+\end{equation}
+A normalized SSE reproducing Eq.~\eqref{eq:SME_homodyne_general} is
+\begin{equation}
+	\begin{aligned}
+		d\ket{\psi}
+		&=
+		\left[
+		-i\hat H
+		-\frac{1}{2}\sum_k \hat C_k^\dagger \hat C_k
+		+\frac{1}{2}\sum_k m_k\,\hat A_k
+		-\frac{1}{8}\sum_k m_k^2
+		\right]\ket{\psi}\,dt
+		+
+		\sum_k
+		\left(\hat A_k-\frac{m_k}{2}\right)\ket{\psi}\,dW_k(t).
+	\end{aligned}
+	\label{eq:SSE_homodyne_general}
+\end{equation}
+For Hermitian \(\hat C_k\) one has \(m_k=2\cos\theta\,\expval{\hat C_k}\).
+In particular, at \(\theta=\pi/2\) one has \(m_k=0\) and the stochastic term becomes proportional to \(i\hat C_k\).
+
+Equation~\eqref{eq:SSE_homodyne_general} will be used to propagate pure initial states such as \(\ket{++}\),
+and to connect the wavefunction picture to the density-operator SME via
+\(d\rho^{(c)}=d\ket{\psi}\!\bra{\psi}+\ket{\psi}\,d\bra{\psi}+d\ket{\psi}\,d\bra{\psi}\).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{comment}
+\subsection{State by state transitions - properties}
+Let us collect both the post-jump states and the unconditional jump probabilities over a time step \(\mathrm{d}t\):
+\begin{center}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|c|c}
+		Pre-jump state & Channel & Post-jump state and probability \\ \hline
+		\(\ket{++}\) & \(C_+\) & \(-\ket{\phi_-}\), \(\;p_+=\gamma\mathrm{d}t\) \\
+		\(\ket{++}\) & \(C_-\) & \(-\ket{\psi_-}\), \(\;p_-=\gamma\mathrm{d}t\) \\ \hline
+		\(-\ket{\phi_-}\) & \(C_+\) & \(\ket{\phi_+}\), \(\;p_+=2\gamma\mathrm{d}t\) \\
+		\(\ket{\phi_+}\) & \(C_+\) & \(-\ket{\phi_-}\), \(\;p_+=2\gamma\mathrm{d}t\) \\
+		(even sector) & \(C_-\) & forbidden, \(\;p_-=0\) \\ \hline
+		\(-\ket{\psi_-}\) & \(C_-\) & \(\ket{\psi_+}\), \(\;p_-=2\gamma\mathrm{d}t\) \\
+		\(\ket{\psi_+}\) & \(C_-\) & \(-\ket{\psi_-}\), \(\;p_-=2\gamma\mathrm{d}t\) \\
+		(odd sector) & \(C_+\) & forbidden, \(\;p_+=0\)
+	\end{tabular}
+\end{center}
+The selection rule is a direct consequence of \([C_\pm,\Pi_z]=0\): jumps cannot mix parity sectors. Equation~\eqref{eq:rate_identity} makes this quantitative. Thus, once the first click has selected a parity subspace, only the corresponding channel can ever fire; conditioned on a click, the state update within that sector is deterministic as in \eqref{eq:cycles}.
+
+Let's analyze the variances within each channel's cycle. For Bell states the correlation matrix is diagonal:
+\[
+\expval*{\hat\sigma_\alpha^{(1)}\!\otimes \hat\sigma_\alpha^{(2)}}=
+\begin{cases}
+	diag(+1, -1, +1) & \text{for }\ket{\phi_+}\ \text{with }\alpha=x,y,z,\\
+	diag(-1, +1, +1) & \text{for }\ket{\phi_-},\\
+	diag(+1, +1, -1) & \text{for }\ket{\psi_+},\\
+	diag(-1, -1, -1) & \text{for }\ket{\psi_-}.
+\end{cases}
+\]
+Using
+\[
+\hat J_\alpha^2=\tfrac{1}{2}\Big(\hat{\id}+\hat\sigma_\alpha^{(1)}\!\otimes \hat\sigma_\alpha^{(2)}\Big),
+\qquad \expval*{\hat J_\alpha}=0\ \text{for Bell states},
+\]
+one gets
+\[
+\Delta J_\alpha^2=\expval*{\hat J_\alpha^2}
+=\tfrac{1}{2}\Big(1+\expval*{\hat\sigma_\alpha^{(1)}\!\otimes \hat\sigma_\alpha^{(2)}}\Big).
+\]
+\medskip
+So we summarize in a table of variances \(\Delta J_\alpha^2\), for the two cycles):
+\[
+\begin{array}{c|ccc}
+	\text{state} & \Delta J_x^2 & \Delta J_y^2 & \Delta J_z^2\\
+	\hline
+	\ket{\phi_-} & 0 & 1 & 1\\
+	\ket{\phi_+} & 1 & 0 & 1\\
+	\hline
+	\ket{\psi_-} & 0 & 0 & 0\\
+	\ket{\psi_+} & 1 & 1 & 0
+\end{array}
+\]	
+
+\end{comment}
+
+
+
+
+
+
+

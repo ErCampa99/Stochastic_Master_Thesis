@@ -1,0 +1,36 @@
+\chapter{Appendix}
+\label{chapter:appendix}
+
+\section{Unitary invariance of Lindblad operators}
+
+Let $U$ be a $i \times i$ unitary matrix acting on the vector of the collapsing operators $\hat{C}_i$. We want to prove that:
+\begin{equation*} \label{First identity}
+    \sum_i \mathcal{D} \left[ \hat{C}_i \right] = \sum_i \mathcal{D} \left[ \sum_j U_{ij} \hat{C}_j \right] 
+\end{equation*}
+
+First, we're going to explicit the dissipation superoperator in the r.h.s:
+
+\begin{equation*} 
+\sum_i \mathcal{D} \left( \sum_j U_{ij} \hat{C}_j \right) \varrho = \sum_i \left[ \sum_{j,k} U_{ij} \hat{C}_j \varrho \left(U_{ik} \hat{C}_k\right)^{\dagger} + \dfrac{1}{2} \Bigg\{ \sum_{j,k} \left(U_{ij} \hat{C}_j\right)^{\dagger} \left(U_{ik} \hat{C}_k\right) , \varrho \Bigg\} \right] =
+\end{equation*}
+
+We may bring the summation over i inside and group the terms involving the unitary matrix:
+
+\begin{equation*} 
+= \sum_{j,k} \left[ \sum_i  \left(U_{ij}U_{ki}^{*}\right)\hat{C}_j \varrho  \hat{C}_k^{\dagger} + \dfrac{1}{2} \Bigg\{ \sum_i \left(U_{ji}^{*}U_{ik}\right) \hat{C}^{\dagger}_j \hat{C}_k , \varrho \Bigg\} \right]
+\end{equation*}
+
+Since $U U^{\dagger} = U^{\dagger} U = I$ we have that: $ \sum_i\left(U_{ij}U_{ki}^{*}\right) = \sum_i\left(U_{ji}^{*}U_{ik}\right) = \delta_{j,k}$ so:
+
+\begin{equation*} 
+= \sum_{j} \hat{C}_j \varrho  \hat{C}_j^{\dagger} + \dfrac{1}{2} \Bigg\{ \hat{C}^{\dagger}_j \hat{C}_j , \varrho \Bigg\}  = \sum_j \mathcal{D} \left[ \hat{C}_j \right] \quad \blacksquare
+\end{equation*}
+
+
+Applied in our system, the Lindblad master equation transforms as:
+
+\begin{equation*}
+    d \varrho = -i \left[ H, \varrho\right] + \gamma \mathcal{D}\left[\sigma_{z}^{(1)}\right]\varrho+\gamma \mathcal{D}\left[\sigma_{z}^{(2)}\right]\varrho = -i \left[ H, \varrho\right] + \gamma \mathcal{D}\left[ \dfrac{\sigma_{z}^{(1)}+\sigma_{z}^{(2)}}{\sqrt{2}}\right]\varrho+\gamma \mathcal{D}\left[ \dfrac{\sigma_{z}^{(1)}-\sigma_{z}^{(2)}}{\sqrt{2}}\right]\varrho
+\end{equation*}
+
+Last identity follows from applying the unitary matrix related to Hadamard $H=\dfrac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}$ to the vector $ \left( \sigma_{z}^{(1)}, \sigma_{z}^{(2)} \right)^{T}$

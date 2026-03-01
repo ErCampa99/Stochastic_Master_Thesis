@@ -1,0 +1,75 @@
+% =========================
+% Frequently-used shortcuts
+% =========================
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Old-Commands
+\newcommand{\mbeq}{\overset{!}{=}}
+\newcommand\lreqn[2]{\noindent\makebox[\textwidth]{$\displaystyle#1$\hfill(#2)}\vspace{2ex}}
+\newcommand*{\bigchi}{\mbox{\Large$\chi$}}% big chi
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+\newcommand{\D}[1]{\mathcal{D}\!\left[#1\right]}
+\newcommand{\liouvillian}{\mathcal{L}}  %Liouvilliano
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Collapsing operators
+\newcommand{\Cp}{\hat C_+}
+\newcommand{\Cm}{\hat C_-}
+
+\newcommand{\Cpdag}{\hat C_+^\dagger}
+\newcommand{\Cmdag}{\hat C_-^\dagger}
+
+\newcommand{\Cpdnd}{\hat C_+^\dagger\hat C_+}
+\newcommand{\Cmdnd}{\hat C_-^\dagger\hat C_-}
+
+% Identity and time step
+\newcommand{\id}{\mathds{1}}
+\newcommand{\dt}{\delta t}
+\newcommand{\Iddt}{\id\,\dt}
+
+% Pauli (generic)
+\newcommand{\sx}{\sigma_x}
+\newcommand{\sy}{\sigma_y}
+\newcommand{\sz}{\sigma_z}
+
+% Pauli on qubit i
+\newcommand{\sxi}[1]{\sigma_x^{(#1)}}
+\newcommand{\syi}[1]{\sigma_y^{(#1)}}
+\newcommand{\szi}[1]{\sigma_z^{(#1)}}
+
+% Collective spin operators (hatted)
+\newcommand{\Jx}{\hat J_x}
+\newcommand{\Jy}{\hat J_y}
+\newcommand{\Jz}{\hat J_z}
+\newcommand{\Jp}{\hat J_{+}}
+\newcommand{\Jm}{\hat J_{-}}
+
+% Two-qubit parity + projectors
+\newcommand{\Piz}{\Pi_z}
+\newcommand{\Pizdef}{\szi{1}\szi{2}}
+\newcommand{\Pp}{\Pi_{+}}
+\newcommand{\Pm}{\Pi_{-}}
+\newcommand{\Ppdef}{\frac{1}{2}\qty(\id+\Piz)}
+\newcommand{\Pmdef}{\frac{1}{2}\qty(\id-\Piz)}
+
+% Effective Hamiltonian and superoperators
+\newcommand{\Heff}{\hat H_{\mathrm{eff}}}
+\newcommand{\Liou}{\mathcal{L}}
+\newcommand{\Diss}[1]{\mathcal{D}\!\qty[#1]}      % dissipator as a map
+\newcommand{\Dact}[2]{\mathcal{D}\!\qty[#1]\,#2} % action on an operator/state
+
+% Tilde ket that does NOT stretch the delimiters
+\newcommand{\tket}[1]{\ket{\smash[t]{\tilde{#1}}}}
+
+% CSS shorthand (your notation)
+\newcommand{\CSS}[2]{\ket{#1,#2}}
+\newcommand{\CSSprod}[3]{%
+	\bigotimes_{i=1}^{#3}\left(
+	e^{i #2}\sin\frac{#1}{2}\ket{1}_i+\cos\frac{#1}{2}\ket{0}_i
+	\right)}
+
+% Spin-squeezing symbols (handy labels)
+\newcommand{\xiKU}{\xi_{\mathrm{KU}}^2}
+\newcommand{\xiW}{\xi_{\mathrm{W}}^2}
