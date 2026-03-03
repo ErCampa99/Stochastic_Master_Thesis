@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import qutip
 from qutip import *
 import pandas as pd
 import os

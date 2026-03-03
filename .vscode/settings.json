@@ -1,0 +1,16 @@
+{
+  "python.defaultInterpreterPath": "${workspaceFolder}\\Giga_SMT_venv\\Scripts\\python.exe",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.extraPaths": [
+    "${workspaceFolder}\\Codes"
+  ],
+  "files.exclude": {
+    "Giga_SMT_venv": true
+  },
+  "search.exclude": {
+    "Giga_SMT_venv": true
+  },
+  "git.exclude": {
+    "Giga_SMT_venv": true
+  }
+}

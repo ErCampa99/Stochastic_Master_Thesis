@@ -1,0 +1,24 @@
+{
+  "measurement": "homodyne",
+  "N": 2,
+  "state": "plusplus",
+  "theta": 1.5707963267948966,
+  "phi_state": 0.0,
+  "gamma": 1.0,
+  "phi1": 1.5707963267948966,
+  "phi2": 1.5707963267948966,
+  "etas": [
+    1.0,
+    0.8,
+    0.5,
+    0.3
+  ],
+  "ntraj": 100,
+  "chunk_size": 10,
+  "dt_T1": 0.01,
+  "t_end_T1": 10.0,
+  "columns": [
+    "Conc",
+    "Xi2_KU"
+  ]
+}

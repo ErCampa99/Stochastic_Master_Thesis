@@ -14,13 +14,12 @@
     0.5,
     0.3
   ],
-  "ntraj": 1000,
-  "chunk_size": 200,
+  "ntraj": 100,
+  "chunk_size": 10,
   "dt_T1": 0.01,
   "t_end_T1": 10.0,
   "columns": [
     "Conc",
-    "Xi2_KU",
-    "Variance_z"
+    "Xi2_KU"
   ]
 }

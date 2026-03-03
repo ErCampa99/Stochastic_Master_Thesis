@@ -1,15 +1,17 @@
 """
-Homodyne fluorescence simulation for N=2 (Jz setup).
-
-This script is intentionally standalone and does not modify existing notebooks/files.
-It reuses the operators/utilities already defined in `quantum_function2.py`.
+Homodyne single dephasing simulation for N=2 atoms, with Jz measurement as plus channel.
+This script simulates the homodyne detection of a collective dephasing process for two atoms (N=2) using the QuTiP library. The measurement is performed on the Jz operator, which corresponds to the collective spin along the z-axis. 
+The script allows for varying the measurement efficiency (eta) and other parameters, and it computes expectation values such as concurrence, xi^2_KU, and variance of Jz over time.
 """
 
+#Import standard libraries and set environment variables to limit thread usage
 import argparse
 import json
 import os
 from pathlib import Path
 
+# Set environment variables to limit the number of threads used by various libraries
+# This is important to prevent oversubscription when using multiprocessing in QuTiP.
 os.environ.setdefault("OMP_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
 os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
@@ -20,6 +22,7 @@ import numpy as np
 import pandas as pd
 from qutip import ket2dm, smesolve
 
+# Import custom utilities from quantum_function2.py
 from quantum_function2 import (
     H_free,
     PlusPlus,
@@ -34,20 +37,21 @@ from quantum_function2 import (
     xi_KU_solver,
 )
 
-
+# Define the default expectation value operators to compute during the simulation.
 DEFAULT_EOPS = [
     ("Conc", concurrence_for_solver_general),
     ("Xi2_KU", xi_KU_solver),
     ("Variance_z", Variance_z),
 ]
 
+# Define LaTeX labels for the quantities being plotted.
 LABELS = {
     "Conc": r"$\overline{\mathcal{C}}$",
     "Xi2_KU": r"$\overline{\xi^2_{KU}}$",
     "Variance_z": r"$\overline{\mathrm{Var}(J_z)}$",
 }
 
-
+# Utility function to parse the list of etas from a comma-separated string.
 def parse_etas(raw: str) -> list[float]:
     etas = [float(x.strip()) for x in raw.split(",") if x.strip()]
     if not etas:
@@ -57,7 +61,7 @@ def parse_etas(raw: str) -> list[float]:
             raise ValueError(f"Invalid eta={eta}. Each eta must be in [0, 1].")
     return etas
 
-
+# Utility function to build the initial state based on the specified kind and parameters.
 def build_initial_state(kind: str, theta: float, phi_state: float):
     if kind == "plusplus":
         return PlusPlus, np.pi / 2.0
@@ -67,8 +71,9 @@ def build_initial_state(kind: str, theta: float, phi_state: float):
         return css_2(theta, phi_state), theta
     raise ValueError(f"Unknown state kind: {kind}")
 
-
+# Function to run the homodyne simulation in chunks and average the results.
 def run_homodyne_avg(
+    #List of all parameters needed for the simulation
     rho0,
     times: np.ndarray,
     gamma: float,
@@ -81,22 +86,21 @@ def run_homodyne_avg(
     num_cpus: int,
     seed: int,
 ) -> np.ndarray:
-    if ntraj <= 0:
-        raise ValueError("ntraj must be > 0")
-    if chunk_size <= 0:
-        raise ValueError("chunk_size must be > 0")
-
+    
+    #Set options for the smesolve function, including parallelization settings based on the number of CPUs available.
     options = {
         "keep_runs_results": False,
-        "num_cpus": max(1, num_cpus),
+        "num_cpus": num_cpus-1,
         "map": "parallel" if num_cpus > 1 else "serial",
     }
 
+    #Setting up variables for the chunked simulation. We will accumulate a weighted sum of the expectation values across chunks, and keep track of how many trajectories have been simulated so far.
     weighted_sum = None
     done = 0
     chunk_id = 0
     rng = np.random.default_rng(seed)
 
+    #Run the simulation in chunks to manage memory usage and allow for progress tracking. Each chunk will simulate a portion of the total trajectories, and the results will be averaged together at the end.
     while done < ntraj:
         chunk_id += 1
         n_this = min(chunk_size, ntraj - done)
@@ -114,6 +118,7 @@ def run_homodyne_avg(
             options=options,
         )
 
+        #Extract the expectation values from the solution, convert them to real numbers if they are close to real, and accumulate a weighted sum for averaging.
         expect_chunk = np.asarray(sol.expect)
         expect_chunk = np.real_if_close(expect_chunk)
         expect_chunk = np.asarray(expect_chunk, dtype=float)
@@ -128,7 +133,7 @@ def run_homodyne_avg(
 
     return weighted_sum / float(ntraj)
 
-
+# Function to compute the theoretical concurrence curve for the given parameters. This is used for comparison with the simulation results.
 def theoretical_concurrence_curve(
     times: np.ndarray,
     gamma: float,
@@ -139,7 +144,7 @@ def theoretical_concurrence_curve(
         1.0 - np.exp(-gamma * eta * times / 2.0)
     )
 
-
+# Main function to parse arguments, run the simulation, and save results.
 def make_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="N=2 homodyne simulation (Jz)")
     parser.add_argument("--state", choices=["plusplus", "ee", "css"], default="plusplus")

@@ -1,0 +1,69 @@
+{
+  "measurement": "homodyne",
+  "N": 3,
+  "unitary_mode": "collective_diff_3",
+  "unitary_error": 3.843288851184695e-16,
+  "gamma": 1.0,
+  "omega": 0.0,
+  "eta_vector": [
+    1.0,
+    1.0,
+    1.0
+  ],
+  "ntraj": 10,
+  "chunk_size": 5,
+  "dt_T1": 0.05,
+  "t_end_T1": 1.0,
+  "num_cpus": 1,
+  "seed": 12345,
+  "states": {
+    "plusN": {
+      "kind": "plusN"
+    },
+    "css_pi_3": {
+      "kind": "css",
+      "theta": 1.0471975511965976,
+      "phi": 0.0
+    }
+  },
+  "columns": [
+    "Conc_pair_mean",
+    "Xi2_KU"
+  ],
+  "U_real": [
+    [
+      0.5773502691896258,
+      0.5773502691896258,
+      0.5773502691896258
+    ],
+    [
+      0.7071067811865475,
+      -0.7071067811865475,
+      0.0
+    ],
+    [
+      0.4082482904638631,
+      0.4082482904638631,
+      -0.8164965809277261
+    ]
+  ],
+  "U_imag": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "runtime_sec": 10.838618600013433,
+  "out_dir": "Codes\\Graphs\\Jz_N_Homodyne_Generic\\N=3_U=collective_diff_3_eta=1_1_1_batch_quick"
+}

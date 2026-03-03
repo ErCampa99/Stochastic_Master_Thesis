@@ -1,0 +1,41 @@
+{
+  "measurement": "photodetection",
+  "N": 2,
+  "state": "plusplus",
+  "gamma": 1.0,
+  "phi2_fixed": 1.5707963267948966,
+  "phi1_start": 0.0,
+  "phi1_stop": 1.5707963267948966,
+  "n_phi1": 11,
+  "phi1_values": [
+    0.0,
+    0.15707963267948966,
+    0.3141592653589793,
+    0.47123889803846897,
+    0.6283185307179586,
+    0.7853981633974483,
+    0.9424777960769379,
+    1.0995574287564276,
+    1.2566370614359172,
+    1.413716694115407,
+    1.5707963267948966
+  ],
+  "eta_plus": 1.0,
+  "eta_minus": 1.0,
+  "ntraj": 100,
+  "dt_T1": 0.01,
+  "t_end_T1": 10.0,
+  "num_cpus": 1,
+  "seed": 12345,
+  "best_by_C_max": {
+    "phi1_rad": 0.1570796327,
+    "phi1_over_pi": 0.05000000000652865,
+    "C_max": 1.0000000000000002,
+    "t_at_C_max": 7.78,
+    "t_at_C_max_over_T1": 7.78,
+    "C_final": 1.0,
+    "C_auc_over_tT1": 8.157499999999999
+  },
+  "runtime_sec": 24.29043580000871,
+  "out_dir": "Codes\\Graphs\\Jz_1_Photodetection_N2_phi1_scan\\state=plusplus_phi2=pi_2_nphi=11"
+}

@@ -1,0 +1,4 @@
+traj,n_jump_ch0_sum,n_jump_ch1,n_jump_ch2,n_jump_total,jump_rate_total
+1,0,0,0,0,0.0
+2,0,0,0,0,0.0
+3,0,1,1,2,2.2222222222222223

@@ -1,0 +1,37 @@
+[
+  {
+    "name": "n2_eta_minus_scan_quick",
+    "script": ".\\Codes\\Jz_2_Homodyne_N2_eta_minus_scan_final_state.py",
+    "status": "failed",
+    "exit_code": 1,
+    "duration_sec": 1284.2058211000112,
+    "out_dir": "",
+    "run_config_path": "",
+    "cmd": "'.\\Giga_SMT_venv\\Scripts\\python.exe' 'C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\Jz_2_Homodyne_N2_eta_minus_scan_final_state.py' --state plusplus --phi1 0.0 --phi2 0.0 --eta-minus-list 0,0.25,0.5,0.75,1 --ntraj 30 --chunk-size 10 --t-end 2.0 --dt 0.05 --num-cpus 1 --tag batch_quick",
+    "log_path": "C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\BatchReports\\n2_eta_minus_scan_quick.log",
+    "error": "KeyError: 'best_state'"
+  },
+  {
+    "name": "n3_generic_collective_diff_quick",
+    "script": ".\\Codes\\Jz_N_Homodyne_Generic.py",
+    "status": "ok",
+    "exit_code": 0,
+    "duration_sec": 46.229305300017586,
+    "out_dir": "C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\Graphs\\Jz_N_Homodyne_Generic\\N=3_U=collective_diff_3_eta=1_1_1_batch_quick",
+    "run_config_path": "C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\Graphs\\Jz_N_Homodyne_Generic\\N=3_U=collective_diff_3_eta=1_1_1_batch_quick\\run_config.json",
+    "cmd": "'.\\Giga_SMT_venv\\Scripts\\python.exe' 'C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\Jz_N_Homodyne_Generic.py' --N 3 --unitary-mode collective_diff_3 --states plusN,css_pi_3 --eta 1.0 --ntraj 30 --chunk-size 10 --t-end 2.0 --dt 0.05 --num-cpus 1 --tag batch_quick",
+    "log_path": "C:\\Users\\campa\\OneDrive\\Desktop\\Master Thesis\\Stochastic_Master_Thesis\\Codes\\BatchReports\\n3_generic_collective_diff_quick.log",
+    "measurement": "homodyne",
+    "N": 3,
+    "states": "plusN,css_pi_3",
+    "gamma": 1.0,
+    "omega": 0.0,
+    "eta_vector": "1.0,1.0,1.0",
+    "unitary_mode": "collective_diff_3",
+    "ntraj": 30,
+    "chunk_size": 10,
+    "t_end_T1": 2.0,
+    "dt_T1": 0.05,
+    "runtime_sec": 36.981702599994605
+  }
+]

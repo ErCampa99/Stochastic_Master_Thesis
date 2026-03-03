@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import qutip
 from qutip import *
 import pandas as pd
 import os
@@ -90,6 +91,11 @@ Sz = 0.5*sigmaz()  # Pauli Z operator for 2-level system (atom)
 Sz_1 = tensor(Sz, qeye(2))
 Sz_2 = tensor(qeye(2), Sz)
 Jz = Sz_1 + Sz_2
+
+#Collapsing operators for homodyne detection, N=2
+Cp = np.sqrt(0.5)*(tensor(sigmaz(), qeye(2)) + tensor(qeye(2), sigmaz()))  # Positive channel for homodyne detection
+Cm = np.sqrt(0.5)*(tensor(sigmaz(), qeye(2)) - tensor(qeye(2), sigmaz()))  # Negative channel for homodyne detection
+
 
 sigma_minus_1 = tensor(sm, I_2) # lowering operator for atom 1
 sigma_minus_2 = tensor(I_2, sm) # lowering operator for atom 2
@@ -735,14 +741,12 @@ def add_state_columns(
 
 
 
-def collapsing_operators(gamma, phi_1, phi_2, eta):
+def collapsing_operators_2(gamma, phi_1, phi_2, eta):
     c_ops = [
-        np.sqrt(gamma/2) * np.exp(1j * phi_1) * np.sqrt(eta) * (Sz_1+Sz_2),
-        np.sqrt(gamma/2) * np.exp(1j * phi_2) * np.sqrt(eta) * (Sz_1-Sz_2)
+        np.sqrt(gamma) * np.exp(1j * phi_1) * np.sqrt(eta) * Cp,
+        np.sqrt(gamma) * np.exp(1j * phi_2) * np.sqrt(eta) * Cm
     ]
     return c_ops
-
-
 
 
 
