@@ -1,0 +1,27 @@
+{
+  "measurement": "homodyne",
+  "model": "collective_symmetric_subspace",
+  "state": "plusN",
+  "gamma": 1.0,
+  "eta": 1.0,
+  "phi": 0.0,
+  "n_values": [
+    2,
+    13,
+    24,
+    35,
+    46,
+    56,
+    67,
+    78,
+    89,
+    100
+  ],
+  "ntraj": 50,
+  "dt_T1": 0.02,
+  "t_end_T1": 10.0,
+  "num_cpus": 1,
+  "seed": 12345,
+  "runtime_sec": 1413.8663131000358,
+  "out_dir": "Codes\\Graphs\\Jz_N_Homodyne_scaling_spin_only\\Nscan_2_100_count=10_ntraj=50_requested_N2_100"
+}

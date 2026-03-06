@@ -7,18 +7,31 @@
   "gamma": 1.0,
   "phi1": 1.5707963267948966,
   "phi2": 1.5707963267948966,
-  "etas": [
-    1.0,
-    0.8,
-    0.5,
-    0.3
+  "etas_all": [
+    [
+      1.0,
+      1.0
+    ]
   ],
-  "ntraj": 100,
-  "chunk_size": 10,
-  "dt_T1": 0.01,
-  "t_end_T1": 10.0,
+  "etas_1": [
+    1.0
+  ],
+  "etas_2": [
+    1.0
+  ],
+  "eta_index": null,
+  "use_slurm_array": false,
+  "ntraj": 2,
+  "num_cpus_requested": 1,
+  "num_cpus_per_eta": 1,
+  "eta_jobs": 1,
+  "joblib_backend": "loky",
+  "joblib_backend_used": "serial",
+  "dt_T1": 0.1,
+  "t_end_T1": 0.1,
   "columns": [
     "Conc",
-    "Xi2_KU"
+    "Xi2_KU",
+    "Norm_J"
   ]
 }

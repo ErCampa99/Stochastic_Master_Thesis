@@ -1,0 +1,40 @@
+{
+  "measurement": "homodyne",
+  "N": 2,
+  "state": "plusplus",
+  "gamma": 1.0,
+  "phi2_fixed": 0.0,
+  "phi1_start": 0.0,
+  "phi1_stop": 1.5707963267948966,
+  "n_phi1": 10,
+  "phi1_values": [
+    0.0,
+    0.17453292519943295,
+    0.3490658503988659,
+    0.5235987755982988,
+    0.6981317007977318,
+    0.8726646259971648,
+    1.0471975511965976,
+    1.2217304763960306,
+    1.3962634015954636,
+    1.5707963267948966
+  ],
+  "eta_plus": 1.0,
+  "eta_minus": 1.0,
+  "ntraj": 100,
+  "dt_T1": 0.01,
+  "t_end_T1": 10.0,
+  "num_cpus": 1,
+  "seed": 12345,
+  "best_by_C_max": {
+    "phi1_rad": 1.570796327,
+    "phi1_over_pi": 0.5000000000652864,
+    "C_max": 0.4947466526174309,
+    "t_at_C_max": 1.26,
+    "t_at_C_max_over_T1": 1.26,
+    "C_final": 0.47874291952890863,
+    "C_auc_over_tT1": 4.629293414995601
+  },
+  "runtime_sec": 857.400567100005,
+  "out_dir": "Codes\\Graphs\\Jz_2_Homodyne_N2_phi1_scan\\state=plusplus_phi2=0_nphi=10_phi2_0_scan"
+}

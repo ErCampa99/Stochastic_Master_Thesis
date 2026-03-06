@@ -536,7 +536,7 @@
            giveni={G\bibinitperiod}}}%
       }
       \list{institution}{1}{%
-        {Politecnico di Torino}%
+        {Università degli studi di Milano}%
       }
       \strng{namehash}{980c47c25c67d4d0110e44c02cace313}
       \strng{fullhash}{980c47c25c67d4d0110e44c02cace313}
@@ -553,22 +553,6 @@
       \field{title}{Encoding based on {QAM16} and {APSK16} constellations for quantum communications}
       \field{type}{Bachelor's thesis}
       \field{year}{2023}
-      \true{nocite}
-    \endentry
-    \entry{ParityNote01}{misc}{}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{note}{Internal note / draft PDF}
-      \field{title}{Parity selection by spin-$z$ jump operators acting on $\ket{++}$}
-      \true{nocite}
-    \endentry
-    \entry{SomeThoughts01}{misc}{}{}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labeltitlesource}{title}
-      \field{note}{Internal working notes / draft PDF}
-      \field{title}{Some thoughts (energy conservation, homodyne detection, SSE fragments)}
       \true{nocite}
     \endentry
   \enddatalist

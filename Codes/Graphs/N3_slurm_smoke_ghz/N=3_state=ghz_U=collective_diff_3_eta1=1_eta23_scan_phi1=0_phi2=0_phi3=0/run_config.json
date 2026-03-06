@@ -1,0 +1,70 @@
+{
+  "measurement": "homodyne",
+  "N": 3,
+  "state": "ghz",
+  "unitary_mode": "collective_diff_3",
+  "unitary_error": 3.843288851184695e-16,
+  "gamma": 1.0,
+  "omega": 0.0,
+  "eta1": 1.0,
+  "eta23_all": [
+    0.5
+  ],
+  "eta23_run": [
+    0.5
+  ],
+  "eta_index": null,
+  "use_slurm_array": false,
+  "phi1": 0.0,
+  "phi2": 0.0,
+  "phi3": 0.0,
+  "ntraj": 2,
+  "chunk_size": 1,
+  "dt_T1": 0.1,
+  "t_end_T1": 0.1,
+  "num_cpus": 1,
+  "seed": 12345,
+  "columns": [
+    "Xi2_KU",
+    "Xi2_W"
+  ],
+  "labels_saved": [
+    "0.5"
+  ],
+  "U_real": [
+    [
+      0.5773502691896258,
+      0.5773502691896258,
+      0.5773502691896258
+    ],
+    [
+      0.7071067811865475,
+      -0.7071067811865475,
+      0.0
+    ],
+    [
+      0.4082482904638631,
+      0.4082482904638631,
+      -0.8164965809277261
+    ]
+  ],
+  "U_imag": [
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "runtime_sec": 0.05367039999964618,
+  "out_dir": "Graphs\\N3_slurm_smoke_ghz\\N=3_state=ghz_U=collective_diff_3_eta1=1_eta23_scan_phi1=0_phi2=0_phi3=0"
+}

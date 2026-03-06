@@ -1,17 +1,17 @@
 [0] Config.pm:328> INFO - This is Biber 2.21
 [0] Config.pm:331> INFO - Logfile is 'main.blg'
-[280] biber-MSWIN64:342> INFO - === 
-[372] Biber.pm:421> INFO - Reading 'main.bcf'
-[607] Biber.pm:999> INFO - Using all citekeys in bib section 0
-[638] Biber.pm:4487> INFO - Processing section 0
-[656] Biber.pm:4678> INFO - Looking for bibtex file 'Bibliography.bib' for section 0
-[778] bibtex.pm:1713> INFO - LaTeX decoding ...
-[818] bibtex.pm:1519> INFO - Found BibTeX data source 'Bibliography.bib'
-[1068] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1068] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1068] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1068] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
-[1089] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
-[1103] bbl.pm:779> INFO - Output to main.bbl
-[1103] Biber.pm:132> WARN - ISBN '978-3-030-81700-5' in entry 'BerHilSaf21' is invalid - run biber with '--validate_datamodel' for details.
-[1103] Biber.pm:134> INFO - WARNINGS: 1
+[433] biber-MSWIN64:342> INFO - === 
+[614] Biber.pm:421> INFO - Reading 'main.bcf'
+[807] Biber.pm:999> INFO - Using all citekeys in bib section 0
+[840] Biber.pm:4487> INFO - Processing section 0
+[873] Biber.pm:4678> INFO - Looking for bibtex file 'Bibliography.bib' for section 0
+[983] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1040] bibtex.pm:1519> INFO - Found BibTeX data source 'Bibliography.bib'
+[1410] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1410] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1410] Biber.pm:4307> INFO - Sorting list 'none/global//global/global/global' of type 'entry' with template 'none' and locale 'en-US'
+[1410] Biber.pm:4313> INFO - No sort tailoring available for locale 'en-US'
+[1424] bbl.pm:676> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[1438] bbl.pm:779> INFO - Output to main.bbl
+[1439] Biber.pm:132> WARN - ISBN '978-3-030-81700-5' in entry 'BerHilSaf21' is invalid - run biber with '--validate_datamodel' for details.
+[1439] Biber.pm:134> INFO - WARNINGS: 1

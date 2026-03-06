@@ -1,0 +1,30 @@
+{
+  "measurement": "homodyne",
+  "N": 2,
+  "state": "plusplus",
+  "theta": 1.5707963267948966,
+  "phi_state": 0.0,
+  "gamma": 1.0,
+  "phi1": 0.0,
+  "phi2": 1.57079632679,
+  "eta_plus_fixed": 1.0,
+  "eta_minus_list": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "ntraj": 100,
+  "chunk_size": 100,
+  "dt_T1": 0.01,
+  "t_end_T1": 10.0,
+  "num_cpus": 1,
+  "seed": 12345,
+  "columns": [
+    "Conc",
+    "Xi2_KU"
+  ],
+  "runtime_sec": 651.1712149000086,
+  "out_dir": "Codes\\Graphs\\Jz_2_Homodyne_N2_eta_minus_scan_final_state\\state=plusplus_phi_1=0_phi_2=pi_2_phi_scan_100traj"
+}
