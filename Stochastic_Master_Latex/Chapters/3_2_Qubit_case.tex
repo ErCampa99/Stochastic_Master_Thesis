@@ -1711,6 +1711,381 @@ If \([\rho,\Pi_z]=0\) at some time, then
 \end{equation}
 Hence the homodyne SME preserves the block structure in the even/odd parity sectors.
 
+\subsection{No-information configurations in homodyne detection}
+\label{subsec:no_information_homodyne}
+
+We now discuss the notion of no-information unraveling in the homodyne scheme for the two-qubit case.
+As already shown above, after the unitary transformation of the local dephasing channels, the monitored operators are
+\begin{equation}
+	\hat C_\pm
+	=
+	\sqrt{\frac{\gamma}{2}}
+	\left(
+	\sigma_z^{(1)}\pm\sigma_z^{(2)}
+	\right).
+	\label{eq:Cpm_no_information_section}
+\end{equation}
+Since $\hat C_\pm=\hat C_\pm^\dagger$, the corresponding homodyne currents are
+\begin{equation}
+	dY_\pm(t)
+	=
+	\sqrt{\eta}\,
+	\expval{
+		e^{-i\phi_\pm}\hat C_\pm
+		+
+		e^{i\phi_\pm}\hat C_\pm^\dagger
+	}_t dt
+	+
+	dW_\pm(t),
+\end{equation}
+which simplify to
+\begin{equation}
+	dY_\pm(t)
+	=
+	2\sqrt{\eta}\,\cos\phi_\pm\,
+	\expval{\hat C_\pm}_t\,dt
+	+
+	dW_\pm(t).
+	\label{eq:homodyne_current_hermitian_noinfo}
+\end{equation}
+
+Equation~\eqref{eq:homodyne_current_hermitian_noinfo} gives a direct operational meaning to the informational content of the homodyne signal.
+Indeed, the state-dependent part of the current is proportional to $\cos\phi_\pm$.
+Hence, if $\phi_\pm=0$, the corresponding current contains a deterministic drift proportional to $\expval{\hat C_\pm}_t$ and is therefore informative.
+On the contrary, if $\phi_\pm=\pi/2$, one has $\cos\phi_\pm=0$, and the current reduces to
+\begin{equation}
+	dY_\pm(t)=dW_\pm(t).
+	\label{eq:pure_noise_current_noinfo}
+\end{equation}
+In this case, the record is pure noise and carries no information on the conditional state.
+This is precisely the no-information condition in the homodyne scheme.
+
+The same conclusion can be obtained directly from the stochastic term in the master equation.
+For $\phi_\pm=\pi/2$, one finds
+\begin{equation}
+	\mathcal{H}\!\left[-i\hat C_\pm\right]\rho
+	=
+	-i\hat C_\pm\rho+i\rho\hat C_\pm
+	=
+	-i[\hat C_\pm,\rho].
+	\label{eq:H_superoperator_no_information_final}
+\end{equation}
+Therefore, in the no-information case the stochastic contribution becomes purely commutator-like.
+The corresponding backaction is then purely random-unitary.
+The state is continuously perturbed by the measurement, but the observed current does not reveal any information on the conditional expectation values of the monitored operators.
+
+For $N=2$, and restricting to the four phase choices
+\begin{equation}
+	(\phi_+,\phi_-)\in
+	\left\{
+	(0,0),
+	\left(0,\frac{\pi}{2}\right),
+	\left(\frac{\pi}{2},0\right),
+	\left(\frac{\pi}{2},\frac{\pi}{2}\right)
+	\right\},
+\end{equation}
+one obtains four distinct informational configurations.
+
+We first consider the case $(\phi_+,\phi_-)=(0,0)$.
+In this configuration both currents are informative,
+\begin{equation}
+	dY_+(t)=2\sqrt{\eta}\,\expval{\hat C_+}_t\,dt+dW_+(t),
+	\qquad
+	dY_-(t)=2\sqrt{\eta}\,\expval{\hat C_-}_t\,dt+dW_-(t).
+\end{equation}
+Hence, both detectors extract information on the conditional state.
+The first current monitors the collective combination
+\(
+\sigma_z^{(1)}+\sigma_z^{(2)}
+\),
+while the second one monitors the difference
+\(
+\sigma_z^{(1)}-\sigma_z^{(2)}
+\).
+
+We next consider $(\phi_+,\phi_-)=(0,\pi/2)$.
+In this case, the $+$ current remains informative, while the $-$ current becomes pure noise:
+\begin{equation}
+	dY_+(t)=2\sqrt{\eta}\,\expval{\hat C_+}_t\,dt+dW_+(t),
+	\qquad
+	dY_-(t)=dW_-(t).
+\end{equation}
+Therefore, the collective channel is continuously monitored and provides state-dependent information, whereas the orthogonal channel contributes only through stochastic backaction.
+
+The opposite situation is realized for $(\phi_+,\phi_-)=(\pi/2,0)$.
+One now has
+\begin{equation}
+	dY_+(t)=dW_+(t),
+	\qquad
+	dY_-(t)=2\sqrt{\eta}\,\expval{\hat C_-}_t\,dt+dW_-(t).
+\end{equation}
+Hence, the collective channel is no-information, while the difference channel remains informative.
+The measurement then extracts information only on the antisymmetric combination of the two local operators.
+
+Finally, for $(\phi_+,\phi_-)=(\pi/2,\pi/2)$ both currents reduce to pure Wiener noise,
+\begin{equation}
+	dY_+(t)=dW_+(t),
+	\qquad
+	dY_-(t)=dW_-(t).
+\end{equation}
+This is the fully no-information configuration.
+The system is still affected by stochastic measurement backaction, but the measurement records carry no state-dependent drift.
+
+The four phase configurations can thus be classified according to the number of informative currents.
+The case $(0,0)$ is fully informative.
+The cases $(0,\pi/2)$ and $(\pi/2,0)$ are partially informative, since only one of the two channels carries information.
+Finally, the case $(\pi/2,\pi/2)$ is fully no-information.
+This makes the physical meaning of the no-information condition particularly transparent.
+In homodyne detection, no-information does not mean that the monitoring is absent.
+Rather, it means that the selected quadrature does not contain any state-dependent average signal.
+As a consequence, the detector still induces stochastic backaction on the system, but the observed current does not reveal any information on the conditional quantum state.
+
+
+\subsection{Gram--Schmidt construction of the unraveling unitary}
+\label{subsec:gram_schmidt_unitary}
+
+As discussed above, the unconditional master equation is invariant under unitary transformations acting on the vector of collapse operators.
+Therefore, once the local dephasing channels $\{\sigma_z^{(k)}\}_{k=1}^{N}$ are fixed, one can generate different unravelings by introducing an arbitrary unitary matrix $U\in\mathbb{C}^{N\times N}$ and defining
+\begin{equation}
+	\hat C_i^{(U)}
+	=
+	\sqrt{\gamma}\sum_{j=1}^{N} U_{ij}\,\sigma_z^{(j)},
+	\qquad i=1,\dots,N.
+	\label{eq:general_unitary_unraveling}
+\end{equation}
+By construction, all these choices lead to the same unconditional GKSL dynamics after averaging over the measurement outcomes.
+However, they generally induce different conditional evolutions.
+For this reason, the choice of $U$ becomes a relevant degree of freedom when searching for unravelings that enhance entanglement generation or spin squeezing.
+
+In the present work we impose that the first monitored channel coincides with the collective spin component along the $z$ direction.
+This amounts to fixing the first row of $U$ as
+\begin{equation}
+	u_1
+	=
+	\frac{1}{\sqrt{N}}(1,1,\dots,1),
+	\label{eq:first_row_collective}
+\end{equation}
+so that
+\begin{equation}
+	\hat C_1^{(U)}
+	=
+	\sqrt{\frac{\gamma}{N}}
+	\sum_{j=1}^{N}\sigma_z^{(j)}.
+	\label{eq:first_channel_collective}
+\end{equation}
+The remaining $N-1$ rows must then be chosen in such a way that $U$ remains unitary.
+Equivalently, the rows of $U$ must form an orthonormal basis of $\mathbb{C}^{N}$.
+
+For $N=2$, this construction is essentially trivial.
+Once the first row is fixed to
+\begin{equation}
+	u_1=\frac{1}{\sqrt{2}}(1,1),
+\end{equation}
+the second row must be orthogonal to $u_1$ and normalized.
+Therefore one immediately obtains
+\begin{equation}
+	u_2=\frac{1}{\sqrt{2}}(1,-1),
+\end{equation}
+which corresponds to the difference channel already discussed in the two-qubit case.
+Hence, for $N=2$ the freedom in the choice of the unraveling unitary is essentially exhausted by fixing the collective channel.
+
+For $N>2$, the construction is no longer unique.
+A natural way to generate a unitary matrix with prescribed first row is to use the Gram--Schmidt orthonormalization procedure.
+In our case, we start from the ordered family
+\begin{equation}
+	v_1=\frac{1}{\sqrt{N}}(1,1,\dots,1),
+	\qquad
+	v_2=e_1,
+	\qquad
+	v_3=e_2,
+	\qquad
+	\dots,
+	\qquad
+	v_N=e_{N-1},
+	\label{eq:starting_family_gs}
+\end{equation}
+where $\{e_j\}$ denotes the canonical basis of $\mathbb{C}^{N}$.
+Explicitly,
+\begin{equation}
+	e_1=(1,0,\dots,0),\quad
+	e_2=(0,1,\dots,0),\quad
+	\dots,\quad
+	e_N=(0,0,\dots,1).
+\end{equation}
+The first vector already encodes the desired collective channel, while the remaining vectors are introduced only as auxiliary vectors and are then orthonormalized with respect to $v_1$ and to each other.
+
+We now briefly recall the Gram--Schmidt construction.
+Given a linearly independent family $\{v_m\}_{m=1}^{N}$, one defines
+\begin{equation}
+	u_1=\frac{v_1}{\|v_1\|},
+\end{equation}
+and recursively, for $m\geq2$,
+\begin{equation}
+	w_m
+	=
+	v_m-\sum_{j=1}^{m-1}\braket{u_j}{v_m}\,u_j.
+	\label{eq:gs_wm}
+\end{equation}
+If $w_m\neq0$, one then normalizes it and sets
+\begin{equation}
+	u_m=\frac{w_m}{\|w_m\|}.
+	\label{eq:gs_um}
+\end{equation}
+By construction, the family $\{u_m\}_{m=1}^{N}$ is orthonormal,
+\begin{equation}
+	\braket{u_i}{u_j}=\delta_{ij},
+\end{equation}
+and can therefore be used as the set of rows of a unitary matrix,
+\begin{equation}
+	U=
+	\begin{pmatrix}
+		u_1\\
+		u_2\\
+		\vdots\\
+		u_N
+	\end{pmatrix}.
+	\label{eq:U_from_GS}
+\end{equation}
+In this way, Eq.~\eqref{eq:unitary_invariance_dissipator} defines a valid unraveling of the same unconditional dynamics, with the first channel fixed to the collective one.
+
+Let us now make this construction explicit for $N=3$.
+We start from
+\begin{equation}
+	v_1=\frac{1}{\sqrt{3}}(1,1,1),
+	\qquad
+	v_2=(1,0,0),
+	\qquad
+	v_3=(0,1,0).
+\end{equation}
+Since $v_1$ is already normalized, we simply set
+\begin{equation}
+	u_1=v_1=\frac{1}{\sqrt{3}}(1,1,1).
+\end{equation}
+We then construct the second orthogonal vector by subtracting from $v_2$ its projection along $u_1$:
+\begin{equation}
+	w_2
+	=
+	v_2-\braket{u_1}{v_2}\,u_1.
+\end{equation}
+Since
+\begin{equation}
+	\braket{u_1}{v_2}=\frac{1}{\sqrt{3}},
+\end{equation}
+one finds
+\begin{equation}
+	w_2
+	=
+	(1,0,0)-\frac{1}{3}(1,1,1)
+	=
+	\left(\frac{2}{3},-\frac{1}{3},-\frac{1}{3}\right).
+\end{equation}
+Its norm is
+\begin{equation}
+	\|w_2\|^2
+	=
+	\frac{4}{9}+\frac{1}{9}+\frac{1}{9}
+	=
+	\frac{2}{3},
+\end{equation}
+hence
+\begin{equation}
+	u_2
+	=
+	\frac{w_2}{\|w_2\|}
+	=
+	\frac{1}{\sqrt{6}}(2,-1,-1).
+	\label{eq:u2_N3}
+\end{equation}
+
+We proceed analogously for the third vector:
+\begin{equation}
+	w_3
+	=
+	v_3-\braket{u_1}{v_3}\,u_1-\braket{u_2}{v_3}\,u_2.
+\end{equation}
+The relevant overlaps are
+\begin{equation}
+	\braket{u_1}{v_3}=\frac{1}{\sqrt{3}},
+	\qquad
+	\braket{u_2}{v_3}=-\frac{1}{\sqrt{6}}.
+\end{equation}
+Substituting the explicit expressions of $u_1$ and $u_2$, one obtains
+\begin{equation}
+	w_3
+	=
+	(0,1,0)-\frac{1}{3}(1,1,1)+\frac{1}{6}(2,-1,-1)
+	=
+	\left(0,\frac{1}{2},-\frac{1}{2}\right).
+\end{equation}
+Its norm is
+\begin{equation}
+	\|w_3\|^2=\frac{1}{4}+\frac{1}{4}=\frac{1}{2},
+\end{equation}
+thus
+\begin{equation}
+	u_3
+	=
+	\frac{w_3}{\|w_3\|}
+	=
+	\frac{1}{\sqrt{2}}(0,1,-1).
+	\label{eq:u3_N3}
+\end{equation}
+We finally obtain the explicit unitary matrix
+\begin{equation}
+	U_{N=3}
+	=
+	\begin{pmatrix}
+		\frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}} & \frac{1}{\sqrt{3}}\\[4pt]
+		\frac{2}{\sqrt{6}} & -\frac{1}{\sqrt{6}} & -\frac{1}{\sqrt{6}}\\[4pt]
+		0 & \frac{1}{\sqrt{2}} & -\frac{1}{\sqrt{2}}
+	\end{pmatrix}.
+	\label{eq:U_N3_explicit}
+\end{equation}
+The first row generates the collective channel, while the remaining two rows define orthogonal non-collective combinations of the local dephasing operators.
+
+The extension to arbitrary dimension is now straightforward.
+Once the first row is fixed to the collective vector in Eq.~\eqref{eq:first_row_collective}, one applies the Gram--Schmidt procedure to a convenient set of $N-1$ auxiliary vectors, for instance the canonical basis vectors.
+This yields an orthonormal family
+\begin{equation}
+	\left\{
+	\frac{1}{\sqrt{N}}(1,\dots,1),\,u_2,\dots,u_N
+	\right\},
+\end{equation}
+which defines a unitary matrix $U$ and therefore a valid family of transformed collapse operators.
+In this way one obtains a systematic parametrization of unravelings with fixed collective first channel.
+The remaining freedom, encoded in the choice of the orthogonal complement to the collective direction, can then be exploited in order to search for the unraveling that optimizes the generation of metrologically useful spin squeezing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \begin{comment}
 Finally, the parity sectors contain dark subspaces for the collective channels.
 In the odd subspace one has \(\Pi_z=-\id\), thus Eq.~\eqref{eq:Cpm_squared} gives \(\hat C_+^2=0\).
@@ -1762,98 +2137,6 @@ and to connect the wavefunction picture to the density-operator SME via
 \(d\rho^{(c)}=d\ket{\psi}\!\bra{\psi}+\ket{\psi}\,d\bra{\psi}+d\ket{\psi}\,d\bra{\psi}\).
 
 \end{comment}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

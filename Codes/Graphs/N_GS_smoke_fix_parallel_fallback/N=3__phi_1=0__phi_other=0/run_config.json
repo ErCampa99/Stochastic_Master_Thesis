@@ -1,0 +1,59 @@
+{
+  "measurement": "homodyne",
+  "N": 3,
+  "state": "PlusStateN",
+  "gs_unitarity_error": 6.334569917871873e-16,
+  "gs_collective_row_error": 0.0,
+  "gs_first_row_real": [
+    0.5773502691896258,
+    0.5773502691896258,
+    0.5773502691896258
+  ],
+  "gs_first_row_imag": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "gs_collective_row_real": [
+    0.5773502691896258,
+    0.5773502691896258,
+    0.5773502691896258
+  ],
+  "gs_collective_row_imag": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "theta": 1.5707963267948966,
+  "phi_state": 0.0,
+  "gamma": 1.0,
+  "phi1": 0.0,
+  "phi_other_channels": 0.0,
+  "etas_all": [
+    [
+      1.0,
+      1.0
+    ]
+  ],
+  "etas_1": [
+    1.0
+  ],
+  "etas_other_channels": [
+    1.0
+  ],
+  "eta_index": null,
+  "use_slurm_array": false,
+  "ntraj": 2,
+  "num_cpus_requested": 2,
+  "num_cpus_per_eta": 2,
+  "eta_jobs": 1,
+  "joblib_backend": "loky",
+  "joblib_backend_used": "serial",
+  "dt_T1": 0.1,
+  "t_end_T1": 0.1,
+  "columns": [
+    "Xi2_KU",
+    "Norm_J",
+    "Xi2_WIN"
+  ]
+}

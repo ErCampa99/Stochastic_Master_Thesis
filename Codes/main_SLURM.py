@@ -337,7 +337,7 @@ LABELS = {
     "Conc": r"$\overline{\mathcal{C}}$",
     "Xi2_KU": r"$\overline{\xi^2_{KU}}$",
     "Norm_J": r"$\overline{|\langle \mathbf{J} \rangle|}$",
-    #"Xi2_WIN": r"$\overline{\xi^2_{WIN}}$",
+    "Xi2_WIN": r"$\overline{\xi^2_{WIN}}$",
     #"Variance_z": r"$\overline{\mathrm{Var}(J_z)}$",
 }
 
@@ -757,10 +757,23 @@ def main() -> None:
         key = eta_pair_key(float(eta_1), float(eta_2))
         ineff_df[key] = ineff_df_map[key]
 
+    #Compute xi^2_WIN from already computed xi^2_KU and |<J>| to avoid re-evaluating xi^2_KU in the solver.
+    N_spin = 2.0
+    tol_norm = 1e-12
+    for key in ineff_df:
+        ku_vals = ineff_df[key]["Xi2_KU"].to_numpy(dtype=float)
+        norm_vals = ineff_df[key]["Norm_J"].to_numpy(dtype=float)
+        xi_win = ku_vals.copy()
+        mask = norm_vals > tol_norm
+        xi_win[mask] = ku_vals[mask] * ((N_spin / 2.0) / norm_vals[mask]) ** 2
+        ineff_df[key]["Xi2_WIN"] = xi_win
+    if "Xi2_WIN" not in columns:
+        columns = columns + ["Xi2_WIN"]
+
     #Create the output directory based on the parameters of the simulation, including the phases phi1 and phi2, and optionally the eta index if specified.
     phi1_dir = angle_to_path(float(args.phi1))
     phi2_dir = angle_to_path(float(args.phi2))
-    out_dir = Path(args.out_root) / f"phi_1={phi1_dir}__phi_2={phi2_dir}"
+    out_dir = Path(args.out_root) / f"ntraj={int(args.ntraj)}__phi_1={phi1_dir}__phi_2={phi2_dir}"
     if eta_index is not None:
         eta_key = eta_pair_key(float(etas[0][0]), float(etas[0][1]))
         out_dir = out_dir / f"eta_idx={eta_index}__eta={eta_key}"
@@ -846,6 +859,9 @@ def main() -> None:
         #Set the x and y limits, labels, title, grid, and legend for the plot, and save it to a PDF file in the output directory.
         plt.xlim(0.0, float(args.t_end))
         #plt.ylim(0.0, 1.01)
+        if col == "Xi2_WIN":
+            plt.axhline(1.0, linestyle="--", linewidth=2, color="black", alpha=0.7)
+            plt.ylim(top=10.0)
 
         plt.xlabel(r"$t/T_1$")
         plt.ylabel(LABELS[col])

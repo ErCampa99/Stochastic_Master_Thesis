@@ -1,0 +1,36 @@
+{
+  "measurement": "homodyne",
+  "N": 3,
+  "state": "plusplus",
+  "theta": 1.5707963267948966,
+  "phi_state": 0.0,
+  "gamma": 1.0,
+  "phi1": 0.0,
+  "phi2": 0.0,
+  "etas_all": [
+    [
+      1.0,
+      0.5
+    ]
+  ],
+  "etas_1": [
+    1.0
+  ],
+  "etas_2": [
+    0.5
+  ],
+  "eta_index": null,
+  "use_slurm_array": false,
+  "ntraj": 2,
+  "num_cpus_requested": 1,
+  "num_cpus_per_eta": 1,
+  "eta_jobs": 1,
+  "joblib_backend": "loky",
+  "joblib_backend_used": "serial",
+  "dt_T1": 0.1,
+  "t_end_T1": 0.1,
+  "columns": [
+    "Xi2_KU",
+    "Xi2_WIN"
+  ]
+}

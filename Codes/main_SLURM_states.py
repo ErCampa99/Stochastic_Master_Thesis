@@ -396,6 +396,33 @@ def runs_states_to_array(runs_states) -> np.ndarray:
             out[i, j] = state.full()
     return out
 
+# Utility function to save the states array into a compressed .npz file in an atomic way, ensuring that the file is not left in a corrupted state if something goes wrong during the saving process.
+def save_states_npz_atomic(
+    out_path: Path,
+    times: np.ndarray,
+    states: np.ndarray,
+    eta_1: float,
+    eta_2: float,
+    phi1: float,
+    phi2: float,
+    gamma: float,
+) -> None:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = out_path.with_name(out_path.name + ".tmp.npz")
+
+    #Save the states array and associated metadata (times, eta values, phases, and gamma) into a compressed .npz file.
+    np.savez_compressed(
+        tmp_path,
+        times=np.asarray(times, dtype=float),
+        states=np.asarray(states, dtype=np.complex128),
+        eta_1=float(eta_1),
+        eta_2=float(eta_2),
+        phi1=float(phi1),
+        phi2=float(phi2),
+        gamma=float(gamma),
+    )
+    os.replace(tmp_path, out_path)
+
 
 # Function to run the homodyne simulation in chunks and average the results.
 def run_homodyne(
@@ -766,14 +793,16 @@ def main() -> None:
         out_dir = out_dir / f"eta_idx={eta_index}__eta={eta_key}"
     out_dir.mkdir(parents=True, exist_ok=True)
 
+    #For each pair of eta values, save the corresponding states array into a compressed .npz file in the output directory. 
+    #The filename includes the eta values for reference. We also keep track of the list of saved .npz files for inclusion in the metadata.
     state_npz_files = []
     for eta_1, eta_2 in etas:
         key = eta_pair_key(float(eta_1), float(eta_2))
         states_array = states_map[key]
         eta_npz_path = out_dir / f"states_eta_1={eta_1:g}_eta_2={eta_2:g}.npz"
-        np.savez_compressed(
-            eta_npz_path,
-            times=times.astype(float, copy=False),
+        save_states_npz_atomic(
+            out_path=eta_npz_path,
+            times=times,
             states=states_array,
             eta_1=float(eta_1),
             eta_2=float(eta_2),
@@ -808,7 +837,7 @@ def main() -> None:
         "t_end_T1": float(args.t_end),
         "saved_mode": "states_only",
         "state_npz_files": state_npz_files,
-        "states_shape_per_eta": list(states_map[next(iter(states_map))].shape) if states_map else [],
+        #"states_shape_per_eta": list(states_map[next(iter(states_map))].shape) if states_map else [],
     }
 
     run_config_path = out_dir / "run_config.json"
