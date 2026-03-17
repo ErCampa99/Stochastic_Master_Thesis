@@ -2359,4 +2359,85 @@
       <bcf:constraint type="data" datatype="issn">
         <bcf:field>issn</bcf:field>
       </bcf:constraint>
-      <bcf:co
+      <bcf:constraint type="data" datatype="ismn">
+        <bcf:field>ismn</bcf:field>
+      </bcf:constraint>
+      <bcf:constraint type="data" datatype="pattern" pattern="(?:sf|sm|sn|pf|pm|pn|pp)">
+        <bcf:field>gender</bcf:field>
+      </bcf:constraint>
+    </bcf:constraints>
+  </bcf:datamodel>
+  <!-- CITATION DATA -->
+  <!-- SECTION 0 -->
+  <bcf:bibdata section="0">
+    <bcf:datasource type="file" datatype="bibtex" glob="false">Bibliography.bib</bcf:datasource>
+  </bcf:bibdata>
+  <bcf:section number="0">
+    <bcf:citekey order="1" intorder="1">Planck01</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">Einstein05</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">Bohr13</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">Heisenberg25</bcf:citekey>
+    <bcf:citekey order="4" intorder="2">BornJordan25</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">Schrodinger26</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">Born26</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">vonNeumann55</bcf:citekey>
+    <bcf:citekey order="7" intorder="2">Dirac30</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">ReedSimon80</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">Stone32</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">ParisTools12</bcf:citekey>
+    <bcf:citekey order="10" intorder="2">SmirneNotes24</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">ParisTools12</bcf:citekey>
+    <bcf:citekey order="11" intorder="2">SmirneNotes24</bcf:citekey>
+    <bcf:citekey order="11" intorder="3">Vac24</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">Horodecki3_09</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">NielsenChuang10</bcf:citekey>
+    <bcf:citekey order="13" intorder="2">Horodecki3_09</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">NielsenChuang10</bcf:citekey>
+    <bcf:citekey order="14" intorder="2">Horodecki3_09</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">Peres96</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">Horodecki3_09</bcf:citekey>
+    <bcf:citekey order="16" intorder="2">Horodecki3_96</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">Terhal00</bcf:citekey>
+    <bcf:citekey order="17" intorder="2">Terhal02</bcf:citekey>
+    <bcf:citekey order="17" intorder="3">GuhneToth09</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">Wootters98</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">Wootters98</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">Wootters98</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">Wootters1998</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">NielsenChuang10</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">Horodecki3_09</bcf:citekey>
+    <bcf:citekey order="23" intorder="2">GuhneToth09</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">KitagawaUeda93</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">Wineland94</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">Ma11</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">KitagawaUeda93</bcf:citekey>
+    <bcf:citekey order="27" intorder="2">Ma11</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">KitagawaUeda93</bcf:citekey>
+    <bcf:citekey order="28" intorder="2">Ma11</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">Wineland94</bcf:citekey>
+    <bcf:citekey order="29" intorder="2">Ma11</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">Ma11</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">WangSanders03</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">SorMol00</bcf:citekey>
+  </bcf:section>
+  <!-- SORTING TEMPLATES -->
+  <bcf:sortingtemplate name="none">
+    <bcf:sort order="1">
+      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2">
+      <bcf:sortitem order="1">intciteorder</bcf:sortitem>
+    </bcf:sort>
+  </bcf:sortingtemplate>
+  <!-- DATALISTS -->
+  <bcf:datalist section="0"
+                name="none/global//global/global/global"
+                type="entry"
+                sortingtemplatename="none"
+                sortingnamekeytemplatename="global"
+                labelprefix=""
+                uniquenametemplatename="global"
+                labelalphanametemplatename="global"
+                namehashtemplatename="global">
+  </bcf:datalist>
+</bcf:controlfile>
