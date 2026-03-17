@@ -24,7 +24,7 @@
 % Images and bibliography
 \graphicspath{ {./Images/} }
 \usepackage{filecontents}
-\usepackage[backend=biber, style=numeric,sorting=none]{biblatex}
+\usepackage[backend=biber, style=numeric, sorting=none]{biblatex}
 \addbibresource{Bibliography.bib}
 
 %Lingua inglese
@@ -113,16 +113,18 @@
 \pagenumbering{arabic}
 
 \pagestyle{empty}          % niente header/footer
-%\include{Chapters/Introduction}
+\include{Chapters/Introduction}
 \clearpage
 
-%\include{Chapters/1_IntroQM}
+\include{Chapters/1_IntroQM}
 %\include{Chapters/2_OpenQuantumSystems}
-\include{Chapters/3_2_Qubit_Case}
+%\include{Chapters/3_2_Qubit_Case}
 %\include{Chapters/N_qubits}
 %\include{Chapters/Optimization_Machine_learning}
-%\include{Chapters/Conclusions}
-%\include{Chapters/Appendix}
+\include{Chapters/Conclusions}
+
+\pagestyle{empty}          % niente header/footer
+\include{Chapters/Appendix}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -131,7 +133,7 @@
 %\printbibliography
 \printbibliography[heading=bibintoc]
 \newpage \thispagestyle{empty}
-\nocite{*}
+%\nocite{*}
 
 %\include{Chapters/Ringraziamenti}
 \end{document}

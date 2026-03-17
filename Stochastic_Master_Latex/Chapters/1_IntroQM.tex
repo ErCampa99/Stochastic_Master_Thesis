@@ -1,1 +1,2015 @@
 \chapter{Introduction to Quantum Mechanics}
+\label{chap:introduction_to_quantum_mechanics}
+
+\section{From classical physics to quantum mechanics}
+\label{sec:from_classical_physics_to_quantum_mechanics}
+
+By the end of the nineteenth century, classical physics seemed to offer a complete and convincing description of the natural world.
+Analytical mechanics, Maxwell's electrodynamics, and classical statistical physics formed a remarkably successful framework, capable of explaining a vast range of phenomena.
+Within this picture, the state of a physical system at a given time was assumed to determine, at least in principle, its future evolution.
+Observables were regarded as quantities possessing definite values, while the role of theory was to describe their behaviour through deterministic laws.
+
+This confidence began to weaken when physicists turned their attention to microscopic phenomena.
+A number of experimental results, such as black-body radiation \cite{Planck01} and the photoelectric effect \cite{Einstein05} could not be satisfactorily explained within the classical framework.
+These were not minor discrepancies that could be fixed by adjusting a few assumptions.
+Rather, they suggested that the classical picture itself was no longer adequate at the atomic scale.
+
+The first attempts to deal with this crisis already required a significant break from classical intuition.
+Planck's introduction of energy quanta, Einstein's interpretation of the photoelectric effect, and Bohr's model of the hydrogen atom all pointed in the same direction.
+They represented an intermediate stage, in which classical concepts were still partially retained while new quantization rules were introduced in a rather phenomenological way \cite{Bohr13}.
+
+A coherent formulation emerged only in the second half of the 1920s, with the development of matrix mechanics \cite{Heisenberg25, BornJordan25} and wave mechanics \cite{Schrodinger26}.
+Although these approaches looked very different at first, they were soon recognized as mathematically equivalent descriptions of the same physical theory.
+This marked the real birth of quantum mechanics as a general framework.
+From that point, the issue was no longer how to repair classical physics but to confirm that microscopic systems required a different language.
+
+In classical physics, the state of a system is ideally viewed as a complete specification of its physical properties while in quantum mechanics, this idea has to be revised.
+The state no longer provides, in general, definite values for all observables before a measurement is performed.
+Instead, it encodes the possible outcomes of a measurement and the statistical structure relating them.
+
+In classical statistical physics, probabilities usually arise because one lacks complete information about the system.
+The probabilistic description is therefore associated with ignorance about an underlying state of affairs that is assumed to be well defined.
+It is totally different in quantum mechanics, where the probabilistic content is not merely a practical limitation of the observer but is built into the theory itself \cite{Born26}.
+
+The conceptual consequences become even more striking when composite systems are considered.
+In the quantum framework, the state of a global system cannot always be reduced to independent states of its constituents.
+This gives rise to entanglement, one of the most distinctive features of the quantum realm.
+Quantum correlations are not simply stronger versions of classical correlations but they reflect a different logical structure, in which the whole cannot always be understood as a collection of independently defined parts.
+
+What originally emerged from the study of atomic phenomena eventually became the foundation of several modern research areas.
+Quantum optics, many-body physics, quantum information, and quantum metrology all rely on genuinely non-classical features such as coherence, interference, and entanglement.
+
+This perspective is especially relevant for the present thesis.
+The analysis of collective quantum properties in systems of many two-level atoms, and in particular the study of non-classical correlations and spin-squeezed states, belongs to the conceptual framework opened by quantum mechanics.
+
+\section{Postulates of quantum mechanics for closed and isolated systems}
+\label{sec:postulates_of_quantum_mechanics_closed_and_isolated_systems}
+
+Having introduced the conceptual transition from classical physics to quantum mechanics, we now turn to the standard formulation of the theory\cite{vonNeumann55,Dirac30}. In its textbook form, quantum mechanics is first presented as a theory for closed and isolated systems. This setting is idealized, yet it provides the natural starting point to define the basic notions of state, observable, measurement, composition of systems, and time evolution.
+
+This formulation is not the most general one. In particular, it is based on pure states, projective measurements, and unitary dynamics. These assumptions are fully adequate for introducing the theory in its simplest and most transparent form, but they will later need to be generalized when discussing realistic situations in which a system interacts with external degrees of freedom. For the purposes of the present chapter, however, the standard formulation is exactly the one we need. It allows us to establish the conceptual backbone of quantum mechanics before moving, in the next chapter, to the theory of open quantum systems.
+
+\medskip
+
+\subsection{Postulate 1 : States}
+
+To every closed physical system there corresponds a Hilbert space $\mathcal{H}$. The pure states of the system are represented by normalized vectors $\ket{\psi}\in\mathcal{H}$, namely
+\begin{equation}
+	\braket{\psi}{\psi}=1.
+	\label{eq:intro_qm_state_normalization}
+\end{equation}
+More precisely, a physical pure state is not identified with a single vector, but with a ray in Hilbert space, since two vectors that differ only by an overall phase describe the same physical situation.
+
+Indeed, if $\ket{\psi}\in\mathcal{H}$ is a normalized state vector, then for any real phase $\alpha\in\mathbb{R}$ the vector
+\begin{equation}
+	\ket{\psi'} = e^{i\alpha}\ket{\psi}
+	\label{eq:intro_qm_global_phase_transformation}
+\end{equation}
+represents the same physical pure state. This is the invariance of pure states under the action of the group $U(1)$ of global phase transformations.
+
+The reason is that all measurable predictions remain unchanged under the replacement $\ket{\psi}\to e^{i\alpha}\ket{\psi}$.
+
+An equivalent way to state the same fact is to observe that the rank-one projector associated with the pure state is invariant under a global phase transformation:
+\begin{equation}
+	\dyad{\psi'}{\psi'} = e^{i\alpha}\ket{\psi}\bra{\psi}e^{-i\alpha} = \dyad{\psi}{\psi}.
+	\label{eq:intro_qm_projector_global_phase_invariance}
+\end{equation}
+For this reason, pure states are properly identified with rays in Hilbert space, or equivalently with rank-one projectors.
+
+If $\ket{\psi_1}$ and $\ket{\psi_2}$ are admissible states, then any normalized linear combination of them is again an admissible state. This introduces one of the most characteristic features of quantum theory, namely the superposition principle. This has no direct analogue in the classical description. It is the mathematical origin of interference phenomena and, more generally, of the non-classical structure of the theory.
+Quantum mechanics is insensitive to a common $U(1)$ phase multiplying the whole vector, but it is sensitive to relative phases between different components of a superposition.
+
+
+\subsection{Postulate 2 : Observables}
+Every observable quantity is associated with a self-adjoint operator acting on the Hilbert space of the system. If the observable is denoted by $\hat X$, its possible measurement outcomes are the eigenvalues appearing in its spectral decomposition. For the case of a discrete spectrum, one writes
+\begin{equation}
+	\hat X=\sum_x x\,\hat P_x,
+	\label{eq:intro_qm_spectral_decomposition}
+\end{equation}
+where the real numbers $x$ are the possible outcomes and the operators $\hat P_x$ are the orthogonal projectors onto the corresponding eigenspaces.
+
+This postulate establishes the link between physical quantities and operator theory: the fact that observables are represented by self-adjoint operators ensures, on one hand, that the possible outcomes are real, and on the other hand that the spectral theorem may be used to connect the formal object $\hat X$ with experimentally accessible values.
+
+The spectral projectors also play a central role in the measurement process. They encode which component of the state is associated with each possible outcome. For this reason, even when one speaks of the measurement of an observable, the truly relevant objects are not only its eigenvalues, but also the corresponding projectors.
+
+\subsection{Postulate 3 : Measurements and conditional states}
+
+If the system is prepared in the pure state $\ket{\psi}$ and one measures the observable $\hat X$, quantum mechanics does not in general predict a single certain result. Instead, it assigns probabilities to the possible outcomes. For a discrete observable, the probability of obtaining the value $x$ is given by the Born rule
+\begin{equation}
+	p(x)=\matrixel{\psi}{\hat P_x}{\psi}.
+	\label{eq:intro_qm_born_rule}
+\end{equation}
+Correspondingly, the expectation value of the observable reads
+\begin{equation}
+	\expval{\hat X}=\matrixel{\psi}{\hat X}{\psi}.
+	\label{eq:intro_qm_expectation_value}
+\end{equation}
+
+The Born rule is one of the central ingredients of the entire formalism. It is the rule that connects the mathematical description of the state with the statistical predictions of the theory. Once the state and the observable are assigned, the Born rule determines the probability distribution of the measurement outcomes. In this sense, it is the point at which the formalism becomes experimentally meaningful.
+
+The standard formulation also includes a rule for the state change induced by an ideal projective measurement. If the outcome $x$ is obtained, the state immediately after the measurement is given by
+\begin{equation}
+	\ket{\psi}\longrightarrow
+	\ket{\psi_x}
+	=
+	\frac{\hat P_x\ket{\psi}}{\sqrt{\matrixel{\psi}{\hat P_x}{\psi}}}.
+	\label{eq:intro_qm_projection_postulate}
+\end{equation}
+This is the projection postulate. It expresses the fact that the state after the measurement is the normalized projection of the initial state onto the eigenspace corresponding to the observed result.
+
+\subsection{Postulate 4 : Dynamics}
+
+In the absence of measurements, the evolution of a closed and isolated quantum system is unitary. If the state of the system at time $t_0$ is $\ket{\psi(t_0)}$, then at time $t$ it is given by
+\begin{equation}
+	\ket{\psi(t)}=\hat U(t,t_0)\ket{\psi(t_0)},
+	\label{eq:intro_qm_unitary_evolution}
+\end{equation}
+where $\hat U(t,t_0)$ is a unitary operator, namely
+\begin{equation}
+	\hat U^\dagger(t,t_0)\hat U(t,t_0)=\hat U(t,t_0)\hat U^\dagger(t,t_0)=\id.
+	\label{eq:intro_qm_unitarity_condition}
+\end{equation}
+If the dynamics is generated by a Hamiltonian $\hat H$, the same evolution may be written in differential form through the Schrödinger equation
+\begin{equation}
+	i\frac{d}{dt}\ket{\psi(t)}=\hat H\ket{\psi(t)}.
+	\label{eq:intro_qm_schrodinger_equation}
+\end{equation}
+
+This postulate expresses the deterministic side of quantum mechanics. Once the initial state and the Hamiltonian are given, the state at any later time is uniquely determined. In this respect, quantum mechanics preserves a form of deterministic evolution, but only between measurements. The probabilistic character of the theory enters when one connects the evolving state to the outcomes of observations through the Born rule.
+
+It is also worth emphasizing that unitarity guarantees that the normalization of the state is preserved in time, and thus that total probability remains equal to one throughout the evolution of an isolated system. In this sense, unitary dynamics is the natural quantum counterpart of reversible evolution in the closed-system setting.
+
+\subsection{Postulate 5 : Composite systems}
+
+If a physical system is composed of two subsystems, described respectively by the Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B$, then the composite system is described on the tensor-product space
+\begin{equation}
+	\mathcal{H}_{AB}=\mathcal{H}_A\otimes\mathcal{H}_B.
+	\label{eq:intro_qm_tensor_product_space}
+\end{equation}
+More generally, a multipartite system is described by the tensor product of the Hilbert spaces associated with all its constituents.
+
+This postulate is of fundamental importance, it is precisely this structure that makes entanglement possible. Indeed, not every state in the global Hilbert space can be written as a product of states of the individual subsystems. Therefore, the description of the whole cannot in general be reduced to independent descriptions of its parts.
+
+In the classical picture, correlations may be interpreted as reflecting incomplete information about local properties that each subsystem already possesses. In the quantum case, the tensor-product structure allows for correlations that are genuinely non-classical. For this reason, the postulate on composite systems is not just a formal extension of the single-system case. It is the starting point for the entire theory of quantum correlations.
+
+For the present thesis, this postulate will be especially important. Since our interest lies in collective properties of many two-level systems, all the relevant notions of multipartite state, collective observable, and entanglement rely directly on the tensor-product description.
+
+
+
+\medskip
+
+These assumptions are entirely appropriate for a first formulation of the theory and will be sufficient for the developments of the present chapter. However, they are not general enough to describe realistic situations in which the system interacts with an external environment, or in which measurements are not ideal projective measurements. For this reason, they should be regarded here as the natural starting point of the discussion. In Chapter 2, we will move to a more general formulation based on density operators, generalized measurements, and open-system dynamics.
+
+\section{States and observables}
+\label{sec:states_observables}
+
+The postulates introduced in the previous section provide the conceptual skeleton of quantum mechanics. We now discuss in more detail the mathematical objects entering that formulation. In particular, we clarify the notions of physical system, quantum state, and observable, and we introduce the Dirac notation that will be used throughout the thesis.
+\subsection{Hilbert spaces and Dirac notation}
+In the standard formulation adopted in this chapter, a physical system is associated with a Hilbert space $\mathcal{H}$. For the purposes of the present discussion, and consistently with the framework that will be used in the following sections, we mainly refer to finite-dimensional Hilbert spaces and to observables with discrete spectrum. This is the natural setting for the description of qubits and, more generally, of finite collections of two-level systems.
+
+A Hilbert space is a complex vector space endowed with an inner product. Therefore, if $\ket{\psi}\in\mathcal{H}$ and $\ket{\phi}\in\mathcal{H}$ are two vectors, and if $\alpha,\beta\in\mathbb{C}$, then
+\begin{equation}
+	\alpha\ket{\psi}+\beta\ket{\phi}\in\mathcal{H}.
+	\label{eq:intro_qm_linear_combination_vectors}
+\end{equation}
+
+\medskip
+
+We adopt the Dirac notation throughout. A vector in $\mathcal{H}$ is denoted by a ket,
+\begin{equation}
+	\ket{\psi}\in\mathcal{H},
+	\label{eq:intro_qm_ket_definition}
+\end{equation}
+whereas the corresponding dual vector is denoted by a bra,
+\begin{equation}
+	\bra{\psi}=\left(\ket{\psi}\right)^\dagger.
+	\label{eq:intro_qm_bra_definition}
+\end{equation}
+The inner product between two vectors $\ket{\phi}$ and $\ket{\psi}$ is written as
+\begin{equation}
+	\braket{\phi}{\psi}\in\mathbb{C}.
+	\label{eq:intro_qm_inner_product_definition}
+\end{equation}
+In the physics convention, the inner product is linear in the second entry and antilinear in the first one. Thus,
+\begin{equation}
+	\braket{\phi}{\alpha\psi+\beta\chi}
+	=
+	\alpha\braket{\phi}{\psi}
+	+
+	\beta\braket{\phi}{\chi},
+	\label{eq:intro_qm_inner_product_linearity_second}
+\end{equation}
+while
+\begin{equation}
+	\braket{\alpha\phi+\beta\chi}{\psi}
+	=
+	\alpha^*\braket{\phi}{\psi}
+	+
+	\beta^*\braket{\chi}{\psi}.
+	\label{eq:intro_qm_inner_product_antilinearity_first}
+\end{equation}
+Moreover, one has
+\begin{equation}
+	\braket{\phi}{\psi}=\braket{\psi}{\phi}^*,
+	\label{eq:intro_qm_inner_product_conjugation}
+\end{equation}
+and
+\begin{equation}
+	\braket{\psi}{\psi}\geq 0,
+	\qquad
+	\braket{\psi}{\psi}=0
+	\iff
+	\ket{\psi}=0.
+	\label{eq:intro_qm_inner_product_positivity}
+\end{equation}
+
+The norm of a vector is induced by the inner product and is defined by
+\begin{equation}
+	\|\psi\|=\sqrt{\braket{\psi}{\psi}}.
+	\label{eq:intro_qm_norm_definition}
+\end{equation}
+Physical pure states are represented by normalized vectors, namely by vectors satisfying
+\begin{equation}
+	\braket{\psi}{\psi}=1.
+	\label{eq:intro_qm_state_normalization_recalled}
+\end{equation}
+As already discussed, the physical content does not change under multiplication by a global phase. Hence, the pure state is properly associated with the ray generated by $\ket{\psi}$ rather than with the vector itself.
+
+\medskip
+
+Let now $\{\ket{e_n}\}_{n=1}^d$ be an orthonormal basis of $\mathcal{H}$. By orthonormality,
+\begin{equation}
+	\braket{e_m}{e_n}=\delta_{mn},
+	\label{eq:intro_qm_orthonormal_basis}
+\end{equation}
+where $\delta_{mn}$ is the Kronecker delta. The completeness of the basis is expressed by the resolution of the identity
+\begin{equation}
+	\sum_{n=1}^{d}\dyad{e_n}{e_n}=\id.
+	\label{eq:intro_qm_resolution_identity}
+\end{equation}
+Using Eq.~\eqref{eq:intro_qm_resolution_identity}, any state vector may be expanded as
+\begin{equation}
+	\ket{\psi}
+	=
+	\sum_{n=1}^{d}\ket{e_n}\braket{e_n}{\psi}
+	=
+	\sum_{n=1}^{d} c_n \ket{e_n},
+	\label{eq:intro_qm_state_expansion_basis}
+\end{equation}
+where the expansion coefficients are
+\begin{equation}
+	c_n=\braket{e_n}{\psi}.
+	\label{eq:intro_qm_expansion_coefficients}
+\end{equation}
+Correspondingly, the associated bra reads
+\begin{equation}
+	\bra{\psi}
+	=
+	\sum_{n=1}^{d} c_n^* \bra{e_n}.
+	\label{eq:intro_qm_bra_expansion_basis}
+\end{equation}
+If $\ket{\psi}$ is normalized, then Eqs.~\eqref{eq:intro_qm_orthonormal_basis} and \eqref{eq:intro_qm_state_expansion_basis} imply
+\begin{equation}
+	1=\braket{\psi}{\psi}=\sum_{n=1}^{d}|c_n|^2.
+	\label{eq:intro_qm_normalization_coefficients}
+\end{equation}
+
+This expression already shows the probabilistic interpretation of the coefficients once a basis has been fixed. In particular, when the chosen basis is the eigenbasis of an observable, the moduli squared of the coefficients become the probabilities of the corresponding measurement outcomes through the Born rule.
+
+\subsection{Linear operators, outer products, and adjoints}
+
+Besides vectors, quantum mechanics makes essential use of linear operators acting on $\mathcal{H}$. If $\hat A$ is a linear operator, then
+\begin{equation}
+	\hat A\left(\alpha\ket{\psi}+\beta\ket{\phi}\right)
+	=
+	\alpha\hat A\ket{\psi}+\beta\hat A\ket{\phi}.
+	\label{eq:intro_qm_operator_linearity}
+\end{equation}
+Given two vectors $\ket{\phi}$ and $\ket{\psi}$, one may construct the outer product
+\begin{equation}
+	\ket{\phi}\bra{\psi},
+	\label{eq:intro_qm_outer_product_definition}
+\end{equation}
+which is itself a linear operator. Its action on an arbitrary vector $\ket{\chi}$ is
+\begin{equation}
+	\left(\ket{\phi}\bra{\psi}\right)\ket{\chi}
+	=
+	\ket{\phi}\braket{\psi}{\chi}.
+	\label{eq:intro_qm_outer_product_action}
+\end{equation}
+In particular, the operator
+\begin{equation}
+	\dyad{\psi}{\psi}
+	=
+	\ket{\psi}\bra{\psi}
+	\label{eq:intro_qm_rank_one_projector}
+\end{equation}
+is the rank-one projector associated with the pure state $\ket{\psi}$. For a normalized state, it satisfies
+\begin{equation}
+	\left(\ket{\psi}\bra{\psi}\right)^2=\ket{\psi}\bra{\psi},
+	\qquad
+	\Tr\!\left(\ket{\psi}\bra{\psi}\right)=1.
+	\label{eq:intro_qm_rank_one_projector_properties}
+\end{equation}
+This operator representation will become especially useful in the next chapter, where the density-operator formalism will be introduced in full generality.
+
+Let us now consider the matrix representation of an operator. Once a basis $\{\ket{e_n}\}_{n=1}^d$ is fixed, the matrix elements of $\hat A$ are defined as
+\begin{equation}
+	A_{mn}=\matrixel{e_m}{\hat A}{e_n}.
+	\label{eq:intro_qm_operator_matrix_elements}
+\end{equation}
+Using the completeness relation twice, the operator may be reconstructed as
+\begin{equation}
+	\hat A
+	=
+	\sum_{m,n=1}^{d}
+	A_{mn}\ket{e_m}\bra{e_n}.
+	\label{eq:intro_qm_operator_reconstruction_matrix_elements}
+\end{equation}
+Therefore, once a basis is chosen, vectors and operators admit the familiar column-vector and matrix representations of linear algebra. Dirac notation is simply a more flexible and basis-independent way of encoding the same information.
+
+The adjoint of an operator $\hat A$ is defined by the relation
+\begin{equation}
+	\matrixel{\phi}{\hat A}{\psi}
+	=
+	\braket{\hat A^\dagger\phi}{\psi},
+	\label{eq:intro_qm_adjoint_definition}
+\end{equation}
+or equivalently
+\begin{equation}
+	\matrixel{\phi}{\hat A}{\psi}
+	=
+	\matrixel{\psi}{\hat A^\dagger}{\phi}^*.
+	\label{eq:intro_qm_adjoint_matrix_element_relation}
+\end{equation}
+From this definition one immediately obtains
+\begin{equation}
+	\left(\hat A\hat B\right)^\dagger=\hat B^\dagger \hat A^\dagger.
+	\label{eq:intro_qm_adjoint_product_rule}
+\end{equation}
+An operator is said to be self-adjoint if
+\begin{equation}
+	\hat A^\dagger=\hat A.
+	\label{eq:intro_qm_selfadjoint_definition}
+\end{equation}
+This class of operators plays a distinguished role, since observables are represented precisely by self-adjoint operators.
+
+\subsection{Observables and spectral decomposition}
+
+We are now in the position to discuss observables more concretely. Let $\hat X$ be a self-adjoint operator acting on $\mathcal{H}$. In the finite-dimensional case, the spectral theorem guarantees that $\hat X$ may be diagonalized and written in the form
+\begin{equation}
+	\hat X=\sum_x x\,\hat P_x,
+	\label{eq:intro_qm_spectral_theorem_observable}
+\end{equation}
+where $x\in\mathbb{R}$ are the eigenvalues of the observable and $\hat P_x$ are the orthogonal projectors onto the corresponding eigenspaces. These projectors satisfy
+\begin{equation}
+	\hat P_x\hat P_{x'}=\delta_{x x'}\hat P_x,
+	\label{eq:intro_qm_spectral_projectors_orthogonality}
+\end{equation}
+and
+\begin{equation}
+	\sum_x \hat P_x=\id.
+	\label{eq:intro_qm_spectral_projectors_completeness}
+\end{equation}
+If the spectrum is nondegenerate, each eigenspace is one-dimensional and one may write
+\begin{equation}
+	\hat P_x=\dyad{x}{x},
+	\qquad
+	\hat X=\sum_x x\,\dyad{x}{x},
+	\label{eq:intro_qm_nondegenerate_spectral_decomposition}
+\end{equation}
+with
+\begin{equation}
+	\hat X\ket{x}=x\ket{x}.
+	\label{eq:intro_qm_eigenvalue_equation}
+\end{equation}
+
+The expectation value of $\hat X$ in the pure state $\ket{\psi}$ is
+\begin{equation}
+	\expval{\hat X}_{\psi}
+	=
+	\matrixel{\psi}{\hat X}{\psi}.
+	\label{eq:intro_qm_expectation_value_observable}
+\end{equation}
+By inserting the spectral decomposition \eqref{eq:intro_qm_spectral_theorem_observable}, one finds
+\begin{equation}
+	\expval{\hat X}_{\psi}
+	=
+	\sum_x x\,\matrixel{\psi}{\hat P_x}{\psi}.
+	\label{eq:intro_qm_expectation_value_spectral}
+\end{equation}
+The coefficients
+\begin{equation}
+	p(x)=\matrixel{\psi}{\hat P_x}{\psi}
+	\label{eq:intro_qm_born_rule_recalled}
+\end{equation}
+are non-negative and sum to one because of Eqs.~\eqref{eq:intro_qm_spectral_projectors_orthogonality} and \eqref{eq:intro_qm_spectral_projectors_completeness}. They therefore define a probability distribution over the possible outcomes. This is the precise way in which the state vector determines the statistics of the observable.
+
+A second quantity of central importance is the variance of $\hat X$ in the state $\ket{\psi}$,
+\begin{equation}
+	\Var[\psi]{\hat X}
+	=
+	\expval{\hat X^2}_{\psi}
+	-
+	\expval{\hat X}_{\psi}^2.
+	\label{eq:intro_qm_variance_definition}
+\end{equation}
+The corresponding standard deviation is
+\begin{equation}
+	\Std[\psi]{\hat X}=\sqrt{\Var[\psi]{\hat X}}.
+	\label{eq:intro_qm_standard_deviation_definition}
+\end{equation}
+These quantities characterize the spread of the outcomes around the mean value and will become particularly relevant later on, when discussing collective observables and the reduction of quantum fluctuations below suitable reference levels.
+
+\medskip
+
+It is also useful to comment briefly on compatibility of observables. If two observables $\hat X$ and $\hat Y$ commute,
+\begin{equation}
+	[\hat X,\hat Y]=0,
+	\label{eq:intro_qm_commuting_observables}
+\end{equation}
+then, in the finite-dimensional setting, they admit a common eigenbasis, up to the usual care required in the presence of degeneracies. In that case, the two observables may be simultaneously diagonalized and can be jointly sharp in the same states. When the commutator does not vanish, such a common diagonalization is in general not possible. This is the algebraic origin of quantum incompatibility and, more generally, of the fact that different experimental arrangements may probe genuinely different aspects of the same physical system.
+
+\section{Statistical ensembles and mixed states}
+\label{subsec:statistical_ensembles_and_mixed_states}
+The vector-state formalism is fully adequate when the preparation procedure singles out one definite pure state. In general, however, the available information may be only partial. One is then naturally led to consider statistical ensembles of pure states rather than a single state vector. In this broader setting, the appropriate mathematical object is the density operator.
+\\
+Let
+\begin{equation}
+	\mathcal{E}=\left\{p_j,\ket{\psi_j}\right\}_j,
+	\qquad
+	p_j\geq 0,
+	\qquad
+	\sum_j p_j=1,
+	\label{eq:intro_qm_statistical_ensemble}
+\end{equation}
+be an ensemble of pure states. If $\hat X$ is an observable, the corresponding expectation value is
+\begin{equation}
+	\expval{\hat X}
+	=
+	\sum_j p_j \matrixel{\psi_j}{\hat X}{\psi_j}.
+	\label{eq:intro_qm_ensemble_average}
+\end{equation}
+This suggests introducing the density operator
+\begin{equation}
+	\hat \rho=\sum_j p_j \dyad{\psi_j}{\psi_j},
+	\label{eq:intro_qm_density_operator_definition}
+\end{equation}
+so that Eq.~\eqref{eq:intro_qm_ensemble_average} may be rewritten as
+\begin{equation}
+	\expval{\hat X}=\Tr(\hat \rho \hat X).
+	\label{eq:intro_qm_expectation_value_density_operator}
+\end{equation}
+
+The operator $\hat \rho$ is self-adjoint, positive, and trace one:
+\begin{equation}
+	\hat \rho^\dagger=\hat \rho,
+	\qquad
+	\matrixel{\phi}{\hat \rho}{\phi}\geq 0 \ \ \forall\,\ket{\phi}\in\mathcal{H},
+	\qquad
+	\Tr(\hat \rho)=1.
+	\label{eq:intro_qm_density_operator_properties}
+\end{equation}
+Conversely, every positive trace-one operator defines a quantum state.
+
+The set of quantum states is convex. Indeed, if $\hat \rho_1$ and $\hat \rho_2$ are density operators and $0\leq p\leq 1$, then
+\begin{equation}
+	\hat \rho = p\hat \rho_1 + (1-p)\hat \rho_2
+	\label{eq:intro_qm_convex_structure_states}
+\end{equation}
+is again a density operator. Pure states are the extremal points of this convex set. If the system is in the pure state $\ket{\psi}$, then
+\begin{equation}
+	\hat \rho=\dyad{\psi}{\psi},
+	\qquad
+	\hat \rho^2=\hat \rho.
+	\label{eq:intro_qm_pure_state_density_operator}
+\end{equation}
+More generally,
+\begin{equation}
+	\hat \rho \ \text{pure}
+	\iff
+	\hat \rho^2=\hat \rho
+	\iff
+	\Tr(\hat \rho^2)=1.
+	\label{eq:intro_qm_pure_state_characterization}
+\end{equation}
+If instead
+\begin{equation}
+	\Tr(\hat \rho^2)<1,
+	\label{eq:intro_qm_mixed_state_characterization}
+\end{equation}
+the state is mixed. The quantity
+\begin{equation}
+	\gamma(\hat \rho)=\Tr(\hat \rho^2)
+	\label{eq:intro_qm_purity_definition}
+\end{equation}
+is called the purity.
+
+A key conceptual point is that the ensemble decomposition of a mixed state is, in general, not unique. Different ensembles may define the same density operator and therefore the same statistical predictions for all observables. For a qubit, for instance,
+\begin{equation}
+	\frac{1}{2}\dyad{0}{0}+\frac{1}{2}\dyad{1}{1}
+	=
+	\frac{1}{2}\dyad{+}{+}+\frac{1}{2}\dyad{-}{-}
+	=
+	\frac{\id}{2},
+	\label{eq:intro_qm_nonuniqueness_ensemble_decomposition}
+\end{equation}
+where
+\begin{equation}
+	\ket{+}=\frac{\ket{0}+\ket{1}}{\sqrt{2}},
+	\qquad
+	\ket{-}=\frac{\ket{0}-\ket{1}}{\sqrt{2}}.
+	\label{eq:intro_qm_pm_basis_definition}
+\end{equation}
+Thus, the physically relevant object is the density operator itself, not the particular ensemble used to represent it.
+
+\subsection{Two-level systems and preferred bases}
+\label{subsec:two_level_systems_and_preferred_bases}
+
+We now specialize to a two-level system, or qubit. Its Hilbert space is $\mathbb{C}^2$. We choose as computational basis the orthonormal basis
+\begin{equation}
+	\mathcal{B}_z=\left\{\ket{0},\ket{1}\right\},
+	\qquad
+	\braket{0}{0}=\braket{1}{1}=1,
+	\qquad
+	\braket{0}{1}=0.
+	\label{eq:intro_qm_computational_basis}
+\end{equation}
+With the convention adopted throughout,
+\begin{equation}
+	\sigma_z\ket{0}=\ket{0},
+	\qquad
+	\sigma_z\ket{1}=-\ket{1},
+	\label{eq:intro_qm_sigma_z_standard_convention}
+\end{equation}
+so that, in the ordered basis $\{\ket{0},\ket{1}\}$,
+\begin{equation}
+	\sigma_x=
+	\begin{pmatrix}
+		0 & 1 \\
+		1 & 0
+	\end{pmatrix},
+	\qquad
+	\sigma_y=
+	\begin{pmatrix}
+		0 & -i \\
+		i & 0
+	\end{pmatrix},
+	\qquad
+	\sigma_z=
+	\begin{pmatrix}
+		1 & 0 \\
+		0 & -1
+	\end{pmatrix}.
+	\label{eq:intro_qm_pauli_matrices_standard_convention}
+\end{equation}
+
+The states introduced in Eq.~\eqref{eq:intro_qm_pm_basis_definition} form the eigenbasis of $\sigma_x$:
+\begin{equation}
+	\sigma_x\ket{\pm}=\pm\ket{\pm}.
+	\label{eq:intro_qm_sigma_x_eigenvalue_equation}
+\end{equation}
+We therefore denote
+\begin{equation}
+	\mathcal{B}_x=\left\{\ket{+},\ket{-}\right\}
+	\label{eq:intro_qm_sigma_x_basis}
+\end{equation}
+as the $\sigma_x$ eigenbasis.
+
+A generic pure qubit state may be written as
+\begin{equation}
+	\ket{\psi}=\alpha\ket{0}+\beta\ket{1},
+	\qquad
+	|\alpha|^2+|\beta|^2=1.
+	\label{eq:intro_qm_generic_qubit_state}
+\end{equation}
+Up to a global phase, it can always be parametrized as
+\begin{equation}
+	\ket{\psi}
+	=
+	\cos\frac{\theta}{2}\,\ket{0}
+	+
+	e^{i\phi}\sin\frac{\theta}{2}\,\ket{1},
+	\label{eq:intro_qm_qubit_state_bloch_parametrization}
+\end{equation}
+with
+\begin{equation}
+	\theta\in[0,\pi],
+	\qquad
+	\phi\in[0,2\pi).
+	\label{eq:intro_qm_bloch_angles}
+\end{equation}
+The corresponding pure-state density operator is
+\begin{equation}
+	\hat \rho_\psi=\dyad{\psi}{\psi}.
+	\label{eq:intro_qm_pure_qubit_density_operator}
+\end{equation}
+
+\subsection{Bloch representation and Bloch sphere}
+\label{subsec:bloch_representation_and_bloch_sphere}
+
+Since $\{\id,\sigma_x,\sigma_y,\sigma_z\}$ is a basis for the space of $2\times 2$ matrices, every qubit density operator admits the decomposition
+\begin{equation}
+	\hat \rho
+	=
+	\frac{1}{2}\left(\id+\vec r\cdot\vec \sigma\right),
+	\label{eq:intro_qm_bloch_representation}
+\end{equation}
+where $\vec r=(r_x,r_y,r_z)\in\mathbb{R}^3$ is the Bloch vector and $\vec \sigma=(\sigma_x,\sigma_y,\sigma_z)$. Explicitly,
+\begin{equation}
+	\hat \rho=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1+r_z & r_x-ir_y \\
+		r_x+ir_y & 1-r_z
+	\end{pmatrix}.
+	\label{eq:intro_qm_bloch_representation_explicit}
+\end{equation}
+The components of $\vec r$ are obtained as expectation values of the Pauli operators:
+\begin{equation}
+	r_k=\Tr(\hat \rho \sigma_k),
+	\qquad
+	k\in\{x,y,z\},
+	\label{eq:intro_qm_bloch_vector_components}
+\end{equation}
+since $\Tr(\sigma_k)=0$ and $\Tr(\sigma_j\sigma_k)=2\delta_{jk}$.
+
+For the pure state in Eq.~\eqref{eq:intro_qm_qubit_state_bloch_parametrization}, one finds
+\begin{equation}
+	r_x=\sin\theta\cos\phi,
+	\qquad
+	r_y=\sin\theta\sin\phi,
+	\qquad
+	r_z=\cos\theta.
+	\label{eq:intro_qm_bloch_vector_pure_state}
+\end{equation}
+Thus, pure qubit states are in one-to-one correspondence with points on the unit sphere in $\mathbb{R}^3$, the Bloch sphere.
+
+The positivity of $\hat \rho$ imposes a restriction on $\vec r$. Using
+\begin{equation}
+	(\vec r\cdot\vec \sigma)^2=\|\vec r\|^2\id,
+	\label{eq:intro_qm_bloch_operator_squared}
+\end{equation}
+one finds that the eigenvalues of $\hat \rho$ are
+\begin{equation}
+	\lambda_\pm=\frac{1\pm \|\vec r\|}{2}.
+	\label{eq:intro_qm_bloch_density_operator_eigenvalues}
+\end{equation}
+Therefore,
+\begin{equation}
+	\hat \rho\geq 0
+	\iff
+	\|\vec r\|\leq 1.
+	\label{eq:intro_qm_bloch_ball_condition}
+\end{equation}
+This means that the physically allowed states fill the Bloch ball. Pure states lie on its surface,
+\begin{equation}
+	\|\vec r\|=1,
+	\label{eq:intro_qm_pure_states_bloch_sphere}
+\end{equation}
+whereas mixed states lie in its interior,
+\begin{equation}
+	\|\vec r\|<1.
+	\label{eq:intro_qm_mixed_states_bloch_ball}
+\end{equation}
+The maximally mixed state is the center of the ball,
+\begin{equation}
+	\hat \rho_{\mathrm{mm}}=\frac{\id}{2},
+	\qquad
+	\vec r=0.
+	\label{eq:intro_qm_maximally_mixed_state}
+\end{equation}
+
+The relation between the Bloch vector and the purity is immediate. From Eq.~\eqref{eq:intro_qm_bloch_representation}, one finds
+\begin{equation}
+	\Tr(\hat \rho^2)=\frac{1+\|\vec r\|^2}{2}.
+	\label{eq:intro_qm_purity_bloch_relation}
+\end{equation}
+Hence,
+\begin{equation}
+	\Tr(\hat \rho^2)=1
+	\iff
+	\|\vec r\|=1,
+	\qquad
+	\Tr(\hat \rho^2)<1
+	\iff
+	\|\vec r\|<1.
+	\label{eq:intro_qm_purity_bloch_equivalence}
+\end{equation}
+Thus, the length of the Bloch vector directly quantifies the degree of purity of the state.
+
+Finally, any qubit observable may be written as
+\begin{equation}
+	\hat X=a_0\id+\vec a\cdot\vec \sigma,
+	\label{eq:intro_qm_generic_qubit_observable}
+\end{equation}
+with $a_0\in\mathbb{R}$ and $\vec a\in\mathbb{R}^3$. Its expectation value in the state $\hat \rho$ is
+\begin{equation}
+	\expval{\hat X}
+	=
+	\Tr(\hat \rho \hat X)
+	=
+	a_0+\vec a\cdot\vec r.
+	\label{eq:intro_qm_expectation_value_qubit_observable}
+\end{equation}
+In particular,
+\begin{equation}
+	\expval{\sigma_x}=r_x,
+	\qquad
+	\expval{\sigma_y}=r_y,
+	\qquad
+	\expval{\sigma_z}=r_z.
+	\label{eq:intro_qm_pauli_expectation_values}
+\end{equation}
+
+\section{Time evolution in quantum mechanics}
+\label{sec:unitary_time_evolution_and_stationary_states}
+
+We now discuss in more detail the dynamical postulate introduced in the previous section. For a closed and isolated quantum system, the time evolution is described by a family of unitary operators acting on the Hilbert space of the system. This is the natural quantum analogue of reversible evolution in the absence of external interactions.
+
+\subsection{Time-evolution operator and its general properties}
+
+Let $\ket{\psi(t_0)}$ be the state of the system at time $t_0$. Its state at time $t$ is written as
+\begin{equation}
+	\ket{\psi(t)}=\hat U(t,t_0)\ket{\psi(t_0)},
+	\label{eq:intro_qm_state_evolution_operator}
+\end{equation}
+where $\hat U(t,t_0)$ is the time-evolution operator from $t_0$ to $t$. Since the evolution is unitary, one has
+\begin{equation}
+	\hat U^\dagger(t,t_0)\hat U(t,t_0)=\hat U(t,t_0)\hat U^\dagger(t,t_0)=\id.
+	\label{eq:intro_qm_propagator_unitarity}
+\end{equation}
+As a consequence, the norm of the state is preserved:
+\begin{equation}
+	\braket{\psi(t)}{\psi(t)}
+	=
+	\matrixel{\psi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
+	=
+	\braket{\psi(t_0)}{\psi(t_0)}.
+	\label{eq:intro_qm_norm_preservation_unitary}
+\end{equation}
+More generally, the inner product between any two states is preserved:
+\begin{equation}
+	\braket{\phi(t)}{\psi(t)}
+	=
+	\matrixel{\phi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
+	=
+	\braket{\phi(t_0)}{\psi(t_0)}.
+	\label{eq:intro_qm_inner_product_preservation}
+\end{equation}
+Hence, transition probabilities are invariant under the evolution.
+
+The propagator $\hat U(t,t_0)$ must satisfy a consistency condition. If $t_0\leq t_1\leq t_2$, evolving first from $t_0$ to $t_1$ and then from $t_1$ to $t_2$ must be equivalent to evolving directly from $t_0$ to $t_2$. Therefore,
+\begin{equation}
+	\hat U(t_2,t_1)\hat U(t_1,t_0)=\hat U(t_2,t_0).
+	\label{eq:intro_qm_propagator_composition_law}
+\end{equation}
+Moreover,
+\begin{equation}
+	\hat U(t_0,t_0)=\id,
+	\label{eq:intro_qm_propagator_identity}
+\end{equation}
+and, by combining Eqs.~\eqref{eq:intro_qm_propagator_unitarity} and \eqref{eq:intro_qm_propagator_composition_law},
+\begin{equation}
+	\hat U^{-1}(t,t_0)=\hat U(t_0,t)=\hat U^\dagger(t,t_0).
+	\label{eq:intro_qm_propagator_inverse}
+\end{equation}
+
+\subsection{Infinitesimal evolution and Hamiltonian generator}
+
+The local structure of the dynamics is obtained by considering an infinitesimal time step. For a sufficiently regular propagator, one may write
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t)=\id-i\,\hat G(t)\,\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2),
+	\label{eq:intro_qm_infinitesimal_propagator}
+\end{equation}
+where $\hat G(t)$ is the generator of the evolution. Unitarity imposes a constraint on $\hat G(t)$. Indeed, from
+\begin{equation}
+	\hat U^\dagger(t+\mathrm{d}t,t)\hat U(t+\mathrm{d}t,t)=\id
+	\label{eq:intro_qm_unitarity_infinitesimal_propagator}
+\end{equation}
+and Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one finds
+\begin{equation}
+	\left(\id+i\,\hat G^\dagger(t)\,\mathrm{d}t\right)
+	\left(\id-i\,\hat G(t)\,\mathrm{d}t\right)
+	=
+	\id+i\left[\hat G^\dagger(t)-\hat G(t)\right]\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2).
+	\label{eq:intro_qm_infinitesimal_unitarity_expansion}
+\end{equation}
+Therefore, Eq.~\eqref{eq:intro_qm_unitarity_infinitesimal_propagator} implies
+\begin{equation}
+	\hat G^\dagger(t)=\hat G(t).
+	\label{eq:intro_qm_generator_selfadjoint}
+\end{equation}
+The generator of a unitary evolution must thus be self-adjoint. It is therefore identified with the Hamiltonian of the system \cite{ReedSimon80}:
+\begin{equation}
+	\hat G(t)=\hat H(t).
+	\label{eq:intro_qm_generator_is_hamiltonian}
+\end{equation}
+
+The same result may be written in a more global form. By differentiating the identity
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t_0)=\hat U(t+\mathrm{d}t,t)\hat U(t,t_0)
+	\label{eq:intro_qm_propagator_composition_infinitesimal}
+\end{equation}
+and using Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one obtains
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t_0)
+	=
+	\left(\id-i\,\hat H(t)\,\mathrm{d}t\right)\hat U(t,t_0)+\mathcal{O}(\mathrm{d}t^2).
+	\label{eq:intro_qm_propagator_expansion_differential}
+\end{equation}
+Subtracting $\hat U(t,t_0)$ from both sides, dividing by $\mathrm{d}t$, and taking the limit $\mathrm{d}t\to 0$, one finds
+\begin{equation}
+	i\frac{\partial}{\partial t}\hat U(t,t_0)=\hat H(t)\hat U(t,t_0),
+	\label{eq:intro_qm_schrodinger_equation_propagator}
+\end{equation}
+with initial condition
+\begin{equation}
+	\hat U(t_0,t_0)=\id.
+	\label{eq:intro_qm_initial_condition_propagator}
+\end{equation}
+This is the evolution equation for the time-evolution operator. By applying it to the initial state $\ket{\psi(t_0)}$, one immediately obtains the Schrödinger equation for the state vector,
+\begin{equation}
+	i\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)}=\hat H(t)\ket{\psi(t)}.
+	\label{eq:intro_qm_schrodinger_equation_state}
+\end{equation}
+
+When the Hamiltonian is time independent, namely
+\begin{equation}
+	\hat H(t)=\hat H,
+	\label{eq:intro_qm_time_independent_hamiltonian}
+\end{equation}
+the propagator depends only on the time difference,
+\begin{equation}
+	\hat U(t,t_0)=\hat U(t-t_0).
+	\label{eq:intro_qm_time_translation_invariance}
+\end{equation}
+By introducing $\tau=t-t_0$, one has
+\begin{equation}
+	\hat U(\tau_1)\hat U(\tau_2)=\hat U(\tau_1+\tau_2),
+	\label{eq:intro_qm_one_parameter_unitary_group}
+\end{equation}
+together with
+\begin{equation}
+	\hat U(0)=\id.
+	\label{eq:intro_qm_one_parameter_unitary_group_identity}
+\end{equation}
+Hence, the time evolution defines a one-parameter unitary group.
+
+At this point one may invoke Stone's theorem \cite{Stone32}. In the present setting, the theorem states that every strongly continuous one-parameter unitary group is generated by a unique self-adjoint operator $\hat H$ such that
+\begin{equation}
+	\hat U(\tau)=e^{-i\hat H\tau}.
+	\label{eq:intro_qm_stone_theorem}
+\end{equation}
+Conversely, every self-adjoint operator $\hat H$ defines a strongly continuous one-parameter unitary group through Eq.~\eqref{eq:intro_qm_stone_theorem}. This gives a precise mathematical meaning to the statement that the Hamiltonian is the generator of time translations.
+
+Equation~\eqref{eq:intro_qm_stone_theorem} is written in units such that $\hbar=1$. If $\hbar$ is kept explicit, one has
+\begin{equation}
+	\hat U(\tau)=e^{-i\hat H\tau/\hbar}.
+	\label{eq:intro_qm_stone_theorem_with_hbar}
+\end{equation}
+Throughout the following, unless otherwise stated, we set $\hbar=1$.
+
+The self-adjointness of $\hat H$ guarantees the unitarity of the evolution. Indeed,
+\begin{equation}
+	\hat U^\dagger(\tau)=\left(e^{-i\hat H\tau}\right)^\dagger=e^{i\hat H\tau},
+	\label{eq:intro_qm_adjoint_unitary_exponential}
+\end{equation}
+so that
+\begin{equation}
+	\hat U^\dagger(\tau)\hat U(\tau)=e^{i\hat H\tau}e^{-i\hat H\tau}=\id.
+	\label{eq:intro_qm_unitarity_from_selfadjoint_hamiltonian}
+\end{equation}
+
+In the time-independent case, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} can be solved explicitly. The propagator is
+\begin{equation}
+	\hat U(t,t_0)=e^{-i\hat H(t-t_0)},
+	\label{eq:intro_qm_time_independent_propagator_exponential}
+\end{equation}
+and the state evolves as
+\begin{equation}
+	\ket{\psi(t)}=e^{-i\hat H(t-t_0)}\ket{\psi(t_0)}.
+	\label{eq:intro_qm_state_evolution_time_independent_hamiltonian}
+\end{equation}
+Differentiating Eq.~\eqref{eq:intro_qm_state_evolution_time_independent_hamiltonian}, one recovers
+\begin{equation}
+	i\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)}=\hat H\ket{\psi(t)}.
+	\label{eq:intro_qm_schrodinger_equation_time_independent}
+\end{equation}
+
+\subsection{Time-dependent Hamiltonians and time ordering}
+The time-dependent case is slightly more delicate. Formally, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} suggests the expression
+\begin{equation}
+	\hat U(t,t_0)\overset{?}{=}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right].
+	\label{eq:intro_qm_naive_time_dependent_propagator}
+\end{equation}
+However, this formula is valid only when
+\begin{equation}
+	[\hat H(t_1),\hat H(t_2)]=0
+	\qquad
+	\forall\, t_1,t_2.
+	\label{eq:intro_qm_commuting_time_dependent_hamiltonian}
+\end{equation}
+Indeed, if Hamiltonians at different times do not commute, the exponential of the time integral is not sufficient to reproduce the correct ordered product of infinitesimal propagators. In the general case, the formal solution is written as the time-ordered exponential
+\begin{equation}
+	\hat U(t,t_0)=\mathcal{T}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right],
+	\label{eq:intro_qm_time_ordered_exponential}
+\end{equation}
+where $\mathcal{T}$ denotes chronological ordering. This notation compactly represents the unique solution of Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} with initial condition \eqref{eq:intro_qm_initial_condition_propagator}.
+
+\subsection{Stationary states}
+
+We now briefly discuss stationary states. Let $\hat H$ be time independent, and let
+\begin{equation}
+	\hat H\ket{E_n}=E_n\ket{E_n}
+	\label{eq:intro_qm_hamiltonian_eigenvalue_equation}
+\end{equation}
+be the eigenvalue equation for the Hamiltonian. Since $\hat H$ is self-adjoint, the eigenvalues $E_n$ are real. If the system is initially prepared in the eigenstate $\ket{E_n}$, then
+\begin{equation}
+	\ket{\psi(t)}
+	=
+	e^{-i\hat H(t-t_0)}\ket{E_n}
+	=
+	e^{-iE_n(t-t_0)}\ket{E_n}.
+	\label{eq:intro_qm_energy_eigenstate_time_evolution}
+\end{equation}
+The evolution produces only an overall phase. Therefore, the corresponding ray is unchanged in time, and the state is stationary.
+
+This may be seen directly at the level of the associated projector:
+\begin{equation}
+	\ket{\psi(t)}\bra{\psi(t)}
+	=
+	e^{-iE_n(t-t_0)}\ket{E_n}\bra{E_n}e^{iE_n(t-t_0)}
+	=
+	\dyad{E_n}{E_n}.
+	\label{eq:intro_qm_stationary_state_projector_invariance}
+\end{equation}
+Hence, all physical predictions are time independent. In particular, for any time-independent observable $\hat X$,
+\begin{equation}
+	\expval{\hat X}_{\psi(t)}
+	=
+	\matrixel{\psi(t)}{\hat X}{\psi(t)}
+	=
+	\matrixel{E_n}{\hat X}{E_n}.
+	\label{eq:intro_qm_expectation_value_stationary_state}
+\end{equation}
+
+Conversely, suppose that a pure state evolves only by a phase,
+\begin{equation}
+	\ket{\psi(t)}=e^{-i\chi(t)}\ket{\psi(t_0)}.
+	\label{eq:intro_qm_definition_stationary_state}
+\end{equation}
+By substituting this expression into the Schrödinger equation \eqref{eq:intro_qm_schrodinger_equation_time_independent}, one finds
+\begin{equation}
+	\hat H\ket{\psi(t_0)}=\dot{\chi}(t)\ket{\psi(t_0)}.
+	\label{eq:intro_qm_stationary_state_eigenvalue_condition}
+\end{equation}
+Since the left-hand side is time independent, $\dot{\chi}(t)$ must be constant. Denoting this constant by $E$, one obtains
+\begin{equation}
+	\hat H\ket{\psi(t_0)}=E\ket{\psi(t_0)}.
+	\label{eq:intro_qm_stationary_state_hamiltonian_eigenvector}
+\end{equation}
+Therefore, a pure state is stationary if and only if it belongs to an eigenspace of the Hamiltonian.
+
+\section{Bipartite and multipartite systems}
+\label{sec:bipartite_and_multipartite_systems}
+
+We now discuss in more detail the structure of composite quantum systems. This is the natural setting in which quantum correlations, and in particular entanglement, arise. Since the present thesis is ultimately concerned with collective properties of many two-level systems, the tensor-product structure of the Hilbert space plays a central role from the very beginning \cite{ParisTools12, SmirneNotes24}.
+
+\subsection{Tensor-product structure and product bases}
+According to the composition postulate of quantum mechanics, if two subsystems $A$ and $B$ are associated with Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B$, then the composite system is described on the tensor-product space
+\begin{equation}
+	\mathcal{H}_{AB}=\mathcal{H}_A\otimes\mathcal{H}_B.
+	\label{eq:intro_qm_tensor_product_hilbert_space}
+\end{equation}
+If $\{\ket{a_i}\}_{i=1}^{d_A}$ is an orthonormal basis of $\mathcal{H}_A$ and $\{\ket{b_j}\}_{j=1}^{d_B}$ is an orthonormal basis of $\mathcal{H}_B$, then the set
+\begin{equation}
+	\mathcal{B}_{AB}=\left\{\ket{a_i}\otimes\ket{b_j}\right\}_{i,j}
+	\label{eq:intro_qm_product_basis_definition}
+\end{equation}
+is an orthonormal basis of $\mathcal{H}_{AB}$. Indeed,
+\begin{equation}
+	\left(\bra{a_i}\otimes\bra{b_j}\right)\left(\ket{a_{i'}}\otimes\ket{b_{j'}}\right)
+	=
+	\braket{a_i}{a_{i'}}\braket{b_j}{b_{j'}}
+	=
+	\delta_{ii'}\delta_{jj'}.
+	\label{eq:intro_qm_product_basis_orthonormality}
+\end{equation}
+Therefore, any pure state of the bipartite system may be expanded as
+\begin{equation}
+	\ket{\Psi}_{AB}
+	=s
+	\sum_{i=1}^{d_A}\sum_{j=1}^{d_B} c_{ij}\,\ket{a_i}\otimes\ket{b_j},
+	\label{eq:intro_qm_generic_bipartite_pure_state}
+\end{equation}
+with normalization condition
+\begin{equation}
+	\sum_{i,j}|c_{ij}|^2=1.
+	\label{eq:intro_qm_generic_bipartite_pure_state_normalization}
+\end{equation}
+
+\medskip
+
+Operators on the tensor-product space are defined accordingly. If $\hat A$ acts on $\mathcal{H}_A$ and $\hat B$ acts on $\mathcal{H}_B$, their tensor product $\hat A\otimes \hat B$ is the operator on $\mathcal{H}_{AB}$ defined by
+\begin{equation}
+	(\hat A\otimes \hat B)\left(\ket{\phi}_A\otimes\ket{\chi}_B\right)
+	=
+	(\hat A\ket{\phi}_A)\otimes(\hat B\ket{\chi}_B),
+	\label{eq:intro_qm_tensor_product_operator_action}
+\end{equation}
+and extended by linearity to arbitrary vectors. In the product basis,
+\begin{equation}
+	\matrixel{a_i,b_j}{\hat A\otimes \hat B}{a_{i'},b_{j'}}
+	=
+	\matrixel{a_i}{\hat A}{a_{i'}}\matrixel{b_j}{\hat B}{b_{j'}}.
+	\label{eq:intro_qm_tensor_product_operator_matrix_elements}
+\end{equation}
+Among the most important special cases are local operators,
+\begin{equation}
+	\hat A\otimes \id_B,
+	\qquad
+	\id_A\otimes \hat B,
+	\label{eq:intro_qm_local_operators}
+\end{equation}
+which act nontrivially only on one subsystem. For instance,
+\begin{equation}
+	(\hat A\otimes \id_B)\left(\ket{\phi}_A\otimes\ket{\chi}_B\right)
+	=
+	(\hat A\ket{\phi}_A)\otimes\ket{\chi}_B.
+	\label{eq:intro_qm_local_operator_action}
+\end{equation}
+
+If the global state of the bipartite system is described by the density operator $\hat \rho_{AB}$, the expectation value of a local observable acting on $A$ only is
+\begin{equation}
+	\expval{\hat A\otimes \id_B}
+	=
+	\Tr_{AB}\!\left[\hat \rho_{AB}(\hat A\otimes \id_B)\right].
+	\label{eq:intro_qm_local_expectation_global_state}
+\end{equation}
+This expression motivates the introduction of reduced states and partial trace \cite{ParisTools12,SmirneNotes24,Vac24}.
+
+\subsection{Local operators, reduced states, and partial trace}
+
+Let $\{\ket{b_j}\}$ be an orthonormal basis of $\mathcal{H}_B$. The partial trace over subsystem $B$ is the map
+\begin{equation}
+	\Tr_B:\mathcal{B}(\mathcal{H}_A\otimes\mathcal{H}_B)\to\mathcal{B}(\mathcal{H}_A)
+	\label{eq:intro_qm_partial_trace_map}
+\end{equation}
+defined by
+\begin{equation}
+	\Tr_B(\hat X_{AB})
+	=
+	\sum_j
+	(\id_A\otimes\bra{b_j})\,\hat X_{AB}\,(\id_A\otimes\ket{b_j}).
+	\label{eq:intro_qm_partial_trace_definition}
+\end{equation}
+The reduced state of subsystem $A$ is then
+\begin{equation}
+	\hat \rho_A=\Tr_B(\hat \rho_{AB}),
+	\label{eq:intro_qm_reduced_density_operator_A}
+\end{equation}
+and similarly
+\begin{equation}
+	\hat \rho_B=\Tr_A(\hat \rho_{AB}).
+	\label{eq:intro_qm_reduced_density_operator_B}
+\end{equation}
+
+It is important to verify that the reduced state reproduces all local expectation values. Writing the global state in a product basis as
+\begin{equation}
+	\hat \rho_{AB}
+	=
+	\sum_{i,i',j,j'} \rho_{ii';jj'}\,
+	\dyad{a_i}{a_{i'}}\otimes\dyad{b_j}{b_{j'}},
+	\label{eq:intro_qm_global_state_product_basis_expansion}
+\end{equation}
+one finds
+\begin{equation}
+	\Tr_B(\hat \rho_{AB})
+	=
+	\sum_{i,i',j} \rho_{ii';jj}\,\dyad{a_i}{a_{i'}},
+	\label{eq:intro_qm_partial_trace_expansion}
+\end{equation}
+and therefore
+\begin{equation}
+	\Tr_A(\hat \rho_A \hat A)
+	=
+	\sum_{i,i',j} \rho_{ii';jj}\,\matrixel{a_{i'}}{\hat A}{a_i}.
+	\label{eq:intro_qm_local_expectation_reduced_state_step1}
+\end{equation}
+On the other hand,
+\begin{equation}
+	\Tr_{AB}\!\left[\hat \rho_{AB}(\hat A\otimes \id_B)\right]
+	=
+	\sum_{i,i',j,j'}\rho_{ii';jj'}\,
+	\matrixel{a_{i'}}{\hat A}{a_i}\,
+	\braket{b_{j'}}{b_j}
+	=
+	\sum_{i,i',j}\rho_{ii';jj}\,\matrixel{a_{i'}}{\hat A}{a_i}.
+	\label{eq:intro_qm_local_expectation_reduced_state_step2}
+\end{equation}
+Hence,
+\begin{equation}
+	\Tr_A(\hat \rho_A \hat A)
+	=
+	\Tr_{AB}\!\left[\hat \rho_{AB}(\hat A\otimes \id_B)\right].
+	\label{eq:intro_qm_local_expectation_reduced_state}
+\end{equation}
+Thus, the reduced density operator contains all information relevant to local measurements on subsystem $A$.
+
+As a simple example, if the global state is a product state
+\begin{equation}
+	\hat \rho_{AB}=\hat \rho_A\otimes\hat \rho_B,
+	\label{eq:intro_qm_product_density_operator}
+\end{equation}
+then
+\begin{equation}
+	\Tr_B(\hat \rho_A\otimes\hat \rho_B)
+	=
+	\hat \rho_A \Tr(\hat \rho_B)
+	=
+	\hat \rho_A,
+	\label{eq:intro_qm_partial_trace_product_state}
+\end{equation}
+since $\Tr(\hat \rho_B)=1$.
+
+\subsection{Separable and entangled states: definition and methods}
+
+We may now introduce the notion of separability. A pure bipartite state $\ket{\Psi}_{AB}\in\mathcal{H}_A\otimes\mathcal{H}_B$ is called separable if it can be written as
+\begin{equation}
+	\ket{\Psi}_{AB}=\ket{\phi}_A\otimes\ket{\chi}_B.
+	\label{eq:intro_qm_pure_state_separable_definition}
+\end{equation}
+If no such decomposition exists, the state is entangled. For mixed states, the definition is more general: a bipartite state $\hat \rho_{AB}$ is separable if it can be written as a convex combination of product states,
+\begin{equation}
+	\hat \rho_{AB}
+	=
+	\sum_k p_k \,\hat \rho_A^{(k)}\otimes \hat \rho_B^{(k)},
+	\qquad
+	p_k\geq 0,
+	\qquad
+	\sum_k p_k=1.
+	\label{eq:intro_qm_mixed_state_separable_definition}
+\end{equation}
+If no decomposition of the form \eqref{eq:intro_qm_mixed_state_separable_definition} exists, the state is entangled \cite{Horodecki3_09}.
+
+A simple example of separable pure state is
+\begin{equation}
+	\ket{0}\otimes\ket{1}=\ket{01}.
+	\label{eq:intro_qm_simple_separable_state}
+\end{equation}
+A standard example of entangled state is instead
+\begin{equation}
+	\ket{\Phi^+}
+	=
+	\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right).
+	\label{eq:intro_qm_bell_phi_plus}
+\end{equation}
+Indeed, if \(\ket{\Phi^+}\) were a product state, one could write
+\begin{equation}
+	\ket{\Phi^+}
+	=
+	(\alpha\ket{0}+\beta\ket{1})\otimes(\gamma\ket{0}+\delta\ket{1}),
+	\label{eq:intro_qm_product_state_expansion_for_phi_plus}
+\end{equation}
+which expands as
+\begin{equation}
+	\alpha\gamma\ket{00}
+	+
+	\alpha\delta\ket{01}
+	+
+	\beta\gamma\ket{10}
+	+
+	\beta\delta\ket{11}.
+	\label{eq:intro_qm_product_state_expansion_for_phi_plus_explicit}
+\end{equation}
+Comparison with Eq.~\eqref{eq:intro_qm_bell_phi_plus} would require
+\begin{equation}
+	\alpha\delta=0,
+	\qquad
+	\beta\gamma=0,
+	\qquad
+	\alpha\gamma=\beta\delta=\frac{1}{\sqrt{2}},
+	\label{eq:intro_qm_phi_plus_factorization_conditions}
+\end{equation}
+which is impossible. Hence, \(\ket{\Phi^+}\) is entangled.
+
+\medskip
+
+For pure bipartite states, the structure of entanglement is completely characterized by the Schmidt decomposition \cite{NielsenChuang10,Horodecki3_09}. Let
+\begin{equation}
+	\ket{\Psi}_{AB}
+	=
+	\sum_{i,j} c_{ij}\,\ket{a_i}\otimes\ket{b_j}
+	\label{eq:intro_qm_generic_bipartite_state_for_schmidt}
+\end{equation}
+be a pure state. By applying the singular value decomposition to the coefficient matrix \(C=(c_{ij})\), one can always find orthonormal sets \(\{\ket{u_n}\}\subset\mathcal{H}_A\) and \(\{\ket{v_n}\}\subset\mathcal{H}_B\) such that
+\begin{equation}
+	\ket{\Psi}_{AB}
+	=
+	\sum_{n=1}^{r} \sqrt{\lambda_n}\,\ket{u_n}\otimes\ket{v_n},
+	\label{eq:intro_qm_schmidt_decomposition}
+\end{equation}
+where
+\begin{equation}
+	\lambda_n\geq 0,
+	\qquad
+	\sum_{n=1}^{r}\lambda_n=1.
+	\label{eq:intro_qm_schmidt_coefficients_properties}
+\end{equation}
+The integer \(r\) is called the Schmidt rank. The reduced density operators are then
+\begin{equation}
+	\hat \rho_A
+	=
+	\Tr_B\!\left(\dyad{\Psi}{\Psi}_{AB}\right)
+	=
+	\sum_{n=1}^{r}\lambda_n \dyad{u_n}{u_n},
+	\label{eq:intro_qm_reduced_state_schmidt_A}
+\end{equation}
+and similarly
+\begin{equation}
+	\hat \rho_B
+	=
+	\sum_{n=1}^{r}\lambda_n \dyad{v_n}{v_n}.
+	\label{eq:intro_qm_reduced_state_schmidt_B}
+\end{equation}
+Hence, \(\hat \rho_A\) and \(\hat \rho_B\) have the same nonzero spectrum.
+
+The Schmidt decomposition immediately implies that a pure bipartite state is separable if and only if its Schmidt rank is equal to one:
+\begin{equation}
+	\ket{\Psi}_{AB}\ \text{separable}
+	\iff
+	r=1.
+	\label{eq:intro_qm_schmidt_rank_one_separable}
+\end{equation}
+Indeed, if only one Schmidt coefficient is nonzero, Eq.~\eqref{eq:intro_qm_schmidt_decomposition} reduces to a product state. Conversely, if the state is a product state, only one singular value is nonzero. Therefore, for pure bipartite states, entanglement is equivalent to
+\begin{equation}
+	r>1.
+	\label{eq:intro_qm_schmidt_rank_entangled}
+\end{equation}
+
+The Schmidt form also makes clear why entanglement is directly connected with the mixedness of the reduced states. If the global state is pure and separable, then the reduced states are pure. By contrast, if more than one Schmidt coefficient is nonzero, both reduced states are mixed. For instance, for the Bell state \(\ket{\Phi^+}\),
+\begin{equation}
+	\ket{\Phi^+}
+	=
+	\frac{1}{\sqrt{2}}\ket{0}\otimes\ket{0}
+	+
+	\frac{1}{\sqrt{2}}\ket{1}\otimes\ket{1},
+	\label{eq:intro_qm_bell_state_schmidt_form}
+\end{equation}
+so that the Schmidt coefficients are both equal to \(1/2\), and therefore
+\begin{equation}
+	\hat \rho_A=\hat \rho_B=\frac{\id}{2}.
+	\label{eq:intro_qm_reduced_states_phi_plus}
+\end{equation}
+
+\medskip
+
+A natural quantity associated with a quantum state is the von Neumann entropy,
+\begin{equation}
+	S(\hat \rho)=-\Tr(\hat \rho \log \hat \rho).
+	\label{eq:intro_qm_von_neumann_entropy}
+\end{equation}
+If
+\begin{equation}
+	\hat \rho=\sum_n \lambda_n \dyad{\varphi_n}{\varphi_n},
+	\label{eq:intro_qm_density_operator_diagonal_form_entropy}
+\end{equation}
+then
+\begin{equation}
+	S(\hat \rho)=-\sum_n \lambda_n \log \lambda_n.
+	\label{eq:intro_qm_von_neumann_entropy_spectral_form}
+\end{equation}
+In particular,
+\begin{equation}
+	S(\hat \rho)=0
+	\iff
+	\hat \rho \ \text{is pure}.
+	\label{eq:intro_qm_von_neumann_entropy_pure_state}
+\end{equation}
+For a pure bipartite state \(\dyad{\Psi}{\Psi}_{AB}\), the reduced entropies satisfy
+\begin{equation}
+	S(\hat \rho_A)=S(\hat \rho_B),
+	\label{eq:intro_qm_equal_reduced_entropies_pure_bipartite}
+\end{equation}
+and this common value quantifies the bipartite entanglement of the state \cite{NielsenChuang10,Horodecki3_09}. In particular, separable pure states have zero reduced entropy, whereas Bell states have entropy \(\log 2\).
+
+\medskip
+
+For mixed states, deciding separability is in general much harder. One of the most important criteria is the partial-transposition criterion introduced by Peres \cite{Peres96}. Given a bipartite operator
+\begin{equation}
+	\hat \rho_{AB}
+	=
+	\sum_{i,i',j,j'} \rho_{ii';jj'}\,
+	\dyad{a_i}{a_{i'}}\otimes\dyad{b_j}{b_{j'}},
+	\label{eq:intro_qm_bipartite_state_for_partial_transpose}
+\end{equation}
+its partial transpose with respect to subsystem \(B\) is defined as
+\begin{equation}
+	\hat \rho_{AB}^{T_B}
+	=
+	\sum_{i,i',j,j'} \rho_{ii';jj'}\,
+	\dyad{a_i}{a_{i'}}\otimes\dyad{b_{j'}}{b_j}.
+	\label{eq:intro_qm_partial_transpose_definition}
+\end{equation}
+If \(\hat \rho_{AB}\) is separable and can be written as in Eq.~\eqref{eq:intro_qm_mixed_state_separable_definition}, then
+\begin{equation}
+	\hat \rho_{AB}^{T_B}
+	=
+	\sum_k p_k \,\hat \rho_A^{(k)}\otimes \left(\hat \rho_B^{(k)}\right)^T,
+	\label{eq:intro_qm_partial_transpose_separable_state}
+\end{equation}
+which is again positive, since transposition preserves positivity. Therefore,
+\begin{equation}
+	\hat \rho_{AB}\ \text{separable}
+	\quad \Longrightarrow \quad
+	\hat \rho_{AB}^{T_B}\geq 0.
+	\label{eq:intro_qm_peres_criterion_necessary}
+\end{equation}
+For \(2\times2\) and \(2\times3\) systems, the Horodecki family proved that this condition is also sufficient:
+\begin{equation}
+	\hat \rho_{AB}^{T_B}\geq 0
+	\iff
+	\hat \rho_{AB}\ \text{separable},
+	\qquad
+	d_A d_B \in \{4,6\}.
+	\label{eq:intro_qm_peres_horodecki_criterion}
+\end{equation}
+In higher dimensions, however, PPT is only a necessary but sufficient criterion \cite{Horodecki3_09, Horodecki3_96}.
+
+A simple two-qubit example is again provided by the Bell state \(\ket{\Phi^+}\). In the computational basis \(\{\ket{00},\ket{01},\ket{10},\ket{11}\}\),
+\begin{equation}
+	\hat \rho_{\Phi^+}
+	=
+	\dyad{\Phi^+}{\Phi^+}
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 0 & 0 & 1 \\
+		0 & 0 & 0 & 0 \\
+		0 & 0 & 0 & 0 \\
+		1 & 0 & 0 & 1
+	\end{pmatrix},
+	\label{eq:intro_qm_phi_plus_density_matrix}
+\end{equation}
+while its partial transpose is
+\begin{equation}
+	\hat \rho_{\Phi^+}^{T_B}
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 0 & 0 & 0 \\
+		0 & 0 & 1 & 0 \\
+		0 & 1 & 0 & 0 \\
+		0 & 0 & 0 & 1
+	\end{pmatrix},
+	\label{eq:intro_qm_phi_plus_partial_transpose}
+\end{equation}
+whose eigenvalues are
+\begin{equation}
+	\left\{
+	\frac{1}{2},
+	\frac{1}{2},
+	\frac{1}{2},
+	-\frac{1}{2}
+	\right\}.
+	\label{eq:intro_qm_phi_plus_partial_transpose_eigenvalues}
+\end{equation}
+Since one eigenvalue is negative, the state is entangled.
+
+\medskip
+
+A complementary and experimentally useful approach is provided by entanglement witnesses \cite{Terhal00,Terhal02,GuhneToth09}. A Hermitian operator \(\hat W\) is called an entanglement witness if
+\begin{equation}
+	\Tr(\hat W \hat \sigma)\geq 0
+	\qquad
+	\text{for all separable states }\hat \sigma,
+	\label{eq:intro_qm_entanglement_witness_definition_positive}
+\end{equation}
+while there exists at least one entangled state \(\hat \rho\) such that
+\begin{equation}
+	\Tr(\hat W \hat \rho)<0.
+	\label{eq:intro_qm_entanglement_witness_definition_negative}
+\end{equation}
+Thus, a negative expectation value of \(\hat W\) certifies entanglement. For the Bell state \(\ket{\Phi^+}\), a simple witness is
+\begin{equation}
+	\hat W_{\Phi^+}
+	=
+	\frac{\id}{2}-\dyad{\Phi^+}{\Phi^+},
+	\label{eq:intro_qm_bell_state_witness}
+\end{equation}
+for which
+\begin{equation}
+	\Tr(\hat W_{\Phi^+}\dyad{\Phi^+}{\Phi^+})=-\frac{1}{2}<0.
+	\label{eq:intro_qm_bell_state_witness_negative}
+\end{equation}
+
+\subsection{Concurrence for two-qubit states}
+\label{subsec:concurrence_two_qubits}
+
+For two-qubit systems, one of the most widely used entanglement measures is the concurrence. This quantity is especially important because, unlike the general mixed-state separability problem, it admits a closed analytical expression for arbitrary two-qubit states \cite{Wootters98}. It is therefore particularly useful whenever one needs an explicit and computable measure of entanglement, both for pure states and for generic mixed states.
+
+We consider a two-qubit system with Hilbert space
+\begin{equation}
+	\mathcal{H}_{AB}=\mathbb{C}^2\otimes\mathbb{C}^2,
+	\label{eq:intro_qm_two_qubit_hilbert_space_concurrence}
+\end{equation}
+and we adopt the computational basis ordered as
+\begin{equation}
+	\left\{
+	\ket{00},\ket{01},\ket{10},\ket{11}
+	\right\}.
+	\label{eq:intro_qm_two_qubit_computational_basis_concurrence}
+\end{equation}
+
+Let us first consider a pure state
+\begin{equation}
+	\ket{\psi}
+	=
+	a\ket{00}+b\ket{01}+c\ket{10}+d\ket{11},
+	\qquad
+	|a|^2+|b|^2+|c|^2+|d|^2=1.
+	\label{eq:intro_qm_generic_two_qubit_pure_state_concurrence}
+\end{equation}
+The spin-flipped state is defined as
+\begin{equation}
+	\ket{\tilde{\psi}}
+	=
+	(\sigma_y\otimes\sigma_y)\ket{\psi^*},
+	\label{eq:intro_qm_spin_flipped_pure_state}
+\end{equation}
+where the complex conjugation is taken in the computational basis. The concurrence of the pure state $\ket{\psi}$ is then defined as \cite{Wootters98}
+\begin{equation}
+	C(\ket{\psi})
+	=
+	\left|\braket{\psi}{\tilde{\psi}}\right|.
+	\label{eq:intro_qm_pure_state_concurrence_definition}
+\end{equation}
+A direct calculation gives
+\begin{equation}
+	C(\ket{\psi})=2|ad-bc|.
+	\label{eq:intro_qm_pure_state_concurrence_explicit}
+\end{equation}
+This formula already shows some basic properties. First,
+\begin{equation}
+	0\leq C(\ket{\psi})\leq 1.
+	\label{eq:intro_qm_concurrence_bounds_pure}
+\end{equation}
+Second,
+\begin{equation}
+	C(\ket{\psi})=0
+	\iff
+	\ket{\psi}\ \text{is separable},
+	\label{eq:intro_qm_concurrence_zero_separable_pure}
+\end{equation}
+while
+\begin{equation}
+	C(\ket{\psi})=1
+	\iff
+	\ket{\psi}\ \text{is maximally entangled}.
+	\label{eq:intro_qm_concurrence_one_maximally_entangled_pure}
+\end{equation}
+For instance, for the Bell state
+\begin{equation}
+	\ket{\Phi^+}=\frac{1}{\sqrt{2}}\left(\ket{00}+\ket{11}\right),
+	\label{eq:intro_qm_phi_plus_recalled_concurrence}
+\end{equation}
+one has \(a=d=1/\sqrt{2}\) and \(b=c=0\), so that
+\begin{equation}
+	C(\ket{\Phi^+})=1.
+	\label{eq:intro_qm_concurrence_bell_state}
+\end{equation}
+By contrast, for any product state of the form
+\begin{equation}
+	\ket{\psi}=
+	(\alpha\ket{0}+\beta\ket{1})\otimes
+	(\gamma\ket{0}+\delta\ket{1}),
+	\label{eq:intro_qm_product_state_generic_concurrence}
+\end{equation}
+one has \(a=\alpha\gamma\), \(b=\alpha\delta\), \(c=\beta\gamma\), and \(d=\beta\delta\), hence
+\begin{equation}
+	ad-bc
+	=
+	\alpha\beta\gamma\delta-\alpha\beta\delta\gamma
+	=
+	0,
+	\label{eq:intro_qm_product_state_ad_minus_bc_zero}
+\end{equation}
+and therefore
+\begin{equation}
+	C(\ket{\psi})=0.
+	\label{eq:intro_qm_product_state_concurrence_zero}
+\end{equation}
+
+The concurrence of a pure two-qubit state can also be expressed in terms of the reduced state. If
+\begin{equation}
+	\hat \rho_A=\Tr_B\!\left(\dyad{\psi}{\psi}\right),
+	\label{eq:intro_qm_reduced_state_for_pure_concurrence}
+\end{equation}
+then one finds
+\begin{equation}
+	C(\ket{\psi})
+	=
+	2\sqrt{\det \hat \rho_A}
+	=
+	\sqrt{2\left(1-\Tr(\hat \rho_A^2)\right)}.
+	\label{eq:intro_qm_pure_state_concurrence_reduced_density}
+\end{equation}
+Thus, for pure bipartite states, the concurrence is directly related to the mixedness of the reduced density operator. This is fully consistent with the Schmidt-decomposition picture discussed above.
+
+\medskip
+
+We now turn to mixed states. Let \(\hat \rho\) be an arbitrary two-qubit density operator. The concurrence is defined by the convex-roof construction
+\begin{equation}
+	C(\hat \rho)
+	=
+	\min_{\{p_k,\ket{\psi_k}\}}
+	\sum_k p_k\, C(\ket{\psi_k}),
+	\label{eq:intro_qm_mixed_state_concurrence_convex_roof}
+\end{equation}
+where the minimum is taken over all ensemble decompositions
+\begin{equation}
+	\hat \rho=\sum_k p_k \dyad{\psi_k}{\psi_k}.
+	\label{eq:intro_qm_density_operator_ensemble_decomposition_concurrence}
+\end{equation}
+This definition is conceptually natural, but in general it is difficult to evaluate explicitly. The remarkable result of Wootters is that for two qubits the minimization can be solved in closed form \cite{Wootters98}.
+
+To state the result, one first defines the spin-flipped density operator
+\begin{equation}
+	\tilde{\rho}
+	=
+	(\sigma_y\otimes\sigma_y)\hat \rho^*(\sigma_y\otimes\sigma_y),
+	\label{eq:intro_qm_spin_flipped_density_operator}
+\end{equation}
+where again the complex conjugation is taken in the computational basis. One then considers the operator
+\begin{equation}
+	\hat R
+	=
+	\sqrt{
+		\sqrt{\hat \rho}\,
+		\tilde{\rho}\,
+		\sqrt{\hat \rho}
+	}.
+	\label{eq:intro_qm_wootters_R_operator}
+\end{equation}
+Let \(\lambda_1,\lambda_2,\lambda_3,\lambda_4\) be the eigenvalues of \(\hat R\), ordered such that
+\begin{equation}
+	\lambda_1\geq \lambda_2\geq \lambda_3\geq \lambda_4\geq 0.
+	\label{eq:intro_qm_ordered_lambda_wootters}
+\end{equation}
+Then the concurrence of the two-qubit mixed state is
+\begin{equation}
+	C(\hat \rho)
+	=
+	\max\left\{
+	0,\lambda_1-\lambda_2-\lambda_3-\lambda_4
+	\right\}.
+	\label{eq:intro_qm_wootters_concurrence_formula}
+\end{equation}
+An equivalent formulation is obtained by considering the eigenvalues \(\mu_i\) of the generally non-Hermitian matrix \(\hat \rho \tilde{\rho}\). Since these eigenvalues are non-negative, one may define
+\begin{equation}
+	\lambda_i=\sqrt{\mu_i},
+	\label{eq:intro_qm_lambda_from_rho_rhotilde}
+\end{equation}
+ordered in decreasing order, and Eq.~\eqref{eq:intro_qm_wootters_concurrence_formula} remains valid.
+
+Hence, given a generic two-qubit density matrix
+\begin{equation}
+	\hat \rho=
+	\begin{pmatrix}
+		\rho_{11} & \rho_{12} & \rho_{13} & \rho_{14} \\
+		\rho_{21} & \rho_{22} & \rho_{23} & \rho_{24} \\
+		\rho_{31} & \rho_{32} & \rho_{33} & \rho_{34} \\
+		\rho_{41} & \rho_{42} & \rho_{43} & \rho_{44}
+	\end{pmatrix},
+	\label{eq:intro_qm_generic_two_qubit_density_matrix}
+\end{equation}
+the calculation of the concurrence proceeds as follows:
+\begin{equation}
+	\hat \rho
+	\longrightarrow
+	\tilde{\rho}
+	\longrightarrow
+	\hat \rho\tilde{\rho}
+	\longrightarrow
+	\{\mu_i\}
+	\longrightarrow
+	\{\lambda_i=\sqrt{\mu_i}\}
+	\longrightarrow
+	C(\hat \rho).
+	\label{eq:intro_qm_concurrence_algorithm}
+\end{equation}
+This construction provides a complete and explicit entanglement measure for arbitrary two-qubit states.
+
+Several important properties follow from the definition and from Wootters' formula. First,
+\begin{equation}
+	0\leq C(\hat \rho)\leq 1.
+	\label{eq:intro_qm_concurrence_bounds_mixed}
+\end{equation}
+Second,
+\begin{equation}
+	C(\hat \rho)=0
+	\iff
+	\hat \rho\ \text{is separable},
+	\label{eq:intro_qm_concurrence_zero_iff_separable}
+\end{equation}
+for two-qubit states. Thus, concurrence provides a necessary and sufficient separability criterion in this case. Third, concurrence is invariant under local unitary transformations:
+\begin{equation}
+	C\!\left[
+	(\hat U_A\otimes \hat U_B)\hat \rho
+	(\hat U_A^\dagger\otimes \hat U_B^\dagger)
+	\right]
+	=
+	C(\hat \rho).
+	\label{eq:intro_qm_concurrence_local_unitary_invariance}
+\end{equation}
+This is physically natural, since local unitary operations do not change the entanglement shared between the two subsystems. Moreover, the concurrence is an entanglement monotone, and is directly related to the entanglement of formation \(E_F(\hat \rho)\) by the closed formula \cite{Wootters1998}
+\begin{equation}
+	E_F(\hat \rho)
+	=
+	h\!\left(
+	\frac{1+\sqrt{1-C(\hat \rho)^2}}{2}
+	\right),
+	\label{eq:intro_qm_entanglement_of_formation_from_concurrence}
+\end{equation}
+where
+\begin{equation}
+	h(x)=-x\log_2 x-(1-x)\log_2(1-x)
+	\label{eq:intro_qm_binary_entropy_function}
+\end{equation}
+is the binary entropy.
+
+The concurrence is therefore particularly convenient in the two-qubit setting. It vanishes exactly on separable states, reaches its maximum value on maximally entangled states, admits a simple closed expression for pure states, and, remarkably, can still be computed analytically for arbitrary mixed states. For this reason, it will be one of the main tools employed throughout this thesis whenever two-qubit entanglement needs to be quantified explicitly.
+
+\subsection{Bell basis and parity sectors}
+We now introduce the Bell basis, which plays a central role in two-qubit quantum information \cite{NielsenChuang10}. It consists of the four maximally entangled states
+\begin{equation}
+	\ket{\Phi^\pm}
+	=
+	\frac{1}{\sqrt{2}}\left(\ket{00}\pm\ket{11}\right),
+	\qquad
+	\ket{\Psi^\pm}
+	=
+	\frac{1}{\sqrt{2}}\left(\ket{01}\pm\ket{10}\right).
+	\label{eq:intro_qm_bell_basis_definition}
+\end{equation}
+These states form an orthonormal basis of \(\mathbb{C}^2\otimes\mathbb{C}^2\):
+\begin{equation}
+	\braket{\Phi^\alpha}{\Phi^\beta}=\delta_{\alpha\beta},
+	\qquad
+	\braket{\Psi^\alpha}{\Psi^\beta}=\delta_{\alpha\beta},
+	\qquad
+	\braket{\Phi^\alpha}{\Psi^\beta}=0,
+	\label{eq:intro_qm_bell_basis_orthonormality}
+\end{equation}
+with \(\alpha,\beta\in\{+,-\}\).
+
+They also have a simple parity structure. Defining the parity operator
+\begin{equation}
+	\Pi_z=\sigma_z\otimes\sigma_z,
+	\label{eq:intro_qm_two_qubit_parity_operator}
+\end{equation}
+one finds
+\begin{equation}
+	\Pi_z\ket{\Phi^\pm}=+\ket{\Phi^\pm},
+	\qquad
+	\Pi_z\ket{\Psi^\pm}=-\ket{\Psi^\pm}.
+	\label{eq:intro_qm_bell_basis_parity_eigenvalues}
+\end{equation}
+Hence, the two-qubit Hilbert space decomposes as
+\begin{equation}
+	\mathcal{H}_{2}
+	=
+	\mathcal{H}_{\mathrm{even}}\oplus \mathcal{H}_{\mathrm{odd}},
+	\label{eq:intro_qm_two_qubit_parity_decomposition}
+\end{equation}
+with
+\begin{equation}
+	\mathcal{H}_{\mathrm{even}}=\{\ket{00},\ket{11}\},
+	\qquad
+	\mathcal{H}_{\mathrm{odd}}=\{\ket{01},\ket{10}\}.
+	\label{eq:intro_qm_even_odd_subspaces}
+\end{equation}
+
+\begin{table}[h]
+	\centering
+	\begin{tabular}{c c c c}
+		\hline
+		State & Computational form & Parity subspace & Eigenvalue of $\Pi_z$ \\
+		\hline
+		$\ket{\Phi^+}$ & $\frac{1}{\sqrt{2}}(\ket{00}+\ket{11})$ & even & $+1$ \\
+		$\ket{\Phi^-}$ & $\frac{1}{\sqrt{2}}(\ket{00}-\ket{11})$ & even & $+1$ \\
+		$\ket{\Psi^+}$ & $\frac{1}{\sqrt{2}}(\ket{01}+\ket{10})$ & odd & $-1$ \\
+		$\ket{\Psi^-}$ & $\frac{1}{\sqrt{2}}(\ket{01}-\ket{10})$ & odd & $-1$ \\
+		\hline
+	\end{tabular}
+	\caption{Bell basis and parity sectors for two qubits.}
+	\label{tab:intro_qm_bell_basis_parity}
+\end{table}
+
+The Bell basis is useful because it makes maximally entangled states explicit, diagonalizes relevant two-qubit observables, and naturally separates even and odd parity sectors. These notions will reappear later in the thesis in connection with parity measurements and monitored dynamics.
+
+\subsection{Multipartite systems and collective spin operators}
+
+The generalization to many subsystems is immediate at the level of Hilbert spaces. For \(N\) distinguishable subsystems with Hilbert spaces \(\mathcal{H}_1,\dots,\mathcal{H}_N\), the global Hilbert space is
+\begin{equation}
+	\mathcal{H}^{(N)}=\mathcal{H}_1\otimes\cdots\otimes\mathcal{H}_N.
+	\label{eq:intro_qm_multipartite_hilbert_space}
+\end{equation}
+For \(N\) qubits,
+\begin{equation}
+	\mathcal{H}^{(N)}=(\mathbb{C}^2)^{\otimes N},
+	\label{eq:intro_qm_n_qubit_hilbert_space_recalled}
+\end{equation}
+with computational basis
+\begin{equation}
+	\ket{x_1,\dots,x_N}
+	=
+	\ket{x_1}\otimes\cdots\otimes\ket{x_N},
+	\qquad
+	x_k\in\{0,1\}.
+	\label{eq:intro_qm_n_qubit_computational_basis}
+\end{equation}
+In the multipartite setting, separability becomes richer. A fully separable pure state has the form
+\begin{equation}
+	\ket{\Psi}
+	=
+	\ket{\phi_1}\otimes\cdots\otimes\ket{\phi_N},
+	\label{eq:intro_qm_fully_separable_pure_state}
+\end{equation}
+while more general states may be separable only with respect to certain bipartitions or may exhibit genuine multipartite entanglement \cite{Horodecki3_09,GuhneToth09}.
+
+For the purposes of the present thesis, a particularly important family of observables is given by the collective spin operators
+\begin{equation}
+	\hat J_\alpha
+	=
+	\frac{1}{2}\sum_{k=1}^{N}\sigma_\alpha^{(k)},
+	\qquad
+	\alpha\in\{x,y,z\},
+	\label{eq:intro_qm_collective_spin_operators}
+\end{equation}
+where \(\sigma_\alpha^{(k)}\) acts as \(\sigma_\alpha\) on the \(k\)-th qubit and as the identity on all the others:
+\begin{equation}
+	\sigma_\alpha^{(k)}
+	=
+	\id^{\otimes (k-1)}\otimes \sigma_\alpha \otimes \id^{\otimes (N-k)}.
+	\label{eq:intro_qm_local_pauli_operator_on_site_k}
+\end{equation}
+These operators satisfy the angular-momentum commutation relations
+\begin{equation}
+	[\hat J_x,\hat J_y]=i\hat J_z,
+	\qquad
+	[\hat J_y,\hat J_z]=i\hat J_x,
+	\qquad
+	[\hat J_z,\hat J_x]=i\hat J_y,
+	\label{eq:intro_qm_collective_spin_commutation_relations}
+\end{equation}
+and provide the natural language for the description of collective observables, symmetric states, and spin-squeezing properties in many-qubit systems.
+
+\section{Spin squeezing}
+\label{sec:spin_squeezing}
+
+Spin squeezing is one of the most important collective manifestations of nonclassical correlations in systems of many spins. It was originally introduced by Kitagawa and Ueda as the spin analogue of quadrature squeezing in bosonic systems \cite{KitagawaUeda93}, and was later reinterpreted by Wineland \emph{et al.} in explicitly metrological terms, namely as a resource for enhanced phase estimation in Ramsey interferometry \cite{Wineland94}. The modern perspective, extensively reviewed in \cite{Ma11}, is that spin squeezing lies at the intersection of three closely related notions: redistribution of quantum fluctuations, multipartite entanglement, and quantum-enhanced metrology.
+
+The basic idea is simple. For a system of $N$ spin-$1/2$ particles, one may introduce the collective spin operators
+\begin{equation}
+	\hat J_\alpha=\frac{1}{2}\sum_{k=1}^{N}\sigma_\alpha^{(k)},
+	\qquad
+	\alpha\in\{x,y,z\},
+	\label{eq:intro_qm_collective_spin_operators_ss}
+\end{equation}
+which satisfy the angular-momentum commutation relations $[\hat J_x,\hat J_y]=i\hat J_z$ together with cyclic permutations. If $\mathbf{n}$ is a unit vector, the corresponding collective-spin component is $\hat J_{\mathbf{n}}=\mathbf{n}\cdot\hat{\mathbf{J}}$. Since different components of the collective spin do not commute, their fluctuations are constrained by uncertainty relations. Spin squeezing refers precisely to the possibility of reducing the variance of one collective-spin component below a suitable reference level, while respecting these uncertainty constraints.
+
+\subsection{Coherent spin states and standard quantum limit}
+\label{subsec:coherent_spin_states_and_sql}
+
+The natural reference states are the coherent spin states (CSSs), which are the closest spin analogue of bosonic coherent states \cite{KitagawaUeda93,Ma11}. In the present convention,
+\begin{equation}
+	\sigma_z\ket{0}=\ket{0},
+	\qquad
+	\sigma_z\ket{1}=-\ket{1},
+	\label{eq:intro_qm_sigma_z_convention_ss}
+\end{equation}
+and a generic coherent spin state can be written as
+\begin{equation}
+	\ket{\theta,\phi}_{\mathrm{CSS}}
+	=
+	\bigotimes_{k=1}^{N}
+	\left(
+	\cos\frac{\theta}{2}\ket{0}_k
+	+
+	e^{i\phi}\sin\frac{\theta}{2}\ket{1}_k
+	\right).
+	\label{eq:intro_qm_css_definition_ss}
+\end{equation}
+These states correspond to all spins pointing in the same direction
+$\mathbf{n}_0=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$, so that
+\begin{equation}
+	\langle \hat{\mathbf{J}}\rangle=\frac{N}{2}\mathbf{n}_0.
+	\label{eq:intro_qm_css_mean_spin_ss}
+\end{equation}
+In particular, the mean-spin length is maximal, namely $|\langle \hat{\mathbf{J}}\rangle|=N/2$.
+
+The key property of CSSs is that they are isotropic in the plane orthogonal to the mean-spin direction. If $\mathbf{n}_\perp$ is any unit vector orthogonal to $\mathbf{n}_0$, then
+\begin{equation}
+	(\Delta \hat J_{\mathbf{n}_\perp})^2=\frac{N}{4}.
+	\label{eq:intro_qm_css_transverse_variance_ss}
+\end{equation}
+This value defines the standard quantum limit for collective-spin fluctuations. Therefore, any state for which the transverse variance becomes smaller than $N/4$ is, in a precise sense, squeezed with respect to the coherent-spin reference.
+
+\subsection{Minimal transverse variance}
+\label{subsec:minimal_transverse_variance}
+
+Let the mean-spin direction be
+\begin{equation}
+	\mathbf{n}_0=
+	\frac{\langle \hat{\mathbf{J}}\rangle}{|\langle \hat{\mathbf{J}}\rangle|},
+	\label{eq:intro_qm_mean_spin_direction_ss}
+\end{equation}
+assuming $|\langle \hat{\mathbf{J}}\rangle|\neq 0$. Spin squeezing is then defined in terms of fluctuations in the plane orthogonal to $\mathbf{n}_0$. The relevant quantity is the minimal transverse variance
+\begin{equation}
+	(\Delta \hat J_\perp)^2_{\min}
+	=
+	\min_{\mathbf{n}_\perp\perp \mathbf{n}_0}
+	(\Delta \hat J_{\mathbf{n}_\perp})^2.
+	\label{eq:intro_qm_minimal_transverse_variance_definition_ss}
+\end{equation}
+
+A convenient way to compute it is through the covariance matrix
+\begin{equation}
+	\Gamma_{\alpha\beta}
+	=
+	\frac{1}{2}\langle \hat J_\alpha \hat J_\beta+\hat J_\beta \hat J_\alpha\rangle
+	-
+	\langle \hat J_\alpha\rangle \langle \hat J_\beta\rangle.
+	\label{eq:intro_qm_collective_spin_covariance_matrix_ss}
+\end{equation}
+For any direction $\mathbf{n}$ one has $(\Delta \hat J_{\mathbf{n}})^2=\mathbf{n}^T\Gamma\,\mathbf{n}$. Restricting to the plane orthogonal to $\mathbf{n}_0$, the minimal transverse variance is given by the smallest eigenvalue of the corresponding $2\times 2$ covariance block.
+
+If one chooses coordinates such that the mean spin points along the $z$ axis, namely $\mathbf{n}_0=\mathbf{e}_z$, then the minimization becomes explicit and one finds
+\begin{equation}
+	(\Delta \hat J_\perp)^2_{\min}
+	=
+	\frac{1}{2}
+	\left[
+	(\Delta \hat J_x)^2+(\Delta \hat J_y)^2
+	-
+	\sqrt{
+		\left[(\Delta \hat J_x)^2-(\Delta \hat J_y)^2\right]^2
+		+
+		\left(
+		\langle [\hat J_x,\hat J_y]_+\rangle
+		-
+		2\langle \hat J_x\rangle\langle \hat J_y\rangle
+		\right)^2
+	}
+	\right].
+	\label{eq:intro_qm_minimal_transverse_variance_ss}
+\end{equation}
+This is the basic ingredient entering all standard spin-squeezing criteria.
+
+\subsection{Kitagawa-Ueda spin squeezing}
+\label{subsec:kitagawa_ueda_spin_squeezing}
+
+The original Kitagawa-Ueda definition compares the minimal transverse variance with the CSS value \cite{KitagawaUeda93,Ma11}. For $N$ spin-$1/2$ particles, one defines
+\begin{equation}
+	\xi_{\mathrm{KU}}^{2}
+	=
+	\frac{4}{N}
+	(\Delta \hat J_\perp)^2_{\min}.
+	\label{eq:intro_qm_ku_parameter_definition_ss}
+\end{equation}
+By construction, every coherent spin state satisfies $\xi_{\mathrm{KU}}^{2}=1$. A state is said to be spin squeezed in the Kitagawa-Ueda sense if
+$\xi_{\mathrm{KU}}^{2}<1$.
+
+This definition is purely fluctuation-based. It captures the fact that one transverse collective-spin component has a variance smaller than the coherent-spin reference value. In this sense, it is the direct spin counterpart of bosonic quadrature squeezing. The advantage of this criterion is that it isolates the geometrical aspect of squeezing in a very transparent way. Its limitation is that it does not explicitly encode metrological performance, because it does not take into account the actual length of the mean spin.
+
+For states such that $\langle \hat J_x\rangle=\langle \hat J_y\rangle=0$ and $\langle \hat{\mathbf{J}}\rangle=\langle \hat J_z\rangle \mathbf{e}_z$, Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_ss} simplifies to
+\begin{equation}
+	(\Delta \hat J_\perp)^2_{\min}
+	=
+	\frac{1}{2}
+	\left[
+	\langle \hat J_x^2+\hat J_y^2\rangle
+	-
+	\sqrt{
+		\langle \hat J_x^2-\hat J_y^2\rangle^2
+		+
+		\langle [\hat J_x,\hat J_y]_+\rangle^2
+	}
+	\right],
+	\label{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}
+\end{equation}
+and therefore
+\begin{equation}
+	\xi_{\mathrm{KU}}^{2}
+	=
+	\frac{2}{N}
+	\left[
+	\langle \hat J_x^2+\hat J_y^2\rangle
+	-
+	\sqrt{
+		\langle \hat J_x^2-\hat J_y^2\rangle^2
+		+
+		\langle [\hat J_x,\hat J_y]_+\rangle^2
+	}
+	\right].
+	\label{eq:intro_qm_ku_parameter_mean_spin_z_ss}
+\end{equation}
+This form is especially useful in many concrete applications, including parity-symmetric states and twisting-generated states.
+
+\subsection{Wineland spin squeezing and metrological interpretation}
+\label{subsec:wineland_spin_squeezing}
+
+The Wineland criterion originates from Ramsey spectroscopy and is directly tied to phase estimation \cite{Wineland94,Ma11}. Suppose that one wants to estimate a small phase shift \(\phi\) generated by a collective-spin rotation. By the standard error-propagation formula,
+\begin{equation}
+	(\Delta \phi)^2
+	=
+	\frac{(\Delta \hat J_\perp)^2_{\min}}
+	{\left|
+		\partial_\phi \langle \hat J_{\perp'}\rangle
+		\right|^2},
+	\label{eq:intro_qm_error_propagation_phase_ss}
+\end{equation}
+where \(\mathbf{n}_{\perp'}\) is chosen in the transverse plane. For an optimal small-angle interrogation, the slope is controlled by the mean spin, and one obtains
+\begin{equation}
+	\Delta \phi
+	=
+	\frac{(\Delta \hat J_\perp)_{\min}}
+	{|\langle \hat{\mathbf{J}}\rangle|}.
+	\label{eq:intro_qm_phase_uncertainty_collective_spin_ss}
+\end{equation}
+Comparing this with the shot-noise limit \(\Delta\phi_{\mathrm{SQL}}=1/\sqrt{N}\) yields the Wineland parameter
+\begin{equation}
+	\xi_{\mathrm{W}}^{2}
+	=
+	\frac{N(\Delta \hat J_\perp)^2_{\min}}
+	{|\langle \hat{\mathbf{J}}\rangle|^2}.
+	\label{eq:intro_qm_wineland_parameter_definition_ss}
+\end{equation}
+The condition \(\xi_{\mathrm{W}}^{2}<1\) means that the state beats the standard quantum limit and therefore provides metrological gain. Equivalently, one may write
+\begin{equation}
+	\Delta \phi=\frac{\xi_{\mathrm{W}}}{\sqrt{N}}.
+	\label{eq:intro_qm_phase_uncertainty_wineland_ss}
+\end{equation}
+
+The crucial difference from the Kitagawa-Ueda criterion is the normalization by the mean-spin length. This makes \(\xi_{\mathrm{W}}^{2}\) a directly operational parameter. Indeed, reducing fluctuations alone is not enough if the mean spin is also strongly reduced, because the signal slope may then deteriorate. In this sense, Wineland squeezing is the criterion relevant for metrology, whereas Kitagawa-Ueda squeezing is the more purely geometrical notion.
+
+The two parameters are related by
+\begin{equation}
+	\xi_{\mathrm{W}}^{2}
+	=
+	\frac{N^{2}}{4|\langle \hat{\mathbf{J}}\rangle|^{2}}\,
+	\xi_{\mathrm{KU}}^{2}.
+	\label{eq:intro_qm_ku_wineland_relation_ss}
+\end{equation}
+Since $|\langle \hat{\mathbf{J}}\rangle|\leq N/2$, one immediately gets
+$\xi_{\mathrm{KU}}^{2}\leq \xi_{\mathrm{W}}^{2}$. Hence Wineland squeezing is the stronger condition. A state may satisfy \(\xi_{\mathrm{KU}}^{2}<1\) and still fail to give metrological enhancement if the mean spin is too short.
+
+\subsection{Relevant examples and special cases}
+\label{subsec:spin_squeezing_examples_and_special_cases}
+
+For a coherent spin state, one has $(\Delta \hat J_\perp)^2_{\min}=N/4$ and $|\langle \hat{\mathbf{J}}\rangle|=N/2$, so both parameters take the reference value
+\begin{equation}
+	\xi_{\mathrm{KU}}^{2}=\xi_{\mathrm{W}}^{2}=1.
+	\label{eq:intro_qm_css_spin_squeezing_values_ss}
+\end{equation}
+Thus CSSs define the standard quantum limit and are unsqueezed in both senses.
+
+A second important family is given by Dicke states \(\ket{j,m}\), with \(j=N/2\). For such states one has \(\langle \hat J_x\rangle=\langle \hat J_y\rangle=0\) and \(\langle \hat J_z\rangle=m\), while rotational symmetry around the \(z\) axis implies
+\begin{equation}
+	(\Delta \hat J_x)^2=(\Delta \hat J_y)^2
+	=
+	\frac{1}{2}\left[j(j+1)-m^2\right].
+	\label{eq:intro_qm_dicke_transverse_variances_ss}
+\end{equation}
+Therefore,
+\begin{equation}
+	\xi_{\mathrm{KU}}^{2}
+	=
+	\frac{2}{N}\left[j(j+1)-m^2\right].
+	\label{eq:intro_qm_dicke_ku_parameter_ss}
+\end{equation}
+For \(m=\pm j\) one recovers \(\xi_{\mathrm{KU}}^{2}=1\), consistently with the fact that \(\ket{j,\pm j}\) are CSSs. For \(|m|<j\), however, one finds \(\xi_{\mathrm{KU}}^{2}>1\). In particular, for the twin-Fock state \(m=0\), \(\xi_{\mathrm{KU}}^{2}=j+1=N/2+1\), so the state is not spin squeezed in the KU sense.
+
+This example is important because it highlights a key limitation of the standard criteria. For \(m=0\), the mean spin vanishes, so the Wineland parameter is not even defined:
+\begin{equation}
+	|\langle \hat{\mathbf{J}}\rangle|=0
+	\qquad
+	\Longrightarrow
+	\qquad
+	\xi_{\mathrm{W}}^{2}\ \text{is ill-defined}.
+	\label{eq:intro_qm_wineland_undefined_zero_mean_spin_ss}
+\end{equation}
+Therefore, highly entangled and even metrologically useful states may escape both the KU and Wineland classifications when the mean spin is too small or vanishes altogether. The same caveat appears for Bell states, GHZ states, and other strongly nonclassical states with zero mean polarization.
+
+\subsection{Spin squeezing and entanglement}
+\label{subsec:spin_squeezing_and_entanglement}
+
+One of the main reasons spin squeezing is so useful is its connection with entanglement \cite{Ma11}. For systems of spin-$1/2$ particles, Wineland squeezing is a sufficient witness of entanglement: if \(\xi_{\mathrm{W}}^{2}<1\), the state cannot be separable. Thus collective first and second moments already provide an experimentally accessible entanglement test.
+
+The relation, however, is not an equivalence. There exist entangled states that are not spin squeezed according to the standard criteria. This is one reason why the study of squeezing and entanglement must be kept conceptually distinct. Spin squeezing detects a specific form of collective quantum correlation, but does not exhaust the entire landscape of multipartite entanglement.
+
+For symmetric multiqubit states, the connection becomes more specific. Wang and Sanders showed that, for arbitrary symmetric multiqubit states, spin squeezing implies pairwise entanglement, and for symmetric states with fixed parity they derived a direct relation between the Kitagawa-Ueda parameter and the concurrence \cite{WangSanders03}. Their analysis clarifies both the usefulness and the limitations of spin squeezing: it is a powerful sufficient indicator of entanglement, but not a universal one.
+
+A further refinement is provided by the theory of extreme spin squeezing. Sørensen and Mølmer showed that collective-spin measurements can be used not only to witness entanglement, but also to infer the entanglement depth, namely how many particles must participate in the entangled clusters \cite{SorMol00}. This becomes especially important in regimes where the original Wineland criterion is no longer adequate, for instance when the mean spin is strongly reduced.

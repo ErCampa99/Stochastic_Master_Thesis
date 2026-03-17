@@ -19,149 +19,359 @@
 
 \refsection{0}
   \datalist[entry]{none/global//global/global/global}
-    \entry{GenAlb01}{misc}{}{}
-      \name{author}{2}{}{%
-        {{hash=63e1d848eeb7d57e12f168babd42c4db}{%
-           family={Albarelli},
-           familyi={A\bibinitperiod},
-           given={Francesco},
-           giveni={F\bibinitperiod}}}%
-        {{hash=2fe1574f5b1248522d44924664f5f6ef}{%
-           family={Genoni},
-           familyi={G\bibinitperiod},
-           given={Marco\bibnamedelima G.},
-           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+    \entry{Planck01}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=b70f9b82b1387fb65567789c543a0c4c}{%
+           family={Planck},
+           familyi={P\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
       }
-      \strng{namehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{fullhash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{fullhashraw}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{bibnamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorbibnamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authornamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorfullhash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorfullhashraw}{da2c70b39f28166423e4b0e2a916551b}
-      \field{extraname}{1}
+      \strng{namehash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{fullhash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{fullhashraw}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{bibnamehash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{authorbibnamehash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{authornamehash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{authorfullhash}{b70f9b82b1387fb65567789c543a0c4c}
+      \strng{authorfullhashraw}{b70f9b82b1387fb65567789c543a0c4c}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{quant-ph}
-      \field{eprinttype}{arXiv}
-      \field{month}{12}
-      \field{title}{A pedagogical introduction to continuously monitored quantum systems and measurement-based feedback}
-      \field{year}{2023}
-      \verb{eprint}
-      \verb 2312.13214
+      \field{journaltitle}{Annalen der Physik}
+      \field{number}{3}
+      \field{title}{Ueber das Gesetz der Energieverteilung im Normalspectrum}
+      \field{volume}{309}
+      \field{year}{1901}
+      \field{pages}{553\bibrangedash 563}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1002/andp.19013090310
       \endverb
     \endentry
-    \entry{AlbRosGen01}{article}{}{}
-      \name{author}{3}{}{%
-        {{hash=63e1d848eeb7d57e12f168babd42c4db}{%
-           family={Albarelli},
-           familyi={A\bibinitperiod},
-           given={Francesco},
-           giveni={F\bibinitperiod}}}%
-        {{hash=98380a1a005c425035f831723519d8ee}{%
-           family={Rossi},
-           familyi={R\bibinitperiod},
-           given={Matteo\bibnamedelimb A.\bibnamedelimi C.},
-           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
-        {{hash=2fe1574f5b1248522d44924664f5f6ef}{%
-           family={Genoni},
-           familyi={G\bibinitperiod},
-           given={Marco\bibnamedelima G.},
-           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+    \entry{Einstein05}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=3ebf53e52a3ce84f0ffb8553200a6a63}{%
+           family={Einstein},
+           familyi={E\bibinitperiod},
+           given={Albert},
+           giveni={A\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {World Scientific}%
+      \strng{namehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{fullhash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{fullhashraw}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{bibnamehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authorbibnamehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authornamehash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authorfullhash}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \strng{authorfullhashraw}{3ebf53e52a3ce84f0ffb8553200a6a63}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annalen der Physik}
+      \field{number}{6}
+      \field{title}{Über einen die Erzeugung und Verwandlung des Lichtes betreffenden heuristischen Gesichtspunkt}
+      \field{volume}{322}
+      \field{year}{1905}
+      \field{pages}{132\bibrangedash 148}
+      \range{pages}{17}
+      \verb{doi}
+      \verb 10.1002/andp.19053220607
+      \endverb
+    \endentry
+    \entry{Bohr13}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=09ca20fddac431fc5e6dae0595c682f8}{%
+           family={Bohr},
+           familyi={B\bibinitperiod},
+           given={Niels},
+           giveni={N\bibinitperiod}}}%
       }
-      \strng{namehash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{fullhash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{fullhashraw}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{bibnamehash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{authorbibnamehash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{authornamehash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{authorfullhash}{8a378c2851656ed1e5c1c4bb10310cf9}
-      \strng{authorfullhashraw}{8a378c2851656ed1e5c1c4bb10310cf9}
+      \strng{namehash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{fullhash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{fullhashraw}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{bibnamehash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{authorbibnamehash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{authornamehash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{authorfullhash}{09ca20fddac431fc5e6dae0595c682f8}
+      \strng{authorfullhashraw}{09ca20fddac431fc5e6dae0595c682f8}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The London, Edinburgh, and Dublin Philosophical Magazine and Journal of Science}
+      \field{number}{151}
+      \field{series}{6}
+      \field{title}{On the Constitution of Atoms and Molecules}
+      \field{volume}{26}
+      \field{year}{1913}
+      \field{pages}{1\bibrangedash 25}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1080/14786441308634955
+      \endverb
+    \endentry
+    \entry{Heisenberg25}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=93ed8b754e9b3f332468bbbfa56e7602}{%
+           family={Heisenberg},
+           familyi={H\bibinitperiod},
+           given={Werner},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{fullhash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{fullhashraw}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{bibnamehash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{authorbibnamehash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{authornamehash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{authorfullhash}{93ed8b754e9b3f332468bbbfa56e7602}
+      \strng{authorfullhashraw}{93ed8b754e9b3f332468bbbfa56e7602}
       \field{sortinit}{4}
       \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{quant-ph}
-      \field{eprinttype}{arXiv}
-      \field{journaltitle}{International Journal of Quantum Information}
-      \field{title}{Quantum frequency estimation with conditional states of continuously monitored independent dephasing channels}
-      \field{year}{2020}
-      \true{nocite}
-      \verb{eprint}
-      \verb 1910.12549
+      \field{journaltitle}{Zeitschrift für Physik}
+      \field{number}{1}
+      \field{title}{Über quantentheoretische Umdeutung kinematischer und mechanischer Beziehungen}
+      \field{volume}{33}
+      \field{year}{1925}
+      \field{pages}{879\bibrangedash 893}
+      \range{pages}{15}
+      \verb{doi}
+      \verb 10.1007/BF01328377
       \endverb
     \endentry
-    \entry{GenAlbNotes01}{unpublished}{}{}
+    \entry{BornJordan25}{article}{}{}
       \name{author}{2}{}{%
-        {{hash=63e1d848eeb7d57e12f168babd42c4db}{%
-           family={Albarelli},
-           familyi={A\bibinitperiod},
-           given={Francesco},
-           giveni={F\bibinitperiod}}}%
-        {{hash=2fe1574f5b1248522d44924664f5f6ef}{%
-           family={Genoni},
-           familyi={G\bibinitperiod},
-           given={Marco\bibnamedelima G.},
-           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+        {{hash=f3c12b2ab192a232977c790c202ae18a}{%
+           family={Born},
+           familyi={B\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
+        {{hash=334b57ded8d68614d62f39b0c174290b}{%
+           family={Jordan},
+           familyi={J\bibinitperiod},
+           given={Pascual},
+           giveni={P\bibinitperiod}}}%
       }
-      \strng{namehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{fullhash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{fullhashraw}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{bibnamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorbibnamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authornamehash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorfullhash}{da2c70b39f28166423e4b0e2a916551b}
-      \strng{authorfullhashraw}{da2c70b39f28166423e4b0e2a916551b}
-      \field{extraname}{2}
+      \strng{namehash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{fullhash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{fullhashraw}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{bibnamehash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{authorbibnamehash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{authornamehash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{authorfullhash}{02232e5e00e44a7b3804732ee4ab794c}
+      \strng{authorfullhashraw}{02232e5e00e44a7b3804732ee4ab794c}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Zeitschrift für Physik}
+      \field{number}{1}
+      \field{title}{Zur Quantenmechanik}
+      \field{volume}{34}
+      \field{year}{1925}
+      \field{pages}{858\bibrangedash 888}
+      \range{pages}{31}
+      \verb{doi}
+      \verb 10.1007/BF01328531
+      \endverb
+    \endentry
+    \entry{Schrodinger26}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=d8dd71fe9dafefe942ea59295dee0ec4}{%
+           family={Schrödinger},
+           familyi={S\bibinitperiod},
+           given={Erwin},
+           giveni={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{fullhash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{fullhashraw}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{bibnamehash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{authorbibnamehash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{authornamehash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{authorfullhash}{d8dd71fe9dafefe942ea59295dee0ec4}
+      \strng{authorfullhashraw}{d8dd71fe9dafefe942ea59295dee0ec4}
       \field{sortinit}{5}
       \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{month}{11}
-      \field{note}{Unpublished lecture notes}
-      \field{title}{Lecture notes on continuously monitored quantum systems}
-      \field{year}{2022}
-      \true{nocite}
+      \field{journaltitle}{Annalen der Physik}
+      \field{number}{4}
+      \field{title}{Quantisierung als Eigenwertproblem}
+      \field{volume}{384}
+      \field{year}{1926}
+      \field{pages}{361\bibrangedash 376}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1002/andp.19263840404
+      \endverb
     \endentry
-    \entry{Vac24}{book}{}{}
+    \entry{Born26}{article}{}{}
       \name{author}{1}{}{%
-        {{hash=f96f40e1a93b20df655d6a2169f6af52}{%
-           family={Vacchini},
-           familyi={V\bibinitperiod},
-           given={Bassano},
-           giveni={B\bibinitperiod}}}%
+        {{hash=f3c12b2ab192a232977c790c202ae18a}{%
+           family={Born},
+           familyi={B\bibinitperiod},
+           given={Max},
+           giveni={M\bibinitperiod}}}%
       }
-      \list{publisher}{1}{%
-        {Springer Nature Switzerland AG}%
-      }
-      \strng{namehash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{fullhash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{fullhashraw}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{bibnamehash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{authorbibnamehash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{authornamehash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{authorfullhash}{f96f40e1a93b20df655d6a2169f6af52}
-      \strng{authorfullhashraw}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{namehash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{fullhash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{fullhashraw}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{bibnamehash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{authorbibnamehash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{authornamehash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{authorfullhash}{f3c12b2ab192a232977c790c202ae18a}
+      \strng{authorfullhashraw}{f3c12b2ab192a232977c790c202ae18a}
       \field{sortinit}{6}
       \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{isbn}{978-3-031-58217-2}
-      \field{series}{Graduate Texts in Physics}
-      \field{title}{Open Quantum Systems}
-      \field{year}{2024}
-      \true{nocite}
+      \field{journaltitle}{Zeitschrift für Physik}
+      \field{number}{12}
+      \field{title}{Zur Quantenmechanik der Sto{ß}vorgänge}
+      \field{volume}{37}
+      \field{year}{1926}
+      \field{pages}{863\bibrangedash 867}
+      \range{pages}{5}
       \verb{doi}
-      \verb 10.1007/978-3-031-58218-9
+      \verb 10.1007/BF01397477
       \endverb
     \endentry
-    \entry{Par12}{article}{}{}
+    \entry{vonNeumann55}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=f8744afb2b8eb53c5804cbac615dbad1}{%
+           family={Neumann},
+           familyi={N\bibinitperiod},
+           given={John},
+           giveni={J\bibinitperiod},
+           prefix={von},
+           prefixi={v\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Princeton, NJ}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{fullhash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{fullhashraw}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{bibnamehash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{authorbibnamehash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{authornamehash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{authorfullhash}{f8744afb2b8eb53c5804cbac615dbad1}
+      \strng{authorfullhashraw}{f8744afb2b8eb53c5804cbac615dbad1}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Translated by Robert T. Beyer}
+      \field{title}{Mathematical Foundations of Quantum Mechanics}
+      \field{year}{1955}
+    \endentry
+    \entry{Dirac30}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=81a54cc24a20dffceb9c538a6df77483}{%
+           family={Dirac},
+           familyi={D\bibinitperiod},
+           given={P.\bibnamedelimi A.\bibnamedelimi M.},
+           giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Oxford}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{fullhash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{fullhashraw}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{bibnamehash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{authorbibnamehash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{authornamehash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{authorfullhash}{81a54cc24a20dffceb9c538a6df77483}
+      \strng{authorfullhashraw}{81a54cc24a20dffceb9c538a6df77483}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{The Principles of Quantum Mechanics}
+      \field{year}{1930}
+    \endentry
+    \entry{ReedSimon80}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=a3df488eb434e4eefcbaa7c9a62c89c5}{%
+           family={Reed},
+           familyi={R\bibinitperiod},
+           given={Michael},
+           giveni={M\bibinitperiod}}}%
+        {{hash=7269c7c834dddf30f6b8e7cb7b0d4790}{%
+           family={Simon},
+           familyi={S\bibinitperiod},
+           given={Barry},
+           giveni={B\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Academic Press}%
+      }
+      \strng{namehash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{fullhash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{fullhashraw}{957d82a72e39507187acf84770b1bfa7}
+      \strng{bibnamehash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{authorbibnamehash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{authornamehash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{authorfullhash}{957d82a72e39507187acf84770b1bfa7}
+      \strng{authorfullhashraw}{957d82a72e39507187acf84770b1bfa7}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{Revised and Enlarged Edition}
+      \field{isbn}{9780125850506}
+      \field{title}{Methods of Modern Mathematical Physics, Vol. 1: Functional Analysis}
+      \field{year}{1980}
+    \endentry
+    \entry{Stone32}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=56801ae2ec5c8608a0aac7ad881cf618}{%
+           family={Stone},
+           familyi={S\bibinitperiod},
+           given={M.\bibnamedelimi H.},
+           giveni={M\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+      }
+      \strng{namehash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{fullhash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{fullhashraw}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{bibnamehash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{authorbibnamehash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{authornamehash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{authorfullhash}{56801ae2ec5c8608a0aac7ad881cf618}
+      \strng{authorfullhashraw}{56801ae2ec5c8608a0aac7ad881cf618}
+      \field{sortinit}{9}
+      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Annals of Mathematics}
+      \field{number}{3}
+      \field{series}{Second Series}
+      \field{title}{On one-parameter unitary groups in Hilbert space}
+      \field{volume}{33}
+      \field{year}{1932}
+      \field{pages}{643\bibrangedash 648}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.2307/1968538
+      \endverb
+    \endentry
+    \entry{ParisTools12}{article}{}{}
       \name{author}{1}{}{%
         {{hash=2bc8594400eb90db0f0e5a9951514ec0}{%
            family={Paris},
@@ -177,329 +387,18 @@
       \strng{authornamehash}{2bc8594400eb90db0f0e5a9951514ec0}
       \strng{authorfullhash}{2bc8594400eb90db0f0e5a9951514ec0}
       \strng{authorfullhashraw}{2bc8594400eb90db0f0e5a9951514ec0}
-      \field{sortinit}{7}
-      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The European Physical Journal Special Topics}
       \field{title}{The modern tools of quantum mechanics: A tutorial on quantum states, measurements, and operations}
       \field{volume}{203}
       \field{year}{2012}
-      \true{nocite}
       \field{pages}{61\bibrangedash 86}
       \range{pages}{26}
       \verb{doi}
       \verb 10.1140/epjst/e2012-01535-1
-      \endverb
-    \endentry
-    \entry{MaWanSunNor11}{misc}{}{}
-      \name{author}{4}{}{%
-        {{hash=3ecf5faffffaeea2ad2777739c1d9ad9}{%
-           family={Ma},
-           familyi={M\bibinitperiod},
-           given={J.},
-           giveni={J\bibinitperiod}}}%
-        {{hash=bbe869383a7d3458b82c516a21e4482c}{%
-           family={Wang},
-           familyi={W\bibinitperiod},
-           given={X.},
-           giveni={X\bibinitperiod}}}%
-        {{hash=1d822388597d94384e214fbc621904da}{%
-           family={Sun},
-           familyi={S\bibinitperiod},
-           given={C.\bibnamedelimi P.},
-           giveni={C\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
-        {{hash=c5cb7c5817cc970b9e8497860ed72108}{%
-           family={Nori},
-           familyi={N\bibinitperiod},
-           given={F.},
-           giveni={F\bibinitperiod}}}%
-      }
-      \strng{namehash}{601fbbf845e15b2b130df4d37fbc98fd}
-      \strng{fullhash}{30ad68898d0e63573babda695676628c}
-      \strng{fullhashraw}{30ad68898d0e63573babda695676628c}
-      \strng{bibnamehash}{601fbbf845e15b2b130df4d37fbc98fd}
-      \strng{authorbibnamehash}{601fbbf845e15b2b130df4d37fbc98fd}
-      \strng{authornamehash}{601fbbf845e15b2b130df4d37fbc98fd}
-      \strng{authorfullhash}{30ad68898d0e63573babda695676628c}
-      \strng{authorfullhashraw}{30ad68898d0e63573babda695676628c}
-      \field{sortinit}{8}
-      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprintclass}{quant-ph}
-      \field{eprinttype}{arXiv}
-      \field{month}{3}
-      \field{note}{Preprint. Submitted to Elsevier (as stated in the manuscript)}
-      \field{title}{Quantum spin squeezing}
-      \field{year}{2011}
-      \true{nocite}
-      \verb{eprint}
-      \verb 1011.2978
-      \endverb
-    \endentry
-    \entry{CapBarTarGenBer24}{misc}{}{}
-      \name{author}{5}{}{%
-        {{hash=d0d960ae4b1ffa69682a80ddaa016398}{%
-           family={Capròtti},
-           familyi={C\bibinitperiod},
-           given={Giorgio},
-           giveni={G\bibinitperiod}}}%
-        {{hash=6a04e4adf13dd0e948500e2427bc3d63}{%
-           family={Barlotti},
-           familyi={B\bibinitperiod},
-           given={Alessio},
-           giveni={A\bibinitperiod}}}%
-        {{hash=fa76e98ab49e3cb143d046f0aa8ffe95}{%
-           family={Tarlà},
-           familyi={T\bibinitperiod},
-           given={Giacomo},
-           giveni={G\bibinitperiod}}}%
-        {{hash=2fe1574f5b1248522d44924664f5f6ef}{%
-           family={Genoni},
-           familyi={G\bibinitperiod},
-           given={Marco\bibnamedelima G.},
-           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
-        {{hash=00799f360aea82e9fd6e54b98b4de3e2}{%
-           family={Brandes},
-           familyi={B\bibinitperiod},
-           given={Tommaso},
-           giveni={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{a844467b715716cbe7a46dab9712da26}
-      \strng{fullhash}{7f0e587775971409586348b1558be92c}
-      \strng{fullhashraw}{7f0e587775971409586348b1558be92c}
-      \strng{bibnamehash}{a844467b715716cbe7a46dab9712da26}
-      \strng{authorbibnamehash}{a844467b715716cbe7a46dab9712da26}
-      \strng{authornamehash}{a844467b715716cbe7a46dab9712da26}
-      \strng{authorfullhash}{7f0e587775971409586348b1558be92c}
-      \strng{authorfullhashraw}{7f0e587775971409586348b1558be92c}
-      \field{sortinit}{9}
-      \field{sortinithash}{0a5ebc79d83c96b6579069544c73c7d4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprintclass}{quant-ph}
-      \field{eprinttype}{arXiv}
-      \field{title}{Analysis of spin-squeezing generation in cavity-coupled atomic ensembles with continuous measurements}
-      \field{year}{2024}
-      \true{nocite}
-      \verb{eprint}
-      \verb 2311.15725
-      \endverb
-    \endentry
-    \entry{LewAll21}{article}{}{}
-      \name{author}{6}{}{%
-        {{hash=ea12587e6436afa459bd6e84088cd701}{%
-           family={Lewalle},
-           familyi={L\bibinitperiod},
-           given={Philippe},
-           giveni={P\bibinitperiod}}}%
-        {{hash=d85e976292136da0459b99b9a34d38e1}{%
-           family={Elouard},
-           familyi={E\bibinitperiod},
-           given={Cyril},
-           giveni={C\bibinitperiod}}}%
-        {{hash=6d469906d4583745e5e22035e520e2d7}{%
-           family={Manikandan},
-           familyi={M\bibinitperiod},
-           given={Sreenath\bibnamedelima K.},
-           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
-        {{hash=a5feef7037734b4c6b6a7360e2dff6e2}{%
-           family={Qian},
-           familyi={Q\bibinitperiod},
-           given={Xiao-Feng},
-           giveni={X\bibinithyphendelim F\bibinitperiod}}}%
-        {{hash=889eb58e1f56a4bc2c1b70f5f468acf9}{%
-           family={Eberly},
-           familyi={E\bibinitperiod},
-           given={Joseph\bibnamedelima H.},
-           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
-        {{hash=a49c6e21a33839255b732ee3085d9548}{%
-           family={Jordan},
-           familyi={J\bibinitperiod},
-           given={Andrew\bibnamedelima N.},
-           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
-      }
-      \strng{namehash}{9bf676584df74eecf6d77ee5ba9b3677}
-      \strng{fullhash}{2364c15bac620821d885dbde7f809418}
-      \strng{fullhashraw}{2364c15bac620821d885dbde7f809418}
-      \strng{bibnamehash}{9bf676584df74eecf6d77ee5ba9b3677}
-      \strng{authorbibnamehash}{9bf676584df74eecf6d77ee5ba9b3677}
-      \strng{authornamehash}{9bf676584df74eecf6d77ee5ba9b3677}
-      \strng{authorfullhash}{2364c15bac620821d885dbde7f809418}
-      \strng{authorfullhashraw}{2364c15bac620821d885dbde7f809418}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Advances in Optics and Photonics}
-      \field{number}{3}
-      \field{title}{Entanglement of a pair of quantum emitters via continuous fluorescence measurements: a tutorial}
-      \field{volume}{13}
-      \field{year}{2021}
-      \true{nocite}
-      \field{pages}{517}
-      \range{pages}{1}
-    \endentry
-    \entry{SchrEngCab04}{article}{}{}
-      \name{author}{6}{}{%
-        {{hash=f688a31be70acbfd5b2141c3ab6a770e}{%
-           family={Schrader},
-           familyi={S\bibinitperiod},
-           given={D.},
-           giveni={D\bibinitperiod}}}%
-        {{hash=af9bfec7f125c2132025507ba53ad660}{%
-           family={Kuhr},
-           familyi={K\bibinitperiod},
-           given={S.},
-           giveni={S\bibinitperiod}}}%
-        {{hash=d0f9bd106a41ab1f52789b09d0d6efcb}{%
-           family={Alt},
-           familyi={A\bibinitperiod},
-           given={W.},
-           giveni={W\bibinitperiod}}}%
-        {{hash=835b1fbb43107ab05d062477c10a3889}{%
-           family={Müller},
-           familyi={M\bibinitperiod},
-           given={M.},
-           giveni={M\bibinitperiod}}}%
-        {{hash=fa1b8d95571491eb71d49775ceee2115}{%
-           family={Gomer},
-           familyi={G\bibinitperiod},
-           given={V.},
-           giveni={V\bibinitperiod}}}%
-        {{hash=51a3eabb8de3ff11c24248e6cc10a739}{%
-           family={Meschede},
-           familyi={M\bibinitperiod},
-           given={D.},
-           giveni={D\bibinitperiod}}}%
-      }
-      \strng{namehash}{657e6cd35fe30229cab54009ee3d3d1d}
-      \strng{fullhash}{8ba3fc7190cff2aeb4e9854356dd7572}
-      \strng{fullhashraw}{8ba3fc7190cff2aeb4e9854356dd7572}
-      \strng{bibnamehash}{657e6cd35fe30229cab54009ee3d3d1d}
-      \strng{authorbibnamehash}{657e6cd35fe30229cab54009ee3d3d1d}
-      \strng{authornamehash}{657e6cd35fe30229cab54009ee3d3d1d}
-      \strng{authorfullhash}{8ba3fc7190cff2aeb4e9854356dd7572}
-      \strng{authorfullhashraw}{8ba3fc7190cff2aeb4e9854356dd7572}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{journaltitle}{Physical Review Letters}
-      \field{title}{Neutral Atom Quantum Register}
-      \field{volume}{93}
-      \field{year}{2004}
-      \true{nocite}
-      \field{pages}{150501}
-      \range{pages}{1}
-      \verb{doi}
-      \verb 10.1103/PhysRevLett.93.150501
-      \endverb
-    \endentry
-    \entry{BerHilSaf21}{book}{}{}
-      \name{author}{3}{}{%
-        {{hash=d14d0cce4eadc9aeb9b1af9e20b0cce1}{%
-           family={Bergou},
-           familyi={B\bibinitperiod},
-           given={János\bibnamedelima A.},
-           giveni={J\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-        {{hash=87257eabea795d61c8bdfc8b25b92d05}{%
-           family={Hillery},
-           familyi={H\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-        {{hash=59bb54ac16f4387a3a1c5e38c96a1561}{%
-           family={Saffman},
-           familyi={S\bibinitperiod},
-           given={Mark},
-           giveni={M\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Springer}%
-      }
-      \strng{namehash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{fullhash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{fullhashraw}{b43408cd50546938c95dc7c7be48888e}
-      \strng{bibnamehash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{authorbibnamehash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{authornamehash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{authorfullhash}{b43408cd50546938c95dc7c7be48888e}
-      \strng{authorfullhashraw}{b43408cd50546938c95dc7c7be48888e}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{2}
-      \field{isbn}{978-3-030-81700-5}
-      \field{title}{Quantum Information Processing: Theory and Implementation}
-      \field{year}{2021}
-      \true{nocite}
-    \endentry
-    \entry{NavBen15}{book}{}{}
-      \name{author}{1}{}{%
-        {{hash=3de56eda6bec3e45a0e4d5c0f7249955}{%
-           family={Navarrete-Benlloch},
-           familyi={N\bibinithyphendelim B\bibinitperiod},
-           given={Carlos},
-           giveni={C\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Morgan \& Claypool Publishers / IOP Publishing}%
-      }
-      \strng{namehash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{fullhash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{fullhashraw}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{bibnamehash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{authorbibnamehash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{authornamehash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{authorfullhash}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \strng{authorfullhashraw}{3de56eda6bec3e45a0e4d5c0f7249955}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{isbn}{978-1-6817-4404-9}
-      \field{series}{IOP Concise Physics}
-      \field{title}{An Introduction to the Formalism of Quantum Information with Continuous Variables}
-      \field{year}{2015}
-      \true{nocite}
-      \verb{doi}
-      \verb 10.1088/978-1-6817-4405-6
-      \endverb
-    \endentry
-    \entry{SorMol00}{misc}{}{}
-      \name{author}{2}{}{%
-        {{hash=ddf200f7029f827fdd7367c520725106}{%
-           family={S{ø}rensen},
-           familyi={S\bibinitperiod},
-           given={A.},
-           giveni={A\bibinitperiod}}}%
-        {{hash=6074d140bb874d17c45147fac821a121}{%
-           family={M{ø}lmer},
-           familyi={M\bibinitperiod},
-           given={K.},
-           giveni={K\bibinitperiod}}}%
-      }
-      \strng{namehash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{fullhash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{fullhashraw}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{bibnamehash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{authorbibnamehash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{authornamehash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{authorfullhash}{e9219e80d6cd9032405f5c808f3fdc76}
-      \strng{authorfullhashraw}{e9219e80d6cd9032405f5c808f3fdc76}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{eprinttype}{arXiv}
-      \field{month}{8}
-      \field{title}{Entanglement and extreme spin squeezing}
-      \field{year}{2000}
-      \true{nocite}
-      \verb{eprint}
-      \verb quant-ph/0011035
       \endverb
     \endentry
     \entry{SmirneNotes24}{unpublished}{}{}
@@ -523,39 +422,539 @@
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{note}{Course notes, Università degli Studi di Milano}
-      \field{title}{Fondamenti di meccanica quantistica (Ariel) -- Note del corso}
+      \field{title}{Fondamenti di meccanica quantistica v 2.1-- Note del corso}
       \field{year}{2024}
-      \true{nocite}
     \endentry
-    \entry{CampanelloQAMAPSK23}{thesis}{}{}
+    \entry{Vac24}{book}{}{}
       \name{author}{1}{}{%
-        {{hash=980c47c25c67d4d0110e44c02cace313}{%
-           family={Campanello},
-           familyi={C\bibinitperiod},
-           given={Gabriele},
-           giveni={G\bibinitperiod}}}%
+        {{hash=f96f40e1a93b20df655d6a2169f6af52}{%
+           family={Vacchini},
+           familyi={V\bibinitperiod},
+           given={Bassano},
+           giveni={B\bibinitperiod}}}%
       }
-      \list{institution}{1}{%
-        {Università degli studi di Milano}%
+      \list{publisher}{1}{%
+        {Springer Nature Switzerland AG}%
       }
-      \strng{namehash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{fullhash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{fullhashraw}{980c47c25c67d4d0110e44c02cace313}
-      \strng{bibnamehash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{authorbibnamehash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{authornamehash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{authorfullhash}{980c47c25c67d4d0110e44c02cace313}
-      \strng{authorfullhashraw}{980c47c25c67d4d0110e44c02cace313}
+      \strng{namehash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{fullhash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{fullhashraw}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{bibnamehash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{authorbibnamehash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{authornamehash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{authorfullhash}{f96f40e1a93b20df655d6a2169f6af52}
+      \strng{authorfullhashraw}{f96f40e1a93b20df655d6a2169f6af52}
       \field{sortinit}{1}
       \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Encoding based on {QAM16} and {APSK16} constellations for quantum communications}
-      \field{type}{Bachelor's thesis}
-      \field{year}{2023}
-      \true{nocite}
+      \field{isbn}{978-3-031-58217-2}
+      \field{series}{Graduate Texts in Physics}
+      \field{title}{Open Quantum Systems}
+      \field{year}{2024}
+      \verb{doi}
+      \verb 10.1007/978-3-031-58218-9
+      \endverb
+    \endentry
+    \entry{Horodecki3_09}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=9b7133dfee0849cbeeeb7f2f83313774}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Ryszard},
+           giveni={R\bibinitperiod}}}%
+        {{hash=3123568eebe4bf661c69b0e1501adc32}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Pawe{ł}},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d503a6affdf575d761c534ba2107c7c1}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Micha{ł}},
+           giveni={M\bibinitperiod}}}%
+        {{hash=5a1b38bd89b0ef3718450c671ec8396f}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Karol},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{dc7db1b6de0c02d27c9b192c6da8665d}
+      \strng{fullhash}{c3f0d4dcd3d25706fe60a7cac64ab0fb}
+      \strng{fullhashraw}{c3f0d4dcd3d25706fe60a7cac64ab0fb}
+      \strng{bibnamehash}{dc7db1b6de0c02d27c9b192c6da8665d}
+      \strng{authorbibnamehash}{dc7db1b6de0c02d27c9b192c6da8665d}
+      \strng{authornamehash}{dc7db1b6de0c02d27c9b192c6da8665d}
+      \strng{authorfullhash}{c3f0d4dcd3d25706fe60a7cac64ab0fb}
+      \strng{authorfullhashraw}{c3f0d4dcd3d25706fe60a7cac64ab0fb}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Reviews of Modern Physics}
+      \field{number}{2}
+      \field{title}{Quantum entanglement}
+      \field{volume}{81}
+      \field{year}{2009}
+      \field{pages}{865\bibrangedash 942}
+      \range{pages}{78}
+      \verb{doi}
+      \verb 10.1103/RevModPhys.81.865
+      \endverb
+    \endentry
+    \entry{NielsenChuang10}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=afe17482fc813e497188aee3b3783879}{%
+           family={Nielsen},
+           familyi={N\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+        {{hash=415ddff2f58b25977b1a2dedf18f4501}{%
+           family={Chuang},
+           familyi={C\bibinitperiod},
+           given={Isaac\bibnamedelima L.},
+           giveni={I\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{fullhash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{fullhashraw}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{bibnamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authorbibnamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authornamehash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authorfullhash}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \strng{authorfullhashraw}{456599bb4a61c2e997e2a7e1a21b25b4}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{10th Anniversary}
+      \field{isbn}{9781107002173}
+      \field{title}{Quantum Computation and Quantum Information}
+      \field{year}{2010}
+      \verb{doi}
+      \verb 10.1017/CBO9780511976667
+      \endverb
+    \endentry
+    \entry{Peres96}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=9fc737e2158b7231de1c864a26497567}{%
+           family={Peres},
+           familyi={P\bibinitperiod},
+           given={Asher},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{9fc737e2158b7231de1c864a26497567}
+      \strng{fullhash}{9fc737e2158b7231de1c864a26497567}
+      \strng{fullhashraw}{9fc737e2158b7231de1c864a26497567}
+      \strng{bibnamehash}{9fc737e2158b7231de1c864a26497567}
+      \strng{authorbibnamehash}{9fc737e2158b7231de1c864a26497567}
+      \strng{authornamehash}{9fc737e2158b7231de1c864a26497567}
+      \strng{authorfullhash}{9fc737e2158b7231de1c864a26497567}
+      \strng{authorfullhashraw}{9fc737e2158b7231de1c864a26497567}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{8}
+      \field{title}{Separability Criterion for Density Matrices}
+      \field{volume}{77}
+      \field{year}{1996}
+      \field{pages}{1413\bibrangedash 1415}
+      \range{pages}{3}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.77.1413
+      \endverb
+    \endentry
+    \entry{Horodecki3_96}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=d503a6affdf575d761c534ba2107c7c1}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Micha{ł}},
+           giveni={M\bibinitperiod}}}%
+        {{hash=3123568eebe4bf661c69b0e1501adc32}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Pawe{ł}},
+           giveni={P\bibinitperiod}}}%
+        {{hash=9b7133dfee0849cbeeeb7f2f83313774}{%
+           family={Horodecki},
+           familyi={H\bibinitperiod},
+           given={Ryszard},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{fa97c3a84267f617bba19ae524483511}
+      \strng{fullhash}{fa97c3a84267f617bba19ae524483511}
+      \strng{fullhashraw}{fa97c3a84267f617bba19ae524483511}
+      \strng{bibnamehash}{fa97c3a84267f617bba19ae524483511}
+      \strng{authorbibnamehash}{fa97c3a84267f617bba19ae524483511}
+      \strng{authornamehash}{fa97c3a84267f617bba19ae524483511}
+      \strng{authorfullhash}{fa97c3a84267f617bba19ae524483511}
+      \strng{authorfullhashraw}{fa97c3a84267f617bba19ae524483511}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Letters A}
+      \field{number}{1--2}
+      \field{title}{Separability of Mixed States: Necessary and Sufficient Conditions}
+      \field{volume}{223}
+      \field{year}{1996}
+      \field{pages}{1\bibrangedash 8}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/S0375-9601(96)00706-2
+      \endverb
+    \endentry
+    \entry{Terhal00}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ae66a23883f73a4e22b077d8eaad3b88}{%
+           family={Terhal},
+           familyi={T\bibinitperiod},
+           given={Barbara\bibnamedelima M.},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{fullhash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{fullhashraw}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{bibnamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorbibnamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authornamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorfullhash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorfullhashraw}{ae66a23883f73a4e22b077d8eaad3b88}
+      \field{extraname}{1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Letters A}
+      \field{number}{5--6}
+      \field{title}{Bell inequalities and the separability criterion}
+      \field{volume}{271}
+      \field{year}{2000}
+      \field{pages}{319\bibrangedash 326}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1016/S0375-9601(00)00400-X
+      \endverb
+    \endentry
+    \entry{Terhal02}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=ae66a23883f73a4e22b077d8eaad3b88}{%
+           family={Terhal},
+           familyi={T\bibinitperiod},
+           given={Barbara\bibnamedelima M.},
+           giveni={B\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{fullhash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{fullhashraw}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{bibnamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorbibnamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authornamehash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorfullhash}{ae66a23883f73a4e22b077d8eaad3b88}
+      \strng{authorfullhashraw}{ae66a23883f73a4e22b077d8eaad3b88}
+      \field{extraname}{2}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Theoretical Computer Science}
+      \field{number}{1}
+      \field{title}{Detecting quantum entanglement}
+      \field{volume}{287}
+      \field{year}{2002}
+      \field{pages}{313\bibrangedash 335}
+      \range{pages}{23}
+      \verb{doi}
+      \verb 10.1016/S0304-3975(02)00139-1
+      \endverb
+    \endentry
+    \entry{GuhneToth09}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=e4a0909eee7a380c8117ffbc85240353}{%
+           family={Gühne},
+           familyi={G\bibinitperiod},
+           given={Otfried},
+           giveni={O\bibinitperiod}}}%
+        {{hash=a1488958fb0e40a1c1f690a320553ce7}{%
+           family={Tóth},
+           familyi={T\bibinitperiod},
+           given={Géza},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{fullhash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{fullhashraw}{8f857012e3a345ef070627e0bd08d867}
+      \strng{bibnamehash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{authorbibnamehash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{authornamehash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{authorfullhash}{8f857012e3a345ef070627e0bd08d867}
+      \strng{authorfullhashraw}{8f857012e3a345ef070627e0bd08d867}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physics Reports}
+      \field{number}{1--6}
+      \field{title}{Entanglement detection}
+      \field{volume}{474}
+      \field{year}{2009}
+      \field{pages}{1\bibrangedash 75}
+      \range{pages}{75}
+      \verb{doi}
+      \verb 10.1016/j.physrep.2009.02.004
+      \endverb
+    \endentry
+    \entry{Wootters98}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=db3a2ac4bb7edc871a862059726651fe}{%
+           family={Wootters},
+           familyi={W\bibinitperiod},
+           given={William\bibnamedelima K.},
+           giveni={W\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \strng{namehash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{fullhash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{fullhashraw}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{bibnamehash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{authorbibnamehash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{authornamehash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{authorfullhash}{db3a2ac4bb7edc871a862059726651fe}
+      \strng{authorfullhashraw}{db3a2ac4bb7edc871a862059726651fe}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{10}
+      \field{title}{Entanglement of Formation of an Arbitrary State of Two Qubits}
+      \field{volume}{80}
+      \field{year}{1998}
+      \field{pages}{2245\bibrangedash 2248}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.80.2245
+      \endverb
+      \verb{eprint}
+      \verb quant-ph/9709029
+      \endverb
+    \endentry
+    \entry{KitagawaUeda93}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=2128f0d9f20b713e7afb473d0807577e}{%
+           family={Kitagawa},
+           familyi={K\bibinitperiod},
+           given={Masahiro},
+           giveni={M\bibinitperiod}}}%
+        {{hash=d50a891f839d10cf9f1b04981b981fd9}{%
+           family={Ueda},
+           familyi={U\bibinitperiod},
+           given={Masahito},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{fullhash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{fullhashraw}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{bibnamehash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{authorbibnamehash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{authornamehash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{authorfullhash}{224250dc30545ce7dc732bd6553c46fa}
+      \strng{authorfullhashraw}{224250dc30545ce7dc732bd6553c46fa}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{6}
+      \field{title}{Squeezed Spin States}
+      \field{volume}{47}
+      \field{year}{1993}
+      \field{pages}{5138\bibrangedash 5143}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1103/PhysRevA.47.5138
+      \endverb
+    \endentry
+    \entry{Wineland94}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=7e1cc1aeb5e45f657d533ecad9747f29}{%
+           family={Wineland},
+           familyi={W\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=207543c009e1e713bdc86900ce43493d}{%
+           family={Bollinger},
+           familyi={B\bibinitperiod},
+           given={J.\bibnamedelimi J.},
+           giveni={J\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+        {{hash=4539bd748af41832d08db3384e7af341}{%
+           family={Itano},
+           familyi={I\bibinitperiod},
+           given={W.\bibnamedelimi M.},
+           giveni={W\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b67f0688facdf1ab9dddb05376bfff5a}{%
+           family={Heinzen},
+           familyi={H\bibinitperiod},
+           given={D.\bibnamedelimi J.},
+           giveni={D\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b2d596f8a3791ecebbe331a23ecded24}
+      \strng{fullhash}{88223132dcc0648ef7cfa75c934509b1}
+      \strng{fullhashraw}{88223132dcc0648ef7cfa75c934509b1}
+      \strng{bibnamehash}{b2d596f8a3791ecebbe331a23ecded24}
+      \strng{authorbibnamehash}{b2d596f8a3791ecebbe331a23ecded24}
+      \strng{authornamehash}{b2d596f8a3791ecebbe331a23ecded24}
+      \strng{authorfullhash}{88223132dcc0648ef7cfa75c934509b1}
+      \strng{authorfullhashraw}{88223132dcc0648ef7cfa75c934509b1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{1}
+      \field{title}{Squeezed Atomic States and Projection Noise in Spectroscopy}
+      \field{volume}{50}
+      \field{year}{1994}
+      \field{pages}{67\bibrangedash 88}
+      \range{pages}{22}
+      \verb{doi}
+      \verb 10.1103/PhysRevA.50.67
+      \endverb
+    \endentry
+    \entry{Ma11}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=f18413727e40d3fc704c87a46625c5c5}{%
+           family={Ma},
+           familyi={M\bibinitperiod},
+           given={Jian},
+           giveni={J\bibinitperiod}}}%
+        {{hash=ea754572f9097ae22e72016aec93058b}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaoguang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=1d822388597d94384e214fbc621904da}{%
+           family={Sun},
+           familyi={S\bibinitperiod},
+           given={C.P.},
+           giveni={C\bibinitperiod}}}%
+        {{hash=2cfaf55a849299a0fe647e070cffada8}{%
+           family={Nori},
+           familyi={N\bibinitperiod},
+           given={Franco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{cca2dd00a729915c824975cc7278b9ed}
+      \strng{fullhash}{f92d573dab0ba16c3929bc2d63816a32}
+      \strng{fullhashraw}{f92d573dab0ba16c3929bc2d63816a32}
+      \strng{bibnamehash}{cca2dd00a729915c824975cc7278b9ed}
+      \strng{authorbibnamehash}{cca2dd00a729915c824975cc7278b9ed}
+      \strng{authornamehash}{cca2dd00a729915c824975cc7278b9ed}
+      \strng{authorfullhash}{f92d573dab0ba16c3929bc2d63816a32}
+      \strng{authorfullhashraw}{f92d573dab0ba16c3929bc2d63816a32}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{issn}{0370-1573}
+      \field{journaltitle}{Physics Reports}
+      \field{number}{2}
+      \field{title}{Quantum spin squeezing}
+      \field{volume}{509}
+      \field{year}{2011}
+      \field{pages}{89\bibrangedash 165}
+      \range{pages}{77}
+      \verb{doi}
+      \verb https://doi.org/10.1016/j.physrep.2011.08.003
+      \endverb
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/science/article/pii/S0370157311002201
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/science/article/pii/S0370157311002201
+      \endverb
+    \endentry
+    \entry{WangSanders03}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=ea754572f9097ae22e72016aec93058b}{%
+           family={Wang},
+           familyi={W\bibinitperiod},
+           given={Xiaoguang},
+           giveni={X\bibinitperiod}}}%
+        {{hash=817c1d144187fba81f3f317cf739c8c4}{%
+           family={Sanders},
+           familyi={S\bibinitperiod},
+           given={Barry\bibnamedelima C.},
+           giveni={B\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \strng{namehash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{fullhash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{fullhashraw}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{bibnamehash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{authorbibnamehash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{authornamehash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{authorfullhash}{3234476f84788f7bc9a1ecc336771ff0}
+      \strng{authorfullhashraw}{3234476f84788f7bc9a1ecc336771ff0}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review A}
+      \field{number}{1}
+      \field{title}{Spin Squeezing and Pairwise Entanglement for Symmetric Multiqubit States}
+      \field{volume}{68}
+      \field{year}{2003}
+      \field{pages}{012101}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevA.68.012101
+      \endverb
+    \endentry
+    \entry{SorMol00}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=ddf200f7029f827fdd7367c520725106}{%
+           family={S{ø}rensen},
+           familyi={S\bibinitperiod},
+           given={A.},
+           giveni={A\bibinitperiod}}}%
+        {{hash=6074d140bb874d17c45147fac821a121}{%
+           family={M{ø}lmer},
+           familyi={M\bibinitperiod},
+           given={K.},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{fullhash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{fullhashraw}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{bibnamehash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{authorbibnamehash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{authornamehash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{authorfullhash}{e9219e80d6cd9032405f5c808f3fdc76}
+      \strng{authorfullhashraw}{e9219e80d6cd9032405f5c808f3fdc76}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprinttype}{arXiv}
+      \field{month}{8}
+      \field{title}{Entanglement and extreme spin squeezing}
+      \field{year}{2000}
+      \verb{eprint}
+      \verb quant-ph/0011035
+      \endverb
     \endentry
   \enddatalist
+  \missing{Wootters1998}
 \endrefsection
 \endinput
 

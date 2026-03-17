@@ -1,348 +1,213 @@
 \chapter{Open Quantum Systems}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Continuously monitored quantum systems}
+\section{Open quantum systems and generalized quantum dynamics}
+\label{sec:open_quantum_systems_and_generalized_quantum_dynamics}
 
-In many relevant experimental scenarios a quantum system is not only affected by an environment,
-but the environment is also \emph{continuously measured}. In this case the system state is updated
-conditioned on the measurement record, and the evolution becomes stochastic.
-The unconditional (ensemble-averaged) dynamics is still described by a Markovian master equation,
-while the conditional dynamics is described by a \emph{stochastic master equation} (SME).
+In the previous chapter, quantum mechanics was introduced in its standard formulation for closed and isolated systems. In that framework, pure states are represented by vectors in Hilbert space, measurements are described by projective measurements, and the time evolution is unitary. This formulation is conceptually transparent and mathematically consistent, and it provides the natural starting point for the theory. At the same time, it relies on an idealization. Realistic quantum systems are seldom perfectly isolated. They typically interact with external degrees of freedom, with measuring devices, or with uncontrolled environmental modes. For this reason, a more general framework is required \cite{VacchiniBook,Paris12,AnotherIntro,Bergou}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{From system--environment interaction to Lindblad master equation}
+Historically, the theory of open quantum systems emerged precisely from this need. On the one hand, it was motivated by foundational questions, especially those related to the measurement problem and to the effective appearance of irreversibility in quantum mechanics. On the other hand, it gradually became clear that the coupling between a system and its environment is not merely a nuisance, but a central feature of many physical situations. Decoherence, dissipation, noise, relaxation, and continuous monitoring are all phenomena that lie outside the unitary closed-system picture and require a more general dynamical description \cite{VacchiniBook,Paris12}.
 
-We consider a system $S$ interacting with an environment $B$, and assume that the interaction can
-be described as a sequence of short collisions between $S$ and independent environmental modes.
-This viewpoint leads naturally to a Markovian dynamics in the continuous-time limit.
-We outline here a minimal derivation of a Lindblad master equation in the spirit of collision models,
-closely following Ref.
+The conceptual shift is substantial. In the standard closed-system formulation, the state of the system at time \(t\) is obtained from its initial state through a unitary propagator. In the open-system setting, by contrast, the relevant system is only one part of a larger compound. The total system, consisting of the degrees of freedom of interest and of the environment, may still be treated as closed to a good approximation. However, the reduced dynamics of the subsystem of interest is no longer unitary in general. It is precisely this reduced, typically non-unitary, dynamics that is the object of the theory of open quantum systems.
 
-Let $\rho(t)$ be the system density operator at time $t$.
-In an infinitesimal step $dt$ the system interacts unitarily with an environmental mode initially
-prepared in a reference state (vacuum) $\ket{0}_t$, so that the joint state evolves as
+\subsection{From isolated systems to reduced dynamics}
+\label{subsec:from_isolated_systems_to_reduced_dynamics}
+
+Let \(S\) denote the system of interest and \(E\) the environment. The corresponding Hilbert space is
 \begin{equation}
-	\rho(t)\otimes \ket{0}_t\!\bra{0}
-	\ \longrightarrow\
-	U(t,t+dt)\big(\rho(t)\otimes \ket{0}_t\!\bra{0}\big)U^\dagger(t,t+dt).
+	\mathcal{H}_{SE}=\mathcal{H}_S\otimes\mathcal{H}_E.
+	\label{eq:open_total_hilbert_space}
 \end{equation}
-Tracing out the environmental mode gives the reduced update
+Even if the global system \(S+E\) evolves unitarily, the subsystem \(S\) is generally described by a reduced density operator
 \begin{equation}
-	\rho(t+dt)
+	\hat \rho_S = \Tr_E(\hat \rho_{SE}),
+	\label{eq:open_reduced_state_definition}
+\end{equation}
+obtained by tracing out the environmental degrees of freedom. If the total system evolves according to the unitary operator \(\hat U_{SE}(t,t_0)\), then
+\begin{equation}
+	\hat \rho_{SE}(t)
 	=
-	\Tr_B\!\left[
-	U(t,t+dt)\big(\rho(t)\otimes \ket{0}_t\!\bra{0}\big)U^\dagger(t,t+dt)
+	\hat U_{SE}(t,t_0)\hat \rho_{SE}(t_0)\hat U_{SE}^\dagger(t,t_0),
+	\label{eq:open_global_unitary_evolution}
+\end{equation}
+and therefore
+\begin{equation}
+	\hat \rho_S(t)
+	=
+	\Tr_E\!\left[
+	\hat U_{SE}(t,t_0)\hat \rho_{SE}(t_0)\hat U_{SE}^\dagger(t,t_0)
 	\right].
-	\label{eq:uncond_update_traceB}
+	\label{eq:open_reduced_dynamics_general}
 \end{equation}
 
-Assume that the interaction is such that, to first order in $dt$, the reduced map can be written in a Kraus form
-with two types of operators: a \emph{no-jump} operator $M_0$ and a \emph{jump} operator $M_1$,
+Equation~\eqref{eq:open_reduced_dynamics_general} already contains the key point. Even if the global evolution is unitary, the reduced state is obtained only after tracing out part of the degrees of freedom. This operation destroys, in general, the possibility of representing the subsystem dynamics through a unitary transformation on \(\mathcal{H}_S\) alone. In particular, information may flow from the system to the environment and, depending on the regime, also back from the environment to the system.
+
+A particularly important case is the one in which the initial total state is factorized,
 \begin{equation}
-	\rho(t+dt)= M_0\,\rho(t)\,M_0^\dagger + M_1\,\rho(t)\,M_1^\dagger,
+	\hat \rho_{SE}(t_0)=\hat \rho_S(t_0)\otimes \hat \rho_E(t_0).
+	\label{eq:open_initial_factorized_state}
+\end{equation}
+In that case,
+\begin{equation}
+	\hat \rho_S(t)
+	=
+	\Tr_E\!\left[
+	\hat U_{SE}(t,t_0)
+	\bigl(\hat \rho_S(t_0)\otimes \hat \rho_E(t_0)\bigr)
+	\hat U_{SE}^\dagger(t,t_0)
+	\right].
+	\label{eq:open_reduced_dynamics_factorized}
+\end{equation}
+This expression defines a map from the initial state of the system to its state at time \(t\). The dependence on the environment has not disappeared. It is encoded in the initial environmental state and in the global interaction. However, the result is now a closed dynamical transformation acting on the state space of the system alone.
+
+The assumption of an initially factorized state is not merely technical. It is the natural condition under which one may consistently define a reduced dynamics acting on arbitrary initial system states. If initial system-environment correlations are present, the very notion of a dynamical map for the subsystem becomes more subtle, because the future state of the system need not depend only on its own initial reduced state \cite{VacchiniBook}.
+
+\subsection{Quantum maps and physical requirements}
+\label{subsec:quantum_maps_and_physical_requirements}
+
+Equation~\eqref{eq:open_reduced_dynamics_factorized} motivates the introduction of a quantum dynamical map
+\begin{equation}
+	\hat \rho_S(t)=\Phi_{t,t_0}\bigl[\hat \rho_S(t_0)\bigr].
+	\label{eq:open_quantum_map_definition}
+\end{equation}
+The map \(\Phi_{t,t_0}\) must satisfy a number of basic physical requirements.
+
+First, it must be linear. This follows from the statistical interpretation of the density operator. If the initial preparation is a convex combination
+\begin{equation}
+	\hat \rho_S(t_0)=p\hat \rho_{S,1}(t_0)+(1-p)\hat \rho_{S,2}(t_0),
 	\qquad
-	M_0^\dagger M_0 + M_1^\dagger M_1=\mathbb{I}+O(dt^2).
-	\label{eq:Kraus_uncond}
+	0\leq p\leq 1,
+	\label{eq:open_convex_initial_state}
 \end{equation}
-A standard choice consistent with the continuous-time limit is
+then the final state must satisfy
 \begin{equation}
-	M_1=\sqrt{\kappa\,dt}\,c,
-	\qquad
-	M_0=\mathbb{I}-iH\,dt-\frac{\kappa}{2}\,c^\dagger c\,dt,
-	\label{eq:Kraus_choice_jump}
-\end{equation}
-where $H$ is the system Hamiltonian and $c$ is the system coupling (collapse) operator.
-
-Inserting Eq.~\eqref{eq:Kraus_choice_jump} into Eq.~\eqref{eq:Kraus_uncond} and expanding to first order in $dt$,
-we obtain
-\begin{align}
-	\rho(t+dt)-\rho(t)
-	&=
-	-i[H,\rho(t)]\,dt
-	+\kappa\,c\rho(t)c^\dagger\,dt
-	-\frac{\kappa}{2}\{c^\dagger c,\rho(t)\}\,dt
-	+O(dt^2).
-\end{align}
-Dividing by $dt$ and taking the limit $dt\to 0$ yields the Lindblad master equation
-\begin{equation}
-	\frac{d\rho(t)}{dt}
+	\Phi_{t,t_0}\!\left[
+	p\hat \rho_{S,1}(t_0)+(1-p)\hat \rho_{S,2}(t_0)
+	\right]
 	=
-	-i[H,\rho(t)]
-	+\kappa\,\mathcal{D}[c]\rho(t),
-	\qquad
-	\mathcal{D}[A]\rho=A\rho A^\dagger-\frac{1}{2}\{A^\dagger A,\rho\}.
-	\label{eq:Lindblad_single_channel}
-\end{equation}
-The generalization to multiple channels $\{c_k\}$ with rates $\{\kappa_k\}$ is immediate:
-\begin{equation}
-	\frac{d\rho(t)}{dt}
-	=
-	-i[H,\rho(t)]
-	+\sum_k \kappa_k\,\mathcal{D}[c_k]\rho(t).
-	\label{eq:Lindblad_multi_channel}
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Conditional states and unravellings}
-
-A Lindblad master equation describes the \emph{unconditional} evolution of the system state,
-i.e.\ the evolution averaged over all possible measurement outcomes of the environment.
-If instead the environment is continuously monitored, the system state becomes conditioned on the
-measurement record.
-We denote the conditional state by $\rho^{(c)}(t)$, and the unconditional state is recovered by averaging:
-\begin{equation}
-	\rho(t)=\mathbb{E}\!\left[\rho^{(c)}(t)\right].
-	\label{eq:uncond_as_average}
-\end{equation}
-
-The representation of the same unconditional dynamics in terms of stochastic conditional evolutions is called
-an \emph{unravelling} of the master equation.
-Unravellings are not unique.
-Physically, different unravellings correspond to different continuous measurements performed on the output
-modes of the environment (e.g.\ photodetection, homodyne, heterodyne).
-Mathematically, this non-uniqueness is related to the freedom in choosing measurement operators, and to the
-unitary freedom in the Lindblad operators describing the same GKSL generator.
-
-In what follows we focus on the paradigmatic jump-like unravelling associated with continuous photodetection,
-as presented in Ref.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Photodetection: click and no-click updates, and the jump SME}
-
-Consider first a single monitored channel with collapse operator $c$ and rate $\kappa$.
-In a short interval $dt$, photodetection yields two possible outcomes:
-``no click'' (outcome $0$) or ``click'' (outcome $1$).
-These outcomes are described by the Kraus operators in Eq.~\eqref{eq:Kraus_choice_jump}.
-The (unnormalized) conditional states after the two outcomes are
-\begin{align}
-	\tilde\rho^{(c)}_0(t+dt)
-	&= M_0\,\rho^{(c)}(t)\,M_0^\dagger,
-	\label{eq:unnorm_no_click}\\
-	\tilde\rho^{(c)}_1(t+dt)
-	&= M_1\,\rho^{(c)}(t)\,M_1^\dagger
-	= \kappa\,dt\; c\,\rho^{(c)}(t)\,c^\dagger.
-	\label{eq:unnorm_click}
-\end{align}
-The corresponding probabilities are given by the traces:
-\begin{align}
-	p_1(t+dt)
-	&=\Tr\!\left[\tilde\rho^{(c)}_1(t+dt)\right]
-	=\kappa\,\Tr\!\left[c^\dagger c\,\rho^{(c)}(t)\right]dt
-	=\kappa\,\langle c^\dagger c\rangle_t\,dt,
-	\label{eq:prob_click}\\
-	p_0(t+dt)
-	&=\Tr\!\left[\tilde\rho^{(c)}_0(t+dt)\right]
-	=1-p_1(t+dt)+O(dt^2).
-	\label{eq:prob_noclick}
-\end{align}
-The normalized conditional states are then
-\begin{equation}
-	\rho^{(c)}_{0,1}(t+dt)=\frac{\tilde\rho^{(c)}_{0,1}(t+dt)}{\Tr[\tilde\rho^{(c)}_{0,1}(t+dt)]}.
-\end{equation}
-
-\subsubsection*{No-click update to first order in $dt$}
-
-Using Eq.~\eqref{eq:Kraus_choice_jump} and expanding Eq.~\eqref{eq:unnorm_no_click} to first order in $dt$, we obtain
-\begin{align}
-	\tilde\rho^{(c)}_0(t+dt)
-	&=
-	\rho^{(c)}(t)
-	-i[H,\rho^{(c)}(t)]\,dt
-	-\frac{\kappa}{2}\{c^\dagger c,\rho^{(c)}(t)\}\,dt
-	+O(dt^2).
-\end{align}
-The normalization factor is
-\begin{align}
-	\Tr\!\left[\tilde\rho^{(c)}_0(t+dt)\right]
-	&=
-	1-\kappa\,\Tr\!\left[c^\dagger c\,\rho^{(c)}(t)\right]dt+O(dt^2)
-	=
-	1-\kappa\langle c^\dagger c\rangle_t\,dt+O(dt^2).
-\end{align}
-Therefore, dividing by the trace and keeping terms up to $O(dt)$,
-\begin{align}
-	\rho^{(c)}_0(t+dt)
-	&=
-	\rho^{(c)}(t)
-	-i[H,\rho^{(c)}(t)]\,dt
-	-\frac{\kappa}{2}\{c^\dagger c,\rho^{(c)}(t)\}\,dt
-	+\kappa\langle c^\dagger c\rangle_t\,\rho^{(c)}(t)\,dt
-	+O(dt^2).
-	\label{eq:noclick_update_expanded}
-\end{align}
-It is convenient to introduce the superoperator (following Ref.)
-\begin{equation}
-	\mathcal{H}[A]\rho
-	=
-	A\rho+\rho A^\dagger-\Tr[(A+A^\dagger)\rho]\;\rho,
-	\label{eq:H_superop}
-\end{equation}
-so that for $A=c^\dagger c$ (Hermitian) one has
-\begin{equation}
-	\mathcal{H}[c^\dagger c]\rho
-	=
-	\{c^\dagger c,\rho\}-2\langle c^\dagger c\rangle\,\rho.
-\end{equation}
-Equation \eqref{eq:noclick_update_expanded} can then be rewritten as
-\begin{equation}
-	\rho^{(c)}_0(t+dt)
-	=
-	\rho^{(c)}(t)
-	-i[H,\rho^{(c)}(t)]\,dt
-	-\frac{\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}(t)\,dt
-	+O(dt^2).
-	\label{eq:noclick_update_Hform}
-\end{equation}
-
-\subsubsection*{Click update}
-
-From Eq.~\eqref{eq:unnorm_click} and Eq.~\eqref{eq:prob_click}, the normalized post-click state is
-\begin{equation}
-	\rho^{(c)}_1(t+dt)
-	=
-	\frac{c\,\rho^{(c)}(t)\,c^\dagger}{\Tr[c\,\rho^{(c)}(t)\,c^\dagger]}
-	=
-	\frac{c\,\rho^{(c)}(t)\,c^\dagger}{\langle c^\dagger c\rangle_t}.
-	\label{eq:click_update}
-\end{equation}
-
-\subsubsection*{Stochastic master equation (jump SME)}
-
-We introduce the Poisson increment $dN_t\in\{0,1\}$ describing whether a click occurred in $[t,t+dt)$.
-Its conditional mean is
-\begin{equation}
-	\mathbb{E}[dN_t]=p_1(t+dt)=\kappa\,\langle c^\dagger c\rangle_t\,dt.
-	\label{eq:poisson_mean}
-\end{equation}
-The conditional increment $d\rho^{(c)}(t)=\rho^{(c)}(t+dt)-\rho^{(c)}(t)$ can be written by combining the two
-branches:
-\begin{align}
-	d\rho^{(c)}(t)
-	&=
-	dN_t\big(\rho^{(c)}_1(t+dt)-\rho^{(c)}(t)\big)
-	+(1-dN_t)\big(\rho^{(c)}_0(t+dt)-\rho^{(c)}(t)\big).
-\end{align}
-Discarding terms of order $dt\,dN_t$ (higher than $dt$ in It\^o counting), and using
-Eqs.~\eqref{eq:noclick_update_Hform} and \eqref{eq:click_update}, we obtain the jump SME
-\begin{equation}
-	\boxed{
-		d\rho^{(c)}
-		=
-		-i[H,\rho^{(c)}]\,dt
-		-\frac{\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}\,dt
-		+
-		\left(
-		\frac{c\rho^{(c)}c^\dagger}{\Tr[c\rho^{(c)}c^\dagger]}-\rho^{(c)}
-		\right)dN_t.}
-	\label{eq:SME_jump_single}
-\end{equation}
-
-The unconditional state is recovered by averaging Eq.~\eqref{eq:SME_jump_single} over the Poisson increment.
-Using
-\begin{equation}
-	\mathbb{E}\!\left[dN_t\,f(\rho^{(c)})\right]
-	=
-	\kappa\,dt\;
-	\mathbb{E}\!\left[\Tr(c^\dagger c\,\rho^{(c)})\,f(\rho^{(c)})\right],
-\end{equation}
-one obtains
-\begin{equation}
-	\mathbb{E}[d\rho^{(c)}]
-	=
-	-i[H,\rho]\,dt
-	+\kappa\,\mathcal{D}[c]\rho\,dt,
-\end{equation}
-i.e.\ the Lindblad master equation \eqref{eq:Lindblad_single_channel}.
-
-\subsubsection*{Many channels}
-
-For multiple monitored channels $\{c_k\}$ (each with rate $\kappa_k$) we introduce independent Poisson increments
-$dN_k(t)\in\{0,1\}$ with
-\begin{equation}
-	\mathbb{E}[dN_k(t)]=\kappa_k\,\Tr[c_k^\dagger c_k\,\rho^{(c)}(t)]dt,
-\end{equation}
-and the SME becomes
-\begin{equation}
-	d\rho^{(c)}
-	=
-	-i[H,\rho^{(c)}]\,dt
-	-\frac{1}{2}\sum_k \kappa_k\,\mathcal{H}[c_k^\dagger c_k]\rho^{(c)}\,dt
-	+\sum_k
-	\left(
-	\frac{c_k\rho^{(c)}c_k^\dagger}{\Tr[c_k\rho^{(c)}c_k^\dagger]}-\rho^{(c)}
-	\right)dN_k.
-	\label{eq:SME_jump_multi}
-\end{equation}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Stochastic Schr\"odinger equation and quantum trajectories}
-
-If the initial state is pure and the monitoring is perfect, the conditional state remains pure at all times.
-One can then rewrite the jump dynamics as a stochastic Schr\"odinger equation (SSE) for the conditional state vector
-$\ket{\psi^{(c)}(t)}$.
-For a single channel, we know that
-\begin{equation}
-	\boxed{
-		d\ket{\psi^{(c)}(t)}
-		=
-		\left[
-		-iH\,dt
-		+\frac{\kappa}{2}\big(\langle c^\dagger c\rangle_t-c^\dagger c\big)dt
-		+\left(\frac{c}{\sqrt{\langle c^\dagger c\rangle_t}}-\mathbb{I}\right)dN_t
-		\right]\ket{\psi^{(c)}(t)}.}
-	\label{eq:SSE_jump_single}
-\end{equation}
-Solutions of SSEs are often called \emph{quantum trajectories}.
-Averaging the projectors $\ket{\psi^{(c)}(t)}\!\bra{\psi^{(c)}(t)}$ over many trajectories reproduces the
-solution of the unconditional master equation.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Inefficient detection and partial unravelling}
-
-The previous derivations assumed an ideal measurement of the environment.
-A simple and widely used model for finite efficiency $\eta\in[0,1]$ is that the measurement succeeds with
-probability $\eta$ and fails with probability $1-\eta$.
-Equivalently, one can place a fictitious beam splitter of transmissivity $\eta$ before the detector,
-so that a fraction of the output is lost.
-
-A key conceptual point is that inefficient monitoring can be
-described by \emph{unravelling only a part} of the unconditional generator.
-Indeed, one may rewrite the unconditional Lindbladian as a sum of two identical dissipators weighted by $\eta$ and
-$1-\eta$:
-\begin{equation}
-	\frac{d\rho(t)}{dt}
-	=
-	\eta\kappa\,\mathcal{D}[c]\rho(t)
+	p\,\Phi_{t,t_0}\!\left[\hat \rho_{S,1}(t_0)\right]
 	+
-	(1-\eta)\kappa\,\mathcal{D}[c]\rho(t).
-	\label{eq:split_dissipator_eta}
+	(1-p)\,\Phi_{t,t_0}\!\left[\hat \rho_{S,2}(t_0)\right].
+	\label{eq:open_linearity_of_quantum_map}
 \end{equation}
-The first term is interpreted as the \emph{monitored} part of the dynamics, while the second term is the
-\emph{unmonitored} (lost) part.
-One then unravels only the monitored term, while the unmonitored one remains as a deterministic drift in the SME.
+Without linearity, the dynamical transformation would not be consistent with the probabilistic structure of state preparation.
 
-For photodetection, the resulting inefficient jump SME reads Ref.
+Second, the map must preserve trace:
 \begin{equation}
-	\boxed{
-		d\rho^{(c)}
-		=
-		-i[H,\rho^{(c)}]\,dt
-		-\frac{\eta\kappa}{2}\,\mathcal{H}[c^\dagger c]\rho^{(c)}\,dt
-		+
-		\left(
-		\frac{c\rho^{(c)}c^\dagger}{\Tr[c\rho^{(c)}c^\dagger]}-\rho^{(c)}
-		\right)dN_t
-		+
-		(1-\eta)\kappa\,\mathcal{D}[c]\rho^{(c)}\,dt,}
-	\label{eq:SME_jump_inefficient}
+	\Tr\!\left(\Phi_{t,t_0}[\hat \rho_S]\right)=\Tr(\hat \rho_S)=1.
+	\label{eq:open_trace_preservation}
 \end{equation}
-where now the Poisson increment has reduced mean
+This ensures conservation of total probability.
+
+Third, the map must preserve positivity. If \(\hat \rho_S\geq 0\), then
 \begin{equation}
-	\mathbb{E}[dN_t]=\eta\kappa\,\Tr[c^\dagger c\,\rho^{(c)}(t)]\,dt.
-	\label{eq:poisson_mean_ineff}
+	\Phi_{t,t_0}[\hat \rho_S]\geq 0.
+	\label{eq:open_positivity_preservation}
 \end{equation}
-For $\eta<1$ the conditional state is generally mixed, because the unobserved term
-$(1-\eta)\kappa\,\mathcal{D}[c]$ produces decoherence that cannot be purified by conditioning on the detected record.
-This provides a clear operational meaning of ``unravelling only a piece'' of the differential equation:
-only the monitored part gives rise to stochastic state updates correlated with the measurement record,
-while the remaining unmonitored contribution stays as a deterministic Lindblad drift.
+This condition is necessary because a physical state must remain a positive operator under time evolution.
+
+However, positivity alone is not sufficient. Suppose that the system \(S\) is part of a larger system \(S+A\), where \(A\) is an ancilla left untouched by the dynamics. Then the extended transformation \(\Phi_{t,t_0}\otimes \mathbb{I}_A\) must also preserve positivity on the enlarged space:
+\begin{equation}
+	(\Phi_{t,t_0}\otimes \mathbb{I}_A)[\hat X]\geq 0
+\end{equation}
+for every positive operator \(\hat X\geq 0\) on \(\mathcal{H}_S\otimes\mathcal{H}_A\). A map satisfying this condition for ancillas of arbitrary finite dimension is called completely positive. Therefore, the physically relevant reduced dynamical maps are required to be completely positive and trace preserving, namely CPTP \cite{VacchiniBook,Paris12,Bergou}.
+
+The need for complete positivity is one of the most important conceptual novelties of the open-system framework. It reflects the fact that a subsystem may be correlated with additional degrees of freedom, even when these are not directly involved in the dynamics. In this sense, complete positivity is the correct stability requirement for quantum dynamics under extension of the Hilbert space.
+
+\subsection{Unitary dilation and Kraus representation}
+\label{subsec:unitary_dilation_and_kraus_representation}
+
+The reduced dynamics in Eq.~\eqref{eq:open_reduced_dynamics_factorized} already shows that CPTP maps arise naturally from unitary evolution on a larger Hilbert space. This is the physical content of dilation theorems such as the Stinespring theorem, and in finite-dimensional settings it leads directly to the Kraus representation \cite{Paris12,VacchiniBook,Bergou}.
+
+Let \(\{\ket{e_\mu}\}\) be an orthonormal basis of the environment and, for simplicity, assume that the initial environment is in the pure state \(\ket{e_0}\). Then Eq.~\eqref{eq:open_reduced_dynamics_factorized} becomes
+\begin{equation}
+	\Phi_{t,t_0}[\hat \rho_S]
+	=
+	\Tr_E\!\left[
+	\hat U_{SE}(t,t_0)
+	\bigl(\hat \rho_S\otimes \dyad{e_0}{e_0}\bigr)
+	\hat U_{SE}^\dagger(t,t_0)
+	\right].
+	\label{eq:open_reduced_dynamics_pure_environment}
+\end{equation}
+By inserting the resolution of the identity on the environment,
+\begin{equation}
+	\id_E=\sum_\mu \dyad{e_\mu}{e_\mu},
+	\label{eq:open_environment_resolution_identity}
+\end{equation}
+one finds
+\begin{equation}
+	\Phi_{t,t_0}[\hat \rho_S]
+	=
+	\sum_\mu \hat K_\mu(t,t_0)\,\hat \rho_S\,\hat K_\mu^\dagger(t,t_0),
+	\label{eq:open_kraus_representation}
+\end{equation}
+where the Kraus operators are defined by
+\begin{equation}
+	\hat K_\mu(t,t_0)=\matrixel{e_\mu}{\hat U_{SE}(t,t_0)}{e_0}.
+	\label{eq:open_kraus_operator_definition}
+\end{equation}
+Trace preservation implies the normalization condition
+\begin{equation}
+	\sum_\mu \hat K_\mu^\dagger(t,t_0)\hat K_\mu(t,t_0)=\id_S.
+	\label{eq:open_kraus_normalization}
+\end{equation}
+Hence, every reduced dynamics arising from a unitary evolution on a larger Hilbert space is a CPTP map.
+
+Conversely, in finite dimension every CPTP map admits a Kraus representation of the form in Eq.~\eqref{eq:open_kraus_representation}. Therefore, the operator-sum form is not just a convenient parametrization. It is the natural mathematical representation of the most general physical transformation of a quantum state compatible with the axioms of the open-system framework.
+
+\subsection{Non-unitary evolution and loss of purity}
+\label{subsec:non_unitary_evolution_and_loss_of_purity}
+
+One of the clearest differences between open and closed dynamics is that purity is not preserved in general. For an initially pure system state,
+\begin{equation}
+	\hat \rho_S(t_0)=\dyad{\psi}{\psi},
+	\qquad
+	\Tr\!\left(\hat \rho_S^2(t_0)\right)=1,
+	\label{eq:open_initial_pure_state}
+\end{equation}
+the reduced state at later times may satisfy
+\begin{equation}
+	\Tr\!\left(\hat \rho_S^2(t)\right)<1.
+	\label{eq:open_purity_loss}
+\end{equation}
+This loss of purity is not due to any fundamental failure of the global unitary description. It is the direct consequence of tracing out the environmental degrees of freedom after the system and the environment have become correlated.
+
+In other words, a globally pure state may induce a locally mixed state. The density operator is therefore not just a convenient statistical tool in the open-system setting. It is the natural language of the theory. This is one of the main reasons why the density-operator formalism, introduced at the end of the previous chapter, becomes unavoidable here.
+
+\subsection{Revisiting the postulates for open systems}
+\label{subsec:revisiting_the_postulates_for_open_systems}
+
+The transition from closed to open quantum systems does not amount to abandoning the postulates of quantum mechanics. Rather, it amounts to generalizing them in a way consistent with the reduced description of physical systems.
+
+The first postulate, concerning states, must be reformulated by replacing pure vectors with density operators. In the open-system framework, the state of a physical system is described by a positive trace-one operator \(\hat \rho\) acting on the Hilbert space of the system. Pure states remain included as the special case \(\hat \rho^2=\hat \rho\), but mixed states now appear on the same footing.
+
+The second postulate, concerning observables, remains valid in its standard form for self-adjoint operators. However, the measurement framework must be broadened. In the presence of open dynamics and realistic detection schemes, projective measurements are no longer sufficient. One is naturally led to generalized measurements, described by positive operator-valued measures and by quantum instruments \cite{VacchiniBook,Paris12}.
+
+The third postulate, concerning the assignment of probabilities, is preserved in the density-operator language. The Born rule becomes
+\begin{equation}
+	p(x)=\Tr(\hat \rho \hat P_x)
+	\label{eq:open_born_rule_density_operator}
+\end{equation}
+for projective measurements, and more generally
+\begin{equation}
+	p(x)=\Tr(\hat \rho \hat E_x)
+	\label{eq:open_born_rule_povm}
+\end{equation}
+for a POVM \(\{\hat E_x\}\), with \(\hat E_x\geq 0\) and \(\sum_x \hat E_x=\id\).
+
+The fourth postulate, concerning composite systems, becomes even more central than in the closed-system case. The description of open dynamics is based precisely on the fact that the system of interest is part of a larger compound, namely system plus environment. Reduced states, partial trace, and dilation constructions are all consequences of the tensor-product structure already introduced in the previous chapter.
+
+The fifth postulate, concerning dynamics, is the one that changes most visibly. For a closed and isolated system the time evolution is unitary. For an open system, by contrast, the physically relevant evolution is described in general by a family of quantum maps
+\begin{equation}
+	\hat \rho(t)=\Phi_{t,t_0}[\hat \rho(t_0)],
+	\label{eq:open_generalized_dynamical_postulate}
+\end{equation}
+which are linear, completely positive, and trace preserving. Unitary evolution is recovered as the special case
+\begin{equation}
+	\Phi_{t,t_0}[\hat \rho]
+	=
+	\hat U(t,t_0)\hat \rho\,\hat U^\dagger(t,t_0).
+	\label{eq:open_unitary_as_special_case}
+\end{equation}
+Hence, the CPTP-map formalism is the proper generalization of the dynamical postulate of ordinary quantum mechanics.
