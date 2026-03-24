@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Paper_shammah.pdf\" -)",
+      "Bash(grep -E \"\\\\.pdf$\")",
+      "Bash(wc -l \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Stochastic_Master_Thesis/Stochastic_Master_Latex/Chapters\"/*.tex)",
+      "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Paper_3.pdf\" -)",
+      "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Paper_review_2.pdf\" -)",
+      "Bash(find 'c:/Users/campa/OneDrive/Desktop/Master Thesis' -type f \\\\\\(-name *.txt -o -name *.md -o -name *.docx \\\\\\))",
+      "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Paper_mai_pubblicato.pdf\" -)",
+      "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Documenti_tesi/Altri paperi/Lammers_Diss.pdf\" -)",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(python -c \":*)"
+    ]
+  }
+}

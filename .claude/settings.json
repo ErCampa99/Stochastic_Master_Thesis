@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python QFI_pure_unitary_N2_Jy_SLURM.py --help)",
+      "Bash(python QFI_pure_unitary_N2_Jy_SLURM.py --ntraj-ideal 50 --ntraj-scan 20 --ntraj-eta 20 --dt 0.01 --t-end 3 --num-cpus 1)",
+      "Bash(python QFI_pure_unitary_N2_Jy_SLURM.py --ntraj-ideal 10 --ntraj-scan 5 --ntraj-eta 5 --dt 0.02 --t-end 3 --num-cpus 1)",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''QFI_pure_unitary_N2_Jy_SLURM.py'', doraise=True\\)\")",
+      "Bash(python QFI_pure_unitary_N2_Jy_SLURM.py --ntraj-ideal 50 --ntraj-scan 50 --ntraj-eta 50 --dt 0.01 --t-end 5 --num-cpus 1)"
+    ]
+  }
+}

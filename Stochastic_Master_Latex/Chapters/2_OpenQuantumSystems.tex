@@ -1,213 +1,775 @@
-\chapter{Open Quantum Systems}
+\chapter{Open Quantum Systems and continuously monitored systems}
+
+The formulation presented in Chapter~\ref{chap:introduction_to_quantum_mechanics} provides the standard description of closed and isolated quantum systems. In that setting, the state is associated with a vector in Hilbert space, the dynamics is unitary, and measurements are described through the Born rule and the projection postulate. This framework is conceptually fundamental and mathematically consistent. At the same time, it relies on an idealization that is rarely realized in practice. Any realistic quantum system is, at least to some extent, coupled to additional degrees of freedom, whether they correspond to uncontrolled modes of the electromagnetic field, external reservoirs, measurement devices, or simply to the surrounding laboratory conditions \cite{Vac24,ParisTools12}.
+
+This observation is not merely of practical relevance. It marks a genuine conceptual extension of the standard theory. If the system under investigation interacts with external degrees of freedom, then its evolution is no longer described, in general, by a unitary operator acting only on its Hilbert space. The reduced dynamics may display decoherence, dissipation, irreversibility, and noise. These effects emerge naturally once one recognizes that the system of interest should be treated as a subsystem of a larger closed composite system.
+
+For this reason, the theory of open quantum systems may be viewed as the natural continuation of the standard formulation of quantum mechanics. One distinguishes between the subsystem of interest, usually denoted by \(S\), and an external environment \(E\) where the total system \(S+E\) is still described within the ordinary postulates of quantum mechanics. However, the subsystem \(S\) is no longer isolated, and its state must be described through a reduced statistical operator.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Open quantum systems and generalized quantum dynamics}
-\label{sec:open_quantum_systems_and_generalized_quantum_dynamics}
+\section{Open quantum systems: formalism}
+\label{sec:open_quantum_systems_and_generalized_postulates}
 
-In the previous chapter, quantum mechanics was introduced in its standard formulation for closed and isolated systems. In that framework, pure states are represented by vectors in Hilbert space, measurements are described by projective measurements, and the time evolution is unitary. This formulation is conceptually transparent and mathematically consistent, and it provides the natural starting point for the theory. At the same time, it relies on an idealization. Realistic quantum systems are seldom perfectly isolated. They typically interact with external degrees of freedom, with measuring devices, or with uncontrolled environmental modes. For this reason, a more general framework is required \cite{VacchiniBook,Paris12,AnotherIntro,Bergou}.
 
-Historically, the theory of open quantum systems emerged precisely from this need. On the one hand, it was motivated by foundational questions, especially those related to the measurement problem and to the effective appearance of irreversibility in quantum mechanics. On the other hand, it gradually became clear that the coupling between a system and its environment is not merely a nuisance, but a central feature of many physical situations. Decoherence, dissipation, noise, relaxation, and continuous monitoring are all phenomena that lie outside the unitary closed-system picture and require a more general dynamical description \cite{VacchiniBook,Paris12}.
 
-The conceptual shift is substantial. In the standard closed-system formulation, the state of the system at time \(t\) is obtained from its initial state through a unitary propagator. In the open-system setting, by contrast, the relevant system is only one part of a larger compound. The total system, consisting of the degrees of freedom of interest and of the environment, may still be treated as closed to a good approximation. However, the reduced dynamics of the subsystem of interest is no longer unitary in general. It is precisely this reduced, typically non-unitary, dynamics that is the object of the theory of open quantum systems.
-
-\subsection{From isolated systems to reduced dynamics}
-\label{subsec:from_isolated_systems_to_reduced_dynamics}
-
-Let \(S\) denote the system of interest and \(E\) the environment. The corresponding Hilbert space is
+To make this point more explicit, let us consider a quantum system \(S\) coupled to an environment \(E\). The Hilbert space of the composite is
 \begin{equation}
 	\mathcal{H}_{SE}=\mathcal{H}_S\otimes\mathcal{H}_E.
-	\label{eq:open_total_hilbert_space}
+	\label{eq:open_qs_total_hilbert_space}
 \end{equation}
-Even if the global system \(S+E\) evolves unitarily, the subsystem \(S\) is generally described by a reduced density operator
+The total system \(S+E\) is still assumed to be closed. Therefore, its dynamics is governed by a unitary evolution on \(\mathcal{H}_{SE}\).
+
+The total Hamiltonian is written as
 \begin{equation}
-	\hat \rho_S = \Tr_E(\hat \rho_{SE}),
-	\label{eq:open_reduced_state_definition}
+	\hat H_{SE}
+	=
+	\hat H_S\otimes\id_E
+	+
+	\id_S\otimes\hat H_E
+	+
+	\hat H_{\mathrm{int}},
+	\label{eq:open_qs_total_hamiltonian}
 \end{equation}
-obtained by tracing out the environmental degrees of freedom. If the total system evolves according to the unitary operator \(\hat U_{SE}(t,t_0)\), then
+so the corresponding evolution of the global density operator is
 \begin{equation}
 	\hat \rho_{SE}(t)
 	=
-	\hat U_{SE}(t,t_0)\hat \rho_{SE}(t_0)\hat U_{SE}^\dagger(t,t_0),
-	\label{eq:open_global_unitary_evolution}
+	\hat U_{SE}(t,t_0)\,\hat \rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0),
+	\label{eq:open_qs_global_unitary_evolution}
 \end{equation}
-and therefore
+where \(\hat U_{SE}(t,t_0)\) is unitary. Since the environment is not directly observed, the physically relevant description is obtained by tracing out its degrees of freedom:
+\begin{equation}
+	\hat \rho_S(t)=\Tr_E\!\left[\hat \rho_{SE}(t)\right].
+	\label{eq:open_qs_reduced_state}
+\end{equation}
+By combining Eqs.~\eqref{eq:open_qs_global_unitary_evolution} and \eqref{eq:open_qs_reduced_state}, one obtains
 \begin{equation}
 	\hat \rho_S(t)
 	=
 	\Tr_E\!\left[
-	\hat U_{SE}(t,t_0)\hat \rho_{SE}(t_0)\hat U_{SE}^\dagger(t,t_0)
+	\hat U_{SE}(t,t_0)\,\hat \rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0)
 	\right].
-	\label{eq:open_reduced_dynamics_general}
+	\label{eq:open_qs_reduced_dynamics_from_global_unitarity}
 \end{equation}
+The total evolution is unitary, but not the reduced evolution of the subsystem.
+In the standard formulation for isolated systems, the evolution is described by a unitary operator acting on the Hilbert space of the system alone: such an evolution preserves purity, preserves the spectrum of the density operator, and is reversible. In particular, if the initial state is pure, it remains pure at all times.
 
-Equation~\eqref{eq:open_reduced_dynamics_general} already contains the key point. Even if the global evolution is unitary, the reduced state is obtained only after tracing out part of the degrees of freedom. This operation destroys, in general, the possibility of representing the subsystem dynamics through a unitary transformation on \(\mathcal{H}_S\) alone. In particular, information may flow from the system to the environment and, depending on the regime, also back from the environment to the system.
+By contrast, the reduced evolution in Eq.~\eqref{eq:open_qs_reduced_dynamics_from_global_unitarity} is totally different, and it loses all these "good" properties. The reason is that the interaction term \(\hat H_{\mathrm{int}}\) creates correlations between \(S\) and \(E\). Even if the total state remains pure, the subsystem may become mixed because part of the information about \(S\) is now stored in the correlations with the environment. In this sense, the non-unitary character of the reduced dynamics comes from the fact that one is describing only a part of a larger quantum system.
 
-A particularly important case is the one in which the initial total state is factorized,
+A first important consequence is that an initially pure state of the subsystem may evolve into a mixed state. This is impossible under unitary dynamics on \(\mathcal{H}_S\), but it is completely natural for an open system. A second consequence is that the reduced evolution need not be reversible. The partial trace is not an invertible operation: once the environmental degrees of freedom are discarded, the information encoded in system-environment correlations is no longer accessible from the subsystem alone. A third consequence is that quantities such as purity \eqref{eq:intro_qm_purity_definition} and von Neumann entropy \eqref{eq:intro_qm_von_neumann_entropy} are no longer conserved for the reduced state, even though they are conserved for the total isolated system.
+
+It is therefore natural to replace the unitary description on \(\mathcal{H}_S\) with a more general dynamical law. In the simplest and most relevant situation, one assumes that the initial global state is factorized,
 \begin{equation}
 	\hat \rho_{SE}(t_0)=\hat \rho_S(t_0)\otimes \hat \rho_E(t_0).
-	\label{eq:open_initial_factorized_state}
+	\label{eq:open_qs_factorized_initial_condition}
 \end{equation}
-In that case,
+Under this assumption, the reduced evolution may be written as a map
 \begin{equation}
-	\hat \rho_S(t)
+	\hat \rho_S(t)=\Phi_{t,t_0}\!\left[\hat \rho_S(t_0)\right],
+	\label{eq:open_qs_quantum_dynamical_map}
+\end{equation}
+where \(\Phi_{t,t_0}\) is, in general, not unitary. Rather, it is a quantum dynamical map acting on density operators \cite{Vac24,ParisTools12}.
+
+This observation already shows why the standard postulates of closed-system quantum mechanics are not sufficient in the present context. The appropriate framework is instead based on generalized measurements and CPTP maps. Within this more general formulation, continuously monitored systems will arise as a further refinement, in which the open-system evolution is conditioned on the information extracted from the environment through a continuous measurement record.
+
+
+
+\subsection{Generalized measurements, the POVMs}
+\label{subsec:generalized_measurements_and_povms}
+
+The projective description of quantum measurements is sufficient when one deals with ideal measurements directly performed on the system Hilbert space. In many relevant situations, however, the measurement process is more involved. The system first interacts with additional degrees of freedom, such as an ancilla, a probe, or a measuring device, and only part of the total setup is eventually observed. In this case, the effective measurement acting on the system alone is no longer described, in general, by a family of orthogonal projectors \cite{ParisTools12,Vac24}.
+
+This is the natural setting in which generalized measurements arise. Their role is to describe the statistics of outcomes when the measurement is indirect, noisy, or only partially resolving. From this point of view, POVMs are not a modification introduced by hand. They are the effective description of standard measurements performed on a larger Hilbert space and then reduced to the subsystem of interest.
+
+A more general framework is therefore provided by positive operator-valued measures, POVMs. A POVM is a set of positive operators \(\{\hat \Pi_x\}\) satisfying
+\begin{equation}
+	\hat \Pi_x \geq 0,
+	\qquad
+	\sum_x \hat \Pi_x=\id.
+	\label{eq:open_qs_povm_definition}
+\end{equation}
+The probability of obtaining the outcome \(x\) when the system is in the state \(\hat \rho\) is
+\begin{equation}
+	p_x=\Tr\!\left[\hat \rho\,\hat \Pi_x\right].
+	\label{eq:open_qs_povm_born_rule}
+\end{equation}
+	Projective measurements are recovered as a special case by taking $\Pi_x=\hat P_x$ where these are orthogonal projectors.
+
+To describe the post-measurement state one introduces a set of operators \(\{\hat M_x\}\), usually called detection operators or measurement operators, such that
+\begin{equation}
+	\hat \Pi_x=\hat M_x^\dagger \hat M_x,
+	\qquad
+	\sum_x \hat M_x^\dagger \hat M_x=\id.
+	\label{eq:open_qs_detection_operators_definition}
+\end{equation}
+In terms of these operators, the generalized Born rule may be written as
+\begin{equation}
+	p_x=\Tr\!\left[\hat M_x \hat \rho \hat M_x^\dagger\right]
+	=
+	\Tr\!\left[\hat \rho\,\hat M_x^\dagger \hat M_x\right]
+	=
+	\Tr\!\left[\hat \rho\,\hat \Pi_x\right].
+	\label{eq:open_qs_detection_operators_born_rule}
+\end{equation}
+If the outcome \(x\) is recorded, the corresponding conditional state is
+\begin{equation}
+	\hat \rho_x=\frac{\hat M_x \hat \rho \hat M_x^\dagger}{p_x} = \frac{\hat M_x \hat \rho \hat M_x^\dagger}{\Tr\!\left[\hat \rho\,\hat \Pi_x\right]}.
+	\label{eq:open_qs_generalized_reduction_rule}
+\end{equation}
+If the measurement is performed but the outcome is not read out, the post-measurement state is
+\begin{equation}
+	\widetilde{\hat \rho}
+	=
+	\sum_x p_x \hat \rho_x
+	=
+	\sum_x \hat M_x \hat \rho \hat M_x^\dagger.
+	\label{eq:open_qs_nonselective_generalized_measurement}
+\end{equation}
+
+This formulation contains the projective one, but is strictly more general. In particular, orthogonality of the POVM elements is not required, and the number of outcomes is not bounded by the dimension of the Hilbert space. Moreover, for a fixed POVM the detection operators are not unique. Since each \(\hat \Pi_x\) is positive, its square root is well defined, and one may always write
+\begin{equation}
+	\hat M_x=\hat U_x \sqrt{\hat \Pi_x},
+	\label{eq:open_qs_polar_decomposition_detection_operator}
+\end{equation}
+where \(\hat U_x\) is unitary on the support of \(\hat \Pi_x\). This is simply the polar decomposition of \(\hat M_x\). It shows that the POVM elements determine the probabilities, whereas the unitary part of the detection operators determines how the state is transformed after the measurement.
+
+The measurement statistics is described by the POVM
+\begin{equation}
+	\hat \Pi_n=\ket{n}\bra{n}.
+	\label{eq:open_qs_photon_counting_povm}
+\end{equation}
+If the detector is demolitive, the mode is left in the vacuum after the detection, independently of the outcome, that is $\rho_n = \dyad{0}{0}$. The detection operators are thus described by:
+\begin{equation}
+	\hat M_n=\ket{0}\bra{n}.
+	\label{eq:open_qs_photon_counting_detection_operators}
+\end{equation}
+indeed,
+\begin{equation}
+	\hat M_n^\dagger \hat M_n
+	=
+	\ket{n}\bra{0}\ket{0}\bra{n}
+	=
+	\ket{n}\bra{n}
+	=
+	\hat \Pi_n.
+	\label{eq:open_qs_photon_counting_detection_operator_check}
+\end{equation}
+
+
+The POVM in Eq.~\eqref{eq:open_qs_photon_counting_povm} coincides with the one associated with the standard number measurement, and therefore yields the same probabilities. However, the state update is completely different from the projective one. This makes explicit that the POVM elements determine the outcome statistics, whereas the detection operators determine the state transformation.
+
+The definition above extends naturally to continuous outcome spaces, where sums are replaced by operator-valued measures. For the present purposes, the discrete version is sufficient and already contains the essential ideas.
+
+The relation between generalized measurements and ordinary projective measurements is clarified by the Naimark theorem \cite{ParisTools12}. First, we have to discuss about the ancilla. It is an auxiliary quantum system introduced in addition to the system of interest. It is typically used to model additional degrees of freedom involved in a physical process, such as a probe, a measurement apparatus, or an effective environment, and it allows one to describe indirect measurements and more general state transformations on an enlarged Hilbert space. Consider a system \(S\) coupled to an ancilla \(A\), prepared in a reference state \(\ket{\omega_A}\). Let the composite evolve unitarily, and let a projective measurement \(\{\hat P_x\}\) be performed on the ancilla. Starting from the factorized state
+\begin{equation}
+	\hat \rho_{SA}=\hat \rho_S \otimes \ket{\omega_A}\bra{\omega_A},
+	\label{eq:open_qs_naimark_factorized_state}
+\end{equation}
+the probability of the outcome \(x\) can be written as
+\begin{equation}
+	p_x=\Tr_S\!\left[\hat \rho_S \hat \Pi_x\right],
+	\label{eq:open_qs_indirect_measurement_probability_reduced}
+\end{equation}
+where
+\begin{equation}
+	\hat \Pi_x
+	=
+	\Tr_A\!\left[
+	\left(
+	\id_S \otimes \ket{\omega_A}\bra{\omega_A}
+	\right)
+	\hat U^\dagger
+	\left(
+	\id_S \otimes \hat P_x
+	\right)
+	\hat U
+	\right].
+	\label{eq:open_qs_indirect_measurement_povm}
+\end{equation}
+The operators \(\hat \Pi_x\) are positive and satisfy completeness, therefore they define a POVM on $\mathcal{H_S}$.
+
+The Naimark theorem states that the converse is also true: every POVM on \(\mathcal{H}_S\) can be realized as a projective measurement on a larger Hilbert space, obtained by introducing suitable ancillary degrees of freedom and a unitary interaction. Generalized measurements are the effective description viewed as ordinary projective measurements performed indirectly on an enlarged system.
+
+(METTERE IMMAGINE STILE PARIS - SCHEMA MISURA GENERALIZZATA)
+
+
+\subsection{Quantum maps and completely positive transformations}
+\label{subsec:quantum_maps_and_completely_positive_transformations}
+As we have seen before, the interaction with unobserved degrees of freedom, as well as the possibility of conditioning on measurement outcomes, leads to transformations that need not preserve purity and need not be reversible. This motivates the introduction of quantum maps, namely linear maps acting on statistical operators \cite{Vac24}.
+
+A quantum map is a rule that associates to each input state \(\hat \rho\) an output operator \(\Phi[\hat \rho]\). In the physical setting of interest, this rule must send density operators into density operators, so that positivity and trace are preserved. Moreover, since statistical mixtures must evolve consistently, the map has to be linear. In this way, quantum maps provide the natural generalization of the unitary transformation law of closed quantum systems. The unitary case is recovered when $\Phi[\hat \rho]=\hat U \hat \rho \hat U^\dagger$. In general, however, open-system transformations are not of this form: they may decrease coherences, transform pure states into mixed states, and describe irreversible processes. This is precisely the kind of behavior that cannot be captured within the closed-system framework alone.
+A simple example makes the difference clear. 
+Consider a qubit and define the map
+\begin{equation}
+	\Phi_p[\hat \rho]
+	=
+	(1-p)\hat \rho + p\,\sigma_z \hat \rho \sigma_z,
+	\qquad
+	0 \leq p \leq 1,
+	\label{eq:open_qs_dephasing_channel_definition}
+\end{equation}
+called the phase-flip channel.
+This map is trace preserving and sends states into states. However, it is not unitary unless \(p=0\) or \(p=1\). 
+In the computational basis \(\{\ket{0},\ket{1}\}\) and for $\rho = \dyad{+}{+}$ one has
+\begin{equation}
+	\Phi_p[\hat \rho_+]
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 1-2p \\
+		1-2p & 1
+	\end{pmatrix}.
+	\label{eq:open_qs_dephasing_map_matrix_form}
+\end{equation}
+For \(p=1/2\) the output state is maximally mixed, and therefore a pure state is mapped into a mixed state. This is impossible under unitary evolution on the system Hilbert space alone.
+
+The physically relevant class of transformations is selected by a few basic requirements. First, the map must be linear, in order to preserve the convex structure of statistical mixtures. Second, it must preserve positivity and trace, so that density operators are mapped into density operators. Most importantly, it must be completely positive. This means that the extension of the map to any larger Hilbert space, $\Phi \otimes \id_A$ must still preserve positivity for every ancillary system \(A\). This requirement is essential because the system of interest may be correlated, or even entangled, with additional degrees of freedom. Positivity on the system alone is thus not sufficient.
+
+A quantum physical transformation is thus described by a completely positive trace-preserving map, usually abbreviated as CPTP map. More generally, if one considers a selective transformation associated with a specific measurement outcome, the trace need not be preserved. In that case one deals with a completely positive trace-non-increasing map.
+
+\subsection{Stinespring theorem and Kraus' operator-sum representation}
+\label{subsec:kraus_stinespring_theorem_and_operator_sum_representation}
+
+The general structure of quantum maps is fixed by two important theorems. In finite dimension, this result states that any CPTP map can be represented in two equivalent ways: either as a reduced unitary evolution on a larger Hilbert space \cite{Sti55}, or through an operator-sum representation \cite{Kraus71}.
+
+Let \(S\) be the system of interest and \(E\) an ancilla or effective environment, prepared in a reference state \(\dyad{\omega_E}{\omega_E}\). Let the composite system evolve under a unitary operator \(\hat U\) on \(\mathcal{H}_S \otimes \mathcal{H}_E\). The reduced transformation of the system is then
+\begin{equation}
+	\Phi[\hat \rho]
 	=
 	\Tr_E\!\left[
-	\hat U_{SE}(t,t_0)
-	\bigl(\hat \rho_S(t_0)\otimes \hat \rho_E(t_0)\bigr)
-	\hat U_{SE}^\dagger(t,t_0)
+	\hat U
+	\left(
+	\hat \rho \otimes \dyad{\omega_E}{\omega_E}
+	\right)
+	\hat U^\dagger
 	\right].
-	\label{eq:open_reduced_dynamics_factorized}
+	\label{eq:open_qs_stinespring_dilation}
 \end{equation}
-This expression defines a map from the initial state of the system to its state at time \(t\). The dependence on the environment has not disappeared. It is encoded in the initial environmental state and in the global interaction. However, the result is now a closed dynamical transformation acting on the state space of the system alone.
+This is the Stinespring form of the map. It shows that every admissible reduced dynamics may be viewed as ordinary unitary evolution on an enlarged Hilbert space followed by a partial trace.
 
-The assumption of an initially factorized state is not merely technical. It is the natural condition under which one may consistently define a reduced dynamics acting on arbitrary initial system states. If initial system-environment correlations are present, the very notion of a dynamical map for the subsystem becomes more subtle, because the future state of the system need not depend only on its own initial reduced state \cite{VacchiniBook}.
-
-\subsection{Quantum maps and physical requirements}
-\label{subsec:quantum_maps_and_physical_requirements}
-
-Equation~\eqref{eq:open_reduced_dynamics_factorized} motivates the introduction of a quantum dynamical map
+To obtain the operator-sum representation, let \(\{\ket{k_E}\}\) be an orthonormal basis of \(\mathcal{H}_E\), and define the operators
 \begin{equation}
-	\hat \rho_S(t)=\Phi_{t,t_0}\bigl[\hat \rho_S(t_0)\bigr].
-	\label{eq:open_quantum_map_definition}
+	\hat K_j=\bra{k_E}\hat U\ket{\omega_E}.
+	\label{eq:open_qs_kraus_operators_from_dilation}
 \end{equation}
-The map \(\Phi_{t,t_0}\) must satisfy a number of basic physical requirements.
-
-First, it must be linear. This follows from the statistical interpretation of the density operator. If the initial preparation is a convex combination
+These operators act on \(\mathcal{H}_S\). By expanding the partial trace in the basis \(\{\ket{k_E}\}\), one finds
 \begin{equation}
-	\hat \rho_S(t_0)=p\hat \rho_{S,1}(t_0)+(1-p)\hat \rho_{S,2}(t_0),
-	\qquad
-	0\leq p\leq 1,
-	\label{eq:open_convex_initial_state}
-\end{equation}
-then the final state must satisfy
-\begin{equation}
-	\Phi_{t,t_0}\!\left[
-	p\hat \rho_{S,1}(t_0)+(1-p)\hat \rho_{S,2}(t_0)
-	\right]
+	\Phi[\hat \rho]
 	=
-	p\,\Phi_{t,t_0}\!\left[\hat \rho_{S,1}(t_0)\right]
+	\sum_j \hat K_j \hat \rho \hat K_j^\dagger
+	\label{eq:open_qs_operator_sum_representation}
+\end{equation}
+they also satisfy the normalization condition.
+Equation~\eqref{eq:open_qs_operator_sum_representation} is called the operator-sum representation or Kraus representation of the map.
+
+The converse statement also holds: given any family of operators \(\{\hat K_j\}\) satisfying Eq.~\eqref{eq:open_qs_kraus_normalization}, the map in Eq.~\eqref{eq:open_qs_operator_sum_representation} is completely positive and trace preserving. In this way, the two descriptions are equivalent.
+
+Unitary evolution is recovered as a special case. If there is only one Kraus operator, \(\hat K_1=\hat U\), then Eq.~\eqref{eq:open_qs_operator_sum_representation} reduces to the usual unitary evolution of the generic density operator.
+
+This formalism also unifies dynamics and measurement. In the measurement setting, the Kraus operators are precisely the measurement operators introduced in the previous subsection. A selective outcome corresponds to a trace-non-increasing completely positive map, while the sum over all outcomes yields a CPTP map. For this reason, the Kraus representation provides the natural language for both reduced dynamics and generalized measurements.
+
+It is worth remarking that the Kraus representation is not unique. Different sets of Kraus operators may describe the same map. This non-uniqueness reflects the fact that the same reduced transformation may arise from different dilations, or, equivalently, from different choices of basis in the ancillary Hilbert space.
+
+The Kraus-Stinespring theorem is the key structural result needed in the following. It shows that the evolution of an open quantum system may always be described either in terms of a unitary interaction with additional degrees of freedom or, at the reduced level, by a completely positive map acting on the state of the system alone. This is precisely the framework in which master equations and continuously monitored dynamics will be formulated.
+
+\begin{comment}
+
+\section{Derivation of Markovian master equations}
+\label{sec:derivation_markovian_master_equations}
+
+We now move from the closed-system description introduced in the previous chapter to the dynamics of a quantum system interacting with an external environment. The goal is to derive, in a physically transparent way, the Markovian master equation and, in the next section, its stochastic unravellings under continuous monitoring \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22,Vacchini24}.
+
+We consider a quantum system $S$ coupled to a bosonic environment. The total Hilbert space is
+\begin{equation}
+	\mathcal{H}=\mathcal{H}_S \otimes \mathcal{H}_B.
+\end{equation}
+The total Hamiltonian is written as
+\begin{equation}
+	\hat H_{\mathrm{tot}}
+	=
+	\hat H_S+\hat H_B+\hat H_{\mathrm{int}}.
+	\label{eq:oqs_total_hamiltonian}
+\end{equation}
+The free bath Hamiltonian is
+\begin{equation}
+	\hat H_B
+	=
+	\int d\omega\, \omega\, \hat b_\omega^\dagger \hat b_\omega,
+	\label{eq:oqs_bath_hamiltonian}
+\end{equation}
+where the operators $\hat b_\omega$ satisfy the canonical bosonic commutation relations
+\begin{equation}
+	[\hat b_\omega,\hat b_{\omega'}^\dagger]=\delta(\omega-\omega').
+	\label{eq:oqs_bosonic_commutation_frequency}
+\end{equation}
+
+We assume that the system couples linearly to the bath through a system operator $\hat c$. In the interaction picture with respect to the free bath dynamics, and after the rotating-wave approximation, the interaction Hamiltonian takes the form
+\begin{equation}
+	\hat H_{\mathrm{int}}(t)
+	=
+	i\sqrt{\frac{\kappa}{2\pi}}
+	\int d\omega\,
+	\left(
+	\hat c\, \hat b_\omega^\dagger e^{i(\omega-\omega_0)t}
+	-
+	\hat c^\dagger \hat b_\omega e^{-i(\omega-\omega_0)t}
+	\right),
+	\label{eq:oqs_interaction_hamiltonian_frequency}
+\end{equation}
+where $\omega_0$ is a characteristic system frequency and $\kappa \geq 0$ sets the coupling strength.
+
+It is convenient to introduce time-domain bath operators
+\begin{equation}
+	\hat b_t
+	=
+	\frac{1}{\sqrt{2\pi}}
+	\int d\omega\,
+	\hat b_\omega e^{-i(\omega-\omega_0)t},
+	\label{eq:oqs_time_domain_bath_operator}
+\end{equation}
+for which one finds
+\begin{equation}
+	[\hat b_t,\hat b_{t'}^\dagger]=\delta(t-t').
+	\label{eq:oqs_bosonic_commutation_time}
+\end{equation}
+In terms of these operators, Eq.~\eqref{eq:oqs_interaction_hamiltonian_frequency} becomes
+\begin{equation}
+	\hat H_{\mathrm{int}}(t)
+	=
+	i\sqrt{\kappa}
+	\left(
+	\hat c\, \hat b_t^\dagger - \hat c^\dagger \hat b_t
+	\right).
+	\label{eq:oqs_interaction_hamiltonian_time}
+\end{equation}
+
+\subsection{Infinitesimal time bins and Markovian approximation}
+
+The key simplification is to regard the bath as a continuous train of independent time bins. Over an infinitesimal interval $[t,t+dt]$, we introduce the quantum stochastic increments
+\begin{equation}
+	d\hat B_t=\hat b_t\,dt,
+	\qquad
+	d\hat B_t^\dagger=\hat b_t^\dagger\,dt.
+	\label{eq:oqs_quantum_increments}
+\end{equation}
+Because of Eq.~\eqref{eq:oqs_bosonic_commutation_time}, these increments satisfy the Ito table
+\begin{equation}
+	d\hat B_t\, d\hat B_t^\dagger = dt,
+	\qquad
+	d\hat B_t^\dagger d\hat B_t = 0,
+	\qquad
+	d\hat B_t^2=(d\hat B_t^\dagger)^2=0,
+	\label{eq:oqs_ito_table_vacuum}
+\end{equation}
+where the vacuum input has been assumed.
+
+The Markovian approximation is encoded in the statement that, at each infinitesimal step, the system interacts with a fresh environmental mode prepared in the same state. In the vacuum case, this means that at time $t$ the joint state factorizes as
+\begin{equation}
+	\hat R(t)=\hat \rho(t)\otimes \dyad{0}{0}_t,
+	\label{eq:oqs_factorized_state}
+\end{equation}
+where $\hat \rho(t)$ is the reduced system state and $\ket{0}_t$ is the vacuum state of the time bin centered at $t$.
+
+Using Eq.~\eqref{eq:oqs_interaction_hamiltonian_time}, the infinitesimal interaction can be written as
+\begin{equation}
+	\hat H_{\mathrm{int}}(t)\,dt
+	=
+	i\sqrt{\kappa}
+	\left(
+	\hat c\, d\hat B_t^\dagger - \hat c^\dagger d\hat B_t
+	\right).
+	\label{eq:oqs_infinitesimal_interaction}
+\end{equation}
+The corresponding infinitesimal unitary reads
+\begin{equation}
+	\hat U(t+dt,t)
+	=
+	\exp\!\left[-i\hat H_{\mathrm{int}}(t)\,dt\right].
+	\label{eq:oqs_infinitesimal_unitary_exact}
+\end{equation}
+Expanding up to order $dt$, and using Eq.~\eqref{eq:oqs_ito_table_vacuum}, one obtains
+\begin{equation}
+	\hat U(t+dt,t)
+	=
+	\id
 	+
-	(1-p)\,\Phi_{t,t_0}\!\left[\hat \rho_{S,2}(t_0)\right].
-	\label{eq:open_linearity_of_quantum_map}
+	\sqrt{\kappa}
+	\left(
+	\hat c\, d\hat B_t^\dagger - \hat c^\dagger d\hat B_t
+	\right)
+	-
+	\frac{\kappa}{2}\hat c^\dagger \hat c\, dt
+	+
+	\mathcal{O}(dt^{3/2}).
+	\label{eq:oqs_infinitesimal_unitary_expanded}
 \end{equation}
-Without linearity, the dynamical transformation would not be consistent with the probabilistic structure of state preparation.
 
-Second, the map must preserve trace:
+When this operator acts on a system state tensored with the vacuum of the time bin, the only relevant relations are
 \begin{equation}
-	\Tr\!\left(\Phi_{t,t_0}[\hat \rho_S]\right)=\Tr(\hat \rho_S)=1.
-	\label{eq:open_trace_preservation}
-\end{equation}
-This ensures conservation of total probability.
-
-Third, the map must preserve positivity. If \(\hat \rho_S\geq 0\), then
-\begin{equation}
-	\Phi_{t,t_0}[\hat \rho_S]\geq 0.
-	\label{eq:open_positivity_preservation}
-\end{equation}
-This condition is necessary because a physical state must remain a positive operator under time evolution.
-
-However, positivity alone is not sufficient. Suppose that the system \(S\) is part of a larger system \(S+A\), where \(A\) is an ancilla left untouched by the dynamics. Then the extended transformation \(\Phi_{t,t_0}\otimes \mathbb{I}_A\) must also preserve positivity on the enlarged space:
-\begin{equation}
-	(\Phi_{t,t_0}\otimes \mathbb{I}_A)[\hat X]\geq 0
-\end{equation}
-for every positive operator \(\hat X\geq 0\) on \(\mathcal{H}_S\otimes\mathcal{H}_A\). A map satisfying this condition for ancillas of arbitrary finite dimension is called completely positive. Therefore, the physically relevant reduced dynamical maps are required to be completely positive and trace preserving, namely CPTP \cite{VacchiniBook,Paris12,Bergou}.
-
-The need for complete positivity is one of the most important conceptual novelties of the open-system framework. It reflects the fact that a subsystem may be correlated with additional degrees of freedom, even when these are not directly involved in the dynamics. In this sense, complete positivity is the correct stability requirement for quantum dynamics under extension of the Hilbert space.
-
-\subsection{Unitary dilation and Kraus representation}
-\label{subsec:unitary_dilation_and_kraus_representation}
-
-The reduced dynamics in Eq.~\eqref{eq:open_reduced_dynamics_factorized} already shows that CPTP maps arise naturally from unitary evolution on a larger Hilbert space. This is the physical content of dilation theorems such as the Stinespring theorem, and in finite-dimensional settings it leads directly to the Kraus representation \cite{Paris12,VacchiniBook,Bergou}.
-
-Let \(\{\ket{e_\mu}\}\) be an orthonormal basis of the environment and, for simplicity, assume that the initial environment is in the pure state \(\ket{e_0}\). Then Eq.~\eqref{eq:open_reduced_dynamics_factorized} becomes
-\begin{equation}
-	\Phi_{t,t_0}[\hat \rho_S]
-	=
-	\Tr_E\!\left[
-	\hat U_{SE}(t,t_0)
-	\bigl(\hat \rho_S\otimes \dyad{e_0}{e_0}\bigr)
-	\hat U_{SE}^\dagger(t,t_0)
-	\right].
-	\label{eq:open_reduced_dynamics_pure_environment}
-\end{equation}
-By inserting the resolution of the identity on the environment,
-\begin{equation}
-	\id_E=\sum_\mu \dyad{e_\mu}{e_\mu},
-	\label{eq:open_environment_resolution_identity}
-\end{equation}
-one finds
-\begin{equation}
-	\Phi_{t,t_0}[\hat \rho_S]
-	=
-	\sum_\mu \hat K_\mu(t,t_0)\,\hat \rho_S\,\hat K_\mu^\dagger(t,t_0),
-	\label{eq:open_kraus_representation}
-\end{equation}
-where the Kraus operators are defined by
-\begin{equation}
-	\hat K_\mu(t,t_0)=\matrixel{e_\mu}{\hat U_{SE}(t,t_0)}{e_0}.
-	\label{eq:open_kraus_operator_definition}
-\end{equation}
-Trace preservation implies the normalization condition
-\begin{equation}
-	\sum_\mu \hat K_\mu^\dagger(t,t_0)\hat K_\mu(t,t_0)=\id_S.
-	\label{eq:open_kraus_normalization}
-\end{equation}
-Hence, every reduced dynamics arising from a unitary evolution on a larger Hilbert space is a CPTP map.
-
-Conversely, in finite dimension every CPTP map admits a Kraus representation of the form in Eq.~\eqref{eq:open_kraus_representation}. Therefore, the operator-sum form is not just a convenient parametrization. It is the natural mathematical representation of the most general physical transformation of a quantum state compatible with the axioms of the open-system framework.
-
-\subsection{Non-unitary evolution and loss of purity}
-\label{subsec:non_unitary_evolution_and_loss_of_purity}
-
-One of the clearest differences between open and closed dynamics is that purity is not preserved in general. For an initially pure system state,
-\begin{equation}
-	\hat \rho_S(t_0)=\dyad{\psi}{\psi},
+	d\hat B_t \ket{0}_t = 0,
 	\qquad
-	\Tr\!\left(\hat \rho_S^2(t_0)\right)=1,
-	\label{eq:open_initial_pure_state}
+	d\hat B_t^\dagger \ket{0}_t = \sqrt{dt}\,\ket{1}_t,
+	\qquad
+	d\hat B_t d\hat B_t^\dagger \ket{0}_t = dt\,\ket{0}_t.
+	\label{eq:oqs_action_on_vacuum}
 \end{equation}
-the reduced state at later times may satisfy
+Hence, for a generic system vector $\ket{\psi}$,
 \begin{equation}
-	\Tr\!\left(\hat \rho_S^2(t)\right)<1.
-	\label{eq:open_purity_loss}
-\end{equation}
-This loss of purity is not due to any fundamental failure of the global unitary description. It is the direct consequence of tracing out the environmental degrees of freedom after the system and the environment have become correlated.
-
-In other words, a globally pure state may induce a locally mixed state. The density operator is therefore not just a convenient statistical tool in the open-system setting. It is the natural language of the theory. This is one of the main reasons why the density-operator formalism, introduced at the end of the previous chapter, becomes unavoidable here.
-
-\subsection{Revisiting the postulates for open systems}
-\label{subsec:revisiting_the_postulates_for_open_systems}
-
-The transition from closed to open quantum systems does not amount to abandoning the postulates of quantum mechanics. Rather, it amounts to generalizing them in a way consistent with the reduced description of physical systems.
-
-The first postulate, concerning states, must be reformulated by replacing pure vectors with density operators. In the open-system framework, the state of a physical system is described by a positive trace-one operator \(\hat \rho\) acting on the Hilbert space of the system. Pure states remain included as the special case \(\hat \rho^2=\hat \rho\), but mixed states now appear on the same footing.
-
-The second postulate, concerning observables, remains valid in its standard form for self-adjoint operators. However, the measurement framework must be broadened. In the presence of open dynamics and realistic detection schemes, projective measurements are no longer sufficient. One is naturally led to generalized measurements, described by positive operator-valued measures and by quantum instruments \cite{VacchiniBook,Paris12}.
-
-The third postulate, concerning the assignment of probabilities, is preserved in the density-operator language. The Born rule becomes
-\begin{equation}
-	p(x)=\Tr(\hat \rho \hat P_x)
-	\label{eq:open_born_rule_density_operator}
-\end{equation}
-for projective measurements, and more generally
-\begin{equation}
-	p(x)=\Tr(\hat \rho \hat E_x)
-	\label{eq:open_born_rule_povm}
-\end{equation}
-for a POVM \(\{\hat E_x\}\), with \(\hat E_x\geq 0\) and \(\sum_x \hat E_x=\id\).
-
-The fourth postulate, concerning composite systems, becomes even more central than in the closed-system case. The description of open dynamics is based precisely on the fact that the system of interest is part of a larger compound, namely system plus environment. Reduced states, partial trace, and dilation constructions are all consequences of the tensor-product structure already introduced in the previous chapter.
-
-The fifth postulate, concerning dynamics, is the one that changes most visibly. For a closed and isolated system the time evolution is unitary. For an open system, by contrast, the physically relevant evolution is described in general by a family of quantum maps
-\begin{equation}
-	\hat \rho(t)=\Phi_{t,t_0}[\hat \rho(t_0)],
-	\label{eq:open_generalized_dynamical_postulate}
-\end{equation}
-which are linear, completely positive, and trace preserving. Unitary evolution is recovered as the special case
-\begin{equation}
-	\Phi_{t,t_0}[\hat \rho]
+	\hat U(t+dt,t)\left(\ket{\psi}\otimes\ket{0}_t\right)
 	=
-	\hat U(t,t_0)\hat \rho\,\hat U^\dagger(t,t_0).
-	\label{eq:open_unitary_as_special_case}
+	\left(
+	\id-\frac{\kappa}{2}\hat c^\dagger \hat c\,dt
+	\right)\ket{\psi}\otimes\ket{0}_t
+	+
+	\sqrt{\kappa\,dt}\,\hat c\ket{\psi}\otimes\ket{1}_t
+	+
+	\mathcal{O}(dt^{3/2}).
+	\label{eq:oqs_unitary_action_vacuum}
 \end{equation}
-Hence, the CPTP-map formalism is the proper generalization of the dynamical postulate of ordinary quantum mechanics.
+This expression already displays the physical picture: either no excitation is emitted into the output time bin, or one excitation is created with amplitude proportional to $\sqrt{dt}$.
+
+\subsection{Reduced dynamics and Lindblad equation}
+
+The reduced system state at time $t+dt$ is obtained by tracing out the time bin:
+\begin{equation}
+	\hat \rho(t+dt)
+	=
+	\Tr_t
+	\left[
+	\hat U(t+dt,t)\,
+	\hat R(t)\,
+	\hat U^\dagger(t+dt,t)
+	\right].
+	\label{eq:oqs_reduced_state_update}
+\end{equation}
+Substituting Eqs.~\eqref{eq:oqs_factorized_state} and \eqref{eq:oqs_infinitesimal_unitary_expanded}, and keeping terms up to first order in $dt$, one finds
+\begin{equation}
+	\hat \rho(t+dt)
+	=
+	\hat \rho(t)
+	+
+	\kappa
+	\left(
+	\hat c \hat \rho(t)\hat c^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\hat c^\dagger \hat c,\hat \rho(t)
+	\right\}
+	\right)dt.
+	\label{eq:oqs_reduced_state_update_lindblad_step}
+\end{equation}
+If one also includes the coherent evolution generated by a system Hamiltonian $\hat H$, the differential equation becomes
+\begin{equation}
+	\frac{d\hat \rho}{dt}
+	=
+	-i[\hat H,\hat \rho]
+	+
+	\kappa
+	\left(
+	\hat c \hat \rho \hat c^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\hat c^\dagger \hat c,\hat \rho
+	\right\}
+	\right).
+	\label{eq:oqs_single_channel_lindblad}
+\end{equation}
+Introducing the dissipator
+\begin{equation}
+	\mathcal{D}[\hat A]\hat \rho
+	=
+	\hat A \hat \rho \hat A^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\hat A^\dagger \hat A,\hat \rho
+	\right\},
+	\label{eq:oqs_dissipator_definition}
+\end{equation}
+Eq.~\eqref{eq:oqs_single_channel_lindblad} is written as
+\begin{equation}
+	\frac{d\hat \rho}{dt}
+	=
+	-i[\hat H,\hat \rho]
+	+
+	\kappa \mathcal{D}[\hat c]\hat \rho.
+	\label{eq:oqs_single_channel_lindblad_compact}
+\end{equation}
+
+For several independent output channels $\hat c_j$, one obtains the standard Gorini--Kossakowski--Sudarshan--Lindblad form
+\begin{equation}
+	\frac{d\hat \rho}{dt}
+	=
+	\mathcal{L}\hat \rho
+	=
+	-i[\hat H,\hat \rho]
+	+
+	\sum_j \kappa_j \mathcal{D}[\hat c_j]\hat \rho.
+	\label{eq:oqs_gksl_general}
+\end{equation}
+The corresponding dynamical maps form a quantum dynamical semigroup,
+\begin{equation}
+	\mathcal{E}_t = e^{t\mathcal{L}},
+	\qquad
+	\mathcal{E}_{t+s}=\mathcal{E}_t\circ \mathcal{E}_s,
+	\label{eq:oqs_semigroup_property}
+\end{equation}
+which makes explicit the time-homogeneous Markovian character of the evolution.
+
+\section{Derivation of stochastic master equations}
+\label{sec:derivation_stochastic_master_equations}
+
+The master equation \eqref{eq:oqs_gksl_general} describes the unconditional evolution, namely the evolution obtained when the environmental degrees of freedom are ignored. If, instead, the output field is continuously measured, one obtains a stochastic evolution conditioned on the measurement outcomes. The corresponding equations are the stochastic master equations \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22}.
+
+For simplicity, we first consider a single monitored channel $\hat c$ with rate $\kappa$. The extension to several channels is immediate.
+
+\subsection{General conditional update}
+
+At each infinitesimal step, the joint state before the measurement is still taken in the factorized form
+\begin{equation}
+	\hat R(t)=\hat \rho^{(c)}(t)\otimes \dyad{0}{0}_t,
+	\label{eq:oqs_factorized_conditional_state}
+\end{equation}
+where $\hat \rho^{(c)}(t)$ denotes the conditional system state. After the infinitesimal interaction,
+\begin{equation}
+	\hat R(t+dt)
+	=
+	\hat U(t+dt,t)\,
+	\hat R(t)\,
+	\hat U^\dagger(t+dt,t).
+	\label{eq:oqs_joint_state_after_interaction}
+\end{equation}
+If the measurement on the output time bin is described by projectors $\{\hat \Pi_j\}$, the conditional state associated with outcome $j$ is
+\begin{equation}
+	\hat \rho^{(c)}_j(t+dt)
+	=
+	\frac{\Tr_t[(\id\otimes \hat \Pi_j)\hat R(t+dt)]}{p_j(t+dt)},
+	\label{eq:oqs_general_conditional_state}
+\end{equation}
+where
+\begin{equation}
+	p_j(t+dt)
+	=
+	\Tr[(\id\otimes \hat \Pi_j)\hat R(t+dt)]
+	\label{eq:oqs_general_outcome_probability}
+\end{equation}
+is the corresponding outcome probability.
+
+\subsection{Photodetection and quantum-jump trajectories}
+
+In continuous photodetection one measures the output time bin in the Fock basis. Since the joint state \eqref{eq:oqs_unitary_action_vacuum} contains only vacuum and one-photon terms up to order $dt$, only two outcomes are relevant.
+
+If no photon is detected, the unnormalized conditional state is
+\begin{equation}
+	\tilde{\rho}^{(c)}_0(t+dt)
+	=
+	{}_t\!\bra{0}\hat R(t+dt)\ket{0}_t
+	=
+	\hat \rho^{(c)}(t)
+	-
+	i[\hat H,\hat \rho^{(c)}(t)]dt
+	-
+	\frac{\kappa}{2}
+	\left\{
+	\hat c^\dagger \hat c,\hat \rho^{(c)}(t)
+	\right\}dt.
+	\label{eq:oqs_no_click_unnormalized}
+\end{equation}
+Its probability is
+\begin{equation}
+	p_0(t+dt)
+	=
+	\Tr[\tilde{\rho}^{(c)}_0(t+dt)]
+	=
+	1-\kappa \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt.
+	\label{eq:oqs_no_click_probability}
+\end{equation}
+After normalization, and expanding to first order in $dt$, one finds
+\begin{equation}
+	\hat \rho^{(c)}_0(t+dt)
+	=
+	\hat \rho^{(c)}(t)
+	-
+	i[\hat H,\hat \rho^{(c)}(t)]dt
+	-
+	\frac{\kappa}{2}\,
+	\mathcal{H}[\hat c^\dagger \hat c]\hat \rho^{(c)}(t)\,dt,
+	\label{eq:oqs_no_click_normalized}
+\end{equation}
+where we introduced the nonlinear superoperator
+\begin{equation}
+	\mathcal{H}[\hat A]\hat \rho
+	=
+	\hat A\hat \rho+\hat \rho \hat A^\dagger
+	-
+	\Tr[(\hat A+\hat A^\dagger)\hat \rho]\hat \rho.
+	\label{eq:oqs_H_superoperator}
+\end{equation}
+
+If one photon is detected, the unnormalized state is
+\begin{equation}
+	\tilde{\rho}^{(c)}_1(t+dt)
+	=
+	{}_t\!\bra{1}\hat R(t+dt)\ket{1}_t
+	=
+	\kappa\, \hat c \hat \rho^{(c)}(t)\hat c^\dagger\, dt,
+	\label{eq:oqs_click_unnormalized}
+\end{equation}
+with probability
+\begin{equation}
+	p_1(t+dt)
+	=
+	\kappa\, \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt.
+	\label{eq:oqs_click_probability}
+\end{equation}
+The normalized post-click state is therefore
+\begin{equation}
+	\hat \rho^{(c)}_1(t+dt)
+	=
+	\frac{\hat c \hat \rho^{(c)}(t)\hat c^\dagger}
+	{\Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]}.
+	\label{eq:oqs_click_normalized}
+\end{equation}
+
+The two alternatives are combined by introducing a Poisson increment $dN_t\in\{0,1\}$ such that
+\begin{equation}
+	\mathbb{E}[dN_t]
+	=
+	\kappa\, \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt,
+	\qquad
+	dN_t^2=dN_t.
+	\label{eq:oqs_poisson_increment}
+\end{equation}
+The conditional dynamics then takes the Ito form
+\begin{equation}
+	d\hat \rho^{(c)}
+	=
+	-i[\hat H,\hat \rho^{(c)}]dt
+	-
+	\frac{\kappa}{2}\mathcal{H}[\hat c^\dagger \hat c]\hat \rho^{(c)}dt
+	+
+	\left(
+	\frac{\hat c \hat \rho^{(c)} \hat c^\dagger}
+	{\Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}]}
+	-
+	\hat \rho^{(c)}
+	\right)dN_t.
+	\label{eq:oqs_photodetection_sme}
+\end{equation}
+This is the stochastic master equation for ideal continuous photodetection. The evolution is piecewise deterministic: smooth between clicks, discontinuous at the jump times.
+
+By averaging Eq.~\eqref{eq:oqs_photodetection_sme} over the counting process, one recovers the unconditional Lindblad equation \eqref{eq:oqs_single_channel_lindblad_compact}. Hence photodetection provides a jump unravelling of the same ensemble-averaged dynamics.
+
+\subsection{Homodyne detection and diffusive trajectories}
+
+We now turn to homodyne detection. The physical idea is to mix the outgoing field with a strong local oscillator on a balanced beam splitter and then subtract the two photocurrents. In the strong-local-oscillator limit, this realizes a continuous measurement of a field quadrature \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22}.
+
+Let $\theta$ be the phase of the local oscillator. The measured bath quadrature is
+\begin{equation}
+	\hat X_\theta
+	=
+	e^{-i\theta}\hat B_t + e^{i\theta}\hat B_t^\dagger.
+	\label{eq:oqs_bath_quadrature}
+\end{equation}
+We denote by $\ket{x_\theta}_t$ the corresponding generalized eigenstates. Since the interaction generates only vacuum and one-photon contributions up to order $dt$, the measurement operator can be obtained by projecting the joint state onto $\ket{x_\theta}_t$. It is convenient to introduce the rescaled real outcome $dy_t$, of order $\sqrt{dt}$, such that the measurement operator reads
+\begin{equation}
+	\hat M_{dy_t}
+	=
+	{}_t\!\bra{x_\theta}\hat U(t+dt,t)\ket{0}_t
+	=
+	\id
+	-
+	i\hat H\,dt
+	-
+	\frac{\kappa}{2}\hat c^\dagger \hat c\,dt
+	+
+	\sqrt{\kappa}\,\hat c\, e^{i\theta} dy_t.
+	\label{eq:oqs_homodyne_measurement_operator}
+\end{equation}
+
+The corresponding unnormalized conditional state is
+\begin{equation}
+	\tilde{\rho}^{(c)}(t+dt)
+	=
+	\hat M_{dy_t}\hat \rho^{(c)}(t)\hat M_{dy_t}^\dagger.
+	\label{eq:oqs_homodyne_unnormalized_state}
+\end{equation}
+Using the Ito rule $dy_t^2=dt$, one obtains
+\begin{equation}
+	\tilde{\rho}^{(c)}(t+dt)
+	=
+	\hat \rho^{(c)}(t)
+	-
+	i[\hat H,\hat \rho^{(c)}(t)]dt
+	+
+	\kappa \mathcal{D}[\hat c]\hat \rho^{(c)}(t)\,dt
+	+
+	\sqrt{\kappa}
+	\left(
+	\hat c e^{i\theta}\hat \rho^{(c)}(t)
+	+
+	\hat \rho^{(c)}(t)\hat c^\dagger e^{-i\theta}
+	\right)dy_t.
+	\label{eq:oqs_homodyne_unnormalized_state_expanded}
+\end{equation}
+
+To identify the statistics of the measurement record, one writes the true probability density as the trace of the unnormalized state. This leads to
+\begin{equation}
+	p(dy_t)
+	=
+	p_{\mathrm{ost}}(dy_t)\,
+	\Tr[\tilde{\rho}^{(c)}(t+dt)],
+	\label{eq:oqs_homodyne_true_probability}
+\end{equation}
+where $p_{\mathrm{ost}}(dy_t)$ is a Gaussian ostensive distribution with zero mean and variance $dt$,
+\begin{equation}
+	p_{\mathrm{ost}}(dy_t)
+	=
+	\frac{1}{\sqrt{2\pi dt}}
+	\exp\!\left(-\frac{dy_t^2}{2dt}\right).
+	\label{eq:oqs_homodyne_ostensive_distribution}
+\end{equation}
+Evaluating the trace of Eq.~\eqref{eq:oqs_homodyne_unnormalized_state_expanded}, one finds that the physical measurement outcome can be written as
+\begin{equation}
+	dy_t
+	=
+	\sqrt{\kappa}\,
+	\Tr\!\left[
+	\left(
+	\hat c e^{i\theta}+\hat c^\dagger e^{-i\theta}
+	\right)
+	\hat \rho^{(c)}(t)
+	\right]dt
+	+
+	dW_t,
+	\label{eq:oqs_homodyne_record}
+\end{equation}
+where $dW_t$ is a Wiener increment satisfying
+\begin{equation}
+	\mathbb{E}[dW_t]=0,
+	\qquad
+	dW_t^2=dt.
+	\label{eq:oqs_wiener_increment}
+\end{equation}
+
+After substituting Eq.~\eqref{eq:oqs_homodyne_record} into Eq.~\eqref{eq:oqs_homodyne_unnormalized_state_expanded} and normalizing the state, one finally obtains the diffusive stochastic master equation
+\begin{equation}
+	d\hat \rho^{(c)}
+	=
+	-i[\hat H,\hat \rho^{(c)}]dt
+	+
+	\kappa \mathcal{D}[\hat c]\hat \rho^{(c)}dt
+	+
+	\sqrt{\kappa}\,
+	\mathcal{H}[\hat c e^{i\theta}]
+	\hat \rho^{(c)}\, dW_t.
+	\label{eq:oqs_homodyne_sme}
+\end{equation}
+This is the SME for ideal homodyne monitoring. In contrast to photodetection, the conditioned evolution is now continuous in time and driven by Gaussian noise.
+
+Equation~\eqref{eq:oqs_homodyne_sme} also averages to the same unconditional master equation \eqref{eq:oqs_single_channel_lindblad_compact}. Therefore photodetection and homodyne detection correspond to different stochastic unravellings of the same Markovian open-system dynamics.
+
+For $\theta=0$, the measured quadrature is proportional to $\hat c+\hat c^\dagger$, whereas for $\theta=\pi/2$ one probes the orthogonal quadrature proportional to $i(\hat c-\hat c^\dagger)$. The phase of the local oscillator thus selects which field quadrature is continuously monitored.
+\end{comment}

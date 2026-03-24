@@ -5,33 +5,34 @@
 \contentsline {section}{\numberline {1.2}Postulates of quantum mechanics for closed and isolated systems}{4}{section.1.2}%
 \contentsline {subsection}{\numberline {1.2.1}Postulate 1 : States}{4}{subsection.1.2.1}%
 \contentsline {subsection}{\numberline {1.2.2}Postulate 2 : Observables}{5}{subsection.1.2.2}%
-\contentsline {subsection}{\numberline {1.2.3}Postulate 3 : Measurements and conditional states}{6}{subsection.1.2.3}%
+\contentsline {subsection}{\numberline {1.2.3}Postulate 3 : Measurements and conditional states}{5}{subsection.1.2.3}%
 \contentsline {subsection}{\numberline {1.2.4}Postulate 4 : Dynamics}{6}{subsection.1.2.4}%
 \contentsline {subsection}{\numberline {1.2.5}Postulate 5 : Composite systems}{7}{subsection.1.2.5}%
 \contentsline {section}{\numberline {1.3}States and observables}{7}{section.1.3}%
-\contentsline {subsection}{\numberline {1.3.1}Hilbert spaces and Dirac notation}{8}{subsection.1.3.1}%
-\contentsline {subsection}{\numberline {1.3.2}Linear operators, outer products, and adjoints}{9}{subsection.1.3.2}%
+\contentsline {subsection}{\numberline {1.3.1}Hilbert spaces and Dirac notation}{7}{subsection.1.3.1}%
+\contentsline {subsection}{\numberline {1.3.2}Linear operators, outer products, and adjoints}{8}{subsection.1.3.2}%
 \contentsline {subsection}{\numberline {1.3.3}Observables and spectral decomposition}{10}{subsection.1.3.3}%
-\contentsline {section}{\numberline {1.4}Statistical ensembles and mixed states}{12}{section.1.4}%
+\contentsline {section}{\numberline {1.4}Statistical ensembles and mixed states}{11}{section.1.4}%
 \contentsline {subsection}{\numberline {1.4.1}Two-level systems and preferred bases}{13}{subsection.1.4.1}%
-\contentsline {subsection}{\numberline {1.4.2}Bloch representation and Bloch sphere}{14}{subsection.1.4.2}%
-\contentsline {section}{\numberline {1.5}Time evolution in quantum mechanics}{15}{section.1.5}%
+\contentsline {subsection}{\numberline {1.4.2}Bloch representation and Bloch sphere}{13}{subsection.1.4.2}%
+\contentsline {section}{\numberline {1.5}Time evolution in quantum mechanics}{14}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Time-evolution operator and its general properties}{15}{subsection.1.5.1}%
-\contentsline {subsection}{\numberline {1.5.2}Infinitesimal evolution and Hamiltonian generator}{16}{subsection.1.5.2}%
+\contentsline {subsection}{\numberline {1.5.2}Infinitesimal evolution and Hamiltonian generator}{15}{subsection.1.5.2}%
 \contentsline {subsection}{\numberline {1.5.3}Time-dependent Hamiltonians and time ordering}{17}{subsection.1.5.3}%
-\contentsline {subsection}{\numberline {1.5.4}Stationary states}{18}{subsection.1.5.4}%
-\contentsline {section}{\numberline {1.6}Bipartite and multipartite systems}{19}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Tensor-product structure and product bases}{19}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Local operators, reduced states, and partial trace}{20}{subsection.1.6.2}%
-\contentsline {subsection}{\numberline {1.6.3}Separable and entangled states: definition and methods}{21}{subsection.1.6.3}%
-\contentsline {subsection}{\numberline {1.6.4}Concurrence for two-qubit states}{24}{subsection.1.6.4}%
-\contentsline {subsection}{\numberline {1.6.5}Bell basis and parity sectors}{27}{subsection.1.6.5}%
-\contentsline {subsection}{\numberline {1.6.6}Multipartite systems and collective spin operators}{28}{subsection.1.6.6}%
-\contentsline {section}{\numberline {1.7}Spin squeezing}{29}{section.1.7}%
-\contentsline {subsection}{\numberline {1.7.1}Coherent spin states and standard quantum limit}{29}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}Minimal transverse variance}{30}{subsection.1.7.2}%
-\contentsline {subsection}{\numberline {1.7.3}Kitagawa-Ueda spin squeezing}{30}{subsection.1.7.3}%
-\contentsline {subsection}{\numberline {1.7.4}Wineland spin squeezing and metrological interpretation}{31}{subsection.1.7.4}%
-\contentsline {subsection}{\numberline {1.7.5}Relevant examples and special cases}{32}{subsection.1.7.5}%
-\contentsline {subsection}{\numberline {1.7.6}Spin squeezing and entanglement}{32}{subsection.1.7.6}%
-\contentsline {chapter}{Bibliography}{39}{chapter*.4}%
+\contentsline {section}{\numberline {1.6}Bipartite and multipartite systems}{18}{section.1.6}%
+\contentsline {subsection}{\numberline {1.6.1}Tensor-product structure and product bases}{18}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Local operators, reduced states, and partial trace}{19}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.3}Bell basis and parity sectors}{19}{subsection.1.6.3}%
+\contentsline {subsection}{\numberline {1.6.4}Separable and entangled states: definition and methods}{20}{subsection.1.6.4}%
+\contentsline {subsection}{\numberline {1.6.5}Concurrence for two-qubit states}{23}{subsection.1.6.5}%
+\contentsline {subsection}{\numberline {1.6.6}Generic multipartite systems and collective spin observables}{25}{subsection.1.6.6}%
+\contentsline {section}{\numberline {1.7}Spin squeezing}{28}{section.1.7}%
+\contentsline {subsection}{\numberline {1.7.1}Collective spin operators and coherent spin states}{29}{subsection.1.7.1}%
+\contentsline {subsection}{\numberline {1.7.2}Kitagawa-Ueda and Wineland definitions}{29}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.3}Spin squeezing and symmetric states}{31}{subsection.1.7.3}%
+\contentsline {chapter}{\numberline {2}Open Quantum Systems and continuously monitored systems}{33}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Open quantum systems: formalism}{33}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}Generalized measurements, the POVMs}{35}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Quantum maps and completely positive transformations}{37}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Stinespring theorem and Kraus' operator-sum representation}{38}{subsection.2.1.3}%
+\contentsline {chapter}{Bibliography}{45}{chapter*.4}%
