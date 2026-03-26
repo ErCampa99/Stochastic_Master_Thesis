@@ -1,4 +1,232 @@
 \chapter*{Appendix}
+\addcontentsline{toc}{chapter}{Appendix}
 \label{chapter:appendix}
 
-...
+\section*{Derivation of the minimal transverse variance for mean spin along \(z\)}
+\label{app:derivation_minimal_transverse_variance_mean_spin_z}
+
+In this appendix, we derive Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}. We assume that the MSD points along the \(z\) axis. Therefore,
+\begin{equation}
+	\langle \hat J_x \rangle = \langle \hat J_y \rangle = 0,
+	\qquad
+	\langle \hat J_z \rangle = |\langle \hat{\mathbf{J}}\rangle|.
+	\label{eq:app_mean_spin_along_z}
+\end{equation}
+A generic spin component in the plane orthogonal to the mean spin direction may then be written as
+\begin{equation}
+	\hat J_\perp(\phi)=\hat J_x \cos\phi + \hat J_y \sin\phi.
+	\label{eq:app_transverse_spin_component}
+\end{equation}
+Since \(\langle \hat J_x \rangle = \langle \hat J_y \rangle = 0\), one has
+\begin{equation}
+	(\Delta \hat J_\perp)^2 = \langle \hat J_\perp(\phi)^2\rangle.
+	\label{eq:app_variance_as_second_moment}
+\end{equation}
+
+We now expand the square of Eq.~\eqref{eq:app_transverse_spin_component}:
+\begin{equation}
+	\hat J_\perp(\phi)^2
+	=
+	\hat J_x^2 \cos^2\phi
+	+
+	\hat J_y^2 \sin^2\phi
+	+
+	\left( \hat J_x \hat J_y + \hat J_y \hat J_x \right)\cos\phi \sin\phi.
+	\label{eq:app_square_transverse_spin_component}
+\end{equation}
+Taking the expectation value, we obtain
+\begin{equation}
+	(\Delta \hat J_\perp)^2
+	=
+	\langle \hat J_x^2\rangle \cos^2\phi
+	+
+	\langle \hat J_y^2\rangle \sin^2\phi
+	+
+	\langle [\hat J_x,\hat J_y]_+ \rangle \cos\phi \sin\phi,
+	\label{eq:app_transverse_variance_before_trig}
+\end{equation}
+where
+\begin{equation}
+	\{\hat J_x,\hat J_y\} = \hat J_x \hat J_y + \hat J_y \hat J_x.
+	\label{eq:app_anticommutator_definition}
+\end{equation}
+
+Using the trigonometric identities
+\begin{equation}
+	\cos^2\phi = \frac{1+\cos 2\phi}{2},
+	\qquad
+	\sin^2\phi = \frac{1-\cos 2\phi}{2},
+	\qquad
+	\cos\phi \sin\phi = \frac{\sin 2\phi}{2},
+	\label{eq:app_trigonometric_identities}
+\end{equation}
+Eq.~\eqref{eq:app_transverse_variance_before_trig} becomes
+\begin{equation}
+	(\Delta \hat J_\perp)^2
+	=
+	\frac{1}{2}\langle \hat J_x^2+\hat J_y^2\rangle
+	+
+	\frac{1}{2}\langle \hat J_x^2-\hat J_y^2\rangle \cos 2\phi
+	+
+	\frac{1}{2}\langle \{\hat J_x,\hat J_y\}\rangle \sin 2\phi.
+	\label{eq:app_transverse_variance_after_trig}
+\end{equation}
+
+For simplicity, let us define
+\begin{equation}
+	A=\frac{1}{2}\langle \hat J_x^2+\hat J_y^2\rangle,
+	\qquad
+	B=\frac{1}{2}\langle \hat J_x^2-\hat J_y^2\rangle,
+	\qquad
+	C=\frac{1}{2}\langle \{\hat J_x,\hat J_y\} \rangle.
+	\label{eq:app_ABC_definition}
+\end{equation}
+Then Eq.~\eqref{eq:app_transverse_variance_after_trig} reads
+\begin{equation}
+	(\Delta \hat J_\perp)^2 = A + B \cos 2\phi + C \sin 2\phi.
+	\label{eq:app_transverse_variance_ABC_form}
+\end{equation}
+
+At this stage, the minimization is elementary. Indeed, one may write
+\begin{equation}
+	B \cos 2\phi + C \sin 2\phi
+	=
+	\sqrt{B^2+C^2}\,\cos(2\phi-\phi_0),
+	\label{eq:app_trig_reduction}
+\end{equation}
+for a suitable angle \(\phi_0\). Therefore, the minimum value of Eq.~\eqref{eq:app_transverse_variance_ABC_form} is obtained when
+\begin{equation}
+	\cos(2\phi-\phi_0)=-1,
+	\label{eq:app_condition_for_minimum}
+\end{equation}
+and is equal to
+\begin{equation}
+	(\Delta \hat J_\perp)^2_{\min}=A-\sqrt{B^2+C^2}.
+	\label{eq:app_minimum_transverse_variance_ABC}
+\end{equation}
+By substituting the definitions in Eq.~\eqref{eq:app_ABC_definition}, one finally finds
+\begin{equation}
+	(\Delta \hat J_\perp)^2_{\min}
+	=
+	\frac{1}{2}
+	\left[
+	\langle \hat J_x^2+\hat J_y^2\rangle
+	-
+	\sqrt{
+		\langle \hat J_x^2-\hat J_y^2\rangle^2
+		+
+		\langle \{\hat J_x,\hat J_y\}\rangle^2
+	}
+	\right].
+	\label{eq:app_final_minimal_transverse_variance}
+\end{equation}
+This is precisely Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}.
+
+It is worth observing that this result is simply the smallest eigenvalue of the covariance matrix in the transverse plane. The assumption that the mean spin points along \(z\) reduces the minimization problem to the \(x\)-\(y\) plane, and this leads directly to the closed expression above.
+
+\newpage 
+
+\section*{Unitary invariance of Lindblad operators}
+
+Let $U$ be an $n\times n$ unitary matrix acting on the vector of collapse operators $\{\hat C_i\}$.
+We prove the identity
+\begin{equation}
+	\sum_{i=1}^{n}\mathcal{D}[\hat C_i]\rho
+	=
+	\sum_{i=1}^{n}\mathcal{D}\!\left[\sum_{j=1}^{n}U_{ij}\hat C_j\right]\rho,
+	\label{eq:unitary_invariance_dissipator}
+\end{equation}
+where $\mathcal{D}[A]\rho=A\rho A^\dagger-\tfrac{1}{2}\{A^\dagger A,\rho\}$.
+
+We expand the right-hand side:
+\begin{align}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	&=
+	\sum_i
+	\left[
+	\left(\sum_j U_{ij}\hat C_j\right)\rho
+	\left(\sum_k U_{ik}\hat C_k\right)^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\left(\sum_j U_{ij}\hat C_j\right)^\dagger
+	\left(\sum_k U_{ik}\hat C_k\right),
+	\rho
+	\right\}
+	\right]\nonumber\\
+	&=
+	\sum_i
+	\left[
+	\sum_{j,k}U_{ij}U_{ik}^*\,\hat C_j\rho \hat C_k^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\sum_{j,k}U_{ij}^*U_{ik}\,\hat C_j^\dagger \hat C_k,
+	\rho
+	\right\}
+	\right].
+\end{align}
+We interchange the sums and group the coefficients:
+\begin{equation}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	=
+	\sum_{j,k}
+	\left[
+	\left(\sum_i U_{ij}U_{ik}^*\right)\hat C_j\rho \hat C_k^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\left(\sum_i U_{ij}^*U_{ik}\right)\hat C_j^\dagger \hat C_k,
+	\rho
+	\right\}
+	\right].
+	\label{eq:unitary_invariance_intermediate}
+\end{equation}
+Since $U$ is unitary, $U^\dagger U=\id$, hence
+\begin{equation}
+	\sum_i U_{ij}^*U_{ik}=\delta_{jk},
+	\qquad
+	\sum_i U_{ij}U_{ik}^*=\delta_{jk}.
+\end{equation}
+Substituting in Eq.~\eqref{eq:unitary_invariance_intermediate} gives
+\begin{equation}
+	\sum_i \mathcal{D}\!\left[\sum_j U_{ij}\hat C_j\right]\rho
+	=
+	\sum_j
+	\left[
+	\hat C_j\rho \hat C_j^\dagger
+	-
+	\frac{1}{2}
+	\left\{
+	\hat C_j^\dagger \hat C_j,
+	\rho
+	\right\}
+	\right]
+	=
+	\sum_j \mathcal{D}[\hat C_j]\rho.
+\end{equation}
+This proves Eq.~\eqref{eq:unitary_invariance_dissipator}.
+
+Applying this invariance to our system, the Lindblad master equation can be equivalently written as
+\begin{align}
+	d\varrho
+	&=
+	-i[H,\varrho]\,dt
+	+\gamma\,\mathcal{D}\!\left[\sigma_z^{(1)}\right]\varrho\,dt
+	+\gamma\,\mathcal{D}\!\left[\sigma_z^{(2)}\right]\varrho\,dt
+	\nonumber\\
+	&=
+	-i[H,\varrho]\,dt
+	+\gamma\,\mathcal{D}\!\left[\frac{\sigma_z^{(1)}+\sigma_z^{(2)}}{\sqrt{2}}\right]\varrho\,dt
+	+\gamma\,\mathcal{D}\!\left[\frac{\sigma_z^{(1)}-\sigma_z^{(2)}}{\sqrt{2}}\right]\varrho\,dt.
+\end{align}
+The last equality follows by applying the Hadamard unitary
+\begin{equation}
+	H=\frac{1}{\sqrt{2}}
+	\begin{pmatrix}
+		1 & 1\\
+		1 & -1
+	\end{pmatrix}
+\end{equation}
+to the operator vector $\big(\sigma_z^{(1)},\sigma_z^{(2)}\big)^{T}$.
+

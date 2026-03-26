@@ -10,7 +10,20 @@
       "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Paper_mai_pubblicato.pdf\" -)",
       "Bash(pdftotext \"c:/Users/campa/OneDrive/Desktop/Master Thesis/Documenti_tesi/Altri paperi/Lammers_Diss.pdf\" -)",
       "Bash(jupyter nbconvert:*)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "Bash(while ! grep -q \"Writing\" \"C:\\\\Users\\\\campa\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-campa-OneDrive-Desktop-Master-Thesis-Stochastic-Master-Thesis\\\\3d2c47f7-332e-4833-b508-aac410bf3b64\\\\tasks\\\\bxpknjmq0.output\")",
+      "Bash(do sleep:*)",
+      "Bash(done)",
+      "Bash(source Giga_SMT_venv/Scripts/activate)",
+      "Bash(python -c \"import papermill; print\\(papermill.__version__\\)\")",
+      "Bash(source ../Giga_SMT_venv/Scripts/activate)",
+      "Bash(python run_threshold_CSS.py)",
+      "Bash(ls \"c:\\\\Users\\\\campa\\\\OneDrive\\\\Desktop\\\\Master Thesis\\\\Stochastic_Master_Thesis\\\\Codes\"/_tmp_*.ipynb)",
+      "Bash(python3 -c \":*)",
+      "Bash(python -:*)",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''Codes/threshold_counts.py'', doraise=True\\); print\\(''Syntax OK''\\)\")",
+      "Bash(python -c \"import py_compile; py_compile.compile\\(''Codes/threshold_counts.py'', doraise=True\\); print\\(''OK''\\)\")",
+      "Bash(xargs rm:*)"
     ]
   }
 }

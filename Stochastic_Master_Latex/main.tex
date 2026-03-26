@@ -1,5 +1,5 @@
 \documentclass[a4paper, 12pt, twoside]{book} \linespread{1.08}
-\usepackage[inner=2.8cm, outer=2cm, bottom=0.5cm]{geometry}
+%\usepackage[inner=2.8cm, outer=2cm, bottom=0.5cm]{geometry}
 \usepackage[DIV=14,BCOR=2mm,headinclude=true,footinclude=false]{typearea}
 
 
@@ -14,12 +14,13 @@
 
 \setlength{\headheight}{12.5pt}
 
-\newgeometry{
+\usepackage[	
 	top=3cm,
 	bottom=2.5cm,
 	outer=2cm,
 	inner=2.9cm,
-}
+]{geometry}
+
 
 % Images and bibliography
 \graphicspath{ {./Images/} }
@@ -51,9 +52,9 @@
 	
 	\begin{flushleft}
 		Relatore:\\
-		\large\bfseries Prof. Marco Giovanni Genoni\\[5mm]
+		\large\bfseries Prof. Marco Genoni\\[5mm]
 		Correlatore:\\
-		\large\bfseries Dott. Eoin Anthony O'Connor
+		\large\bfseries Dott. Eoin O'Connor
 	\end{flushleft}
 	
 	\vfill
@@ -109,28 +110,41 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Capitoli: torna allo stile normale e ai numeri arabi
-\pagestyle{fancy}
 \pagenumbering{arabic}
 
 \pagestyle{empty}          % niente header/footer
 \include{Chapters/Introduction}
+\thispagestyle{empty}
+\null                      % pagina veramente vuota
 \clearpage
 
+\pagestyle{fancy} 
 \include{Chapters/1_IntroQM}
 \include{Chapters/2_OpenQuantumSystems}
+
+\thispagestyle{empty}
+\null                      % pagina veramente vuota
+\clearpage
+
 %\include{Chapters/3_2_Qubit_Case}
 %\include{Chapters/N_qubits}
 %\include{Chapters/Optimization_Machine_learning}
 \include{Chapters/Conclusions}
 
-\pagestyle{empty}          % niente header/footer
+
+\thispagestyle{empty}
+\null                      % pagina veramente vuota
+\clearpage
+
 \include{Chapters/Appendix}
 
 
+\thispagestyle{empty}
+\null                      % pagina veramente vuota
+\clearpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Bibliografia
 \clearpage \thispagestyle{empty} 
-%\printbibliography
 \printbibliography[heading=bibintoc]
 \newpage \thispagestyle{empty}
 %\nocite{*}

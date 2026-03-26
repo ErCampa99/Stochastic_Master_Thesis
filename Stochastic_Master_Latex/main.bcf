@@ -2417,6 +2417,19 @@
     <bcf:citekey order="31" intorder="1">Vac24</bcf:citekey>
     <bcf:citekey order="32" intorder="1">Sti55</bcf:citekey>
     <bcf:citekey order="33" intorder="1">Kraus71</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">Vac24</bcf:citekey>
+    <bcf:citekey order="34" intorder="2">ParisTools12</bcf:citekey>
+    <bcf:citekey order="34" intorder="3">GenAlb01</bcf:citekey>
+    <bcf:citekey order="34" intorder="4">WisMil10</bcf:citekey>
+    <bcf:citekey order="34" intorder="5">Wi</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">Cic17</bcf:citekey>
+    <bcf:citekey order="35" intorder="2">CicLorGioPal22</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">Par92</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">Lin76</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">GKS76</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">Jac06</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">Vac24</bcf:citekey>
+    <bcf:citekey order="40" intorder="2">GenAlb01</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="none">

@@ -73,7 +73,13 @@
 
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
-\usepackage[document]{ragged2e}
+\usepackage{ragged2e}
+\setlength{\RaggedRightParindent}{0pt}
+\RaggedRight
+
+% E aggiungi tolerance più alta per evitare overflow:
+\tolerance=1000
+\emergencystretch=2em
 \usepackage[T1]{fontenc}
 
 

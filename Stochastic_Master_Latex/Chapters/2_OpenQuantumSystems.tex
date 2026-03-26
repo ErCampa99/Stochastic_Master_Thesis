@@ -1,4 +1,4 @@
-\chapter{Open Quantum Systems and continuously monitored systems}
+\chapter{Continuously Monitored Systems}
 
 The formulation presented in Chapter~\ref{chap:introduction_to_quantum_mechanics} provides the standard description of closed and isolated quantum systems. In that setting, the state is associated with a vector in Hilbert space, the dynamics is unitary, and measurements are described through the Born rule and the projection postulate. This framework is conceptually fundamental and mathematically consistent. At the same time, it relies on an idealization that is rarely realized in practice. Any realistic quantum system is, at least to some extent, coupled to additional degrees of freedom, whether they correspond to uncontrolled modes of the electromagnetic field, external reservoirs, measurement devices, or simply to the surrounding laboratory conditions \cite{Vac24,ParisTools12}.
 
@@ -32,22 +32,22 @@ The total Hamiltonian is written as
 \end{equation}
 so the corresponding evolution of the global density operator is
 \begin{equation}
-	\hat \rho_{SE}(t)
+	\rho_{SE}(t)
 	=
-	\hat U_{SE}(t,t_0)\,\hat \rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0),
+	\hat U_{SE}(t,t_0)\,\rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0),
 	\label{eq:open_qs_global_unitary_evolution}
 \end{equation}
 where \(\hat U_{SE}(t,t_0)\) is unitary. Since the environment is not directly observed, the physically relevant description is obtained by tracing out its degrees of freedom:
 \begin{equation}
-	\hat \rho_S(t)=\Tr_E\!\left[\hat \rho_{SE}(t)\right].
+	\rho_S(t)=\Tr_E\!\left[\rho_{SE}(t)\right].
 	\label{eq:open_qs_reduced_state}
 \end{equation}
 By combining Eqs.~\eqref{eq:open_qs_global_unitary_evolution} and \eqref{eq:open_qs_reduced_state}, one obtains
 \begin{equation}
-	\hat \rho_S(t)
+	\rho_S(t)
 	=
 	\Tr_E\!\left[
-	\hat U_{SE}(t,t_0)\,\hat \rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0)
+	\hat U_{SE}(t,t_0)\,\rho_{SE}(t_0)\,\hat U_{SE}^\dagger(t,t_0)
 	\right].
 	\label{eq:open_qs_reduced_dynamics_from_global_unitarity}
 \end{equation}
@@ -60,12 +60,12 @@ A first important consequence is that an initially pure state of the subsystem m
 
 It is therefore natural to replace the unitary description on \(\mathcal{H}_S\) with a more general dynamical law. In the simplest and most relevant situation, one assumes that the initial global state is factorized,
 \begin{equation}
-	\hat \rho_{SE}(t_0)=\hat \rho_S(t_0)\otimes \hat \rho_E(t_0).
+	\rho_{SE}(t_0)=\rho_S(t_0)\otimes \rho_E(t_0).
 	\label{eq:open_qs_factorized_initial_condition}
 \end{equation}
 Under this assumption, the reduced evolution may be written as a map
 \begin{equation}
-	\hat \rho_S(t)=\Phi_{t,t_0}\!\left[\hat \rho_S(t_0)\right],
+	\rho_S(t)=\Phi_{t,t_0}\!\left[\rho_S(t_0)\right],
 	\label{eq:open_qs_quantum_dynamical_map}
 \end{equation}
 where \(\Phi_{t,t_0}\) is, in general, not unitary. Rather, it is a quantum dynamical map acting on density operators \cite{Vac24,ParisTools12}.
@@ -88,9 +88,9 @@ A more general framework is therefore provided by positive operator-valued measu
 	\sum_x \hat \Pi_x=\id.
 	\label{eq:open_qs_povm_definition}
 \end{equation}
-The probability of obtaining the outcome \(x\) when the system is in the state \(\hat \rho\) is
+The probability of obtaining the outcome \(x\) when the system is in the state \(\rho\) is
 \begin{equation}
-	p_x=\Tr\!\left[\hat \rho\,\hat \Pi_x\right].
+	p_x=\Tr\!\left[\rho\,\hat \Pi_x\right].
 	\label{eq:open_qs_povm_born_rule}
 \end{equation}
 	Projective measurements are recovered as a special case by taking $\Pi_x=\hat P_x$ where these are orthogonal projectors.
@@ -104,25 +104,25 @@ To describe the post-measurement state one introduces a set of operators \(\{\ha
 \end{equation}
 In terms of these operators, the generalized Born rule may be written as
 \begin{equation}
-	p_x=\Tr\!\left[\hat M_x \hat \rho \hat M_x^\dagger\right]
+	p_x=\Tr\!\left[\hat M_x \rho \hat M_x^\dagger\right]
 	=
-	\Tr\!\left[\hat \rho\,\hat M_x^\dagger \hat M_x\right]
+	\Tr\!\left[\rho\,\hat M_x^\dagger \hat M_x\right]
 	=
-	\Tr\!\left[\hat \rho\,\hat \Pi_x\right].
+	\Tr\!\left[\rho\,\hat \Pi_x\right].
 	\label{eq:open_qs_detection_operators_born_rule}
 \end{equation}
 If the outcome \(x\) is recorded, the corresponding conditional state is
 \begin{equation}
-	\hat \rho_x=\frac{\hat M_x \hat \rho \hat M_x^\dagger}{p_x} = \frac{\hat M_x \hat \rho \hat M_x^\dagger}{\Tr\!\left[\hat \rho\,\hat \Pi_x\right]}.
+	\rho_x=\frac{\hat M_x \rho \hat M_x^\dagger}{p_x} = \frac{\hat M_x \rho \hat M_x^\dagger}{\Tr\!\left[\rho\,\hat \Pi_x\right]}.
 	\label{eq:open_qs_generalized_reduction_rule}
 \end{equation}
 If the measurement is performed but the outcome is not read out, the post-measurement state is
 \begin{equation}
-	\widetilde{\hat \rho}
+	\widetilde{\rho}
 	=
-	\sum_x p_x \hat \rho_x
+	\sum_x p_x \rho_x
 	=
-	\sum_x \hat M_x \hat \rho \hat M_x^\dagger.
+	\sum_x \hat M_x \rho \hat M_x^\dagger.
 	\label{eq:open_qs_nonselective_generalized_measurement}
 \end{equation}
 
@@ -162,12 +162,12 @@ The definition above extends naturally to continuous outcome spaces, where sums 
 
 The relation between generalized measurements and ordinary projective measurements is clarified by the Naimark theorem \cite{ParisTools12}. First, we have to discuss about the ancilla. It is an auxiliary quantum system introduced in addition to the system of interest. It is typically used to model additional degrees of freedom involved in a physical process, such as a probe, a measurement apparatus, or an effective environment, and it allows one to describe indirect measurements and more general state transformations on an enlarged Hilbert space. Consider a system \(S\) coupled to an ancilla \(A\), prepared in a reference state \(\ket{\omega_A}\). Let the composite evolve unitarily, and let a projective measurement \(\{\hat P_x\}\) be performed on the ancilla. Starting from the factorized state
 \begin{equation}
-	\hat \rho_{SA}=\hat \rho_S \otimes \ket{\omega_A}\bra{\omega_A},
+	\rho_{SA}=\rho_S \otimes \ket{\omega_A}\bra{\omega_A},
 	\label{eq:open_qs_naimark_factorized_state}
 \end{equation}
 the probability of the outcome \(x\) can be written as
 \begin{equation}
-	p_x=\Tr_S\!\left[\hat \rho_S \hat \Pi_x\right],
+	p_x=\Tr_S\!\left[\rho_S \hat \Pi_x\right],
 	\label{eq:open_qs_indirect_measurement_probability_reduced}
 \end{equation}
 where
@@ -193,17 +193,17 @@ The Naimark theorem states that the converse is also true: every POVM on \(\math
 (METTERE IMMAGINE STILE PARIS - SCHEMA MISURA GENERALIZZATA)
 
 
-\subsection{Quantum maps and completely positive transformations}
+\subsection{Quantum maps: CPTP transformations}
 \label{subsec:quantum_maps_and_completely_positive_transformations}
 As we have seen before, the interaction with unobserved degrees of freedom, as well as the possibility of conditioning on measurement outcomes, leads to transformations that need not preserve purity and need not be reversible. This motivates the introduction of quantum maps, namely linear maps acting on statistical operators \cite{Vac24}.
 
-A quantum map is a rule that associates to each input state \(\hat \rho\) an output operator \(\Phi[\hat \rho]\). In the physical setting of interest, this rule must send density operators into density operators, so that positivity and trace are preserved. Moreover, since statistical mixtures must evolve consistently, the map has to be linear. In this way, quantum maps provide the natural generalization of the unitary transformation law of closed quantum systems. The unitary case is recovered when $\Phi[\hat \rho]=\hat U \hat \rho \hat U^\dagger$. In general, however, open-system transformations are not of this form: they may decrease coherences, transform pure states into mixed states, and describe irreversible processes. This is precisely the kind of behavior that cannot be captured within the closed-system framework alone.
+A quantum map is a rule that associates to each input state \(\rho\) an output operator \(\Phi[\rho]\). In the physical setting of interest, this rule must send density operators into density operators, so that positivity and trace are preserved. Moreover, since statistical mixtures must evolve consistently, the map has to be linear. In this way, quantum maps provide the natural generalization of the unitary transformation law of closed quantum systems. The unitary case is recovered when $\Phi[\rho]=\hat U \rho \hat U^\dagger$. In general, however, open-system transformations are not of this form: they may decrease coherences, transform pure states into mixed states, and describe irreversible processes. This is precisely the kind of behavior that cannot be captured within the closed-system framework alone.
 A simple example makes the difference clear. 
 Consider a qubit and define the map
 \begin{equation}
-	\Phi_p[\hat \rho]
+	\Phi_p[\rho]
 	=
-	(1-p)\hat \rho + p\,\sigma_z \hat \rho \sigma_z,
+	(1-p)\rho + p\,\sigma_z \rho \sigma_z,
 	\qquad
 	0 \leq p \leq 1,
 	\label{eq:open_qs_dephasing_channel_definition}
@@ -212,7 +212,7 @@ called the phase-flip channel.
 This map is trace preserving and sends states into states. However, it is not unitary unless \(p=0\) or \(p=1\). 
 In the computational basis \(\{\ket{0},\ket{1}\}\) and for $\rho = \dyad{+}{+}$ one has
 \begin{equation}
-	\Phi_p[\hat \rho_+]
+	\Phi_p[\rho_+]
 	=
 	\frac{1}{2}
 	\begin{pmatrix}
@@ -234,12 +234,12 @@ The general structure of quantum maps is fixed by two important theorems. In fin
 
 Let \(S\) be the system of interest and \(E\) an ancilla or effective environment, prepared in a reference state \(\dyad{\omega_E}{\omega_E}\). Let the composite system evolve under a unitary operator \(\hat U\) on \(\mathcal{H}_S \otimes \mathcal{H}_E\). The reduced transformation of the system is then
 \begin{equation}
-	\Phi[\hat \rho]
+	\Phi[\rho]
 	=
 	\Tr_E\!\left[
 	\hat U
 	\left(
-	\hat \rho \otimes \dyad{\omega_E}{\omega_E}
+	\rho \otimes \dyad{\omega_E}{\omega_E}
 	\right)
 	\hat U^\dagger
 	\right].
@@ -254,9 +254,9 @@ To obtain the operator-sum representation, let \(\{\ket{k_E}\}\) be an orthonorm
 \end{equation}
 These operators act on \(\mathcal{H}_S\). By expanding the partial trace in the basis \(\{\ket{k_E}\}\), one finds
 \begin{equation}
-	\Phi[\hat \rho]
+	\Phi[\rho]
 	=
-	\sum_j \hat K_j \hat \rho \hat K_j^\dagger
+	\sum_j \hat K_j \rho \hat K_j^\dagger
 	\label{eq:open_qs_operator_sum_representation}
 \end{equation}
 they also satisfy the normalization condition.
@@ -268,16 +268,28 @@ Unitary evolution is recovered as a special case. If there is only one Kraus ope
 
 This formalism also unifies dynamics and measurement. In the measurement setting, the Kraus operators are precisely the measurement operators introduced in the previous subsection. A selective outcome corresponds to a trace-non-increasing completely positive map, while the sum over all outcomes yields a CPTP map. For this reason, the Kraus representation provides the natural language for both reduced dynamics and generalized measurements.
 
-It is worth remarking that the Kraus representation is not unique. Different sets of Kraus operators may describe the same map. This non-uniqueness reflects the fact that the same reduced transformation may arise from different dilations, or, equivalently, from different choices of basis in the ancillary Hilbert space.
+It is worth remarking that the Kraus representation is not unique, different sets of Kraus operators may describe the same map. This non-uniqueness reflects the fact that the same reduced transformation may arise from different Stinespring dilations, or equivalently, from different choices of basis in the ancillary Hilbert space.
 
-The Kraus-Stinespring theorem is the key structural result needed in the following. It shows that the evolution of an open quantum system may always be described either in terms of a unitary interaction with additional degrees of freedom or, at the reduced level, by a completely positive map acting on the state of the system alone. This is precisely the framework in which master equations and continuously monitored dynamics will be formulated.
+\subsection{Generalized quantum postulates}
+\label{subsec:generalized_quantum_postulates}
 
-\begin{comment}
+The formalism introduced in the previous sections leads to a natural extension of the standard quantum postulates where the usual formulation remains fully valid for isolated systems, ideal measurements, and unitary dynamics.
 
-\section{Derivation of Markovian master equations}
+The first modification concerns the notion of state. In the standard formulation, pure states represented by vectors in Hilbert space play a central role but in the open-system setting, instead, the natural object is the density operator. This is the correct description of a subsystem that may be correlated with an external environment: as shown in Eq.~\eqref{eq:open_qs_reduced_state}, even a globally pure state may correspond to a mixed reduced state.
+
+The second modification concerns measurements. In the standard case, a measurement is described by orthogonal projectors, and the same objects determine both the outcome probabilities and the post-measurement state. In the generalized setting, these two aspects are separated. The outcomes statistics is described by a POVM ~\eqref{eq:open_qs_povm_definition}, while the corresponding state transformation is described by the measurement operators of Eq.~\eqref{eq:open_qs_detection_operators_definition}. This extension is necessary whenever the measurement is indirect, noisy, or only partially resolving.
+
+The third modification concerns dynamics. For closed systems, time evolution is unitary and therefore reversible. By contrast, reduced dynamics may transform pure states into mixed states and may describe irreversible processes. For this reason, the dynamical law is generalized into completely positive maps. In the deterministic case, one deals with trace-preserving maps. In the selective case, associated with a specific outcome, one generally obtains trace-non-increasing maps.
+
+
+
+
+\section{Markovian master equations}
 \label{sec:derivation_markovian_master_equations}
 
-We now move from the closed-system description introduced in the previous chapter to the dynamics of a quantum system interacting with an external environment. The goal is to derive, in a physically transparent way, the Markovian master equation and, in the next section, its stochastic unravellings under continuous monitoring \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22,Vacchini24}.
+We now move from the general framework of open quantum systems introduced in the previous sections to a specific and particularly important class of reduced dynamics, namely Markovian dynamics. The main idea is that, although the total system made of the quantum system and its environment still evolves unitarily, the reduced evolution of the system alone may acquire dissipation, decoherence, and irreversibility once the environmental degrees of freedom are traced out. A central problem in the theory of open quantum systems is therefore to identify the conditions under which this reduced dynamics can be described by a closed differential equation acting only on the system state.
+
+In the Markovian regime, the environment is assumed not to retain relevant memory of its past interaction with the system. As a consequence, the reduced evolution becomes time local, and its generator takes the well-known Gorini--Kossakowski--Sudarshan--Lindblad form. Our goal in this section is to derive this master equation in a physically transparent way by modeling the environment as a bosonic field and by exploiting the white-noise limit. This construction will also be the natural starting point for the next section, where the same system-bath interaction will be used to derive the stochastic unravellings associated with continuous monitoring \cite{Vac24,ParisTools12,GenAlb01,WisMil10,Wi}.
 
 We consider a quantum system $S$ coupled to a bosonic environment. The total Hilbert space is
 \begin{equation}
@@ -307,7 +319,7 @@ We assume that the system couples linearly to the bath through a system operator
 \begin{equation}
 	\hat H_{\mathrm{int}}(t)
 	=
-	i\sqrt{\frac{\kappa}{2\pi}}
+	i\sqrt{\frac{\gamma}{2\pi}}
 	\int d\omega\,
 	\left(
 	\hat c\, \hat b_\omega^\dagger e^{i(\omega-\omega_0)t}
@@ -316,7 +328,7 @@ We assume that the system couples linearly to the bath through a system operator
 	\right),
 	\label{eq:oqs_interaction_hamiltonian_frequency}
 \end{equation}
-where $\omega_0$ is a characteristic system frequency and $\kappa \geq 0$ sets the coupling strength.
+where $\omega_0$ is a characteristic system frequency and $\gamma \geq 0$ sets the coupling strength. At this stage, the relevant approximation is that the system-bath coupling is effectively flat over a frequency window much broader than the dynamical scales of the reduced system. This is the usual broadband or white-noise limit, and it is the basic assumption behind the Markovian description.
 
 It is convenient to introduce time-domain bath operators
 \begin{equation}
@@ -336,16 +348,15 @@ In terms of these operators, Eq.~\eqref{eq:oqs_interaction_hamiltonian_frequency
 \begin{equation}
 	\hat H_{\mathrm{int}}(t)
 	=
-	i\sqrt{\kappa}
+	i\sqrt{\gamma}
 	\left(
 	\hat c\, \hat b_t^\dagger - \hat c^\dagger \hat b_t
 	\right).
 	\label{eq:oqs_interaction_hamiltonian_time}
 \end{equation}
+The singular commutation relation in Eq.~\eqref{eq:oqs_bosonic_commutation_time} expresses the fact that bath correlations are local in time. Physically, this means that the environment has no relevant memory on the timescale of the system evolution. In this sense, the reduced dynamics is Markovian: the future state depends only on the present state and not on the previous system-bath history.
 
-\subsection{Infinitesimal time bins and Markovian approximation}
-
-The key simplification is to regard the bath as a continuous train of independent time bins. Over an infinitesimal interval $[t,t+dt]$, we introduce the quantum stochastic increments
+The key simplification is to regard the bath as a continuous train of independent time bins \cite{Cic17, CicLorGioPal22}. Over an infinitesimal interval $[t,t+dt]$, we introduce the quantum stochastic increments \cite{Par92}
 \begin{equation}
 	d\hat B_t=\hat b_t\,dt,
 	\qquad
@@ -363,18 +374,18 @@ Because of Eq.~\eqref{eq:oqs_bosonic_commutation_time}, these increments satisfy
 \end{equation}
 where the vacuum input has been assumed.
 
-The Markovian approximation is encoded in the statement that, at each infinitesimal step, the system interacts with a fresh environmental mode prepared in the same state. In the vacuum case, this means that at time $t$ the joint state factorizes as
+The Markovian approximation is encoded in the assumption that, at each infinitesimal step, the system interacts with a fresh environmental mode prepared in the same state. In the vacuum case, this means that at time $t$ the joint state factorizes as
 \begin{equation}
-	\hat R(t)=\hat \rho(t)\otimes \dyad{0}{0}_t,
+	\hat R(t)=\rho(t)\otimes \dyad{0_t}{0_t},
 	\label{eq:oqs_factorized_state}
 \end{equation}
-where $\hat \rho(t)$ is the reduced system state and $\ket{0}_t$ is the vacuum state of the time bin centered at $t$.
+where $\rho(t)$ is the reduced system state and $\ket{0}_t$ is the vacuum state of the time bin centered at $t$. This factorization expresses the absence of memory between different collisions: the environment subsystem interacting with the system at time $t$ is uncorrelated with the ones that interacted at earlier times.
 
 Using Eq.~\eqref{eq:oqs_interaction_hamiltonian_time}, the infinitesimal interaction can be written as
 \begin{equation}
 	\hat H_{\mathrm{int}}(t)\,dt
 	=
-	i\sqrt{\kappa}
+	i\sqrt{\gamma}
 	\left(
 	\hat c\, d\hat B_t^\dagger - \hat c^\dagger d\hat B_t
 	\right).
@@ -393,16 +404,17 @@ Expanding up to order $dt$, and using Eq.~\eqref{eq:oqs_ito_table_vacuum}, one o
 	=
 	\id
 	+
-	\sqrt{\kappa}
+	\sqrt{\gamma}
 	\left(
 	\hat c\, d\hat B_t^\dagger - \hat c^\dagger d\hat B_t
 	\right)
 	-
-	\frac{\kappa}{2}\hat c^\dagger \hat c\, dt
+	\frac{\gamma}{2}\hat c^\dagger \hat c\, dt
 	+
 	\mathcal{O}(dt^{3/2}).
 	\label{eq:oqs_infinitesimal_unitary_expanded}
 \end{equation}
+Here one keeps all contributions up to order $dt$. Terms of order $dt^{3/2}$ or higher are neglected in the continuous-time limit. This is consistent because the stochastic increments scale as $\sqrt{dt}$.
 
 When this operator acts on a system state tensored with the vacuum of the time bin, the only relevant relations are
 \begin{equation}
@@ -418,21 +430,19 @@ Hence, for a generic system vector $\ket{\psi}$,
 	\hat U(t+dt,t)\left(\ket{\psi}\otimes\ket{0}_t\right)
 	=
 	\left(
-	\id-\frac{\kappa}{2}\hat c^\dagger \hat c\,dt
+	\id-\frac{\gamma}{2}\hat c^\dagger \hat c\,dt
 	\right)\ket{\psi}\otimes\ket{0}_t
 	+
-	\sqrt{\kappa\,dt}\,\hat c\ket{\psi}\otimes\ket{1}_t
+	\sqrt{\gamma\,dt}\,\hat c\ket{\psi}\otimes\ket{1}_t
 	+
 	\mathcal{O}(dt^{3/2}).
 	\label{eq:oqs_unitary_action_vacuum}
 \end{equation}
 This expression already displays the physical picture: either no excitation is emitted into the output time bin, or one excitation is created with amplitude proportional to $\sqrt{dt}$.
 
-\subsection{Reduced dynamics and Lindblad equation}
-
 The reduced system state at time $t+dt$ is obtained by tracing out the time bin:
 \begin{equation}
-	\hat \rho(t+dt)
+	\rho(t+dt)
 	=
 	\Tr_t
 	\left[
@@ -444,69 +454,71 @@ The reduced system state at time $t+dt$ is obtained by tracing out the time bin:
 \end{equation}
 Substituting Eqs.~\eqref{eq:oqs_factorized_state} and \eqref{eq:oqs_infinitesimal_unitary_expanded}, and keeping terms up to first order in $dt$, one finds
 \begin{equation}
-	\hat \rho(t+dt)
+	\rho(t+dt)
 	=
-	\hat \rho(t)
+	\rho(t)
 	+
-	\kappa
+	\gamma
 	\left(
-	\hat c \hat \rho(t)\hat c^\dagger
+	\hat c \rho(t)\hat c^\dagger
 	-
 	\frac{1}{2}
 	\left\{
-	\hat c^\dagger \hat c,\hat \rho(t)
+	\hat c^\dagger \hat c,\rho(t)
 	\right\}
 	\right)dt.
 	\label{eq:oqs_reduced_state_update_lindblad_step}
 \end{equation}
 If one also includes the coherent evolution generated by a system Hamiltonian $\hat H$, the differential equation becomes
 \begin{equation}
-	\frac{d\hat \rho}{dt}
+	\frac{d\rho(t)}{dt}
 	=
-	-i[\hat H,\hat \rho]
+	-i[\hat H,\rho(t)]
 	+
-	\kappa
+	\gamma
 	\left(
-	\hat c \hat \rho \hat c^\dagger
+	\hat c \rho(t) \hat c^\dagger
 	-
 	\frac{1}{2}
 	\left\{
-	\hat c^\dagger \hat c,\hat \rho
+	\hat c^\dagger \hat c,\rho(t)
 	\right\}
 	\right).
 	\label{eq:oqs_single_channel_lindblad}
 \end{equation}
-Introducing the dissipator
+This is the hallmark of the Markovian approximation. The generator depends only on the instantaneous state \(\rho(t)\), and no memory kernel appears.
+
+Introducing the dissipator superoperator
 \begin{equation}
-	\mathcal{D}[\hat A]\hat \rho
+	\mathcal{D}[\hat A]\rho
 	=
-	\hat A \hat \rho \hat A^\dagger
+	\hat A \rho \hat A^\dagger
 	-
 	\frac{1}{2}
 	\left\{
-	\hat A^\dagger \hat A,\hat \rho
+	\hat A^\dagger \hat A,\rho
 	\right\},
 	\label{eq:oqs_dissipator_definition}
 \end{equation}
 Eq.~\eqref{eq:oqs_single_channel_lindblad} is written as
 \begin{equation}
-	\frac{d\hat \rho}{dt}
+	\frac{d\rho}{dt}
 	=
-	-i[\hat H,\hat \rho]
+	-i[\hat H,\rho]
 	+
-	\kappa \mathcal{D}[\hat c]\hat \rho.
+	\gamma \mathcal{D}[\hat c]\rho.
 	\label{eq:oqs_single_channel_lindblad_compact}
 \end{equation}
 
-For several independent output channels $\hat c_j$, one obtains the standard Gorini--Kossakowski--Sudarshan--Lindblad form
+For several independent output channels $\hat c_j$, one obtains the Gorini--Kossakowski--\linebreak--Sudarshan--Lindblad (GKSL) form \cite{Lin76}
 \begin{equation}
-	\frac{d\hat \rho}{dt}
+	\frac{d\rho(t)}{dt}
 	=
-	\mathcal{L}\hat \rho
+	\mathcal{L}\rho(t)
 	=
-	-i[\hat H,\hat \rho]
+	-i[\hat H,\rho(t)]
 	+
-	\sum_j \kappa_j \mathcal{D}[\hat c_j]\hat \rho.
+	\sum_j \gamma_j \mathcal{D}[\hat c_j]\rho(t).
 	\label{eq:oqs_gksl_general}
 \end{equation}
 The corresponding dynamical maps form a quantum dynamical semigroup,
@@ -516,23 +528,41 @@ The corresponding dynamical maps form a quantum dynamical semigroup,
 	\mathcal{E}_{t+s}=\mathcal{E}_t\circ \mathcal{E}_s,
 	\label{eq:oqs_semigroup_property}
 \end{equation}
-which makes explicit the time-homogeneous Markovian character of the evolution.
+which makes explicit the time-homogeneous Markovian character of the evolution. The semigroup property reflects the absence of memory in the reduced dynamics, while the GKSL structure guarantees complete positivity and trace preservation \cite{GKS76}.
 
-\section{Derivation of stochastic master equations}
+
+\section{Stochastic master equations}
 \label{sec:derivation_stochastic_master_equations}
 
-The master equation \eqref{eq:oqs_gksl_general} describes the unconditional evolution, namely the evolution obtained when the environmental degrees of freedom are ignored. If, instead, the output field is continuously measured, one obtains a stochastic evolution conditioned on the measurement outcomes. The corresponding equations are the stochastic master equations \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22}.
+The master equation \eqref{eq:oqs_gksl_general} describes the unconditional evolution of the system, namely the reduced dynamics obtained when the environmental degrees of freedom are ignored. In this description, the bath is traced out and no information is extracted from the output field. As a consequence, the state \(\rho(t)\) represents the average evolution over all the possible ways in which the system may have interacted with the environment.
 
-For simplicity, we first consider a single monitored channel $\hat c$ with rate $\kappa$. The extension to several channels is immediate.
+This point is conceptually important. The Lindblad master equation provides a complete description of the reduced dynamics at the unconditional level, but it does not keep track of the information that may be carried away by the environment. If one starts monitoring the output field, the situation changes. The environment becomes a carrier of information about the system: the evolution must then be conditioned on the specific measurement outcomes observed in time.
 
-\subsection{General conditional update}
+This leads to a more refined dynamical description. Instead of a deterministic equation for the averaged state, one obtains a stochastic equation for the conditional state \cite{Jac06}, that is, for the state of the system given the measurement record accumulated up to time \(t\). The corresponding equations are the stochastic master equations. Their role is to describe how the system state is continuously updated as information is progressively extracted from the output field through a measurement process \cite{Vac24,GenAlb01}.
 
+At this stage, the notion of unravelling becomes central. The unconditional master equation fixes the average reduced dynamics, but it does not determine a unique conditioned evolution. In fact, the same Lindblad equation could be associated with different stochastic processes, depending on how the environment is monitored. Each of these stochastic descriptions is called an \textbf{unravelling of the master equation}.
+
+The unconditional state \(\rho(t)\) is a mixed state that results from averaging over all the possible measurement records, whether these records are actually observed or not. An unravelling resolves this average evolution into individual conditioned trajectories. Each trajectory corresponds to one possible realization of the measurement record and therefore to one possible conditional evolution of the system. When one averages over all these trajectories, the unconditional state is recovered:
+\begin{equation}
+	\rho_{traj}(t)=\mathbb{E}\!\left[\rho_c(t)\right],
+	\label{eq:sme_unconditional_as_average_of_conditional}
+\end{equation}
+where \(\rho_c(t)\) denotes the conditional state and \(\mathbb{E}[\cdot]\) denotes the average over all records/trajectories.
+
+This relation shows that the stochastic evolution is not an alternative to the master equation, but rather a finer description of the same physical dynamics. The master equation gives the average behavior. The unravelling gives the trajectory-by-trajectory behavior associated with a specific monitoring scheme. For this reason, different unravellings correspond to different experimental ways of extracting information from the environment, and therefore to different conditioned dynamics, all compatible with the same unconditional Lindblad evolution.
+
+Two paradigmatic examples are particularly important. If the output field is monitored through photon counting, the measurement record is discontinuous: one observes random detection events, and the conditional dynamics is described by quantum jumps. If the output field is instead monitored through homodyne or heterodyne detection, the measurement record is continuous but noisy, and the conditional dynamics is diffusive. These two cases look very different at the level of individual trajectories, yet they reproduce the same unconditional master equation after averaging over the measurement outcomes. This is precisely why the concept of unravelling is so useful: it connects one and the same reduced open-system dynamics with different ways of reading out the information stored in the environment.
+
+From a physical point of view, continuously monitored quantum systems lie exactly at this interface between dissipation and information. On the one hand, the coupling to the environment produces decoherence and irreversible reduced dynamics. On the other hand, the same coupling opens the possibility of observing the output field and updating the system state conditionally on the acquired record. Stochastic master equations are the mathematical tool that captures this interplay between backaction and information gain.
+
+\begin{comment}
+Let's delve into the math. For simplicity, we first consider a single monitored channel \(\hat c\) with rate \(\gamma\).
 At each infinitesimal step, the joint state before the measurement is still taken in the factorized form
 \begin{equation}
-	\hat R(t)=\hat \rho^{(c)}(t)\otimes \dyad{0}{0}_t,
+	\hat R(t)=\rho^{(c)}(t)\otimes \dyad{0}{0}_t,
 	\label{eq:oqs_factorized_conditional_state}
 \end{equation}
-where $\hat \rho^{(c)}(t)$ denotes the conditional system state. After the infinitesimal interaction,
+and after the infinitesimal interaction,
 \begin{equation}
 	\hat R(t+dt)
 	=
@@ -543,7 +573,7 @@ where $\hat \rho^{(c)}(t)$ denotes the conditional system state. After the infin
 \end{equation}
 If the measurement on the output time bin is described by projectors $\{\hat \Pi_j\}$, the conditional state associated with outcome $j$ is
 \begin{equation}
-	\hat \rho^{(c)}_j(t+dt)
+	\rho^{(c)}_j(t+dt)
 	=
 	\frac{\Tr_t[(\id\otimes \hat \Pi_j)\hat R(t+dt)]}{p_j(t+dt)},
 	\label{eq:oqs_general_conditional_state}
@@ -556,220 +586,934 @@ where
 	\label{eq:oqs_general_outcome_probability}
 \end{equation}
 is the corresponding outcome probability.
+\end{comment}
 
-\subsection{Photodetection and quantum-jump trajectories}
+\subsection{Photodetection, the quantum-jump unravelling}
+\label{subsec:photodetection_quantum_jump_unravelling}
 
-In continuous photodetection one measures the output time bin in the Fock basis. Since the joint state \eqref{eq:oqs_unitary_action_vacuum} contains only vacuum and one-photon terms up to order $dt$, only two outcomes are relevant.
+We first consider the case in which the output field is continuously monitored by photodetection. In this measurement scheme, one counts the excitations emitted into the output channel. The corresponding measurement record is therefore discontinuous: at each infinitesimal time step, either the detector clicks or it does not. For this reason, the associated stochastic evolution is called a quantum-jump unravelling of the master equation.
 
-If no photon is detected, the unnormalized conditional state is
+The physical picture is simple. During a short time interval \([t,t+dt]\), the system interacts with a single output time bin. After this interaction, one measures the number of excitations contained in that bin. Since the interaction lasts only an infinitesimal time, the probability of emitting more than one excitation is of order \(dt^2\). Therefore, to first order in \(dt\), only two outcomes are relevant: either no excitation is detected, or exactly one excitation is detected. These two possibilities are associated with the projectors
 \begin{equation}
-	\tilde{\rho}^{(c)}_0(t+dt)
+	\hat \Pi_0=\dyad{0_t}{0_t},
+	\qquad
+	\hat \Pi_1=\dyad{1_t}{1_t},
+	\label{eq:sme_photodetection_time_bin_projectors}
+\end{equation}
+acting on the output time bin.
+
+Using the infinitesimal evolution derived in Eq.~\eqref{eq:oqs_unitary_action_vacuum}, and including the coherent system evolution generated by \(\hat H\), one obtains
+\begin{equation}
+	\hat U(t+dt,t)\left(\ket{\psi}\otimes\ket{0}_t\right)
 	=
-	{}_t\!\bra{0}\hat R(t+dt)\ket{0}_t
+	\left(
+	\id-i\hat H\,dt-\frac{\gamma}{2}\hat c^\dagger \hat c\,dt
+	\right)\ket{\psi}\otimes\ket{0}_t
+	+
+	\sqrt{\gamma\,dt}\,\hat c\ket{\psi}\otimes\ket{1}_t
+	+
+	\mathcal{O}(dt^{3/2}).
+	\label{eq:sme_photodetection_unitary_action_with_H}
+\end{equation}
+This expression already contains the two possible outcomes. The first term corresponds to no detected excitation in the output bin. The second term corresponds to the detection of one excitation, with amplitude proportional to \(\sqrt{dt}\).
+
+From Eq.~\eqref{eq:sme_photodetection_unitary_action_with_H}, one immediately reads the measurement operators acting on the system:
+\begin{equation}
+	\hat M_0
 	=
-	\hat \rho^{(c)}(t)
-	-
-	i[\hat H,\hat \rho^{(c)}(t)]dt
-	-
-	\frac{\kappa}{2}
+	\id-i\hat H\,dt-\frac{\gamma}{2}\hat c^\dagger \hat c\,dt,
+	\qquad
+	\hat M_1
+	=
+	\sqrt{\gamma\,dt}\,\hat c.
+	\label{eq:sme_photodetection_measurement_operators}
+\end{equation}
+They satisfy the normalization condition
+\begin{equation}
+	\hat M_0^\dagger \hat M_0+\hat M_1^\dagger \hat M_1
+	=
+	\id+\mathcal{O}(dt^2),
+	\label{eq:sme_photodetection_measurement_operators_normalization}
+\end{equation}
+as required for a consistent infinitesimal measurement scheme.
+
+Let \(\rho_c(t)\) denote the conditional state at time \(t\). The probability of no click in the interval \([t,t+dt]\) is
+\begin{equation}
+	p_0
+	=
+	\Tr\!\left[\hat M_0 \rho_c(t)\hat M_0^\dagger\right]
+	=
+	1-\gamma\,\Tr\!\left[\hat c^\dagger \hat c\,\rho_c(t)\right]dt
+	+
+	\mathcal{O}(dt^2),
+	\label{eq:sme_photodetection_no_click_probability}
+\end{equation}
+while the probability of one click is
+\begin{equation}
+	p_1
+	=
+	\Tr\!\left[\hat M_1 \rho_c(t)\hat M_1^\dagger\right]
+	=
+	\gamma\,\Tr\!\left[\hat c^\dagger \hat c\,\rho_c(t)\right]dt
+	+
+	\mathcal{O}(dt^2).
+	\label{eq:sme_photodetection_click_probability}
+\end{equation}
+As expected, the click probability is proportional to \(dt\), and the proportionality factor is the conditional emission rate.
+
+If no click is observed, the state is updated according to
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{\hat M_0 \rho_c(t)\hat M_0^\dagger}{p_0}.
+	\label{eq:sme_photodetection_no_click_update_exact}
+\end{equation}
+Expanding up to first order in \(dt\), one finds
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\rho_c(t)
+	+
+	dt
+	\left[
+	-i[\hat H,\rho_c(t)]
+	-\frac{\gamma}{2}
 	\left\{
-	\hat c^\dagger \hat c,\hat \rho^{(c)}(t)
-	\right\}dt.
-	\label{eq:oqs_no_click_unnormalized}
+	\hat c^\dagger \hat c,\rho_c(t)
+	\right\}
+	+
+	\gamma\,\Tr\!\left[\hat c^\dagger \hat c\,\rho_c(t)\right]\rho_c(t)
+	\right].
+	\label{eq:sme_photodetection_no_click_update}
 \end{equation}
-Its probability is
-\begin{equation}
-	p_0(t+dt)
-	=
-	\Tr[\tilde{\rho}^{(c)}_0(t+dt)]
-	=
-	1-\kappa \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt.
-	\label{eq:oqs_no_click_probability}
-\end{equation}
-After normalization, and expanding to first order in $dt$, one finds
-\begin{equation}
-	\hat \rho^{(c)}_0(t+dt)
-	=
-	\hat \rho^{(c)}(t)
-	-
-	i[\hat H,\hat \rho^{(c)}(t)]dt
-	-
-	\frac{\kappa}{2}\,
-	\mathcal{H}[\hat c^\dagger \hat c]\hat \rho^{(c)}(t)\,dt,
-	\label{eq:oqs_no_click_normalized}
-\end{equation}
-where we introduced the nonlinear superoperator
-\begin{equation}
-	\mathcal{H}[\hat A]\hat \rho
-	=
-	\hat A\hat \rho+\hat \rho \hat A^\dagger
-	-
-	\Tr[(\hat A+\hat A^\dagger)\hat \rho]\hat \rho.
-	\label{eq:oqs_H_superoperator}
-\end{equation}
+This is the smooth conditional evolution between clicks. It is nonlinear because the state is continuously renormalized under the condition that no detection event has occurred.
 
-If one photon is detected, the unnormalized state is
+If one click is observed, the state instead undergoes the jump
 \begin{equation}
-	\tilde{\rho}^{(c)}_1(t+dt)
+	\rho_c(t+dt)
 	=
-	{}_t\!\bra{1}\hat R(t+dt)\ket{1}_t
+	\frac{\hat M_1 \rho_c(t)\hat M_1^\dagger}{p_1}
 	=
-	\kappa\, \hat c \hat \rho^{(c)}(t)\hat c^\dagger\, dt,
-	\label{eq:oqs_click_unnormalized}
+	\frac{\hat c\,\rho_c(t)\,\hat c^\dagger}
+	{\Tr\!\left[\hat c^\dagger \hat c\,\rho_c(t)\right]}.
+	\label{eq:sme_photodetection_click_update}
 \end{equation}
-with probability
-\begin{equation}
-	p_1(t+dt)
-	=
-	\kappa\, \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt.
-	\label{eq:oqs_click_probability}
-\end{equation}
-The normalized post-click state is therefore
-\begin{equation}
-	\hat \rho^{(c)}_1(t+dt)
-	=
-	\frac{\hat c \hat \rho^{(c)}(t)\hat c^\dagger}
-	{\Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]}.
-	\label{eq:oqs_click_normalized}
-\end{equation}
+This expression makes the jump interpretation explicit. A detection event corresponds to the application of the jump operator \(\hat c\), followed by normalization.
 
-The two alternatives are combined by introducing a Poisson increment $dN_t\in\{0,1\}$ such that
+The two conditional updates can be combined into a single stochastic equation by introducing the counting increment \(dN_t\), defined by
 \begin{equation}
+	dN_t=
+	\begin{cases}
+		1, & \text{if a click occurs in } [t,t+dt],\\
+		0, & \text{otherwise}.
+	\end{cases}
+	\label{eq:sme_photodetection_counting_increment_definition}
+\end{equation}
+This is a Poisson increment satisfying
+\begin{equation}
+	dN_t^2=dN_t,
+	\qquad
 	\mathbb{E}[dN_t]
 	=
-	\kappa\, \Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}(t)]dt,
-	\qquad
-	dN_t^2=dN_t.
-	\label{eq:oqs_poisson_increment}
+	\gamma\,\Tr\!\left[\hat c^\dagger \hat c\,\rho_c(t)\right]dt.
+	\label{eq:sme_photodetection_poisson_properties}
 \end{equation}
-The conditional dynamics then takes the Ito form
+In terms of \(dN_t\), the conditional evolution can be written as
 \begin{equation}
-	d\hat \rho^{(c)}
+	d\rho_c
 	=
-	-i[\hat H,\hat \rho^{(c)}]dt
+	dN_t
+	\left(
+	\frac{\hat c\,\rho_c\,\hat c^\dagger}
+	{\Tr\!\left[\hat c^\dagger \hat c\,\rho_c\right]}
 	-
-	\frac{\kappa}{2}\mathcal{H}[\hat c^\dagger \hat c]\hat \rho^{(c)}dt
+	\rho_c
+	\right)
+	+
+	dt
+	\left[
+	-i[\hat H,\rho_c]
+	-\frac{\gamma}{2}
+	\left\{
+	\hat c^\dagger \hat c,\rho_c
+	\right\}
+	+
+	\gamma\,\Tr\!\left[\hat c^\dagger \hat c\,\rho_c\right]\rho_c
+	\right].
+	\label{eq:sme_photodetection_normalized}
+\end{equation}
+This is the normalized stochastic master equation for direct photodetection.
+
+It is useful to comment on the structure of this equation. The term proportional to \(dt\) describes the continuous evolution between detection events. The term proportional to \(dN_t\) describes the discontinuous state update associated with a click. The stochasticity of the process is entirely encoded in the random increment \(dN_t\), whose average is fixed by the conditional counting rate in Eq.~\eqref{eq:sme_photodetection_poisson_properties}. The evolution is therefore piecewise deterministic: the state evolves smoothly in the intervals between clicks and undergoes sudden jumps whenever a detection event occurs.
+
+Finally, by averaging Eq.~\eqref{eq:sme_photodetection_normalized} over all realizations of the counting process, one recovers the unconditional master equation \eqref{eq:oqs_gksl_general}, this confirms that photodetection provides a jump unravelling of the Lindblad dynamics.
+ 
+\subsection{Homodyne detection, a diffusive unravelling}
+\label{subsec:homodyne_diffusive_unravelling}
+
+We now consider homodyne detection. In this case, the output field is not monitored by counting excitations, but by mixing it with a strong local oscillator and measuring the resulting photocurrent. The quantity returned by the detector is therefore not a discrete sequence of clicks, but a continuous and noisy measurement record. For this reason, the corresponing stochastic evolution is diffusive rather than discontinuous. The information extracted at each infinitesimal step is weak, but it is accumulated in time through a continuous photocurrent. The conditional state then evolves continuously, although in a stochastic way.
+
+IN this situation, one projects the output time bin onto the quadrature basis selected by the phase \(\phi\) of the local oscillator, described by the operator
+
+\begin{equation}
+	\hat x_{\theta}
+	=
+	e^{-i\phi}\,\hat B_t + e^{i\phi}\,\hat B_t^\dagger.
+	\label{eq:sme_homodyne_measured_quadrature}
+\end{equation}
+We denote by \(\ket{x_\phi}_t\) the generalized eigenstates of the measured quadrature operator. The corresponding unnormalized conditional state is
+\begin{equation}
+	\tilde{\rho}_c(t+dt)
+	=
+	{}_t\!\bra{x_\phi}\,
+	\hat U(t+dt,t)
+	\left(
+	\rho_c(t)\otimes\dyad{0_t}{0_t}
+	\right)
+	\hat U^\dagger(t+dt,t)
+	\ket{x_\phi}_t ,
+	\label{eq:homodyne_unnormalized_conditional_state}
+\end{equation}
+so the corresponding probability density is $p(x_\phi,t+dt)=\Tr\!\left[\tilde{\rho}_c(t+dt)\right].$
+
+The normalized conditional state is then
+\begin{equation}
+	\rho_c(t+dt)=\frac{\tilde{\rho}_c(t+dt)}{p(x_\phi,t+dt)}.
+	\label{eq:homodyne_normalized_conditional_state}
+\end{equation}
+
+At this stage, the relevant point is that, unlike photodetection, it is sufficient to expand the numerator and the denominator only up to order \(\sqrt{\gamma\,dt}\). Indeed, after normalization, all the contributions of order \(\gamma\,dt\) will be correctly recovered.
+
+Before the interaction, the distribution of the quadrature outcome is the vacuum Gaussian
+\begin{equation}
+	p(x_\phi,t)=|{}_t\!\braket{x_\phi}{0_t}|^2=\frac{1}{\sqrt{\pi}}e^{-x_\phi^2}.
+	\label{eq:homodyne_vacuum_quadrature_distribution}
+\end{equation}
+Using the infinitesimal unitary evolution and the overlaps between the vacuum, the one-photon state, and the quadrature eigenstates, one finds
+\begin{equation}
+	\tilde{\rho}_c(t+dt)
+	=
+	p(x_\phi,t)
+	\left[
+	\rho_c(t)
 	+
 	\left(
-	\frac{\hat c \hat \rho^{(c)} \hat c^\dagger}
-	{\Tr[\hat c^\dagger \hat c\, \hat \rho^{(c)}]}
+	\hat c\,\rho_c(t)e^{i\phi}
+	+
+	\rho_c(t)\hat c^\dagger e^{-i\phi}
+	\right)
+	x_\phi\sqrt{2\gamma\,dt}
+	\right]
+	+
+	o\!\left(\sqrt{\gamma\,dt}\right).
+	\label{eq:homodyne_unnormalized_state_expanded}
+\end{equation}
+Taking the trace, one obtains
+\begin{equation}
+	p(x_\phi,t+dt)
+	=
+	p(x_\phi,t)
+	\left[
+	1
+	+
+	x_\phi\sqrt{2\gamma\,dt}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t
+	\right]
+	+
+	o\!\left(\sqrt{\gamma\,dt}\right),
+	\label{eq:homodyne_probability_density_expanded}
+\end{equation}
+where
+\begin{equation}
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t
+	=
+	\Tr\!\left[
+	\rho_c(t)\left(
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right)
+	\right].
+	\label{eq:homodyne_conditional_quadrature_mean}
+\end{equation}
+
+Equation~\eqref{eq:homodyne_probability_density_expanded} shows that the measurement outcome is still Gaussian, but its mean is shifted by the conditional expectation value of the measured quadrature. This motivates the introduction of the infinitesimal stochastic record
+\begin{equation}
+	dy_t=\sqrt{2\,dt}\,x_\phi.
+	\label{eq:homodyne_record_definition}
+\end{equation}
+Its statistics  is
+\begin{equation}
+	dy_t
+	=
+	I(t)\,dt
+	=
+	\sqrt{\gamma}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t dt
+	+
+	dw_t,
+	\label{eq:homodyne_record_statistics}
+\end{equation}
+where \(dw_t\) is a Wiener increment satisfying
+\begin{equation}
+	\mathbb{E}[dw_t]=0,
+	\qquad
+	dw_t^2=dt.
+	\label{eq:homodyne_wiener_increment}
+\end{equation}
+
+The stochastic variable that corresponds to the time-integral is called the integrated photocurrent while the corresponding instantaneous photocurrent is formally defined as $I(t)=\frac{dy_t}{dt}.$
+Equation~\eqref{eq:homodyne_record_statistics} then takes the form
+\begin{equation}
+	I(t)
+	=
+	\sqrt{\gamma}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t
+	+
+	\xi(t),
+	\label{eq:homodyne_photocurrent_signal_noise}
+\end{equation}
+where
+\begin{equation}
+	\xi(t)=\frac{dw_t}{dt}
+	\label{eq:homodyne_white_noise_definition}
+\end{equation}
+is a white-noise term, heuristically characterized by $\mathbb{E}[\xi(t)\xi(t')]=\delta(t-t').$
+
+This expression is physically very important. The photocurrent is not equal to the measured quadrature expectation value alone. Rather, it consists of two contributions: a deterministic signal term, given by the conditional average of the measured quadrature, and an irreducible noise term. The latter reflects the vacuum fluctuations of the output field and is present even for ideal detection. Therefore, the information extracted by homodyne monitoring is necessarily noisy. At each infinitesimal step the detector only gains weak information on the system, but this information is accumulated continuously in time through the full photocurrent record.
+
+By inserting Eqs.~\eqref{eq:homodyne_unnormalized_state_expanded} and \eqref{eq:homodyne_probability_density_expanded} into Eq.~\eqref{eq:homodyne_normalized_conditional_state}, and expanding the denominator, one finds
+\begin{equation}
+	d\rho_c(t)
+	=
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[\hat c\,e^{i\phi}\right]\rho_c(t)\,dw_t
+	+
+	o(\gamma\,dt),
+	\label{eq:homodyne_state_update_stochastic_part}
+\end{equation}
+where
+\begin{equation}
+	\mathcal{H}[\hat A]\rho
+	=
+	\hat A\rho+\rho \hat A^\dagger
 	-
-	\hat \rho^{(c)}
-	\right)dN_t.
-	\label{eq:oqs_photodetection_sme}
+	\Tr\!\left[
+	(\hat A+\hat A^\dagger)\rho
+	\right]\rho.
+	\label{eq:homodyne_H_superoperator_definition}
 \end{equation}
-This is the stochastic master equation for ideal continuous photodetection. The evolution is piecewise deterministic: smooth between clicks, discontinuous at the jump times.
-
-By averaging Eq.~\eqref{eq:oqs_photodetection_sme} over the counting process, one recovers the unconditional Lindblad equation \eqref{eq:oqs_single_channel_lindblad_compact}. Hence photodetection provides a jump unravelling of the same ensemble-averaged dynamics.
-
-\subsection{Homodyne detection and diffusive trajectories}
-
-We now turn to homodyne detection. The physical idea is to mix the outgoing field with a strong local oscillator on a balanced beam splitter and then subtract the two photocurrents. In the strong-local-oscillator limit, this realizes a continuous measurement of a field quadrature \cite{AlbarelliGenoni23,AlbarelliGenoniNotes22}.
-
-Let $\theta$ be the phase of the local oscillator. The measured bath quadrature is
+Since averaging over the measurement outcomes must reproduce the unconditional evolution, the deterministic contribution of order \(dt\) is uniquely fixed by the Lindblad master equation. One finally obtains
 \begin{equation}
-	\hat X_\theta
+	d\rho_c(t)
 	=
-	e^{-i\theta}\hat B_t + e^{i\theta}\hat B_t^\dagger.
-	\label{eq:oqs_bath_quadrature}
+	-i[\hat H,\rho_c(t)]\,dt
+	+
+	\gamma\,\mathcal{D}[\hat c]\rho_c(t)\,dt
+	+
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[\hat c\,e^{i\phi}\right]\rho_c(t)\,dw_t.
+	\label{eq:homodyne_sme_wiener_form}
 \end{equation}
-We denote by $\ket{x_\theta}_t$ the corresponding generalized eigenstates. Since the interaction generates only vacuum and one-photon contributions up to order $dt$, the measurement operator can be obtained by projecting the joint state onto $\ket{x_\theta}_t$. It is convenient to introduce the rescaled real outcome $dy_t$, of order $\sqrt{dt}$, such that the measurement operator reads
+
+Equation~\eqref{eq:homodyne_sme_wiener_form} is the homodyne stochastic master equation in Itô form. It is a diffusive unravelling of the unconditional Lindblad dynamics. The deterministic part coincides with the unconditional evolution, while the stochastic term accounts for the continuous update of the state induced by the noisy quadrature record.
+
+It is often convenient to rewrite the same equation directly in terms of the observed photocurrent. Using Eq.~\eqref{eq:homodyne_record_statistics}, one has
 \begin{equation}
-	\hat M_{dy_t}
+	dw_t
 	=
-	{}_t\!\bra{x_\theta}\hat U(t+dt,t)\ket{0}_t
+	dy_t
+	-
+	\sqrt{\gamma}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t dt,
+	\label{eq:homodyne_innovation_process}
+\end{equation}
+and therefore
+\begin{equation}
+	d\rho_c(t)
+	=
+	-i[\hat H,\rho_c(t)]\,dt
+	+
+	\gamma\,\mathcal{D}[\hat c]\rho_c(t)\,dt
+	+
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[\hat c\,e^{i\phi}\right]\rho_c(t)
+	\left[
+	dy_t
+	-
+	\sqrt{\gamma}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t dt
+	\right].
+	\label{eq:homodyne_sme_photocurrent_form}
+\end{equation}
+In this form, the quantity in square brackets is the innovation process, namely the difference between the actual measurement outcome and its conditional expectation value. This is the genuinely new information acquired by the observer at time \(t\).
+
+The interpretation of Eq.~\eqref{eq:homodyne_sme_photocurrent_form} is now transparent. The state evolves deterministically according to the unconditional master equation, but this evolution is continuously corrected by the information contained in the photocurrent. Since the record is noisy, the conditioned state follows a continuous but stochastic trajectory.
+
+A convenient way to include finite efficiency \(\eta \in [0,1]\) is to split the output channel into a monitored and an unmonitored part,
+\begin{equation}
+	\sqrt{\gamma}\,\hat c
+	\;\longrightarrow\;
+	\sqrt{\eta\gamma}\,\hat c
+	\quad\text{and}\quad
+	\sqrt{(1-\eta)\gamma}\,\hat c.
+	\label{eq:homodyne_efficiency_split_channel}
+\end{equation}
+The homodyne unravelling is then performed only on the monitored branch \(\sqrt{\eta\gamma}\,\hat c\), while the second branch contributes only through an unconditional dissipator. Summing the two contributions gives again the total Lindblad term \(\gamma\mathcal{D}[\hat c]\rho_c\), while only the observed branch enters the stochastic part of the equation. The measured photocurrent then becomes
+\begin{equation}
+	dy_t
+	=
+	\sqrt{\eta\gamma}\,
+	\left\langle
+	\hat c\,e^{i\phi}+\hat c^\dagger e^{-i\phi}
+	\right\rangle_t dt
+	+
+	dw_t,
+	\label{eq:homodyne_record_statistics_inefficient}
+\end{equation}
+and the corresponding stochastic master equation reads
+\begin{equation}
+	d\rho_c(t)
+	=
+	-i[\hat H,\rho_c(t)]\,dt
+	+
+	\gamma\,\mathcal{D}[\hat c]\rho_c(t)\,dt
+	+
+	\sqrt{\eta\gamma}\,
+	\mathcal{H}\!\left[\hat c\,e^{i\phi}\right]\rho_c(t)\,dw_t.
+	\label{eq:homodyne_sme_wiener_form_inefficient}
+\end{equation}
+As expected, the unconditional dissipative term is unchanged, whereas the stochastic term is reduced by the factor \(\sqrt{\eta}\). In the limit \(\eta\to 0\), no information is extracted from the environment and one recovers the unconditional Lindblad evolution.
+
+Finally, it is useful to write the same infinitesimal evolution in a completely positive form. The normalized update over a time step \(dt\) can be written as
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{
+		M_{dy_t}\rho_c(t)M_{dy_t}^\dagger
+		+
+		\gamma(1-\eta)\,\hat c\,\rho_c(t)\hat c^\dagger\,dt
+	}{
+		\Tr\!\left[
+		M_{dy_t}\rho_c(t)M_{dy_t}^\dagger
+		+
+		\gamma(1-\eta)\,\hat c\,\rho_c(t)\hat c^\dagger\,dt
+		\right]
+	},
+	\label{eq:homodyne_cp_update}
+\end{equation}
+where the generalized Kraus operator is
+\begin{equation}
+	M_{dy_t}
 	=
 	\id
 	-
 	i\hat H\,dt
 	-
-	\frac{\kappa}{2}\hat c^\dagger \hat c\,dt
+	\frac{\gamma}{2}\hat c^\dagger \hat c\,dt
 	+
-	\sqrt{\kappa}\,\hat c\, e^{i\theta} dy_t.
-	\label{eq:oqs_homodyne_measurement_operator}
+	\sqrt{\eta\gamma}\,\hat c\,e^{i\phi}\,dy_t.
+	\label{eq:homodyne_generalized_kraus_operator}
 \end{equation}
+This formulation makes the complete positivity of each infinitesimal conditioned step explicit. The first term describes the monitored part of the evolution associated with the observed homodyne record, while the second term accounts for the unobserved fraction of the output channel due to the finite detection efficiency.
 
-The corresponding unnormalized conditional state is
+\begin{comment}
+The quadrature selected by the measurement is fixed by the phase \(\phi\) of the local oscillator. At the infinitesimal level, the measured bath observable is
 \begin{equation}
-	\tilde{\rho}^{(c)}(t+dt)
+	d\hat Y_t
 	=
-	\hat M_{dy_t}\hat \rho^{(c)}(t)\hat M_{dy_t}^\dagger.
-	\label{eq:oqs_homodyne_unnormalized_state}
+	e^{-i\phi}\,d\hat B_t + e^{i\phi}\,d\hat B_t^\dagger.
+	\label{eq:sme_homodyne_measured_quadrature}
 \end{equation}
-Using the Ito rule $dy_t^2=dt$, one obtains
-\begin{equation}
-	\tilde{\rho}^{(c)}(t+dt)
-	=
-	\hat \rho^{(c)}(t)
-	-
-	i[\hat H,\hat \rho^{(c)}(t)]dt
-	+
-	\kappa \mathcal{D}[\hat c]\hat \rho^{(c)}(t)\,dt
-	+
-	\sqrt{\kappa}
-	\left(
-	\hat c e^{i\theta}\hat \rho^{(c)}(t)
-	+
-	\hat \rho^{(c)}(t)\hat c^\dagger e^{-i\theta}
-	\right)dy_t.
-	\label{eq:oqs_homodyne_unnormalized_state_expanded}
-\end{equation}
+Different values of \(\phi\) correspond to different measured quadratures and therefore to different diffusive unravellings of the same unconditional Lindblad equation.
 
-To identify the statistics of the measurement record, one writes the true probability density as the trace of the unnormalized state. This leads to
-\begin{equation}
-	p(dy_t)
-	=
-	p_{\mathrm{ost}}(dy_t)\,
-	\Tr[\tilde{\rho}^{(c)}(t+dt)],
-	\label{eq:oqs_homodyne_true_probability}
-\end{equation}
-where $p_{\mathrm{ost}}(dy_t)$ is a Gaussian ostensive distribution with zero mean and variance $dt$,
-\begin{equation}
-	p_{\mathrm{ost}}(dy_t)
-	=
-	\frac{1}{\sqrt{2\pi dt}}
-	\exp\!\left(-\frac{dy_t^2}{2dt}\right).
-	\label{eq:oqs_homodyne_ostensive_distribution}
-\end{equation}
-Evaluating the trace of Eq.~\eqref{eq:oqs_homodyne_unnormalized_state_expanded}, one finds that the physical measurement outcome can be written as
+As in the previous subsection, we consider a single monitored channel \(\hat c\) with rate \(\gamma\). The system-bath interaction is unchanged. What changes is the observable measured on the output time bin after the interaction. Instead of projecting onto the Fock basis, one now measures a field quadrature, obtaining a real continuous outcome that we denote by \(dy_t\).
+
+This infinitesimal quantity \(dy_t\) is the elementary homodyne measurement record. Its time integral represents the integrated photocurrent, while the corresponding instantaneous photocurrent is formally defined as $I(t)=\frac{dy_t}{dt}$.
+
+The record takes the form
 \begin{equation}
 	dy_t
 	=
-	\sqrt{\kappa}\,
+	\sqrt{\gamma}\,
 	\Tr\!\left[
 	\left(
-	\hat c e^{i\theta}+\hat c^\dagger e^{-i\theta}
-	\right)
-	\hat \rho^{(c)}(t)
+	e^{-i\phi}\hat c + e^{i\phi}\hat c^\dagger
+	\right)\rho_c(t)
 	\right]dt
 	+
 	dW_t,
-	\label{eq:oqs_homodyne_record}
+	\label{eq:sme_homodyne_measurement_record}
 \end{equation}
-where $dW_t$ is a Wiener increment satisfying
+where \(dW_t\) is a Wiener increment satisfying
 \begin{equation}
 	\mathbb{E}[dW_t]=0,
 	\qquad
 	dW_t^2=dt.
-	\label{eq:oqs_wiener_increment}
+	\label{eq:sme_homodyne_wiener_properties}
 \end{equation}
-
-After substituting Eq.~\eqref{eq:oqs_homodyne_record} into Eq.~\eqref{eq:oqs_homodyne_unnormalized_state_expanded} and normalizing the state, one finally obtains the diffusive stochastic master equation
+Equivalently, the photocurrent may be written as
 \begin{equation}
-	d\hat \rho^{(c)}
+	I(t)
 	=
-	-i[\hat H,\hat \rho^{(c)}]dt
+	\sqrt{\gamma}\,
+	\Tr\!\left[
+	\left(
+	e^{-i\phi}\hat c + e^{i\phi}\hat c^\dagger
+	\right)\rho_c(t)
+	\right]
 	+
-	\kappa \mathcal{D}[\hat c]\hat \rho^{(c)}dt
-	+
-	\sqrt{\kappa}\,
-	\mathcal{H}[\hat c e^{i\theta}]
-	\hat \rho^{(c)}\, dW_t.
-	\label{eq:oqs_homodyne_sme}
+	\xi(t),
+	\label{eq:sme_homodyne_photocurrent}
 \end{equation}
-This is the SME for ideal homodyne monitoring. In contrast to photodetection, the conditioned evolution is now continuous in time and driven by Gaussian noise.
+where \(\xi(t)=dW_t/dt\) is a white-noise term. This expression makes the physical content of the measurement particularly transparent: the homodyne current is equal to the conditional expectation value of the measured quadrature, plus an unavoidable noise contribution.
 
-Equation~\eqref{eq:oqs_homodyne_sme} also averages to the same unconditional master equation \eqref{eq:oqs_single_channel_lindblad_compact}. Therefore photodetection and homodyne detection correspond to different stochastic unravellings of the same Markovian open-system dynamics.
+The measurement operators associated with the continuous outcome \(dy_t\) may be written, up to an overall scalar Gaussian factor, as
+\begin{equation}
+	\hat M(dy_t)
+	=
+	\id
+	-
+	i\hat H\,dt
+	-
+	\frac{\gamma}{2}\hat c^\dagger \hat c\,dt
+	+
+	\sqrt{\gamma}\,e^{-i\phi}\hat c\,dy_t.
+	\label{eq:sme_homodyne_measurement_operator}
+\end{equation}
+The fact that \(dy_t\) scales as \(\sqrt{dt}\) reflects the weak and noisy character of the measurement at each infinitesimal step.
 
-For $\theta=0$, the measured quadrature is proportional to $\hat c+\hat c^\dagger$, whereas for $\theta=\pi/2$ one probes the orthogonal quadrature proportional to $i(\hat c-\hat c^\dagger)$. The phase of the local oscillator thus selects which field quadrature is continuously monitored.
+By applying the generalized state update and keeping all terms up to order \(dt\), one obtains the normalized stochastic master equation
+\begin{equation}
+	d\rho_c
+	=
+	-i[\hat H,\rho_c]\,dt
+	+
+	\gamma \mathcal{D}[\hat c]\rho_c\,dt
+	+
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[e^{-i\phi}\hat c\right]\rho_c\,dW_t,
+	\label{eq:sme_homodyne_normalized}
+\end{equation}
+where
+\begin{equation}
+	\mathcal{H}[\hat A]\rho
+	=
+	\hat A \rho
+	+
+	\rho \hat A^\dagger
+	-
+	\Tr\!\left[
+	(\hat A+\hat A^\dagger)\rho
+	\right]\rho.
+	\label{eq:sme_homodyne_H_superoperator}
+\end{equation}
+
+It is often useful to rewrite the same equation directly in terms of the observed record \(dy_t\). By substituting Eq.~\eqref{eq:sme_homodyne_measurement_record} into Eq.~\eqref{eq:sme_homodyne_normalized}, one obtains
+\begin{equation}
+	d\rho_c
+	=
+	-i[\hat H,\rho_c]\,dt
+	+
+	\gamma \mathcal{D}[\hat c]\rho_c\,dt
+	+
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[e^{-i\phi}\hat c\right]\rho_c
+	\left(
+	dy_t
+	-
+	\sqrt{\gamma}\,
+	\Tr\!\left[
+	\left(
+	e^{-i\phi}\hat c + e^{i\phi}\hat c^\dagger
+	\right)\rho_c
+	\right]dt
+	\right).
+	\label{eq:sme_homodyne_normalized_record_form}
+\end{equation}
+In this form, the stochastic term is expressed through the innovation process, namely the difference between the observed photocurrent and its conditional expectation value. This is precisely the genuinely new information extracted by the measurement at time \(t\).
+
+The structure of the equation is now clear. The deterministic part contains the usual coherent contribution and the unconditional dissipative term. The stochastic part accounts for the continuous update of the state induced by the measured photocurrent. Unlike photodetection, no discontinuous jump occurs. The state evolves continuously, but in a noisy way, because the measurement record itself is noisy.
+
+By averaging over all possible realizations of the Wiener process, one recovers the unconditional master equation,
+\begin{equation}
+	\frac{d\rho}{dt}
+	=
+	-i[\hat H,\rho]
+	+
+	\gamma \mathcal{D}[\hat c]\rho.
+	\label{eq:sme_homodyne_average_to_lindblad}
+\end{equation}
+Homodyne detection therefore provides a diffusive unravelling of the same reduced dynamics. The individual trajectories depend on the specific continuous photocurrent, while their ensemble average reproduces the deterministic Lindblad evolution.
+
+Finally, the dependence on the local-oscillator phase \(\phi\) has a direct physical meaning. By changing \(\phi\), one changes which quadrature of the output field is monitored, and therefore which kind of information is extracted from the environment. Different choices of \(\phi\) lead to different conditional trajectories, even though the unconditional evolution remains unchanged.
+
+
+If \(\rho_c(t)\) denotes the conditional state at time \(t\), the measurement result may be written as
+\begin{equation}
+	dy_t
+	=
+	\sqrt{\gamma}\,
+	\Tr\!\left[
+	\left(
+	e^{-i\phi}\hat c + e^{i\phi}\hat c^\dagger
+	\right)\rho_c(t)
+	\right]dt
+	+
+	dW_t,
+	\label{eq:sme_homodyne_measurement_record}
+\end{equation}
+where \(dW_t\) is a Wiener increment satisfying
+\begin{equation}
+	\mathbb{E}[dW_t]=0,
+	\qquad
+	dW_t^2=dt.
+	\label{eq:sme_homodyne_wiener_properties}
+\end{equation}
+Equation~\eqref{eq:sme_homodyne_measurement_record} shows the structure of the homodyne current. The first term contains the information about the system, namely the conditional expectation value of the measured quadrature. The second term is the irreducible shot noise associated with the vacuum input and with the quantum nature of the measurement process.
+
+By applying the generalized measurement update and normalizing the state, one obtains the stochastic master equation
+\begin{equation}
+	d\rho_c
+	=
+	-i[\hat H,\rho_c]\,dt
+	+
+	\gamma \mathcal{D}[\hat c]\rho_c\,dt
+	+
+	\sqrt{\gamma}\,
+	\mathcal{H}\!\left[e^{-i\phi}\hat c\right]\rho_c\,dW_t,
+	\label{eq:sme_homodyne_normalized}
+\end{equation}
+where the superoperator \(\mathcal{H}[\hat A]\) is defined as
+\begin{equation}
+	\mathcal{H}[\hat A]\rho
+	=
+	\hat A \rho
+	+
+	\rho \hat A^\dagger
+	-
+	\Tr\!\left[
+	(\hat A+\hat A^\dagger)\rho
+	\right]\rho.
+	\label{eq:sme_homodyne_H_superoperator}
+\end{equation}
+
+It is useful to comment on the meaning of the three terms in Eq.~\eqref{eq:sme_homodyne_normalized}. The first term is the usual coherent evolution generated by the system Hamiltonian. The second term is the unconditional dissipative contribution already present in the Lindblad master equation. The third term is the stochastic innovation term. It describes the update of the conditional state due to the difference between the observed homodyne signal and its conditional expectation value. In this sense, \(dW_t\) represents the unpredictable part of the measurement record, while the superoperator \(\mathcal{H}[e^{-i\phi}\hat c]\) determines how this new information modifies the system state.
+
+Unlike photodetection, no discontinuous jump appears here. The state changes continuously in time, but the trajectory remains stochastic because the measured current is noisy. For this reason, homodyne detection provides a diffusive unravelling of the unconditional dynamics. The randomness is not encoded in a Poisson increment, as in the jump case, but in the Wiener process appearing in Eq.~\eqref{eq:sme_homodyne_wiener_properties}.
+
+The unconditional state is recovered by averaging over all possible realizations of the homodyne record. Since \(\mathbb{E}[dW_t]=0\), the stochastic contribution disappears under the average, and one finds again \eqref{eq:oqs_single_channel_lindblad_compact}.
+
+The dependence on the phase \(\phi\) has a clear physical interpretation. Different phases correspond to measuring different field quadratures, and therefore to extracting different kinds of information from the output channel. As a consequence, they generate different conditional trajectories, even though the unconditional evolution remains the same. This is one of the simplest and most important examples of the non-uniqueness of stochastic unravellings.
 \end{comment}
+
+\section{Relevant single-qubit paradigms}
+\label{sec:relevant_single_qubit_paradigms}
+
+Before discussing the multi-qubit scenarios of interest, it is useful to isolate the two elementary single-qubit channels that will underlie the rest of the analysis. These are spontaneous emission and dispersive coupling. They correspond, respectively, to the choice of collapse operator \(\hat \sigma_-\) and \(\hat \sigma_z\). Although both are described within the same Lindblad and stochastic framework, they represent two physically different situations.
+
+Spontaneous emission is a dissipative process. It involves an exchange of energy with the environment and drives the qubit from the excited state to the ground state. Its unconditional evolution is the standard amplitude-damping channel, while its monitored version gives rise to the familiar jump or diffusive quantum trajectories of fluorescence.
+
+Dispersive coupling has a different character. In that case, the environment acquires information about the qubit without inducing transitions between the energy eigenstates. The dynamics is therefore dominated by dephasing rather than relaxation. Populations are left unchanged, whereas coherences are progressively suppressed. For this reason, these two channels provide a natural pair of reference models: the first describes irreversible energy relaxation, while the second describes measurement-induced loss of phase coherence.
+
+In both cases, the single-qubit dynamics already contains the essential physical mechanisms that later reappear in the multi-qubit setting. For this reason, it is convenient to analyze them first at the one-qubit level, where their structure is more transparent.
+
+\subsection{Single-qubit spontaneous emission}
+\label{subsec:single_qubit_spontaneous_emission}
+
+We begin with spontaneous emission. In the convention adopted throughout this thesis, \(\hat \sigma_z\ket{0}=+\ket{0}\) and \(\hat \sigma_z\ket{1}=-\ket{1}\), so that \(\ket{0}\) is the ground state and \(\ket{1}\) is the excited state. The lowering and raising operators are therefore
+\begin{equation}
+	\hat \sigma_- = \dyad{0}{1},
+	\qquad
+	\hat \sigma_+ = \dyad{1}{0}.
+	\label{eq:single_qubit_spontaneous_emission_sigma_pm}
+\end{equation}
+
+If one neglects any additional coherent term, or equivalently moves to a rotating frame in which the free qubit Hamiltonian has been removed, the unconditional dynamics is described by:
+\begin{equation}
+\frac{d\rho}{dt}
+=
+\gamma \mathcal{D}[\hat \sigma_-]\rho.
+\label{eq:single_qubit_spontaneous_emission_master_equation}
+\end{equation}
+Since
+\begin{equation}
+	\hat c^{\dagger} \hat c = \hat \sigma_+ \hat \sigma_- = \dyad{1}{1},
+	\label{eq:single_qubit_spontaneous_emission_projector_excited}
+\end{equation}
+the dissipator acts only on the excited-state component of the density operator.
+
+Let us write the qubit state as
+\begin{equation}
+	\rho(t)
+	=
+	\begin{pmatrix}
+		\rho_{00}(t) & \rho_{01}(t) \\
+		\rho_{10}(t) & \rho_{11}(t)
+	\end{pmatrix}
+\end{equation}
+in the ordered basis \(\{\ket{0},\ket{1}\}\). By direct substitution into Eq.~\eqref{eq:single_qubit_spontaneous_emission_master_equation}, one finds
+\begin{equation}
+	\frac{d\rho}{dt}
+	=
+	\gamma
+	\begin{pmatrix}
+		\rho_{11}(t) & -\frac{1}{2}\rho_{01}(t) \\
+		-\frac{1}{2}\rho_{10}(t) & -\rho_{11}(t)
+	\end{pmatrix}.
+	\label{eq:single_qubit_spontaneous_emission_matrix_equation}
+\end{equation}
+Therefore,
+\begin{equation}
+	\dot{\rho}_{11}(t) = -\gamma \rho_{11}(t),
+	\qquad
+	\dot{\rho}_{00}(t) = \gamma \rho_{11}(t),
+	\label{eq:single_qubit_spontaneous_emission_populations}
+\end{equation}
+and
+\begin{equation}
+	\dot{\rho}_{01}(t) = -\frac{\gamma}{2}\rho_{01}(t),
+	\qquad
+	\dot{\rho}_{10}(t) = -\frac{\gamma}{2}\rho_{10}(t).
+	\label{eq:single_qubit_spontaneous_emission_coherences}
+\end{equation}
+The solution is then
+\begin{equation}
+	\rho(t)
+	=
+	\begin{pmatrix}
+		1-\rho_{11}(0)e^{-\gamma t} & \rho_{01}(0)e^{-\gamma t/2} \\
+		\rho_{10}(0)e^{-\gamma t/2} & \rho_{11}(0)e^{-\gamma t}
+	\end{pmatrix}.
+	\label{eq:single_qubit_spontaneous_emission_full_solution}
+\end{equation}
+
+This solution shows the two characteristic features of spontaneous emission. First, the excited-state population decays exponentially with rate \(\gamma\), while the ground-state population increases accordingly. Second, the off-diagonal coherences decay with rate \(\gamma/2\). The channel is therefore dissipative and not purely dephasing: populations and coherences are both affected, but in different ways. We notice that the unique stationary state is $\dyad{0}{0}$.
+
+It is also useful to express the same dynamics in terms of the Bloch components
+\begin{equation}
+	x(t)=\expval{\hat \sigma_x},
+	\qquad
+	y(t)=\expval{\hat \sigma_y},
+	\qquad
+	z(t)=\expval{\hat \sigma_z}.
+	\label{eq:single_qubit_spontaneous_emission_bloch_components}
+\end{equation}
+Using the convention adopted here, one obtains
+\begin{equation}
+	x(t)=x(0)e^{-\gamma t/2},
+	\qquad
+	y(t)=y(0)e^{-\gamma t/2},
+	\label{eq:single_qubit_spontaneous_emission_bloch_xy}
+\end{equation}
+and
+\begin{equation}
+	z(t)=1-\left[1-z(0)\right]e^{-\gamma t}.
+	\label{eq:single_qubit_spontaneous_emission_bloch_z}
+\end{equation}
+Hence the Bloch vector is contracted toward the north pole, corresponding to the ground state \(\ket{0}\).
+
+The monitored version of the same process is equally transparent. Over an infinitesimal interval \(dt\), the amplitude-damping channel may be described by the two Kraus operators
+\begin{equation}
+	\hat M_0
+	=
+	\dyad{0}{0}
+	+
+	\sqrt{1-\gamma dt}\,\dyad{1}{1},
+	\qquad
+	\hat M_1
+	=
+	\sqrt{\gamma dt}\,\hat \sigma_-.
+	\label{eq:single_qubit_spontaneous_emission_kraus}
+\end{equation}
+The operator \(\hat M_0\) corresponds to the no-click event, namely to the case in which no emitted quantum is detected in the interval \(dt\). The operator \(\hat M_1\) corresponds instead to a detection event. If the output field is photodetected and a click occurs, the conditional state becomes
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{\hat M_1 \rho_c(t)\hat M_1^\dagger}
+	{\Tr\!\left[\hat M_1 \rho_c(t)\hat M_1^\dagger\right]}
+	=
+	\dyad{0}{0}.
+	\label{eq:single_qubit_spontaneous_emission_click_state}
+\end{equation}
+Thus, a click heralds the decay of the qubit to the ground state. If no click is observed, the state is updated according to
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{\hat M_0 \rho_c(t)\hat M_0^\dagger}
+	{\Tr\!\left[\hat M_0 \rho_c(t)\hat M_0^\dagger\right]},
+	\label{eq:single_qubit_spontaneous_emission_no_click_state}
+\end{equation}
+which yields a smooth conditional evolution in between jumps. Averaging over the two outcomes reproduces the unconditional map,
+\begin{equation}
+	\rho(t+dt)
+	=
+	\hat M_0 \rho(t)\hat M_0^\dagger
+	+
+	\hat M_1 \rho(t)\hat M_1^\dagger,
+	\label{eq:single_qubit_spontaneous_emission_unconditional_map}
+\end{equation}
+and, in the continuous-time limit, one recovers Eq.~\eqref{eq:single_qubit_spontaneous_emission_master_equation}.
+
+For this reason, spontaneous emission provides the paradigmatic example of a channel whose unconditional evolution is dissipative, while its monitored evolution admits different stochastic unravellings. Photodetection leads to quantum-jump trajectories associated with random emission events, whereas homodyne monitoring of the emitted field leads to diffusive trajectories. In both cases, however, the average evolution remains the same and is governed by the amplitude-damping master equation.
+
+\subsection{Single-qubit pure dephasing}
+\label{subsec:single_qubit_dispersive_coupling}
+
+We now consider the second paradigmatic single-qubit channel, namely dispersive coupling. In this case, the environment couples to the qubit through the operator \(\hat \sigma_z\). The corresponding unconditional dynamics is therefore generated by the master equation
+\begin{equation}
+	\frac{d\rho}{dt}
+	=
+	\gamma \mathcal{D}[\hat \sigma_z]\rho.
+	\label{eq:single_qubit_dephasing_master_equation}
+\end{equation}
+
+This channel has a clear physical interpretation. Unlike spontaneous emission, it does not induce transitions between the two energy eigenstates. The environment acquires information about the qubit state, but no excitation is exchanged. For this reason, the dynamics is purely dephasing: populations are preserved, while coherences decay in time. In this sense, dispersive coupling provides the simplest example of decoherence without dissipation.
+
+Since \(\hat \sigma_z^\dagger=\hat \sigma_z\) and \(\hat \sigma_z^2=\id\), Eq.~\eqref{eq:single_qubit_dephasing_master_equation} may be rewritten as
+\begin{equation}
+	\frac{d\rho}{dt}
+	=
+	\gamma
+	\left(
+	\hat \sigma_z \rho \hat \sigma_z
+	-
+	\rho
+	\right).
+	\label{eq:single_qubit_dephasing_master_equation_compact}
+\end{equation}q
+One then finds
+\begin{equation}
+	\hat \sigma_z \rho(t) \hat \sigma_z
+	=
+	\begin{pmatrix}
+		\rho_{00}(t) & -\rho_{01}(t) \\
+		-\rho_{10}(t) & \rho_{11}(t)
+	\end{pmatrix},
+	\label{eq:single_qubit_dephasing_sigma_z_rho_sigma_z}
+\end{equation}
+and therefore
+\begin{equation}
+	\frac{d\rho}{dt}
+	=
+	\gamma
+	\begin{pmatrix}
+		0 & -2\rho_{01}(t) \\
+		-2\rho_{10}(t) & 0
+	\end{pmatrix}.
+	\label{eq:single_qubit_dephasing_matrix_equation}
+\end{equation}
+It follows that
+\begin{equation}
+	\dot{\rho}_{00}(t)=0,
+	\qquad
+	\dot{\rho}_{11}(t)=0,
+	\label{eq:single_qubit_dephasing_populations}
+\end{equation}
+while the coherences obey
+\begin{equation}
+	\dot{\rho}_{01}(t)=-2\gamma \rho_{01}(t),
+	\qquad
+	\dot{\rho}_{10}(t)=-2\gamma \rho_{10}(t).
+	\label{eq:single_qubit_dephasing_coherences}
+\end{equation}
+Altogether,
+\begin{equation}
+	\rho(t)
+	=
+	\begin{pmatrix}
+		\rho_{00}(0) & \rho_{01}(0)e^{-2\gamma t} \\
+		\rho_{10}(0)e^{-2\gamma t} & \rho_{11}(0)
+	\end{pmatrix}.
+	\label{eq:single_qubit_dephasing_full_solution}
+\end{equation}
+
+The populations remain unchanged at all times, while the off-diagonal elements are exponentially suppressed. The channel therefore destroys phase coherence in the computational basis without affecting the occupations of \(\ket{0}\) and \(\ket{1}\). In particular, the asymptotic state is not uniqu, indeed very density operator that is diagonal in the computational basis is stationary.
+This is a major difference with respect to spontaneous emission, where the dynamics selects a unique stationary state.
+
+As we have seen in the fluorescence case, in terms of the Bloch components it displays as:
+\begin{equation}
+	x(t)=x(0)e^{-2\gamma t},
+	\qquad
+	y(t)=y(0)e^{-2\gamma t},
+	\qquad
+	z(t)=z(0).
+	\label{eq:single_qubit_dephasing_bloch_xy}
+\end{equation}
+Hence the Bloch sphere is contracted toward the \(z\) axis. All coherences in the transverse plane are lost, whereas the population imbalance remains constant.
+
+Over an infinitesimal interval \(dt\), the corresponding Kraus operators for the jump unravelling are
+\begin{equation}
+	\hat M_0
+	=
+	\id-\frac{\gamma}{2}dt\,\hat{c^\dagger}\hat{c}
+	=
+	\id-\frac{\gamma}{2}dt\,\id,
+	\qquad
+	\hat M_1
+	=
+	\sqrt{\gamma\,dt}\,\hat \sigma_z.
+	\label{eq:single_qubit_dephasing_kraus}
+\end{equation}
+They satisfy
+\begin{equation}
+	\hat M_0^\dagger \hat M_0 + \hat M_1^\dagger \hat M_1
+	=
+	\id+\mathcal{O}(dt^2).
+	\label{eq:single_qubit_dephasing_kraus_normalization}
+\end{equation}
+The key difference with respect to spontaneous emission is that the jump operator is now unitary and Hermitian. A detection event does not transfer the qubit to a preferred state. Instead, it applies the transformation
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{\hat M_1 \rho_c(t)\hat M_1^\dagger}
+	{\Tr\!\left[\hat M_1 \rho_c(t)\hat M_1^\dagger\right]}
+	=
+	\hat \sigma_z \rho_c(t)\hat \sigma_z.
+	\label{eq:single_qubit_dephasing_click_state}
+\end{equation}
+Thus, a click corresponds to a phase flip. Since \(\hat \sigma_z\) leaves the diagonal entries unchanged and changes the sign of the coherences, the jump does not represent energy relaxation, but only a stochastic modification of the phase structure of the state.
+
+By contrast, the no-click update is trivial after normalization. Indeed,
+\begin{equation}
+	\rho_c(t+dt)
+	=
+	\frac{\hat M_0 \rho_c(t)\hat M_0^\dagger}
+	{\Tr\!\left[\hat M_0 \rho_c(t)\hat M_0^\dagger\right]}
+	=
+	\rho_c(t),
+	\label{eq:single_qubit_dephasing_no_click_state}
+\end{equation}
+up to higher-order corrections. Therefore, in the jump picture the conditional evolution is piecewise constant and is interrupted by random phase flips. Averaging over all trajectories reproduces the unconditional map,
+\begin{equation}
+	\rho(t+dt)
+	=
+	\hat M_0 \rho(t)\hat M_0^\dagger
+	+
+	\hat M_1 \rho(t)\hat M_1^\dagger,
+	\label{eq:single_qubit_dephasing_unconditional_map}
+\end{equation}
+which yields Eq.~\eqref{eq:single_qubit_dephasing_master_equation_compact} in the continuous-time limit.
+
+The homodyne unravelling is equally important. Since \(\hat \sigma_z\) is Hermitian, homodyne monitoring with phase \(\phi=0\) corresponds to a continuous weak measurement of \(\hat \sigma_z\). The conditional state then obeys the diffusive stochastic master equation
+\begin{equation}
+	d\rho_c
+	=
+	\gamma \mathcal{D}[\hat \sigma_z]\rho_c\,dt
+	+
+	\sqrt{\gamma}\,\mathcal{H}[\hat \sigma_z]\rho_c\,dW_t.
+	\label{eq:single_qubit_dephasing_homodyne_sme}
+\end{equation}
+In this case, the measurement record continuously carries information about the qubit observable \(\hat \sigma_z\). The conditional state is therefore gradually driven toward one of the two eigenstates of \(\hat \sigma_z\), while the unconditional average over all records still reproduces the dephasing master equation.
+
+For this reason, pure dephasing provides the paradigmatic example of decoherence without dissipation. At the unconditional level, it suppresses only the off-diagonal coherences. At the stochastic level, it admits different unravellings with very different interpretations: photon counting leads to random phase flips, whereas homodyne monitoring leads to a continuous weak measurement of \(\hat \sigma_z\).

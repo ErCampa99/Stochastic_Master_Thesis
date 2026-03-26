@@ -448,20 +448,20 @@ If instead $\Tr(\hat \rho^2)<1$, the state is mixed. The quantity
 \end{equation}
 is called the purity. It provides a simple measure of the degree of mixedness of the state.
 
-A key conceptual point is that the ensemble decomposition of a mixed state is, in general, not unique. Different ensembles may define the same density operator and therefore the same statistical predictions for all observables. For a qubit, for instance,
+A key conceptual point is that the ensemble decomposition of a mixed state is, in general, not unique. Different ensembles may define the same density operator and therefore the same statistical predictions for all observables. For instance, by considering two generic orthonormal basis for a two-level system we have:
 \begin{equation}
-	\frac{1}{2}\dyad{0}{0}+\frac{1}{2}\dyad{1}{1}
+	\frac{1}{2}\dyad{v_1}{v_1}+\frac{1}{2}\dyad{v_2}{v_2}
 	=
-	\frac{1}{2}\dyad{+}{+}+\frac{1}{2}\dyad{-}{-}
+	\frac{1}{2}\dyad{w_1}{w_1}+\frac{1}{2}\dyad{w_2}{w_2}
 	=
-	\frac{\id}{2},
+	\frac{\id}{2}.
 	\label{eq:intro_qm_nonuniqueness_ensemble_decomposition}
 \end{equation}
-where $\ket{\pm}=\left(\ket{0}\pm\ket{1}\right)/\sqrt{2}$. The two ensembles correspond to different preparation procedures, but they define the same statistical operator. Hence, from the point of view of measurement statistics, they represent the same state.
+The two ensembles correspond to different preparation procedures, but they define the same statistical operator. Hence, from the point of view of measurement statistics, they represent the same state.
 
 This observation is of fundamental importance. It shows that the density operator is the physically relevant object, whereas the ensemble decomposition is not unique and should not be regarded as part of the intrinsic definition of the state. This point will become even more important in the next chapter, where mixed states will arise not only from classical uncertainty in the preparation, but also from the reduced description of subsystems entangled with external degrees of freedom.
 
-\subsection{Two-level systems and preferred bases}
+\subsection{Two-level systems (qubits)}
 \label{subsec:two_level_systems_and_preferred_bases}
 
 We now specialize to a two-level system, or qubit. Its Hilbert space is $\mathds{C}^2$. We choose as computational basis the orthonormal basis
@@ -515,9 +515,6 @@ Up to a global phase, it can always be parametrized as
 \end{equation}
 with $\theta\in[0,\pi]$ and $\phi\in[0,2\pi)$. The corresponding pure-state density operator is simply $\hat \rho_\psi=\dyad{\psi}{\psi}$.
 
-\subsection{Bloch representation and Bloch sphere}
-\label{subsec:bloch_representation_and_bloch_sphere}
-
 Since $\{\id,\sigma_x,\sigma_y,\sigma_z\}$ is a basis for the space of $2\times 2$ matrices, every qubit density operator admits the decomposition
 \begin{equation}
 	\hat \rho
@@ -544,7 +541,7 @@ The components of $\vec r$ are obtained as expectation values of the Pauli opera
 \end{equation}
 since $\Tr(\sigma_k)=0$ and $\Tr(\sigma_j\sigma_k)=2\delta_{jk}$.
 
-For the pure state in eq.~\eqref{eq:intro_qm_qubit_state_bloch_parametrization}, one finds
+For the pure state in Eq.~\eqref{eq:intro_qm_qubit_state_bloch_parametrization}, one finds
 \begin{equation}
 	r_x=\sin\theta\cos\phi,
 	\qquad
@@ -697,7 +694,7 @@ with initial condition
 	\hat U(t_0,t_0)=\id.
 	\label{eq:intro_qm_initial_condition_propagator}
 \end{equation}
-This is the evolution equation for the time-evolution operator. By applying it to the initial state $\ket{\psi(t_0)}$, one immediately obtains the Schrödinger equation
+This is the evolution equation for the time-evolution operator. By applying it to the initial state $\ket{\psi(t_0)}$, one immediately obtains the Schrödinger equation, already introduced in Eq.\eqref{eq:intro_qm_schrodinger_equation}
 \begin{equation}
 	i\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)}=\hat H(t)\ket{\psi(t)}.
 	\label{eq:intro_qm_schrodinger_equation_state}
@@ -1371,6 +1368,8 @@ Thus, concurrence is not only an entanglement monotone, but also a complete sepa
 \end{equation}
 as expected for any physically meaningful measure of bipartite entanglement.
 
+%%%ENTANGLEMENT OF FORMATION
+\begin{comment}
 Finally, concurrence is directly related to the entanglement of formation. For two qubits, Wootters showed that
 \begin{equation}
 	E_F(\hat \rho)
@@ -1388,6 +1387,8 @@ where
 is the binary entropy. This relation is particularly important because it shows that concurrence is not just an auxiliary quantity: it provides a direct route to one of the most physically meaningful bipartite entanglement measures.
 
 The concurrence is therefore especially convenient in the two-qubit setting. It vanishes exactly on separable states, reaches its maximal value on Bell states, admits a simple expression for pure states, and, remarkably, remains analytically computable for arbitrary mixed states. For this reason, it will be one of the main tools employed throughout this thesis whenever two-qubit entanglement needs to be quantified explicitly.
+\end{comment}
+
 
 \subsection{Generic multipartite systems and collective spin observables}
 \label{subsec:multipartite_systems_and_collective_spin_operators}
@@ -1491,7 +1492,7 @@ while
 	a\ket{000}+b\ket{011}-c\ket{101}-d\ket{110}.
 	\label{eq:intro_qm_sigma_z_first_qubit_generic_example}
 \end{equation}
-These explicit examples are useful because they show that a local operator on a multipartite system is not a small operator: it still acts on the full Hilbert space, but in a factorized way.
+These explicit examples are useful because they show that a local operator on a multipartite system still acts on the full Hilbert space, but in a factorized way.
 
 More generally, if \(\hat A\) acts on subsystem \(k\) and \(\hat B\) acts on subsystem \(\ell\), with \(k\neq \ell\), then one defines the corresponding two-body operator as
 \begin{equation}
@@ -1644,7 +1645,7 @@ Spin squeezing is then characterized through the minimal variance in the plane o
 	(\Delta \hat J_{\mathbf{n}_\perp})^2.
 	\label{eq:intro_qm_minimal_transverse_variance_definition}
 \end{equation}
-If the mean spin points along the \(z\) axis, one finds
+If the mean spin points along the \(z\) axis, one finds (see Appendix \ref{app:derivation_minimal_transverse_variance_mean_spin_z})
 \begin{equation}
 	(\Delta \hat J_\perp)^2_{\min}
 	=
@@ -1655,7 +1656,7 @@ If the mean spin points along the \(z\) axis, one finds
 	\sqrt{
 		\langle \hat J_x^2-\hat J_y^2\rangle^2
 		+
-		\langle [\hat J_x,\hat J_y]_+\rangle^2
+		\langle \{\hat J_x,\hat J_y\}\rangle^2
 	}
 	\right].
 	\label{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}

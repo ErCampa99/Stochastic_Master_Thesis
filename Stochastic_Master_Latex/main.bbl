@@ -993,7 +993,298 @@
       \verb 10.1016/0003-4916(71)90108-4
       \endverb
     \endentry
+    \entry{GenAlb01}{misc}{}{}
+      \name{author}{2}{}{%
+        {{hash=63e1d848eeb7d57e12f168babd42c4db}{%
+           family={Albarelli},
+           familyi={A\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=2fe1574f5b1248522d44924664f5f6ef}{%
+           family={Genoni},
+           familyi={G\bibinitperiod},
+           given={Marco\bibnamedelima G.},
+           giveni={M\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{fullhash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{fullhashraw}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{bibnamehash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{authorbibnamehash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{authornamehash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{authorfullhash}{da2c70b39f28166423e4b0e2a916551b}
+      \strng{authorfullhashraw}{da2c70b39f28166423e4b0e2a916551b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{month}{12}
+      \field{title}{A pedagogical introduction to continuously monitored quantum systems and measurement-based feedback}
+      \field{year}{2023}
+      \verb{eprint}
+      \verb 2312.13214
+      \endverb
+    \endentry
+    \entry{WisMil10}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=d7fa9c56b64ff01adb56e14f56d12acc}{%
+           family={Wiseman},
+           familyi={W\bibinitperiod},
+           given={Howard\bibnamedelima M.},
+           giveni={H\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+        {{hash=b4118e58557e2103034c7d84dadd0c73}{%
+           family={Milburn},
+           familyi={M\bibinitperiod},
+           given={Gerard\bibnamedelima J.},
+           giveni={G\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Cambridge}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{fullhash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{fullhashraw}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{bibnamehash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{authorbibnamehash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{authornamehash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{authorfullhash}{4bafae639084d9be7a08b1aa96a20a2e}
+      \strng{authorfullhashraw}{4bafae639084d9be7a08b1aa96a20a2e}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quantum Measurement and Control}
+      \field{year}{2010}
+    \endentry
+    \entry{Cic17}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=8fab19c70c3688e161c53e359229f20c}{%
+           family={Ciccarello},
+           familyi={C\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{fullhash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{fullhashraw}{8fab19c70c3688e161c53e359229f20c}
+      \strng{bibnamehash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{authorbibnamehash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{authornamehash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{authorfullhash}{8fab19c70c3688e161c53e359229f20c}
+      \strng{authorfullhashraw}{8fab19c70c3688e161c53e359229f20c}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Quantum Measurements and Quantum Metrology}
+      \field{title}{Collision models in quantum optics}
+      \field{volume}{4}
+      \field{year}{2017}
+      \field{pages}{53\bibrangedash 63}
+      \range{pages}{11}
+      \verb{doi}
+      \verb 10.1515/qmetro-2017-0007
+      \endverb
+      \verb{eprint}
+      \verb 1712.04994
+      \endverb
+    \endentry
+    \entry{CicLorGioPal22}{article}{}{}
+      \name{author}{4}{}{%
+        {{hash=8fab19c70c3688e161c53e359229f20c}{%
+           family={Ciccarello},
+           familyi={C\bibinitperiod},
+           given={Francesco},
+           giveni={F\bibinitperiod}}}%
+        {{hash=ba7f2cd7c9b47217dbe08a8fcff2a332}{%
+           family={Lorenzo},
+           familyi={L\bibinitperiod},
+           given={Salvatore},
+           giveni={S\bibinitperiod}}}%
+        {{hash=66fcb193a88a5437214d71986d88e057}{%
+           family={Giovannetti},
+           familyi={G\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=b99041d032f3468fcf58d3936b74f181}{%
+           family={Palma},
+           familyi={P\bibinitperiod},
+           given={Giuseppe\bibnamedelima M.},
+           giveni={G\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
+      \strng{fullhash}{ee98a8ec85b09407c08d41ab0898dd2b}
+      \strng{fullhashraw}{ee98a8ec85b09407c08d41ab0898dd2b}
+      \strng{bibnamehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
+      \strng{authorbibnamehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
+      \strng{authornamehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
+      \strng{authorfullhash}{ee98a8ec85b09407c08d41ab0898dd2b}
+      \strng{authorfullhashraw}{ee98a8ec85b09407c08d41ab0898dd2b}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{quant-ph}
+      \field{eprinttype}{arXiv}
+      \field{journaltitle}{Physics Reports}
+      \field{title}{Quantum collision models: Open system dynamics from repeated interactions}
+      \field{volume}{954}
+      \field{year}{2022}
+      \field{pages}{1\bibrangedash 70}
+      \range{pages}{70}
+      \verb{doi}
+      \verb 10.1016/j.physrep.2022.01.001
+      \endverb
+      \verb{eprint}
+      \verb 2106.11974
+      \endverb
+    \endentry
+    \entry{Par92}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=f392ff36339876271218bc2a12e7b6e7}{%
+           family={Parthasarathy},
+           familyi={P\bibinitperiod},
+           given={K.\bibnamedelimi R.},
+           giveni={K\bibinitperiod\bibinitdelim R\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Basel}%
+      }
+      \list{publisher}{1}{%
+        {Birkhäuser}%
+      }
+      \strng{namehash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{fullhash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{fullhashraw}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{bibnamehash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{authorbibnamehash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{authornamehash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{authorfullhash}{f392ff36339876271218bc2a12e7b6e7}
+      \strng{authorfullhashraw}{f392ff36339876271218bc2a12e7b6e7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{An Introduction to Quantum Stochastic Calculus}
+      \field{year}{1992}
+    \endentry
+    \entry{Lin76}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=676170c69cd0d1740b6220f5513f99c1}{%
+           family={Lindblad},
+           familyi={L\bibinitperiod},
+           given={Göran},
+           giveni={G\bibinitperiod}}}%
+      }
+      \strng{namehash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{fullhash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{fullhashraw}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{bibnamehash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{authorbibnamehash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{authornamehash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{authorfullhash}{676170c69cd0d1740b6220f5513f99c1}
+      \strng{authorfullhashraw}{676170c69cd0d1740b6220f5513f99c1}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Communications in Mathematical Physics}
+      \field{number}{2}
+      \field{title}{On the generators of quantum dynamical semigroups}
+      \field{volume}{48}
+      \field{year}{1976}
+      \field{pages}{119\bibrangedash 130}
+      \range{pages}{12}
+      \verb{doi}
+      \verb 10.1007/BF01608499
+      \endverb
+    \endentry
+    \entry{GKS76}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=e6ca8675f575b55af15904865727278c}{%
+           family={Gorini},
+           familyi={G\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=9423fb51e60c3b76524923e2829e9081}{%
+           family={Kossakowski},
+           familyi={K\bibinitperiod},
+           given={Andrzej},
+           giveni={A\bibinitperiod}}}%
+        {{hash=7dc569f218acfedd693bc32b20ffeaf8}{%
+           family={Sudarshan},
+           familyi={S\bibinitperiod},
+           given={E.\bibnamedelimi C.\bibnamedelimi G.},
+           giveni={E\bibinitperiod\bibinitdelim C\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \strng{namehash}{18f97f815940a7c0a511650deebc1909}
+      \strng{fullhash}{18f97f815940a7c0a511650deebc1909}
+      \strng{fullhashraw}{18f97f815940a7c0a511650deebc1909}
+      \strng{bibnamehash}{18f97f815940a7c0a511650deebc1909}
+      \strng{authorbibnamehash}{18f97f815940a7c0a511650deebc1909}
+      \strng{authornamehash}{18f97f815940a7c0a511650deebc1909}
+      \strng{authorfullhash}{18f97f815940a7c0a511650deebc1909}
+      \strng{authorfullhashraw}{18f97f815940a7c0a511650deebc1909}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Journal of Mathematical Physics}
+      \field{number}{5}
+      \field{title}{Completely positive dynamical semigroups of {N}-level systems}
+      \field{volume}{17}
+      \field{year}{1976}
+      \field{pages}{821\bibrangedash 825}
+      \range{pages}{5}
+      \verb{doi}
+      \verb 10.1063/1.522979
+      \endverb
+    \endentry
+    \entry{Jac06}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=cf766a0f21ee0f8c045909373d67177e}{%
+           family={Jacobs},
+           familyi={J\bibinitperiod},
+           given={Kurt},
+           giveni={K\bibinitperiod}}}%
+        {{hash=a411f1fbd416b5b9ae41109aa1d370f0}{%
+           family={Steck},
+           familyi={S\bibinitperiod},
+           given={Daniel\bibnamedelima A.},
+           giveni={D\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \strng{namehash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{fullhash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{fullhashraw}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{bibnamehash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{authorbibnamehash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{authornamehash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{authorfullhash}{a096bcf325acc8a25ac999e4fc2841a7}
+      \strng{authorfullhashraw}{a096bcf325acc8a25ac999e4fc2841a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Contemporary Physics}
+      \field{number}{5}
+      \field{title}{A straightforward introduction to continuous quantum measurement}
+      \field{volume}{47}
+      \field{year}{2006}
+      \field{pages}{279\bibrangedash 303}
+      \range{pages}{25}
+      \verb{doi}
+      \verb 10.1080/00107510601101934
+      \endverb
+    \endentry
   \enddatalist
+  \missing{Wi}
 \endrefsection
 \endinput
 
