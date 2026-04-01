@@ -543,7 +543,7 @@ This point is conceptually important. The Lindblad master equation provides a co
 
 This leads to a more refined dynamical description. Instead of a deterministic equation for the averaged state, one obtains a stochastic equation for the conditional state \cite{Jac06}, that is, for the state of the system given the measurement record accumulated up to time \(t\). The corresponding equations are the stochastic master equations. Their role is to describe how the system state is continuously updated as information is progressively extracted from the output field through a measurement process \cite{Vac24,GenAlb01}.
 
-At this stage, the notion of unravelling becomes central. The unconditional master equation fixes the average reduced dynamics, but it does not determine a unique conditioned evolution. In fact, the same Lindblad equation could be associated with different stochastic processes, depending on how the environment is monitored. Each of these stochastic descriptions is called an \textbf{unravelling of the master equation}.
+At this stage, the notion of unravelling becomes central. The unconditional master equation fixes the average reduced dynamics, but it does not determine a unique conditioned evolution. In fact, the same Lindblad equation could be associated with different stochastic processes, depending on how the environment is monitored. Each of these stochastic descriptions is called an unravelling of the master equation.
 
 The unconditional state \(\rho(t)\) is a mixed state that results from averaging over all the possible measurement records, whether these records are actually observed or not. An unravelling resolves this average evolution into individual conditioned trajectories. Each trajectory corresponds to one possible realization of the measurement record and therefore to one possible conditional evolution of the system. When one averages over all these trajectories, the unconditional state is recovered:
 \begin{equation}
@@ -558,38 +558,7 @@ Two paradigmatic examples are particularly important. If the output field is mon
 
 From a physical point of view, continuously monitored quantum systems lie exactly at this interface between dissipation and information. On the one hand, the coupling to the environment produces decoherence and irreversible reduced dynamics. On the other hand, the same coupling opens the possibility of observing the output field and updating the system state conditionally on the acquired record. Stochastic master equations are the mathematical tool that captures this interplay between backaction and information gain.
 
-\begin{comment}
-Let's delve into the math. For simplicity, we first consider a single monitored channel \(\hat c\) with rate \(\gamma\).
-At each infinitesimal step, the joint state before the measurement is still taken in the factorized form
-\begin{equation}
-	\hat R(t)=\rho^{(c)}(t)\otimes \dyad{0}{0}_t,
-	\label{eq:oqs_factorized_conditional_state}
-\end{equation}
-and after the infinitesimal interaction,
-\begin{equation}
-	\hat R(t+dt)
-	=
-	\hat U(t+dt,t)\,
-	\hat R(t)\,
-	\hat U^\dagger(t+dt,t).
-	\label{eq:oqs_joint_state_after_interaction}
-\end{equation}
-If the measurement on the output time bin is described by projectors $\{\hat \Pi_j\}$, the conditional state associated with outcome $j$ is
-\begin{equation}
-	\rho^{(c)}_j(t+dt)
-	=
-	\frac{\Tr_t[(\id\otimes \hat \Pi_j)\hat R(t+dt)]}{p_j(t+dt)},
-	\label{eq:oqs_general_conditional_state}
-\end{equation}
-where
-\begin{equation}
-	p_j(t+dt)
-	=
-	\Tr[(\id\otimes \hat \Pi_j)\hat R(t+dt)]
-	\label{eq:oqs_general_outcome_probability}
-\end{equation}
-is the corresponding outcome probability.
-\end{comment}
+
 
 \subsection{Photodetection, the quantum-jump unravelling}
 \label{subsec:photodetection_quantum_jump_unravelling}
@@ -668,9 +637,26 @@ If no click is observed, the state is updated according to
 \begin{equation}
 	\rho_c(t+dt)
 	=
-	\frac{\hat M_0 \rho_c(t)\hat M_0^\dagger}{p_0}.
+	\frac{\hat M_0 \rho_c(t)\hat M_0^\dagger}{p_0}
+	\approx \rho_c(t) - \frac{\gamma}{2}\,\mathcal{H}[\hat c^\dagger \hat c]\,\rho_c(t)\,dt,
+	.
 	\label{eq:sme_photodetection_no_click_update_exact}
 \end{equation}
+
+where
+\begin{equation}
+	\mathcal{H}[\hat A]\rho
+	=
+	\hat A\rho+\rho \hat A^\dagger
+	-
+	\Tr\!\left[
+	(\hat A+\hat A^\dagger)\rho
+	\right]\rho.
+	\label{eq:homodyne_H_superoperator_definition}
+\end{equation}
+
+is the definition of the superoperator $\mathcal{H}$
+
 Expanding up to first order in \(dt\), one finds
 \begin{equation}
 	\rho_c(t+dt)
@@ -898,19 +884,8 @@ By inserting Eqs.~\eqref{eq:homodyne_unnormalized_state_expanded} and \eqref{eq:
 	\sqrt{\gamma}\,
 	\mathcal{H}\!\left[\hat c\,e^{i\phi}\right]\rho_c(t)\,dw_t
 	+
-	o(\gamma\,dt),
+	o(\gamma\,dt).
 	\label{eq:homodyne_state_update_stochastic_part}
-\end{equation}
-where
-\begin{equation}
-	\mathcal{H}[\hat A]\rho
-	=
-	\hat A\rho+\rho \hat A^\dagger
-	-
-	\Tr\!\left[
-	(\hat A+\hat A^\dagger)\rho
-	\right]\rho.
-	\label{eq:homodyne_H_superoperator_definition}
 \end{equation}
 Since averaging over the measurement outcomes must reproduce the unconditional evolution, the deterministic contribution of order \(dt\) is uniquely fixed by the Lindblad master equation. One finally obtains
 \begin{equation}
@@ -1028,7 +1003,9 @@ where the generalized Kraus operator is
 	\sqrt{\eta\gamma}\,\hat c\,e^{i\phi}\,dy_t.
 	\label{eq:homodyne_generalized_kraus_operator}
 \end{equation}
+
 This formulation makes the complete positivity of each infinitesimal conditioned step explicit. The first term describes the monitored part of the evolution associated with the observed homodyne record, while the second term accounts for the unobserved fraction of the output channel due to the finite detection efficiency.
+
 
 \begin{comment}
 The quadrature selected by the measurement is fixed by the phase \(\phi\) of the local oscillator. At the infinitesimal level, the measured bath observable is
@@ -1234,7 +1211,7 @@ In both cases, the single-qubit dynamics already contains the essential physical
 \subsection{Single-qubit spontaneous emission}
 \label{subsec:single_qubit_spontaneous_emission}
 
-We begin with spontaneous emission. In the convention adopted throughout this thesis, \(\hat \sigma_z\ket{0}=+\ket{0}\) and \(\hat \sigma_z\ket{1}=-\ket{1}\), so that \(\ket{0}\) is the ground state and \(\ket{1}\) is the excited state. The lowering and raising operators are therefore
+We begin with spontaneous emission. In the convention adopted throughout this thesis, \(\hat \sigma_z\ket{0}=+\ket{0}\) and \(\hat \sigma_z\ket{1}=-\ket{1}\), so that \(\ket{0}\) is the excited state and \(\ket{1}\) is the ground state. The lowering and raising operators are therefore
 \begin{equation}
 	\hat \sigma_- = \dyad{0}{1},
 	\qquad

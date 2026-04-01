@@ -1258,8 +1258,8 @@
       \strng{authornamehash}{8fab19c70c3688e161c53e359229f20c}
       \strng{authorfullhash}{8fab19c70c3688e161c53e359229f20c}
       \strng{authorfullhashraw}{8fab19c70c3688e161c53e359229f20c}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{quant-ph}
@@ -1308,8 +1308,8 @@
       \strng{authornamehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
       \strng{authorfullhash}{ee98a8ec85b09407c08d41ab0898dd2b}
       \strng{authorfullhashraw}{ee98a8ec85b09407c08d41ab0898dd2b}
-      \field{sortinit}{4}
-      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{quant-ph}
@@ -1462,6 +1462,95 @@
       \range{pages}{25}
       \verb{doi}
       \verb 10.1080/00107510601101934
+      \endverb
+    \endentry
+    \entry{Lewalle21}{article}{}{}
+      \name{author}{6}{}{%
+        {{hash=ea12587e6436afa459bd6e84088cd701}{%
+           family={Lewalle},
+           familyi={L\bibinitperiod},
+           given={Philippe},
+           giveni={P\bibinitperiod}}}%
+        {{hash=d85e976292136da0459b99b9a34d38e1}{%
+           family={Elouard},
+           familyi={E\bibinitperiod},
+           given={Cyril},
+           giveni={C\bibinitperiod}}}%
+        {{hash=6d469906d4583745e5e22035e520e2d7}{%
+           family={Manikandan},
+           familyi={M\bibinitperiod},
+           given={Sreenath\bibnamedelima K.},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+        {{hash=a5feef7037734b4c6b6a7360e2dff6e2}{%
+           family={Qian},
+           familyi={Q\bibinitperiod},
+           given={Xiao-Feng},
+           giveni={X\bibinithyphendelim F\bibinitperiod}}}%
+        {{hash=889eb58e1f56a4bc2c1b70f5f468acf9}{%
+           family={Eberly},
+           familyi={E\bibinitperiod},
+           given={Joseph\bibnamedelima H.},
+           giveni={J\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=a49c6e21a33839255b732ee3085d9548}{%
+           family={Jordan},
+           familyi={J\bibinitperiod},
+           given={Andrew\bibnamedelima N.},
+           giveni={A\bibinitperiod\bibinitdelim N\bibinitperiod}}}%
+      }
+      \strng{namehash}{9bf676584df74eecf6d77ee5ba9b3677}
+      \strng{fullhash}{2364c15bac620821d885dbde7f809418}
+      \strng{fullhashraw}{2364c15bac620821d885dbde7f809418}
+      \strng{bibnamehash}{9bf676584df74eecf6d77ee5ba9b3677}
+      \strng{authorbibnamehash}{9bf676584df74eecf6d77ee5ba9b3677}
+      \strng{authornamehash}{9bf676584df74eecf6d77ee5ba9b3677}
+      \strng{authorfullhash}{2364c15bac620821d885dbde7f809418}
+      \strng{authorfullhashraw}{2364c15bac620821d885dbde7f809418}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Advances in Optics and Photonics}
+      \field{number}{3}
+      \field{title}{Entanglement of a pair of quantum emitters via continuous fluorescence measurements: a tutorial}
+      \field{volume}{13}
+      \field{year}{2021}
+      \field{pages}{517}
+      \range{pages}{1}
+    \endentry
+    \entry{Braunstein98}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=728657c098db3e06cad549c0d94b5d51}{%
+           family={Braunstein},
+           familyi={B\bibinitperiod},
+           given={Samuel\bibnamedelima L.},
+           giveni={S\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+        {{hash=d3afdccd88f141afe4f8fc53b8c25083}{%
+           family={Kimble},
+           familyi={K\bibinitperiod},
+           given={H.\bibnamedelimi Jeff},
+           giveni={H\bibinitperiod\bibinitdelim J\bibinitperiod}}}%
+      }
+      \strng{namehash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{fullhash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{fullhashraw}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{bibnamehash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{authorbibnamehash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{authornamehash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{authorfullhash}{ed9d7a53bf7fab114388970c2b686962}
+      \strng{authorfullhashraw}{ed9d7a53bf7fab114388970c2b686962}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{4}
+      \field{title}{Teleportation of Continuous Quantum Variables}
+      \field{volume}{80}
+      \field{year}{1998}
+      \field{pages}{869\bibrangedash 872}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.80.869
       \endverb
     \endentry
   \enddatalist

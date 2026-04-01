@@ -222,7 +222,7 @@ The last equality follows by applying the Hadamard unitary
 \end{equation}
 to the operator vector $\big(\sigma_z^{(1)},\sigma_z^{(2)}\big)^{T}$.
 
-\section*{CSS states reach Standard Quantum Limit2}
+\section*{CSS states reach Standard Quantum Limit}
 \label{app:derivation_CSS_states_reach_SQL}
 We now show that coherent spin states reach the standard quantum limit. 
 \\
@@ -334,3 +334,296 @@ The same conclusion can be expressed in terms of the Wineland squeezing paramete
 Hence coherent spin states do not provide any metrological enhancement beyond the standard quantum limit. They exactly saturate it.
 
 Finally, although the derivation above was carried out for the state polarized along \(x\), the result is completely general. Any coherent spin state is obtained from \(\ket{\mathrm{CSS}}_x\) by a collective rotation. Such a rotation changes the orientation of the mean spin, but it does not change its length nor the isotropic structure of the transverse fluctuations. Therefore, every coherent spin state reaches the standard quantum limit.
+
+
+\section*{Analyzing evolution and jumps: even-parity channel}
+\label{app:bridge_proof}
+
+Now we want to prove that evolving $|++\rangle$ with liouvillian as $\eqref{ME_sigma_z}$ is totally equivalent in evolving in time the first click state for both channel. We show it explicitly for the even-parity case, meaning:
+
+\begin{equation}
+	\Cp \cdot e^{\liouvillian_{(1-\eta)\gamma}^{(2)} t} [|++\rangle \langle ++|] \cdot \Cp = e^{\liouvillian_{(1-\eta)\gamma}^{(2)} t} [|\psi_- \rangle \langle \psi_-|],
+	\label{Bridge_proof}
+\end{equation}
+
+where $ \liouvillian_{(1-\eta)\gamma}^{(2)}$ is the liouvillian in the ME.
+
+Using the collective jump operators $\hat C_\pm$, we write
+\begin{equation}
+	\mathcal{L}^{(2)}_{(1-\eta)\gamma}[\rho_t]
+	=
+	(1-\eta)\frac{\gamma}{2}
+	\Big(
+	\mathcal{D}[\hat{C}_+]\rho_t
+	+
+	\mathcal{D}[\hat{C}_-]\rho_t
+	\Big).
+	\label{eq:Liouv_unmonitored_collective}
+\end{equation}
+
+Since the unmonitored dephasing channel acts locally on each qubit, for product inputs
+the evolution factorizes. In particular,
+\begin{equation}
+	e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma}\,t}\!\left[\ket{++}\!\bra{++}\right]
+	=
+	\Big(
+	e^{\mathcal{L}^{(1)}_{(1-\eta)\gamma}\,t}\!\left[\ket{+}\!\bra{+}\right]
+	\Big)
+	\otimes
+	\Big(
+	e^{\mathcal{L}^{(1)}_{(1-\eta)\gamma}\,t}\!\left[\ket{+}\!\bra{+}\right]
+	\Big),
+	\label{eq:factorization_single_qubit}
+\end{equation}
+where $\mathcal{L}^{(1)}_{(1-\eta)\gamma}$ denotes the corresponding single-qubit Liouvillian, the ``single-qubit dephasing'' channel.
+
+We vectrize the single-qubit problem in the computational basis $\{\ket{0},\ket{1}\}$.
+Let $\rho(t)$ be a single-qubit density operator written as
+\begin{equation}
+	\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00}(t) & \alpha_{01}(t)\\
+		\alpha_{10}(t) & \alpha_{11}(t)
+	\end{pmatrix},
+	\label{eq:rho_single_qubit_param}
+\end{equation}
+and its equation of motion
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(1)}_{(1-\eta)\gamma}\!\left[\rho(t)\right].
+	\label{eq:single_qubit_ME_param}
+\end{equation}
+In the computational basis, the superoperator $\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]$
+can be represented through its matrix elements as
+\begin{equation}
+	\mathcal{L}^{(1)}_{(1-\eta)\gamma}\!\left[\rho(t)\right]
+	\ \equiv\
+	\begin{pmatrix}
+		\bra{0}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{0}
+		&
+		\bra{0}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{1}
+		\\[4pt]
+		\bra{1}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{0}
+		&
+		\bra{1}\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]\ket{1}
+	\end{pmatrix}.
+	\label{eq:Liouv_matrix_elements}
+\end{equation}
+Hence, to obtain the explicit differential equations for the coefficients
+$\alpha_{00}(t),\alpha_{01}(t),\alpha_{10}(t)$, one computes
+$\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]$ and projects it onto the computational basis.
+
+We consider the single-qubit dephasing generator (unmonitored part)
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(1)}_{\Gamma}[\rho(t)]
+	=\frac{\Gamma}{2}\Big(\sigma_z\,\rho(t)\,\sigma_z-\rho(t)\Big),
+\end{equation}
+
+Then
+\begin{equation}
+	\sigma_z\rho(t)\sigma_z=
+	\begin{pmatrix}
+		\alpha_{00}(t) & -\alpha_{01}(t)\\
+		-\alpha_{10}(t) & \alpha_{11}(t)
+	\end{pmatrix},
+\end{equation}
+and therefore
+\begin{equation}
+	\mathcal{L}^{(1)}_{(1-\eta)\gamma}[\rho(t)]
+	=
+	\frac{(1-\eta)\gamma}{2}
+	\begin{pmatrix}
+		0 & -2\alpha_{01}(t)\\
+		-2\alpha_{10}(t) & 0
+	\end{pmatrix}.
+\end{equation}
+Hence the populations are constants, while coherences decay exponentially:
+\begin{align}
+	\dot{\alpha}_{00}(t)&= \dot{\alpha}_{11}(t)=0,\\
+	\dot{\alpha}_{01}(t)&= \dot{\alpha}_{10}(t)=-(1-\eta)\gamma
+\end{align}
+so that
+\begin{equation}
+	\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00}(0) & \alpha_{01}(0)e^{-(1-\eta)\gamma t}\\
+		\alpha_{10}(0)e^{-(1-\eta)\gamma t} & \alpha_{11}(0)
+	\end{pmatrix}.
+	\label{eq:single_qubit_dephasing_solution}
+\end{equation}
+
+In particular, for $\rho(0)=\ket{+}\!\bra{+}$ one has $\alpha_{jk}=1/2 \,\forall j,k$, hence
+\begin{equation}
+	\rho_{+}(t)=
+	\begin{pmatrix}
+		\frac{1}{2} & \frac{1}{2}e^{-(1-\eta)\gamma t}\\[2pt]
+		\frac{1}{2}e^{-(1-\eta)\gamma t} & \frac{1}{2}
+	\end{pmatrix},
+	\qquad
+	\rho_{+}(t\to\infty)=\frac{\id_2}{2}.
+\end{equation}
+
+Since the channel acts independently on the two qubits,
+\begin{equation}
+	\rho_{++}(t)
+	=
+	e^{\mathcal{L}^{(2)}_{(1-\eta)\gamma}t}\!\left[\ket{++}\!\bra{++}\right]
+	=
+	\rho_{+}(t)\otimes\rho_{+}(t),
+\end{equation}
+where $\rho_{+}(t)$ is given in Eq.~\eqref{eq:single_qubit_dephasing_solution}.
+In the computational basis ordered as $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$, this yields
+\begin{equation}
+	\rho_{++}(t)
+	=
+	\frac{1}{4}
+	\begin{pmatrix}
+		1 & e^{-(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & e^{-2(1-\eta)\gamma t}\\
+		e^{-(1-\eta)\gamma t} & 1 & e^{-2(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t}\\
+		e^{-(1-\eta)\gamma t} & e^{-2(1-\eta)\gamma t} & 1 & e^{-(1-\eta)\gamma t}\\
+		e^{-2(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & e^{-(1-\eta)\gamma t} & 1
+	\end{pmatrix}.
+	\label{eq:rho_pp_dephasing}
+\end{equation}
+
+We now apply the collective operator $\Cp=\mathrm{diag}(-\sqrt{2},0,0,\sqrt{2})$, used to model the $+$ jump channel. Only the $\{\ket{00},\ket{11}\}$ block survives, and one finds
+
+\begin{equation}
+	C_+\,\rho_{++}(t)\,C_+^\dagger
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 0 & 0 & -e^{-2(1-\eta)\gamma t}\\
+		0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\
+		-e^{-2(1-\eta)\gamma t} & 0 & 0 & 1
+	\end{pmatrix}
+	\label{eq:LHS_result_Cplus}
+\end{equation}
+which is supported on the even subspace.
+
+At $t=0$,
+\begin{equation}
+	C_+\,\rho_{++}(0)\,C_+^\dagger
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1 & 0 & 0 & -1\\
+		0 & 0 & 0 & 0\\
+		0 & 0 & 0 & 0\\
+		-1 & 0 & 0 & 1
+	\end{pmatrix}
+	=
+	\ket{\phi_-}\!\bra{\phi_-}.
+\end{equation}
+
+We now compute the right-hand side
+\begin{equation}
+	e^{\mathcal{L}^{(2)}_{\gamma}t}\!\left[\ket{\phi_-}\!\bra{\phi_-}\right],
+\end{equation}
+and show that it matches the expression obtained for the LHS.
+
+The corresponding Liouvillian act as:
+\begin{equation}
+	\dot{\rho}(t)=\mathcal{L}^{(2)}_{\gamma}[\rho(t)]
+	=\frac{\gamma}{2}\Big(\mathcal{D}[\hat C_+]\rho(t)+\mathcal{D}[\hat C_-]\rho(t)\Big),
+	\label{eq:Liouv_collective_RHS}
+\end{equation}
+
+Since $\ket{\phi_-}$ has even $z$-parity, one has $\hat C_- \ket{\phi_-}=0$, hence
+\begin{equation}
+	\mathcal{D}[\hat C_-]\big(\ket{\phi_-}\!\bra{\phi_-}\big)=0,
+\end{equation}
+and the dynamics reduces to the $+$ channel.
+For parity-preserving states (block-diagonal with respect to even/odd parity) one has
+$[\rho,\Pi_z]=0$. In the even subspace $\mathrm{span}\{\ket{00},\ket{11}\}$, $\Pi_z=+\id$,
+hence $\Pi_z\rho+\rho\Pi_z=2\rho$ and therefore
+\begin{equation}
+	\mathcal{D}[\hat C_+]\rho
+	=\hat C_+ \rho \hat C_+-2\rho
+	\qquad \text{(even subspace)}.
+	\label{eq:Dplus_even}
+\end{equation}
+
+Restricting to the even basis $\{\ket{00},\ket{11}\}$, define the reduced $2\times2$ state
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00,00}(t) & \alpha_{00,11}(t)\\
+		\alpha_{11,00}(t) & \alpha_{11,11}(t)
+	\end{pmatrix}.
+\end{equation}
+In this basis,
+\begin{equation}
+	\tilde C_+
+	=\frac{1}{\sqrt{2}}
+	\begin{pmatrix}
+		-2 & 0\\
+		0 & +2
+	\end{pmatrix}
+	=\sqrt{2}\,\tilde\sigma_z,
+	\qquad
+	\tilde\sigma_z=
+	\begin{pmatrix}
+		-1&0\\
+		0&+1
+	\end{pmatrix}.
+\end{equation}
+Using Eq.~\eqref{eq:Dplus_even}, the reduced equation of motion becomes
+\begin{align}
+	\dot{\tilde\rho}(t)
+	&=\frac{\gamma}{2}\Big(\tilde C_+ \tilde\rho(t)\tilde C_+-2\tilde\rho(t)\Big)\nonumber\\
+	&=\frac{\gamma}{2}\Big(2\,\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z-2\tilde\rho(t)\Big)
+	=\gamma\Big(\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z-\tilde\rho(t)\Big).
+	\label{eq:reduced_ME_even}
+\end{align}
+Explicitly,
+\begin{equation}
+	\tilde\sigma_z\tilde\rho(t)\tilde\sigma_z
+	=
+	\begin{pmatrix}
+		\alpha_{00,00}(t) & -\alpha_{00,11}(t)\\
+		-\alpha_{11,00}(t) & \alpha_{11,11}(t)
+	\end{pmatrix},
+\end{equation}
+so that
+\begin{equation}
+	\dot{\tilde\rho}(t)
+	=
+	\gamma
+	\begin{pmatrix}
+		0 & -2\alpha_{00,11}(t)\\
+		-2\alpha_{11,00}(t) & 0
+	\end{pmatrix}.
+\end{equation}
+Hence the populations are constants and the coherences decay as $e^{-2\gamma t}$:
+\begin{equation}
+	\tilde\rho(t)=
+	\begin{pmatrix}
+		\alpha_{00,00}(0) & \alpha_{00,11}(0)e^{-2\gamma t}\\
+		\alpha_{11,00}(0)e^{-2\gamma t} & \alpha_{11,11}(0)
+	\end{pmatrix}.
+	\label{eq:reduced_solution_even}
+\end{equation}
+For $\tilde\rho(0)=\ket{\phi_-}\!\bra{\phi_-}$ one has
+\begin{equation}
+	\tilde\rho(t)=\frac{1}{2}
+	\begin{pmatrix}
+		1&-e^{-2\gamma t}\\
+		-e^{-2\gamma t}&1
+	\end{pmatrix}.
+\end{equation}
+Embedding back into the full computational basis $\{\ket{00},\ket{01},\ket{10},\ket{11}\}$ yields
+\begin{equation}
+	e^{\mathcal{L}^{(2)}_{\gamma}t}\!\left[\ket{\phi_-}\!\bra{\phi_-}\right]
+	=
+	\frac{1}{2}
+	\begin{pmatrix}
+		1&0&0&-e^{-2\gamma t}\\
+		0&0&0&0\\
+		0&0&0&0\\
+		-e^{-2\gamma t}&0&0&1
+	\end{pmatrix}
+	\label{eq:RHS_final_matrix}
+\end{equation}
+which matches the LHS expression upon the replacement $\gamma\mapsto(1-\eta)\gamma$ when interpreting
+$\mathcal{L}^{(2)}$ as the unmonitored part of the inefficient photodetection dynamics.

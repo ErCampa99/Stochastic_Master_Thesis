@@ -15,16 +15,16 @@
 \contentsline {section}{\numberline {1.5}Statistical ensembles and mixed states}{14}{section.1.5}%
 \contentsline {subsection}{\numberline {1.5.1}Two-level systems (qubits)}{16}{subsection.1.5.1}%
 \contentsline {section}{\numberline {1.6}Bipartite and multipartite systems}{17}{section.1.6}%
-\contentsline {subsection}{\numberline {1.6.1}Tensor-product structure and product bases}{18}{subsection.1.6.1}%
-\contentsline {subsection}{\numberline {1.6.2}Local operators, reduced states, and partial trace}{19}{subsection.1.6.2}%
+\contentsline {subsection}{\numberline {1.6.1}Tensor-product structure and product bases}{17}{subsection.1.6.1}%
+\contentsline {subsection}{\numberline {1.6.2}Local operators, reduced states, and partial trace}{18}{subsection.1.6.2}%
 \contentsline {subsection}{\numberline {1.6.3}Bell basis and parity sectors}{19}{subsection.1.6.3}%
 \contentsline {subsection}{\numberline {1.6.4}Separable and entangled states: definition and methods}{20}{subsection.1.6.4}%
 \contentsline {subsection}{\numberline {1.6.5}Concurrence for two-qubit states}{23}{subsection.1.6.5}%
 \contentsline {subsection}{\numberline {1.6.6}Generic multipartite systems and collective spin observables}{25}{subsection.1.6.6}%
-\contentsline {subsection}{\numberline {1.6.7}Standard quantum limit vs Heisenberg limit}{29}{subsection.1.6.7}%
-\contentsline {section}{\numberline {1.7}Spin squeezing}{30}{section.1.7}%
+\contentsline {subsection}{\numberline {1.6.7}Standard quantum limit vs Heisenberg limit}{28}{subsection.1.6.7}%
+\contentsline {section}{\numberline {1.7}Spin squeezing}{29}{section.1.7}%
 \contentsline {subsection}{\numberline {1.7.1}Collective spin operators and coherent spin states}{30}{subsection.1.7.1}%
-\contentsline {subsection}{\numberline {1.7.2}Kitagawa-Ueda and Wineland definitions}{31}{subsection.1.7.2}%
+\contentsline {subsection}{\numberline {1.7.2}Kitagawa-Ueda and Wineland definitions}{30}{subsection.1.7.2}%
 \contentsline {subsection}{\numberline {1.7.3}Spin squeezing and symmetric states}{32}{subsection.1.7.3}%
 \contentsline {chapter}{\numberline {2}Continuously Monitored Open Quantum Systems}{35}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Open quantum systems: formalism}{35}{section.2.1}%
@@ -37,27 +37,19 @@
 \contentsline {subsection}{\numberline {2.3.1}Photodetection, the quantum-jump unravelling}{45}{subsection.2.3.1}%
 \contentsline {subsection}{\numberline {2.3.2}Homodyne detection, a diffusive unravelling}{47}{subsection.2.3.2}%
 \contentsline {section}{\numberline {2.4}Relevant single-qubit paradigms}{50}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Single-qubit spontaneous emission}{51}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Single-qubit pure dephasing}{53}{subsection.2.4.2}%
-\contentsline {chapter}{\numberline {3}Two qubit independent dephasing system: looking for entanglement}{55}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Measurement-induced entanglement in the fluorescence scheme of Lewalle \textit {et al.}}{55}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Photodetection and average concurrence}{56}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}The role of homodyne phases and the meaning of Fig.~4}{57}{subsection.3.1.2}%
-\contentsline {subsection}{\numberline {3.1.3}Inefficient photodetection}{58}{subsection.3.1.3}%
-\contentsline {subsection}{\numberline {3.1.4}Summary of the lessons relevant for the present work}{59}{subsection.3.1.4}%
-\contentsline {section}{\numberline {3.2}Interferometric monitoring of two independent dephasing channels}{60}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}No-jump evolution of two-qubits}{62}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}First jump from $\ket {++}$}{63}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Subsequent jumps: two-state cyclicity}{65}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Dynamics of CSS states}{65}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Analyzing evolution and jumps: even-parity channel}{66}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Analyzing evolution and jumps: odd-parity channel case}{69}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Ensemble-averaged quantities over trajectories}{70}{subsection.3.2.7}%
-\contentsline {subsection}{\numberline {3.2.8}Spin-squeezing}{71}{subsection.3.2.8}%
-\contentsline {section}{\numberline {3.3}Homodyne detection}{75}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}No-information configurations in homodyne detection}{77}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Gram--Schmidt construction of the unraveling unitary}{78}{subsection.3.3.2}%
-\contentsline {chapter}{\numberline {4}Conclusions}{83}{chapter.4}%
-\contentsline {chapter}{Conclusions}{83}{chapter.4}%
-\contentsline {chapter}{Appendix}{85}{chapter*.2}%
-\contentsline {chapter}{Bibliography}{91}{chapter*.3}%
+\contentsline {subsection}{\numberline {2.4.1}Single-qubit spontaneous emission}{50}{subsection.2.4.1}%
+\contentsline {subsection}{\numberline {2.4.2}Single-qubit pure dephasing}{52}{subsection.2.4.2}%
+\contentsline {chapter}{\numberline {3}Entangling unravellings for quantum state engineering / Results}{55}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Measurement-induced entanglement in the fluorescence scheme}{55}{section.3.1}%
+\contentsline {subsection}{\numberline {3.1.1}Analyzing photodetection}{57}{subsection.3.1.1}%
+\contentsline {subsection}{\numberline {3.1.2}Optimal homodyne phases}{58}{subsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.1.3}Measurement inefficiency and physical implications}{60}{subsection.3.1.3}%
+\contentsline {section}{\numberline {3.2}Interferometric monitoring of two independent dephasing channels}{61}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Ideal photodetection: trivial no-click evolution and parity-resolving jumps}{63}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Dynamics of CSS states}{65}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Ensemble-averaged quantities over trajectories}{65}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Spin-squeezing}{66}{subsection.3.2.4}%
+\contentsline {chapter}{\numberline {4}Conclusions}{71}{chapter.4}%
+\contentsline {chapter}{Conclusions}{71}{chapter.4}%
+\contentsline {chapter}{Appendix}{73}{chapter*.5}%
+\contentsline {chapter}{Bibliography}{83}{chapter*.6}%
