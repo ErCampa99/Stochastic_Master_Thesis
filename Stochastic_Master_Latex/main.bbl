@@ -666,6 +666,187 @@
       \verb 10.1016/j.physrep.2009.02.004
       \endverb
     \endentry
+    \entry{Abb16}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=4620614ad34308ab8c2ee8d4a7df43d7}{%
+           family={Abbott},
+           familyi={A\bibinitperiod},
+           given={B.\bibnamedelimi P.},
+           giveni={B\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \strng{namehash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{fullhash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{fullhashraw}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{bibnamehash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{authorbibnamehash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{authornamehash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{authorfullhash}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \strng{authorfullhashraw}{d9799319ee6631a4a5c0d1ce9c963e79}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{6}
+      \field{title}{Observation of Gravitational Waves from a Binary Black Hole Merger}
+      \field{volume}{116}
+      \field{year}{2016}
+      \field{pages}{061102}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.116.061102
+      \endverb
+    \endentry
+    \entry{Cav81}{article}{}{}
+      \name{author}{1}{}{%
+        {{hash=0b6ecaa5ef5b6b5c7a86670582f15682}{%
+           family={Caves},
+           familyi={C\bibinitperiod},
+           given={Carlton\bibnamedelima M.},
+           giveni={C\bibinitperiod\bibinitdelim M\bibinitperiod}}}%
+      }
+      \strng{namehash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{fullhash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{fullhashraw}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{bibnamehash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{authorbibnamehash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{authornamehash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{authorfullhash}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \strng{authorfullhashraw}{0b6ecaa5ef5b6b5c7a86670582f15682}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review D}
+      \field{number}{8}
+      \field{title}{Quantum-mechanical noise in an interferometer}
+      \field{volume}{23}
+      \field{year}{1981}
+      \field{pages}{1693\bibrangedash 1708}
+      \range{pages}{16}
+      \verb{doi}
+      \verb 10.1103/PhysRevD.23.1693
+      \endverb
+    \endentry
+    \entry{Ace19}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=194a7071763e4f685901e59df9e140d8}{%
+           family={Acernese},
+           familyi={A\bibinitperiod},
+           given={F.},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{fullhash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{fullhashraw}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{bibnamehash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{authorbibnamehash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{authornamehash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{authorfullhash}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \strng{authorfullhashraw}{a7ac913e5d0d03ed70e9d795d9cdfd4a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Physical Review Letters}
+      \field{number}{23}
+      \field{title}{Increasing the Astrophysical Reach of the Advanced Virgo Detector via the Application of Squeezed Vacuum States of Light}
+      \field{volume}{123}
+      \field{year}{2019}
+      \field{pages}{231108}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1103/PhysRevLett.123.231108
+      \endverb
+    \endentry
+    \entry{GLM04}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=66fcb193a88a5437214d71986d88e057}{%
+           family={Giovannetti},
+           familyi={G\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=501c0933970931f080455b29b43e560d}{%
+           family={Lloyd},
+           familyi={L\bibinitperiod},
+           given={Seth},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f37f709832bd576552b54dc18d6a251a}{%
+           family={Maccone},
+           familyi={M\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{fullhash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{fullhashraw}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{bibnamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorbibnamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authornamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorfullhash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorfullhashraw}{1e703c613f5bf0ac95e47293a318cefb}
+      \field{extraname}{1}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Science}
+      \field{number}{5700}
+      \field{title}{Quantum-Enhanced Measurements: Beating the Standard Quantum Limit}
+      \field{volume}{306}
+      \field{year}{2004}
+      \field{pages}{1330\bibrangedash 1336}
+      \range{pages}{7}
+      \verb{doi}
+      \verb 10.1126/science.1104149
+      \endverb
+    \endentry
+    \entry{GLM11}{article}{}{}
+      \name{author}{3}{}{%
+        {{hash=66fcb193a88a5437214d71986d88e057}{%
+           family={Giovannetti},
+           familyi={G\bibinitperiod},
+           given={Vittorio},
+           giveni={V\bibinitperiod}}}%
+        {{hash=501c0933970931f080455b29b43e560d}{%
+           family={Lloyd},
+           familyi={L\bibinitperiod},
+           given={Seth},
+           giveni={S\bibinitperiod}}}%
+        {{hash=f37f709832bd576552b54dc18d6a251a}{%
+           family={Maccone},
+           familyi={M\bibinitperiod},
+           given={Lorenzo},
+           giveni={L\bibinitperiod}}}%
+      }
+      \strng{namehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{fullhash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{fullhashraw}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{bibnamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorbibnamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authornamehash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorfullhash}{1e703c613f5bf0ac95e47293a318cefb}
+      \strng{authorfullhashraw}{1e703c613f5bf0ac95e47293a318cefb}
+      \field{extraname}{2}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Nature Photonics}
+      \field{number}{4}
+      \field{title}{Advances in quantum metrology}
+      \field{volume}{5}
+      \field{year}{2011}
+      \field{pages}{222\bibrangedash 229}
+      \range{pages}{8}
+      \verb{doi}
+      \verb 10.1038/nphoton.2011.35
+      \endverb
+    \endentry
     \entry{KitagawaUeda93}{article}{}{}
       \name{author}{2}{}{%
         {{hash=2128f0d9f20b713e7afb473d0807577e}{%
@@ -687,8 +868,8 @@
       \strng{authornamehash}{224250dc30545ce7dc732bd6553c46fa}
       \strng{authorfullhash}{224250dc30545ce7dc732bd6553c46fa}
       \strng{authorfullhashraw}{224250dc30545ce7dc732bd6553c46fa}
-      \field{sortinit}{1}
-      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Physical Review A}
@@ -855,8 +1036,8 @@
       \strng{authornamehash}{3234476f84788f7bc9a1ecc336771ff0}
       \strng{authorfullhash}{3234476f84788f7bc9a1ecc336771ff0}
       \strng{authorfullhashraw}{3234476f84788f7bc9a1ecc336771ff0}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Physical Review A}
@@ -889,8 +1070,8 @@
       \strng{authornamehash}{f96f40e1a93b20df655d6a2169f6af52}
       \strng{authorfullhash}{f96f40e1a93b20df655d6a2169f6af52}
       \strng{authorfullhashraw}{f96f40e1a93b20df655d6a2169f6af52}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{isbn}{978-3-031-58217-2}
@@ -917,8 +1098,8 @@
       \strng{authornamehash}{2bc8594400eb90db0f0e5a9951514ec0}
       \strng{authorfullhash}{2bc8594400eb90db0f0e5a9951514ec0}
       \strng{authorfullhashraw}{2bc8594400eb90db0f0e5a9951514ec0}
-      \field{sortinit}{2}
-      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{The European Physical Journal Special Topics}
@@ -1077,8 +1258,8 @@
       \strng{authornamehash}{8fab19c70c3688e161c53e359229f20c}
       \strng{authorfullhash}{8fab19c70c3688e161c53e359229f20c}
       \strng{authorfullhashraw}{8fab19c70c3688e161c53e359229f20c}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{quant-ph}
@@ -1127,8 +1308,8 @@
       \strng{authornamehash}{5eb3bbcd2a705ae83ec7858ae723ebfc}
       \strng{authorfullhash}{ee98a8ec85b09407c08d41ab0898dd2b}
       \strng{authorfullhashraw}{ee98a8ec85b09407c08d41ab0898dd2b}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{eprintclass}{quant-ph}
@@ -1168,8 +1349,8 @@
       \strng{authornamehash}{f392ff36339876271218bc2a12e7b6e7}
       \strng{authorfullhash}{f392ff36339876271218bc2a12e7b6e7}
       \strng{authorfullhashraw}{f392ff36339876271218bc2a12e7b6e7}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{An Introduction to Quantum Stochastic Calculus}
@@ -1191,8 +1372,8 @@
       \strng{authornamehash}{676170c69cd0d1740b6220f5513f99c1}
       \strng{authorfullhash}{676170c69cd0d1740b6220f5513f99c1}
       \strng{authorfullhashraw}{676170c69cd0d1740b6220f5513f99c1}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Communications in Mathematical Physics}
@@ -1232,8 +1413,8 @@
       \strng{authornamehash}{18f97f815940a7c0a511650deebc1909}
       \strng{authorfullhash}{18f97f815940a7c0a511650deebc1909}
       \strng{authorfullhashraw}{18f97f815940a7c0a511650deebc1909}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Journal of Mathematical Physics}
@@ -1268,8 +1449,8 @@
       \strng{authornamehash}{a096bcf325acc8a25ac999e4fc2841a7}
       \strng{authorfullhash}{a096bcf325acc8a25ac999e4fc2841a7}
       \strng{authorfullhashraw}{a096bcf325acc8a25ac999e4fc2841a7}
-      \field{sortinit}{3}
-      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Contemporary Physics}

@@ -1,4 +1,4 @@
-\chapter{Continuously Monitored Systems}
+\chapter{Continuously Monitored Open Quantum Systems}
 
 The formulation presented in Chapter~\ref{chap:introduction_to_quantum_mechanics} provides the standard description of closed and isolated quantum systems. In that setting, the state is associated with a vector in Hilbert space, the dynamics is unitary, and measurements are described through the Born rule and the projection postulate. This framework is conceptually fundamental and mathematically consistent. At the same time, it relies on an idealization that is rarely realized in practice. Any realistic quantum system is, at least to some extent, coupled to additional degrees of freedom, whether they correspond to uncontrolled modes of the electromagnetic field, external reservoirs, measurement devices, or simply to the surrounding laboratory conditions \cite{Vac24,ParisTools12}.
 
@@ -70,7 +70,7 @@ Under this assumption, the reduced evolution may be written as a map
 \end{equation}
 where \(\Phi_{t,t_0}\) is, in general, not unitary. Rather, it is a quantum dynamical map acting on density operators \cite{Vac24,ParisTools12}.
 
-This observation already shows why the standard postulates of closed-system quantum mechanics are not sufficient in the present context. The appropriate framework is instead based on generalized measurements and CPTP maps. Within this more general formulation, continuously monitored systems will arise as a further refinement, in which the open-system evolution is conditioned on the information extracted from the environment through a continuous measurement record.
+This observation already shows why the standard postulates of closed-system quantum mechanics are not sufficient in the present context. The appropriate framework is instead based on generalized measurements and quantum channels. Within this more general formulation, continuously monitored systems will arise as a further refinement, in which the open-system evolution is conditioned on the information extracted from the environment through a continuous measurement record.
 
 
 
@@ -79,7 +79,7 @@ This observation already shows why the standard postulates of closed-system quan
 
 The projective description of quantum measurements is sufficient when one deals with ideal measurements directly performed on the system Hilbert space. In many relevant situations, however, the measurement process is more involved. The system first interacts with additional degrees of freedom, such as an ancilla, a probe, or a measuring device, and only part of the total setup is eventually observed. In this case, the effective measurement acting on the system alone is no longer described, in general, by a family of orthogonal projectors \cite{ParisTools12,Vac24}.
 
-This is the natural setting in which generalized measurements arise. Their role is to describe the statistics of outcomes when the measurement is indirect, noisy, or only partially resolving. From this point of view, POVMs are not a modification introduced by hand. They are the effective description of standard measurements performed on a larger Hilbert space and then reduced to the subsystem of interest.
+This is the natural setting in which generalized measurements arise. Their role is to describe the statistics of outcomes when the measurement is indirect, noisy, or only partially resolving. From this point of view, generalized measurements are not a modification introduced by hand. They are the effective description of standard measurements performed on a larger Hilbert space and then reduced to the subsystem of interest.
 
 A more general framework is therefore provided by positive operator-valued measures, POVMs. A POVM is a set of positive operators \(\{\hat \Pi_x\}\) satisfying
 \begin{equation}
@@ -133,23 +133,24 @@ This formulation contains the projective one, but is strictly more general. In p
 \end{equation}
 where \(\hat U_x\) is unitary on the support of \(\hat \Pi_x\). This is simply the polar decomposition of \(\hat M_x\). It shows that the POVM elements determine the probabilities, whereas the unitary part of the detection operators determines how the state is transformed after the measurement.
 
+\begin{comment}
 The measurement statistics is described by the POVM
 \begin{equation}
-	\hat \Pi_n=\ket{n}\bra{n}.
+	\hat \Pi_n=\dyad{n}{n}.
 	\label{eq:open_qs_photon_counting_povm}
 \end{equation}
 If the detector is demolitive, the mode is left in the vacuum after the detection, independently of the outcome, that is $\rho_n = \dyad{0}{0}$. The detection operators are thus described by:
 \begin{equation}
-	\hat M_n=\ket{0}\bra{n}.
+	\hat M_n=\dyad{0}{n}.
 	\label{eq:open_qs_photon_counting_detection_operators}
 \end{equation}
 indeed,
 \begin{equation}
 	\hat M_n^\dagger \hat M_n
 	=
-	\ket{n}\bra{0}\ket{0}\bra{n}
+	\dyad{n}{0}\dyad{0}{n}
 	=
-	\ket{n}\bra{n}
+	\dyad{n}{n}
 	=
 	\hat \Pi_n.
 	\label{eq:open_qs_photon_counting_detection_operator_check}
@@ -157,6 +158,8 @@ indeed,
 
 
 The POVM in Eq.~\eqref{eq:open_qs_photon_counting_povm} coincides with the one associated with the standard number measurement, and therefore yields the same probabilities. However, the state update is completely different from the projective one. This makes explicit that the POVM elements determine the outcome statistics, whereas the detection operators determine the state transformation.
+
+\end{comment}
 
 The definition above extends naturally to continuous outcome spaces, where sums are replaced by operator-valued measures. For the present purposes, the discrete version is sufficient and already contains the essential ideas.
 

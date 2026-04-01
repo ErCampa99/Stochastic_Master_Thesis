@@ -2,7 +2,7 @@
 \addcontentsline{toc}{chapter}{Appendix}
 \label{chapter:appendix}
 
-\section*{Derivation of the minimal transverse variance for mean spin along \(z\)}
+\section*{Derivation of the minimal transverse variance for MSD along \(z\)}
 \label{app:derivation_minimal_transverse_variance_mean_spin_z}
 
 In this appendix, we derive Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}. We assume that the MSD points along the \(z\) axis. Therefore,
@@ -17,11 +17,7 @@ A generic spin component in the plane orthogonal to the mean spin direction may 
 	\hat J_\perp(\phi)=\hat J_x \cos\phi + \hat J_y \sin\phi.
 	\label{eq:app_transverse_spin_component}
 \end{equation}
-Since \(\langle \hat J_x \rangle = \langle \hat J_y \rangle = 0\), one has
-\begin{equation}
-	(\Delta \hat J_\perp)^2 = \langle \hat J_\perp(\phi)^2\rangle.
-	\label{eq:app_variance_as_second_moment}
-\end{equation}
+Since \eqref{eq:app_mean_spin_along_z} holds, one has 	$(\Delta \hat J_\perp)^2 = \langle \hat J_\perp(\phi)^2\rangle$.
 
 We now expand the square of Eq.~\eqref{eq:app_transverse_spin_component}:
 \begin{equation}
@@ -42,14 +38,10 @@ Taking the expectation value, we obtain
 	+
 	\langle \hat J_y^2\rangle \sin^2\phi
 	+
-	\langle [\hat J_x,\hat J_y]_+ \rangle \cos\phi \sin\phi,
+	\langle \{\hat J_x,\hat J_y\} \rangle \cos\phi \sin\phi,
 	\label{eq:app_transverse_variance_before_trig}
 \end{equation}
-where
-\begin{equation}
-	\{\hat J_x,\hat J_y\} = \hat J_x \hat J_y + \hat J_y \hat J_x.
-	\label{eq:app_anticommutator_definition}
-\end{equation}
+where $\{\hat J_x,\hat J_y\} = \hat J_x \hat J_y + \hat J_y \hat J_x$ is the usual definition of the anticommutator.
 
 Using the trigonometric identities
 \begin{equation}
@@ -87,7 +79,7 @@ Then Eq.~\eqref{eq:app_transverse_variance_after_trig} reads
 	\label{eq:app_transverse_variance_ABC_form}
 \end{equation}
 
-At this stage, the minimization is elementary. Indeed, one may write
+At this stage, the minimization is given by a reparametrization. Indeed, one may write
 \begin{equation}
 	B \cos 2\phi + C \sin 2\phi
 	=
@@ -120,14 +112,14 @@ By substituting the definitions in Eq.~\eqref{eq:app_ABC_definition}, one finall
 	\right].
 	\label{eq:app_final_minimal_transverse_variance}
 \end{equation}
-This is precisely Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}.
+This is gives us Eq.~\eqref{eq:intro_qm_minimal_transverse_variance_mean_spin_z_ss}.
 
 It is worth observing that this result is simply the smallest eigenvalue of the covariance matrix in the transverse plane. The assumption that the mean spin points along \(z\) reduces the minimization problem to the \(x\)-\(y\) plane, and this leads directly to the closed expression above.
 
 \newpage 
 
 \section*{Unitary invariance of Lindblad operators}
-
+\label{app:unitary_invariance_of_Lindblad_operators}
 Let $U$ be an $n\times n$ unitary matrix acting on the vector of collapse operators $\{\hat C_i\}$.
 We prove the identity
 \begin{equation}
@@ -230,3 +222,115 @@ The last equality follows by applying the Hadamard unitary
 \end{equation}
 to the operator vector $\big(\sigma_z^{(1)},\sigma_z^{(2)}\big)^{T}$.
 
+\section*{CSS states reach Standard Quantum Limit2}
+\label{app:derivation_CSS_states_reach_SQL}
+We now show that coherent spin states reach the standard quantum limit. 
+\\
+For definiteness, we consider the coherent spin state polarized along the \(x\) direction, namely $\ket{\mathrm{CSS}}_x
+=
+\ket{+}^{\otimes N}.$
+
+For a single qubit in the state \(\ket{+}\), one has
+\begin{equation}
+	\expval{\sigma_x}=1,
+	\qquad
+	\expval{\sigma_y}=0,
+	\qquad
+	\expval{\sigma_z}=0.
+	\label{eq:single_qubit_plus_expectations}
+\end{equation}
+and it follows immediately that
+\begin{equation}
+	\expval{J_x}=N/2,
+	\qquad
+	\expval{J_y}=0,
+	\qquad
+	\expval{J_z}=0.
+	\label{eq:css_mean_spin_x}
+\end{equation}
+Therefore, the mean spin points along the \(x\) axis and has maximal length $N/2$.
+
+We now evaluate the transverse fluctuations. Since \(\ket{\mathrm{CSS}}_x\) is a product state, different qubits are uncorrelated. Hence, for \(i\neq j\),
+\begin{equation}
+	\expval{\sigma_y^{(i)}\sigma_y^{(j)}}
+	=
+	\expval{\sigma_y^{(i)}}\expval{\sigma_y^{(j)}}=0,
+	\label{eq:css_uncorrelated_cross_terms_y}
+\end{equation}
+and analogously for \(\sigma_z\). Using \((\sigma_y^{(i)})^2=\id\), one finds
+\begin{equation}
+	\expval{J_y^2}
+	=
+	\frac{1}{4}
+	\sum_{i,j=1}^N
+	\expval{\sigma_y^{(i)}\sigma_y^{(j)}}
+	=
+	\frac{1}{4}\sum_{i=1}^N \expval{(\sigma_y^{(i)})^2}
+	=
+	\frac{N}{4}.
+	\label{eq:css_Jy2}
+\end{equation}
+Since \eqref{eq:css_mean_spin_x} this gives $(\Delta J_y)^2=(\Delta J_z)^2=N/4$, thus the transverse fluctuations are isotropic and equal to
+\begin{equation}
+	(\Delta J_\perp)^2=\frac{N}{4}.
+	\label{eq:css_transverse_variance}
+\end{equation}
+
+Let us now consider the estimation of a small phase \(\theta\) encoded through the unitary transformation
+\begin{equation}
+	U(\theta)=e^{-i\theta J_z}.
+	\label{eq:css_phase_encoding}
+\end{equation}
+A natural observable for phase readout is \(J_y\). In the Heisenberg picture,
+\begin{equation}
+	J_y(\theta)
+	=
+	U^\dagger(\theta) J_y U(\theta)
+	=
+	J_y\cos\theta+J_x\sin\theta.
+	\label{eq:Jy_theta_rotation}
+\end{equation}
+Taking the expectation value one obtains
+\begin{equation}
+	\expval{J_y(\theta)}
+	=
+	\expval{J_y}\cos\theta+\expval{J_x}\sin\theta
+	=
+	\frac{N}{2}\sin\theta.
+	\label{eq:css_Jy_theta_mean}
+\end{equation}
+Therefore,
+\begin{equation}
+	\left.
+	\frac{d}{d\theta}\expval{J_y(\theta)}
+	\right|_{\theta=0}
+	=
+	\frac{N}{2}.
+	\label{eq:css_slope_signal}
+\end{equation}
+
+Using the error-propagation formula at \(\theta=0\), together with Eqs. \eqref{eq:css_slope_signal}, one finds
+\begin{equation}
+	\Delta\theta_{\mathrm{CSS}}
+	=
+	\frac{\sqrt{N}/2}{N/2}
+	=
+	\frac{1}{\sqrt{N}}.
+	\label{eq:css_sql_result}
+\end{equation}
+This is precisely the standard quantum limit.
+
+The same conclusion can be expressed in terms of the Wineland squeezing parameter. Since for a coherent spin state one has \(\|\expval{\mathbf{J}}\|=N/2\) and \((\Delta J_\perp)^2=N/4\), it follows that
+\begin{equation}
+	\xi_{\mathrm{W}}^2
+	=
+	\frac{N(\Delta J_\perp)^2}{\|\expval{\mathbf{J}}\|^2}
+	=
+	\frac{N(N/4)}{(N/2)^2}
+	=
+	1.
+	\label{eq:css_wineland_equals_one}
+\end{equation}
+Hence coherent spin states do not provide any metrological enhancement beyond the standard quantum limit. They exactly saturate it.
+
+Finally, although the derivation above was carried out for the state polarized along \(x\), the result is completely general. Any coherent spin state is obtained from \(\ket{\mathrm{CSS}}_x\) by a collective rotation. Such a rotation changes the orientation of the mean spin, but it does not change its length nor the isotropic structure of the transverse fluctuations. Therefore, every coherent spin state reaches the standard quantum limit.

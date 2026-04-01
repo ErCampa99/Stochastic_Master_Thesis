@@ -51,8 +51,8 @@ This formulation is not the most general one. In particular, it is based on pure
 
 \medskip
 
-\subsection{Postulate 1 : States}
-
+\textbf{Postulate 1 : States}
+\\
 To every closed physical system there corresponds a Hilbert space $\mathcal{H}$. The pure states of the system are represented by normalized vectors $\ket{\psi}\in\mathcal{H}$, namely
 \begin{equation}
 	\braket{\psi}{\psi}=1.
@@ -79,8 +79,10 @@ For this reason, pure states are properly identified with rays in Hilbert space,
 If $\ket{\psi_1}$ and $\ket{\psi_2}$ are admissible states, then any normalized linear combination of them is again an admissible state. This introduces one of the most characteristic features of quantum theory, namely the superposition principle. This has no direct analogue in the classical description. It is the mathematical origin of interference phenomena and, more generally, of the non-classical structure of the theory.
 Quantum mechanics is insensitive to a common $U(1)$ phase multiplying the whole vector, but it is sensitive to relative phases between different components of a superposition.
 
+\medskip
 
-\subsection{Postulate 2 : Observables}
+\textbf{Postulate 2 : Observables}
+\\
 Every observable quantity is associated with a self-adjoint operator acting on the Hilbert space of the system $\mathcal{H}$. If the observable is denoted by $\hat X$, its possible measurement outcomes are the eigenvalues appearing in its spectral decomposition. For the case of a discrete spectrum, one writes
 \begin{equation}
 	\hat X=\sum_x x\,\hat P_x,
@@ -90,8 +92,10 @@ where the real numbers $x$ are the possible outcomes and the operators $\hat P_x
 
 This postulate establishes the link between physical quantities and operator theory: the fact that observables are represented by self-adjoint operators ensures, on one hand, that the possible outcomes are real, and on the other hand that the spectral theorem may be used to connect the formal object $\hat X$ with experimentally accessible values. For this reason, even when one speaks of the measurement of an observable, the truly relevant objects are not only its eigenvalues, but also the corresponding projectors.
 
-\subsection{Postulate 3 : Measurements and conditional states}
+\medskip
 
+\textbf{Postulate 3 : Measurements and conditional states}
+\\
 If the system is prepared in the pure state $\ket{\psi}$ and one measures the observable $\hat X$, quantum mechanics does not in general predict a single certain result. Instead, it assigns probabilities to the possible outcomes. For a discrete observable, the probability of obtaining the value $x$ is given by the Born rule
 \begin{equation}
 	p(x)=\matrixel{\psi}{\hat P_x}{\psi}.
@@ -115,8 +119,10 @@ The standard formulation also includes a rule for the state change induced by an
 \end{equation}
 It expresses the fact that the state after the measurement is the normalized projection of the initial state onto the eigenspace corresponding to the observed result.
 
-\subsection{Postulate 4 : Dynamics}
+\medskip
 
+\textbf{Postulate 4 : Dynamics}
+\\
 In the absence of noise and measurements, the evolution of a closed and isolated quantum system is unitary. If the state of the system at time $t_0$ is $\ket{\psi(t_0)}$, then at time $t$ it is given by
 \begin{equation}
 	\ket{\psi(t)}=\hat U(t,t_0)\ket{\psi(t_0)},
@@ -137,8 +143,10 @@ Once the initial state and the Hamiltonian are given, the state at any later tim
 
 It is also worth emphasizing that unitarity guarantees that the normalization of the state is preserved in time, and thus that total probability remains equal to one throughout the evolution of an isolated system.
 
-\subsection{Postulate 5 : Composite systems}
+\medskip
 
+\textbf{Postulate 5 : Composite systems}
+\\
 If a physical system is composed of two subsystems, described respectively by the Hilbert spaces $\mathcal{H}_A$ and $\mathcal{H}_B$, then the composite system is described on the tensor-product space
 \begin{equation}
 	\mathcal{H}_{AB}=\mathcal{H}_A\otimes\mathcal{H}_B.
@@ -358,6 +366,209 @@ It is also useful to comment briefly on compatibility of observables. If two obs
 	\label{eq:intro_qm_commuting_observables}
 \end{equation}
 then, in the finite-dimensional setting, they admit a common eigenbasis, up to the usual care required in the presence of degeneracies. In that case, the two observables may be simultaneously diagonalized and can be jointly sharp in the same states. When the commutator does not vanish, such a common diagonalization is in general not possible. This is the algebraic origin of quantum incompatibility and, more generally, of the fact that different experimental arrangements may probe genuinely different aspects of the same physical system.
+
+\section{Time evolution in quantum mechanics}
+\label{sec:unitary_time_evolution_and_stationary_states}
+
+We now discuss in more detail the dynamical postulate introduced in the previous section. For a closed and isolated quantum system, the time evolution is described by a family of unitary operators acting on the Hilbert space of the system. This is the natural quantum analogue of reversible evolution in the absence of external interactions.
+
+\subsection{Time-evolution operator and its general properties}
+
+Let $\ket{\psi(t_0)}$ be the state of the system at time $t_0$. Its state at time $t$ is written as
+\begin{equation}
+	\ket{\psi(t)}=\hat U(t,t_0)\ket{\psi(t_0)},
+	\label{eq:intro_qm_state_evolution_operator}
+\end{equation}
+where $\hat U(t,t_0)$ is the time-evolution operator from $t_0$ to $t$. Since the evolution is unitary, one has
+\begin{equation}
+	\hat U^\dagger(t,t_0)\hat U(t,t_0)=\hat U(t,t_0)\hat U^\dagger(t,t_0)=\id.
+	\label{eq:intro_qm_propagator_unitarity}
+\end{equation}
+As a consequence, the norm of the state is preserved:
+\begin{equation}
+	\braket{\psi(t)}{\psi(t)}
+	=
+	\matrixel{\psi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
+	=
+	\braket{\psi(t_0)}{\psi(t_0)}.
+	\label{eq:intro_qm_norm_preservation_unitary}
+\end{equation}
+More generally,
+\begin{equation}
+	\braket{\phi(t)}{\psi(t)}
+	=
+	\matrixel{\phi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
+	=
+	\braket{\phi(t_0)}{\psi(t_0)}.
+	\label{eq:intro_qm_inner_product_preservation}
+\end{equation}
+Hence, transition probabilities are invariant under the evolution.
+
+The propagator $\hat U(t,t_0)$ must satisfy a consistency condition. If $t_0\leq t_1\leq t_2$, evolving first from $t_0$ to $t_1$ and ten from $t_1$ to $t_2$ must be equivalent to evolving directly from $t_0$ to $t_2$. Therefore,
+\begin{equation}
+	\hat U(t_2,t_1)\hat U(t_1,t_0)=\hat U(t_2,t_0).
+	\label{eq:intro_qm_propagator_composition_law}
+\end{equation}
+Moreover, $\hat U(t_0,t_0)=\id$ and, by combining Eqs.~\eqref{eq:intro_qm_propagator_unitarity} and \eqref{eq:intro_qm_propagator_composition_law}, one obtains $\hat U^{-1}(t,t_0)=\hat U(t_0,t)=\hat U^\dagger(t,t_0)$.
+
+\subsection{Infinitesimal evolution and Hamiltonian generator}
+
+The local structure of the dynamics is obtained by considering an infinitesimal time step. For a sufficiently regular propagator, one may write
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t)=\id-i\,\hat G(t)\,\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2),
+	\label{eq:intro_qm_infinitesimal_propagator}
+\end{equation}
+where $\hat G(t)$ is the generator of the evolution. Unitarity imposes a constraint on $\hat G(t)$. Indeed, from
+\begin{equation}
+	\hat U^\dagger(t+\mathrm{d}t,t)\hat U(t+\mathrm{d}t,t)=\id
+	\label{eq:intro_qm_unitarity_infinitesimal_propagator}
+\end{equation}
+and Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one finds
+\begin{equation}
+	\left(\id+i\,\hat G^\dagger(t)\,\mathrm{d}t\right)
+	\left(\id-i\,\hat G(t)\,\mathrm{d}t\right)
+	=
+	\id+i\left[\hat G^\dagger(t)-\hat G(t)\right]\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2).
+	\label{eq:intro_qm_infinitesimal_unitarity_expansion}
+\end{equation}
+Therefore,
+\begin{equation}
+	\hat G^\dagger(t)=\hat G(t).
+	\label{eq:intro_qm_generator_selfadjoint}
+\end{equation}
+The generator of a unitary evolution must thus be self-adjoint. It is therefore identified with the Hamiltonian of the system \cite{ReedSimon80}, namely $\hat G(t)=\hat H(t)$.
+
+The same result may be written in a more global form. By differentiating the identity
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t_0)=\hat U(t+\mathrm{d}t,t)\hat U(t,t_0)
+	\label{eq:intro_qm_propagator_composition_infinitesimal}
+\end{equation}
+and using Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one obtains
+\begin{equation}
+	\hat U(t+\mathrm{d}t,t_0)
+	=
+	\left(\id-i\,\hat H(t)\,\mathrm{d}t\right)\hat U(t,t_0)+\mathcal{O}(\mathrm{d}t^2).
+	\label{eq:intro_qm_propagator_expansion_differential}
+\end{equation}
+Subtracting $\hat U(t,t_0)$ from both sides, dividing by $\mathrm{d}t$, and taking the limit $\mathrm{d}t\to 0$, one finds
+\begin{equation}
+	i\frac{\partial}{\partial t}\hat U(t,t_0)=\hat H(t)\hat U(t,t_0),
+	\label{eq:intro_qm_schrodinger_equation_propagator}
+\end{equation}
+with initial condition
+\begin{equation}
+	\hat U(t_0,t_0)=\id.
+	\label{eq:intro_qm_initial_condition_propagator}
+\end{equation}
+This is the evolution equation for the time-evolution operator. By applying it to the initial state $\ket{\psi(t_0)}$, one immediately obtains the Schrödinger equation, already introduced in Eq.\eqref{eq:intro_qm_schrodinger_equation}
+\begin{equation}
+	i\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)}=\hat H(t)\ket{\psi(t)}.
+	\label{eq:intro_qm_schrodinger_equation_state}
+\end{equation}
+
+When the Hamiltonian is time independent, namely $\hat H(t)=\hat H$, the propagator depends only on the time difference, $\hat U(t,t_0)=\hat U(t-t_0)$. By introducing $\tau=t-t_0$, one has
+\begin{equation}
+	\hat U(\tau_1)\hat U(\tau_2)=\hat U(\tau_1+\tau_2),
+	\label{eq:intro_qm_one_parameter_unitary_group}
+\end{equation}
+together with $\hat U(0)=\id$. Hence, the time evolution defines a one-parameter unitary group.
+
+At this point one may invoke Stone's theorem \cite{Stone32}. In the present setting, the theorem states that every strongly continuous one-parameter unitary group is generated by a unique self-adjoint operator $\hat H$ such that
+\begin{equation}
+	\hat U(\tau)=e^{-i\hat H\tau}.
+	\label{eq:intro_qm_stone_theorem}
+\end{equation}
+Conversely, every self-adjoint operator $\hat H$ defines a strongly continuous one-parameter unitary group through Eq.~\eqref{eq:intro_qm_stone_theorem}. This gives a precise mathematical meaning to the statement that the Hamiltonian is the generator of time translations.
+
+Equation~\eqref{eq:intro_qm_stone_theorem} is written in units such that $\hbar=1$. If $\hbar$ is kept explicit, one has
+\begin{equation}
+	\hat U(\tau)=e^{-i\hat H\tau/\hbar}.
+	\label{eq:intro_qm_stone_theorem_with_hbar}
+\end{equation}
+Throughout the following we adopt the natural units: unless otherwise stated, we set $\hbar=1$.
+
+The self-adjointness of $\hat H$ guarantees the unitarity of the evolution, since $\hat U^\dagger(\tau)=\left(e^{-i\hat H\tau}\right)^\dagger=e^{i\hat H\tau}$ and therefore $\hat U^\dagger(\tau)\hat U(\tau)=\id$. In the time-independent case, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} can be solved explicitly:
+\begin{equation}
+	\hat U(t,t_0)=e^{-i\hat H(t-t_0)},
+	\label{eq:intro_qm_time_independent_propagator_exponential}
+\end{equation}
+so that
+\begin{equation}
+	\ket{\psi(t)}=e^{-i\hat H(t-t_0)}\ket{\psi(t_0)}.
+	\label{eq:intro_qm_state_evolution_time_independent_hamiltonian}
+\end{equation}
+
+\subsection{Time-dependent Hamiltonians and time ordering}
+
+The time-dependent case is slightly more delicate. Formally, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} suggests the expression
+\begin{equation}
+	\hat U(t,t_0)\overset{?}{=}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right].
+	\label{eq:intro_qm_naive_time_dependent_propagator}
+\end{equation}
+However, this formula is valid only when
+\begin{equation}
+	[\hat H(t_1),\hat H(t_2)]=0
+	\qquad
+	\forall\, t_1,t_2.
+	\label{eq:intro_qm_commuting_time_dependent_hamiltonian}
+\end{equation}
+Indeed, if Hamiltonians at different times do not commute, the exponential of the time integral is not sufficient to reproduce the correct ordered product of infinitesimal propagators.
+
+In the general case, the formal solution is written as the time-ordered exponential
+\begin{equation}
+	\hat U(t,t_0)=\mathcal{T}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right],
+	\label{eq:intro_qm_time_ordered_exponential}
+\end{equation}
+where $\mathcal{T}$ denotes chronological ordering. More precisely, for a product of Hamiltonians evaluated at different times, the action of $\mathcal{T}$ is defined by arranging the operators from left to right in decreasing time order. For instance,
+\begin{equation}
+	\mathcal{T}\!\left[\hat H(t_1)\hat H(t_2)\right]
+	=
+	\begin{cases}
+		\hat H(t_1)\hat H(t_2), & t_1>t_2,\\
+		\hat H(t_2)\hat H(t_1), & t_2>t_1,
+	\end{cases}
+	\label{eq:intro_qm_time_ordering_two_times}
+\end{equation}
+and, more generally,
+\begin{equation}
+	\mathcal{T}\!\left[\hat H(t_1)\hat H(t_2)\cdots \hat H(t_n)\right]
+	=
+	\hat H(t_{\pi(1)})\hat H(t_{\pi(2)})\cdots \hat H(t_{\pi(n)}),
+	\label{eq:intro_qm_time_ordering_general_definition}
+\end{equation}
+where the permutation $\pi$ is such that
+\begin{equation}
+	t_{\pi(1)}\geq t_{\pi(2)}\geq \cdots \geq t_{\pi(n)}.
+	\label{eq:intro_qm_time_ordering_permutation}
+\end{equation}
+
+Equation~\eqref{eq:intro_qm_time_ordered_exponential} may be expanded as the Dyson series \cite{Dyson49},
+\begin{equation}
+	\hat U(t,t_0)
+	=
+	\id
+	+
+	\sum_{n=1}^{\infty}
+	(-i)^n
+	\int_{t_0}^{t}\mathrm{d}t_1
+	\int_{t_0}^{t_1}\mathrm{d}t_2
+	\cdots
+	\int_{t_0}^{t_{n-1}}\mathrm{d}t_n\,
+	\hat H(t_1)\hat H(t_2)\cdots \hat H(t_n).
+	\label{eq:intro_qm_dyson_series}
+\end{equation}
+The first terms are therefore
+\begin{equation}
+	\hat U(t,t_0)
+	=
+	\id
+	-i\int_{t_0}^{t}\hat H(t_1)\,\mathrm{d}t_1
+	+(-i)^2\int_{t_0}^{t}\mathrm{d}t_1\int_{t_0}^{t_1}\mathrm{d}t_2\,\hat H(t_1)\hat H(t_2)
+	+\cdots.
+	\label{eq:intro_qm_dyson_series_first_terms}
+\end{equation}
+This ordered structure ensures that the solution correctly reproduces the composition of infinitesimal propagators even when the Hamiltonian at different times does not commute with itself.
+
 
 \section{Statistical ensembles and mixed states}
 \label{subsec:statistical_ensembles_and_mixed_states}
@@ -599,209 +810,6 @@ with $a_0\in\mathds{R}$ and $\vec a\in\mathds{R}^3$. Its expectation value in th
 	\label{eq:intro_qm_expectation_value_qubit_observable}
 \end{equation}
 In particular, one has $\expval{\sigma_x}=r_x$, $\expval{\sigma_y}=r_y$, and $\expval{\sigma_z}=r_z$.
-
-
-\section{Time evolution in quantum mechanics}
-\label{sec:unitary_time_evolution_and_stationary_states}
-
-We now discuss in more detail the dynamical postulate introduced in the previous section. For a closed and isolated quantum system, the time evolution is described by a family of unitary operators acting on the Hilbert space of the system. This is the natural quantum analogue of reversible evolution in the absence of external interactions.
-
-\subsection{Time-evolution operator and its general properties}
-
-Let $\ket{\psi(t_0)}$ be the state of the system at time $t_0$. Its state at time $t$ is written as
-\begin{equation}
-	\ket{\psi(t)}=\hat U(t,t_0)\ket{\psi(t_0)},
-	\label{eq:intro_qm_state_evolution_operator}
-\end{equation}
-where $\hat U(t,t_0)$ is the time-evolution operator from $t_0$ to $t$. Since the evolution is unitary, one has
-\begin{equation}
-	\hat U^\dagger(t,t_0)\hat U(t,t_0)=\hat U(t,t_0)\hat U^\dagger(t,t_0)=\id.
-	\label{eq:intro_qm_propagator_unitarity}
-\end{equation}
-As a consequence, the norm of the state is preserved:
-\begin{equation}
-	\braket{\psi(t)}{\psi(t)}
-	=
-	\matrixel{\psi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
-	=
-	\braket{\psi(t_0)}{\psi(t_0)}.
-	\label{eq:intro_qm_norm_preservation_unitary}
-\end{equation}
-More generally,
-\begin{equation}
-	\braket{\phi(t)}{\psi(t)}
-	=
-	\matrixel{\phi(t_0)}{\hat U^\dagger(t,t_0)\hat U(t,t_0)}{\psi(t_0)}
-	=
-	\braket{\phi(t_0)}{\psi(t_0)}.
-	\label{eq:intro_qm_inner_product_preservation}
-\end{equation}
-Hence, transition probabilities are invariant under the evolution.
-
-The propagator $\hat U(t,t_0)$ must satisfy a consistency condition. If $t_0\leq t_1\leq t_2$, evolving first from $t_0$ to $t_1$ and ten from $t_1$ to $t_2$ must be equivalent to evolving directly from $t_0$ to $t_2$. Therefore,
-\begin{equation}
-	\hat U(t_2,t_1)\hat U(t_1,t_0)=\hat U(t_2,t_0).
-	\label{eq:intro_qm_propagator_composition_law}
-\end{equation}
-Moreover, $\hat U(t_0,t_0)=\id$ and, by combining Eqs.~\eqref{eq:intro_qm_propagator_unitarity} and \eqref{eq:intro_qm_propagator_composition_law}, one obtains $\hat U^{-1}(t,t_0)=\hat U(t_0,t)=\hat U^\dagger(t,t_0)$.
-
-\subsection{Infinitesimal evolution and Hamiltonian generator}
-
-The local structure of the dynamics is obtained by considering an infinitesimal time step. For a sufficiently regular propagator, one may write
-\begin{equation}
-	\hat U(t+\mathrm{d}t,t)=\id-i\,\hat G(t)\,\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2),
-	\label{eq:intro_qm_infinitesimal_propagator}
-\end{equation}
-where $\hat G(t)$ is the generator of the evolution. Unitarity imposes a constraint on $\hat G(t)$. Indeed, from
-\begin{equation}
-	\hat U^\dagger(t+\mathrm{d}t,t)\hat U(t+\mathrm{d}t,t)=\id
-	\label{eq:intro_qm_unitarity_infinitesimal_propagator}
-\end{equation}
-and Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one finds
-\begin{equation}
-	\left(\id+i\,\hat G^\dagger(t)\,\mathrm{d}t\right)
-	\left(\id-i\,\hat G(t)\,\mathrm{d}t\right)
-	=
-	\id+i\left[\hat G^\dagger(t)-\hat G(t)\right]\mathrm{d}t+\mathcal{O}(\mathrm{d}t^2).
-	\label{eq:intro_qm_infinitesimal_unitarity_expansion}
-\end{equation}
-Therefore,
-\begin{equation}
-	\hat G^\dagger(t)=\hat G(t).
-	\label{eq:intro_qm_generator_selfadjoint}
-\end{equation}
-The generator of a unitary evolution must thus be self-adjoint. It is therefore identified with the Hamiltonian of the system \cite{ReedSimon80}, namely $\hat G(t)=\hat H(t)$.
-
-The same result may be written in a more global form. By differentiating the identity
-\begin{equation}
-	\hat U(t+\mathrm{d}t,t_0)=\hat U(t+\mathrm{d}t,t)\hat U(t,t_0)
-	\label{eq:intro_qm_propagator_composition_infinitesimal}
-\end{equation}
-and using Eq.~\eqref{eq:intro_qm_infinitesimal_propagator}, one obtains
-\begin{equation}
-	\hat U(t+\mathrm{d}t,t_0)
-	=
-	\left(\id-i\,\hat H(t)\,\mathrm{d}t\right)\hat U(t,t_0)+\mathcal{O}(\mathrm{d}t^2).
-	\label{eq:intro_qm_propagator_expansion_differential}
-\end{equation}
-Subtracting $\hat U(t,t_0)$ from both sides, dividing by $\mathrm{d}t$, and taking the limit $\mathrm{d}t\to 0$, one finds
-\begin{equation}
-	i\frac{\partial}{\partial t}\hat U(t,t_0)=\hat H(t)\hat U(t,t_0),
-	\label{eq:intro_qm_schrodinger_equation_propagator}
-\end{equation}
-with initial condition
-\begin{equation}
-	\hat U(t_0,t_0)=\id.
-	\label{eq:intro_qm_initial_condition_propagator}
-\end{equation}
-This is the evolution equation for the time-evolution operator. By applying it to the initial state $\ket{\psi(t_0)}$, one immediately obtains the Schrödinger equation, already introduced in Eq.\eqref{eq:intro_qm_schrodinger_equation}
-\begin{equation}
-	i\frac{\mathrm{d}}{\mathrm{d}t}\ket{\psi(t)}=\hat H(t)\ket{\psi(t)}.
-	\label{eq:intro_qm_schrodinger_equation_state}
-\end{equation}
-
-When the Hamiltonian is time independent, namely $\hat H(t)=\hat H$, the propagator depends only on the time difference, $\hat U(t,t_0)=\hat U(t-t_0)$. By introducing $\tau=t-t_0$, one has
-\begin{equation}
-	\hat U(\tau_1)\hat U(\tau_2)=\hat U(\tau_1+\tau_2),
-	\label{eq:intro_qm_one_parameter_unitary_group}
-\end{equation}
-together with $\hat U(0)=\id$. Hence, the time evolution defines a one-parameter unitary group.
-
-At this point one may invoke Stone's theorem \cite{Stone32}. In the present setting, the theorem states that every strongly continuous one-parameter unitary group is generated by a unique self-adjoint operator $\hat H$ such that
-\begin{equation}
-	\hat U(\tau)=e^{-i\hat H\tau}.
-	\label{eq:intro_qm_stone_theorem}
-\end{equation}
-Conversely, every self-adjoint operator $\hat H$ defines a strongly continuous one-parameter unitary group through Eq.~\eqref{eq:intro_qm_stone_theorem}. This gives a precise mathematical meaning to the statement that the Hamiltonian is the generator of time translations.
-
-Equation~\eqref{eq:intro_qm_stone_theorem} is written in units such that $\hbar=1$. If $\hbar$ is kept explicit, one has
-\begin{equation}
-	\hat U(\tau)=e^{-i\hat H\tau/\hbar}.
-	\label{eq:intro_qm_stone_theorem_with_hbar}
-\end{equation}
-Throughout the following we adopt the natural units: unless otherwise stated, we set $\hbar=1$.
-
-The self-adjointness of $\hat H$ guarantees the unitarity of the evolution, since $\hat U^\dagger(\tau)=\left(e^{-i\hat H\tau}\right)^\dagger=e^{i\hat H\tau}$ and therefore $\hat U^\dagger(\tau)\hat U(\tau)=\id$. In the time-independent case, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} can be solved explicitly:
-\begin{equation}
-	\hat U(t,t_0)=e^{-i\hat H(t-t_0)},
-	\label{eq:intro_qm_time_independent_propagator_exponential}
-\end{equation}
-so that
-\begin{equation}
-	\ket{\psi(t)}=e^{-i\hat H(t-t_0)}\ket{\psi(t_0)}.
-	\label{eq:intro_qm_state_evolution_time_independent_hamiltonian}
-\end{equation}
-
-\subsection{Time-dependent Hamiltonians and time ordering}
-
-The time-dependent case is slightly more delicate. Formally, Eq.~\eqref{eq:intro_qm_schrodinger_equation_propagator} suggests the expression
-\begin{equation}
-	\hat U(t,t_0)\overset{?}{=}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right].
-	\label{eq:intro_qm_naive_time_dependent_propagator}
-\end{equation}
-However, this formula is valid only when
-\begin{equation}
-	[\hat H(t_1),\hat H(t_2)]=0
-	\qquad
-	\forall\, t_1,t_2.
-	\label{eq:intro_qm_commuting_time_dependent_hamiltonian}
-\end{equation}
-Indeed, if Hamiltonians at different times do not commute, the exponential of the time integral is not sufficient to reproduce the correct ordered product of infinitesimal propagators.
-
-In the general case, the formal solution is written as the time-ordered exponential
-\begin{equation}
-	\hat U(t,t_0)=\mathcal{T}\exp\left[-i\int_{t_0}^{t}\hat H(s)\,\mathrm{d}s\right],
-	\label{eq:intro_qm_time_ordered_exponential}
-\end{equation}
-where $\mathcal{T}$ denotes chronological ordering. More precisely, for a product of Hamiltonians evaluated at different times, the action of $\mathcal{T}$ is defined by arranging the operators from left to right in decreasing time order. For instance,
-\begin{equation}
-	\mathcal{T}\!\left[\hat H(t_1)\hat H(t_2)\right]
-	=
-	\begin{cases}
-		\hat H(t_1)\hat H(t_2), & t_1>t_2,\\
-		\hat H(t_2)\hat H(t_1), & t_2>t_1,
-	\end{cases}
-	\label{eq:intro_qm_time_ordering_two_times}
-\end{equation}
-and, more generally,
-\begin{equation}
-	\mathcal{T}\!\left[\hat H(t_1)\hat H(t_2)\cdots \hat H(t_n)\right]
-	=
-	\hat H(t_{\pi(1)})\hat H(t_{\pi(2)})\cdots \hat H(t_{\pi(n)}),
-	\label{eq:intro_qm_time_ordering_general_definition}
-\end{equation}
-where the permutation $\pi$ is such that
-\begin{equation}
-	t_{\pi(1)}\geq t_{\pi(2)}\geq \cdots \geq t_{\pi(n)}.
-	\label{eq:intro_qm_time_ordering_permutation}
-\end{equation}
-
-Equation~\eqref{eq:intro_qm_time_ordered_exponential} may be expanded as the Dyson series \cite{Dyson49},
-\begin{equation}
-	\hat U(t,t_0)
-	=
-	\id
-	+
-	\sum_{n=1}^{\infty}
-	(-i)^n
-	\int_{t_0}^{t}\mathrm{d}t_1
-	\int_{t_0}^{t_1}\mathrm{d}t_2
-	\cdots
-	\int_{t_0}^{t_{n-1}}\mathrm{d}t_n\,
-	\hat H(t_1)\hat H(t_2)\cdots \hat H(t_n).
-	\label{eq:intro_qm_dyson_series}
-\end{equation}
-The first terms are therefore
-\begin{equation}
-	\hat U(t,t_0)
-	=
-	\id
-	-i\int_{t_0}^{t}\hat H(t_1)\,\mathrm{d}t_1
-	+(-i)^2\int_{t_0}^{t}\mathrm{d}t_1\int_{t_0}^{t_1}\mathrm{d}t_2\,\hat H(t_1)\hat H(t_2)
-	+\cdots.
-	\label{eq:intro_qm_dyson_series_first_terms}
-\end{equation}
-This ordered structure ensures that the solution correctly reproduces the composition of infinitesimal propagators even when the Hamiltonian at different times does not commute with itself.
 
 
 \section{Bipartite and multipartite systems}
@@ -1579,10 +1587,93 @@ Finally, one may also construct collective two-body quantities, such as
 	=
 	\frac{N}{4}\id
 	+
-	\frac{1}{4}\sum_{\substack{k,\ell=1\\k\neq \ell}}^{N}\sigma_\alpha^{(k)}\sigma_\alpha^{(\ell)},
+	\frac{1}{4}\sum_{k\neq \ell}^{N}\sigma_\alpha^{(k)}\sigma_\alpha^{(\ell)},
 	\label{eq:intro_qm_collective_spin_squared_expansion}
 \end{equation}
 where the identity contribution comes from \((\sigma_\alpha^{(k)})^2=\id\). This expansion makes explicit the connection between collective observables and two-body correlations. It is precisely this link that will later make collective variances useful probes of multipartite entanglement and spin squeezing.
+
+A central role in collective spin systems is played by Dicke states. These states form the natural basis for the symmetric subspace of \(N\) spin-1/2 particles, that is, the subspace invariant under particle exchange. Since spin squeezing is typically discussed in terms of collective operators and permutation-invariant states, Dicke states provide the most convenient language for describing many of the relevant multipartite states.
+
+They are defined as simultaneous eigenstates of the collective operators \(\hat J^2\) and \(\hat J_z\),
+\begin{equation}
+	\hat J^2 \ket{j,m} = j(j+1)\ket{j,m},
+	\qquad
+	\hat J_z \ket{j,m} = m \ket{j,m},
+	\label{eq:dicke_eigenvalue_equations}
+\end{equation}
+with \(j=0,\frac{1}{2},1,\dots,\frac{N}{2}\) and \(m=-j,-j+1,\dots,j\). The fully symmetric Dicke states belong to the maximal-spin sector $j=N/2$ which is the sector most commonly encountered in collective-spin models and in the theory of spin squeezing.
+It follows that a basis state containing \(k\) qubits in the state \(\ket{1}\) has $m=N/2-k$.
+
+The corresponding symmetric Dicke state is the equal superposition of all computational basis states with exactly \(k\) qubits in \(\ket{1}\),
+\begin{equation}
+	\ket{D_N^{(k)}}
+	=
+	\frac{1}{\sqrt{\binom{N}{k}}}
+	\sum_{\mathrm{perm}}
+	\ket{\underbrace{1\cdots1}_{k}\underbrace{0\cdots0}_{N-k}},
+	\label{eq:dicke_state_definition}
+\end{equation}
+where the sum runs over all distinct permutations. In terms of the collective-spin basis, one may equivalently write
+\begin{equation}
+	\ket{D_N^{(k)}}=\ket{j=N/2,\,m=N/2-k}.
+	\label{eq:dicke_collective_notation}
+\end{equation}
+
+These states have a simple physical meaning: they describe \(k\) spin flips delocalized symmetrically over all qubits. For this reason, they naturally appear whenever the dynamics preserves exchange symmetry and is expressed in terms of collective operators. They are also closely related to the discussion of spin squeezing for states with fixed parity, since a state spanned only by Dicke states with even or odd values of \(k\) has a definite parity with respect to the collective spin along \(z\). This is precisely the setting in which several simplifications arise in the analysis of spin-squeezing parameters.
+
+\begin{comment}
+Some important special cases are worth mentioning explicitly. For \(k=0\), one has the fully polarized state
+\begin{equation}
+	\ket{D_N^{(0)}}=\ket{0}^{\otimes N},
+\end{equation}
+while for \(k=N\),
+\begin{equation}
+	\ket{D_N^{(N)}}=\ket{1}^{\otimes N}.
+\end{equation}
+For \(k=1\), one obtains the \(N\)-qubit \(W\) state,
+\begin{equation}
+	\ket{D_N^{(1)}}
+	=
+	\frac{1}{\sqrt{N}}
+	\sum_{i=1}^{N}
+	\ket{0\cdots 01_i0\cdots 0},
+\end{equation}
+whereas the states with \(k\approx N/2\) are the most balanced Dicke states. These latter states are especially relevant in quantum metrology, since they may display strong multipartite correlations and large quantum Fisher information even when the mean spin vanishes.
+
+Dicke states are therefore a natural reference family for collective-spin physics. They connect symmetry, parity, entanglement, and metrological usefulness within a single and very convenient basis.
+\end{comment}
+
+
+\subsection{Standard quantum limit vs Heisenberg limit}
+\label{subsec:sql_hl}
+
+The quest for ever more precise parameter estimation has long provided one of the main motivations for quantum metrology. Historically, this problem became especially relevant in optical interferometry, where quantum fluctuations of the electromagnetic field set fundamental constraints on phase sensitivity.
+
+A paradigmatic example is provided by kilometer-scale interferometers for gravitational-wave detection, such as LIGO and Virgo. These devices are designed to measure extremely small phase shifts, or equivalently differential arm-length variations, induced by the passage of a gravitational wave. The first direct detection of gravitational waves, reported in 2016 by the LIGO Scientific Collaboration, marked a major milestone in precision interferometry \cite{Abb16}. In such experiments, quantum noise is not a minor correction, but one of the fundamental mechanisms limiting the sensitivity over a significant portion of the detection band.
+
+The standard quantum limit is the precision scaling obtained when the available resources are used in a classical or semiclassical way, namely when the probes are independent and no entanglement is exploited (see Appendix \ref{app:derivation_CSS_states_reach_SQL}). If \(N\) denotes the relevant number of resources, such as the number of particles or photons, the corresponding uncertainty scales as
+\begin{equation}
+	\Delta \theta_{\mathrm{SQL}} \sim \frac{1}{\sqrt{N}}.
+	\label{eq:sql_scaling}
+\end{equation}
+This scaling is the analogue of the central-limit behavior and reflects the fact that independent measurements improve the signal-to-noise ratio only statistically.
+
+By contrast, in the ideal noiseless quantum setting one may reach the Heisenberg limit,
+\begin{equation}
+	\Delta \theta_{\mathrm{HL}} \sim \frac{1}{N}.
+	\label{eq:hl_scaling}
+\end{equation}
+that is more favorable by a factor \(\sqrt{N}\) with respect to the SQL. In this sense, the Heisenberg limit represents the ultimate scaling allowed by quantum mechanics for parameter estimation with \(N\) resources. The SQL is not an absolute bound, but rather the best scaling achievable with uncorrelated probes. The Heisenberg limit, instead, identifies the optimal scaling allowed in the ideal quantum regime. Reaching this regime requires the preparation of suitable non-classical states, whose quantum correlations amplify the response to the parameter while controlling the relevant fluctuations.
+
+Different classes of quantum states can be used to approach or attain these scalings. Squeezed states reduce the fluctuations of the measured quadrature below the coherent-state level and therefore allow one to surpass the SQL, as first pointed out in the context of interferometry by Caves \cite{Cav81}. Squeezed light can be generated and injected into large-scale interferometers: they are implemented in gravitational-wave detectors such as LIGO and Virgo, where yhese type of states are used to reduce quantum noise and improve the astrophysical reach of the instruments \cite{Ace19}.
+
+MIAO MIAO 
+
+To reach the Heisenberg scaling in its canonical form, one typically needs more strongly non-classical states. Prototypical examples are maximally path-entangled states, such as NOON states, or highly entangled collective states such as GHZ states and other suitable multipartite resources. More generally, the gain arises because entanglement allows the parameter to be encoded collectively on the whole probe, rather than independently on each constituent \cite{GLM04,GLM11}.
+
+
+
+
 
 
 \section{Spin squeezing}
@@ -1717,7 +1808,11 @@ so that
 	\frac{2}{N}\left[J(J+1)-m^2\right].
 	\label{eq:intro_qm_dicke_ku_parameter}
 \end{equation}
-For \(m=\pm J\), one recovers \(\xi_{\mathrm{KU}}^{2}=1\), consistently with the fact that \(\ket{J,\pm J}\) are coherent spin states. For \(|m|<J\), one obtains \(\xi_{\mathrm{KU}}^{2}>1\). In particular, Dicke states show that entanglement and spin squeezing are not equivalent notions.
+For \(m=\pm J\), one recovers \(\xi_{\mathrm{KU}}^{2}=1\), consistently with the fact that \(\ket{J,\pm J}\) are coherent spin states, for \(|m|<J\), one obtains \(\xi_{\mathrm{KU}}^{2}>1\). 
+
+\begin{comment}
+	In particular, Dicke states show that entanglement and spin squeezing are not equivalent notions.
+\end{comment}
 
 A further caveat is that the original mean-spin-based construction (Wineland case!) becomes problematic when \( |\langle \hat{\mathbf{J}}\rangle|=0 \). In that case the direction \(\mathbf{n}_0\) is not defined, and the interpretation of both \(\xi_{\mathrm{KU}}^2\) and \(\xi_{\mathrm{W}}^2\) must be handled with care. This is one of the reasons why more general squeezing and entanglement criteria were later developed \cite{Ma11, SorMol00}.
 

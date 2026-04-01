@@ -23,7 +23,9 @@
       "Bash(python -:*)",
       "Bash(python -c \"import py_compile; py_compile.compile\\(''Codes/threshold_counts.py'', doraise=True\\); print\\(''Syntax OK''\\)\")",
       "Bash(python -c \"import py_compile; py_compile.compile\\(''Codes/threshold_counts.py'', doraise=True\\); print\\(''OK''\\)\")",
-      "Bash(xargs rm:*)"
+      "Bash(xargs rm:*)",
+      "Bash(python concurrence_N2.py)",
+      "Bash(tasklist)"
     ]
   }
 }
