@@ -561,10 +561,10 @@ def make_parser() -> argparse.ArgumentParser:
 
     #The user can specify a list of measurement efficiencies (etas) for both channels
     parser.add_argument("--etas_1", type=str, default="1")
-    parser.add_argument("--etas_2", type=str, default="1,0.9,0.7,0.5,0.3")
+    parser.add_argument("--etas_2", type=str, default="1,0.8,0.5,0")
     parser.add_argument("--ntraj", type=int, default=20)
     #parser.add_argument("--chunk-size", type=int, default=500)
-    parser.add_argument("--t-end", type=float, default=5.0, help="Final time in units of T1")
+    parser.add_argument("--t-end", type=float, default=10.0, help="Final time in units of T1")
     parser.add_argument("--dt", type=float, default=0.005, help="Time step in units of T1 (max 0.005 with Milstein)")
     parser.add_argument("--num-cpus", type=int, default=max(1, os.cpu_count() - 1))
     parser.add_argument(
@@ -600,7 +600,7 @@ def make_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--out-root",
         type=str,
-        default=r"./Graphs/Jz_2_Homodyne_N2",
+        default=r"./Graphs/Thesis_Homodyne_N2",
     )
     parser.add_argument(
         "--no-theory",
@@ -864,13 +864,17 @@ def main() -> None:
             plt.axhline(1.0, linestyle="--", linewidth=2, color="black", alpha=0.7)
             plt.ylim(0.0, 5.0)
 
+        if col == "Xi2_KU" or col == "Conc":
+            plt.axhline(1.0, linestyle="--", linewidth=2, color="black", alpha=0.7)
+            plt.ylim(0.0, 1.05)
+
         plt.xlabel(r"$t/T_1$")
         plt.ylabel(LABELS[col])
         plt.title(
-            r"Homodyne $J_z$ (N=2): "
+            r"Homodyne $J_z$ : "
             + LABELS[col]
-            + rf"$,\ \phi_1={phi1_tex}\ \phi_2={phi2_tex}$"
-            + rf"  (n$_\mathrm{{traj}}$ = {args.ntraj})"
+            + rf"$,\ \phi_1={phi1_tex}\, \phi_2={phi2_tex}$"
+            #+ rf"  (n$_\mathrm{{traj}}$ = {args.ntraj})"
         )
         plt.grid(True, linestyle=":", alpha=0.6)
         plt.legend(loc="upper left", bbox_to_anchor=(0, 0.95), fontsize=12)

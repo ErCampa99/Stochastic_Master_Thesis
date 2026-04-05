@@ -474,7 +474,8 @@ def main():
             heterodyne=False, ntraj=args.ntraj,
             options={"keep_runs_results": True,
                      "map": "serial",
-                     "store_measurement": False},
+                     "store_measurement": False,
+                     "method": "milstein"},
         )
         print("  SME done. Computing observables...")
         for i_traj in range(args.ntraj):

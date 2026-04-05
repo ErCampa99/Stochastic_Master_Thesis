@@ -1,0 +1,49 @@
+{
+  "state": "plusplus",
+  "theta": 1.5707963267948966,
+  "phi_state": 0.0,
+  "gamma": 1.0,
+  "phi1": 0.0,
+  "phi2": 0.0,
+  "eta_1": 1.0,
+  "eta_2": 0.0,
+  "ntraj": 5,
+  "t_end": 5.0,
+  "dt": 0.001,
+  "num_cpus": 1,
+  "seed": 12345,
+  "out_root": "c:\\Users\\staka\\OneDrive\\Desktop\\Figlio\\Stochastic_Master_Thesis\\Codes\\Graphs\\Jz_2_Homodyne_N2_single_trajectory",
+  "nsteps": 5000,
+  "state_shape": [
+    5,
+    5000,
+    4,
+    4
+  ],
+  "trajectory_csv_files": [
+    "trajectory_01_observables.csv",
+    "trajectory_02_observables.csv",
+    "trajectory_03_observables.csv",
+    "trajectory_04_observables.csv",
+    "trajectory_05_observables.csv"
+  ],
+  "final_state_summary_file": "final_state_summary.csv",
+  "computational_fidelities": [
+    "fid_gg",
+    "fid_ge",
+    "fid_eg",
+    "fid_ee"
+  ],
+  "plus_minus_fidelities": [
+    "fid_plusplus",
+    "fid_plusminus",
+    "fid_minusplus",
+    "fid_minusminus"
+  ],
+  "bell_fidelities": [
+    "fid_phi_plus",
+    "fid_phi_minus",
+    "fid_psi_plus",
+    "fid_psi_minus"
+  ]
+}
